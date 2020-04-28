@@ -20,6 +20,8 @@
 
 
 
+
+
     <style>
         
         /* https://codepen.io/CSobol/pen/LGCiw*/
@@ -93,6 +95,10 @@
             /*font-family: 'Dancing Script', cursive;*/
         }
 
+        .top-gap-large{
+            padding-top: 7.5em;
+        }
+
         @keyframes colorchange
             {
             0%   {color: red;}
@@ -131,6 +137,64 @@
             }
 
 
+            /*  LIST STYLE TAKEN FROM - 
+                https://freefrontend.com/css-lists/
+                https://codepen.io/equinusocio/pen/OqpBKJ 
+            */
+            /* List */
+            ul {
+            counter-reset: index;  
+            padding: 0;
+            max-width: 300px;
+            }
+
+            /* List element */
+            li {
+            counter-increment: index; 
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            box-sizing: border-box;
+            }
+
+
+            /* Element counter */
+            li::before {
+            content: counters(index, ".", decimal-leading-zero);
+            font-size: 1.5rem;
+            text-align: right;
+            font-weight: bold;
+            min-width: 50px;
+            padding-right: 12px;
+            font-variant-numeric: tabular-nums;
+            align-self: flex-start;
+            background-image: linear-gradient(to bottom, aquamarine, orangered);
+            background-attachment: fixed;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            }
+
+
+            /* Element separation */
+            li + li {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            }
+
+
+            /*@use postcss-preset-env {
+            stage: 0;
+            autoprefixer: {
+                grid: true;
+            }
+            browsers: last 2 versions
+            }*/
+            /*  LIST STYLE TAKEN FROM - 
+                https://freefrontend.com/css-lists/
+                https://codepen.io/equinusocio/pen/OqpBKJ 
+            */
+
+
+
  
 
     </style>
@@ -140,7 +204,7 @@
 
 <body>
     
-    <div class="ui three column doubling stackable grid container" style="height: 100%;">
+    <div id="body_container" class="ui three column doubling stackable grid container" style="height: 100%;">
 
         
 
@@ -151,10 +215,7 @@
                 <div id="sampy-personal" class="sampy_left_info_header font-amatic hidden-cloud" style="visibility: hidden;">
                     
                             <p>
-                                had a thing for physics <br>
-                                engaged to engineering <br>
-                                memorable nights with computers<br>
-                                trying to woo maths, help me. <br>
+                                {{sampy_quote}}
                             </p>
                             <div class="ui horizontal divider">
                                 <i class="heart icon red"></i>
@@ -173,18 +234,15 @@
                 
                 <div id="quote" class="font-sacramento top-gap grey ui" >
                 <p>
-                    By three methods we may learn wisdom: 
-                    First, by reflection, which is noblest; 
-                    Second, by imitation, which is easiest; 
-                    and third by experience, which is the bitterest.
+                    {{q.text}}
                   
-                <b style="color:crimson; display:none"> - Confucius</b>
+                <b style="color:crimson; display:none"> - {{q.author}}</b>
                 </p> 
                 </div>
 
 
                 <div class="prompt" style="color:grey;padding-top: 1em;">
-                    <span>Agree to view personal contents? &nbsp; &#128540; &nbsp; </span>
+                    <span>Agree to view personal contents? &nbsp;</span>
                     <i id="prompt-agree" class="check icon"></i>
                     <i id="prompt-disagree" class="close icon"></i>
                 </div>
@@ -234,16 +292,11 @@
         <!-- MID HALF -->
         <div class="column">
 
-            <div class="top-gap sampy_mid_info_header">
+            <div id="mainmenu" class="top-gap-large sampy_mid_info_header">
                 <ul>
-                    <li>hello</li>
-                    <li>hello</li>
-                    <li>hello</li>
-                    <li>hello</li>
+                    <li v-for="mm in mainmenu"> {{mm}} </li>
                 </ul>
-                <div class="ui mini " style="opacity:0.2">
-                    This is a mini message.
-                  </div>
+                
             </div>
 
         </div>
@@ -398,7 +451,10 @@
             $("#play-title p").html("<br>"+trackdata.title);
         });
     }
-
+/*  LIST STYLE TAKEN FROM - 
+                https://freefrontend.com/css-lists/
+                https://codepen.io/equinusocio/pen/OqpBKJ 
+            */
 
     function play_button_play()
     {
@@ -555,3 +611,65 @@
 </script>
 
 <!-- SOUNDCLOUD-->
+
+
+
+<!--- YML SITE DESCRIPTION --->
+
+<!-- production version, optimized for size and speed -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.13.1/js-yaml.js"></script>
+
+<script>
+    
+    $.get("index.yml", (data,status)=>
+    {
+         window.sitedata = jsyaml.load(data);
+
+         //log
+         console.log("sitedata ---> ");
+         console.log(data);
+         console.log("sitedata <--- ");
+
+
+         //update soundcloud playlist
+         window.playlist = sitedata.soundcloud_playlist;
+
+         //sampy-personal
+         var app_personal_quote = new Vue({
+            el: '#sampy-personal',
+            data: { sampy_quote: sitedata.sampy_personal_quote}
+         })
+
+
+         
+         //quote
+         var app_quote = new Vue({
+            el: '#quote',
+            data: {
+                q:sitedata.quote
+            }
+         })
+
+         // mainmenu
+         var app_main_menu = new Vue({
+            el: '#mainmenu',
+            data: {
+                mainmenu: sitedata.main_menu
+            }
+         })
+
+
+
+
+
+    
+    })
+
+ 
+
+
+</script>
+
+<!--- YML SITE DESCRIPTION --->
+

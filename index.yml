@@ -1,0 +1,27 @@
+
+
+
+sampy_personal_quote: "had a thing for physics,
+                       engaged to engineering,
+                       memorable nights with computers,
+                       trying to woo maths."
+quote:
+  text: "By three methods we may learn wisdom: 
+        First, by reflection, which is noblest; 
+        Second, by imitation, which is easiest; 
+        and third by experience, which is the bitterest."
+  author: Confucious
+
+
+
+soundcloud_playlist:
+  - "https://soundcloud.com/goujimusic/sam-hulick-uncharted-worlds-remix"
+  - "https://soundcloud.com/marcoorlandoproductions/the-terminator-soundtrack-love"
+  - "https://soundcloud.com/dj-rodder/mass-effect-2-galaxy-map-theme"
+
+
+main_menu:
+  - Blog
+  - Music
+  - Work
+  - Projects
