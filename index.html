@@ -95,8 +95,13 @@
             /*font-family: 'Dancing Script', cursive;*/
         }
 
-        .top-gap-large{
+        .top-gap-xlarge{
             padding-top: 7.5em;
+        }
+
+        .top-gap-large
+        {
+            padding-top: 4em;
         }
 
         @keyframes colorchange
@@ -193,6 +198,29 @@
                 https://codepen.io/equinusocio/pen/OqpBKJ 
             */
 
+            
+            /* INPUT */
+            input
+            {
+                background-color: inherit !important;
+                color: rgb(69, 235, 18) !important;
+                border-color: rbga(0,0,0,0) !important;
+            }
+
+            ::placeholder 
+            {
+                color: white !important;
+            }
+
+            :-ms-input-placeholder { /* Internet Explorer 10-11 */
+                color: white !important;
+            }
+
+            ::-ms-input-placeholder { /* Microsoft Edge */
+                color: white !important;
+            }
+            /* INPUT */
+
 
 
  
@@ -283,7 +311,30 @@
                 </div>
 
             <!--SC PLAYER -->
-        </div>
+
+            <!-- CONTACT FORM -->
+            <form class="ui form top-gap-big">
+                <div class="field">
+                  <input id="message" type="text" name="message" placeholder="  [[ Drop me a text here.  (Hit Enter to send) ]]">
+                </div>
+               
+              </form>
+
+
+            <div class="top-gap-big">
+               
+                <b class="ui horizontal inverted divider">
+                    &lt;
+                   <a> <i class="icon copyright outline small"></i>Sampy 2020 </a> |
+                   <a target="_blank" href="https:///instagram.com/nevesense"><i class="icon instagram"></i></a> |
+                   <a target="_blank" href="https://facebook.com/sampad.mohanty.7"><i class="icon facebook"></i></a> 
+                   &gt;
+                </b>
+                
+            </div>
+
+	
+	</div>
 
 
         
@@ -292,7 +343,7 @@
         <!-- MID HALF -->
         <div class="column">
 
-            <div id="mainmenu" class="top-gap-large sampy_mid_info_header">
+            <div id="mainmenu" class="top-gap-xlarge sampy_mid_info_header">
                 <ul>
                     <li v-for="mm in mainmenu"> {{mm}} </li>
                 </ul>
@@ -611,6 +662,44 @@
 </script>
 
 <!-- SOUNDCLOUD-->
+
+<!-- FORM MESSAGE-->
+<script>
+    $(document).ready(
+        ()=>
+        {
+           
+
+            el = $("#message")
+            el.on('keydown', function(e) {
+            var keyCode = e.keyCode || e.which;
+            
+            if (keyCode == 13) { 
+                    
+                    
+
+                    msg=el.val()
+                    
+
+                    //console.log(msg);
+
+                    el.val("Message submitted...");
+                    el.prop("disabled", true);
+                    //hide input field
+                    setTimeout( ()=>{ el.val(""); el.slideUp();}, 3000 ) ;
+
+                    $.post("https://formspree.io/xgelppng", {"message":msg})
+
+
+                    //PREVENT HTML FORM SUBMISSION 
+                    e.preventDefault();
+                    return false;
+                }
+            });
+        });
+</script>
+<!-- FORM MESSAGE-->
+
 
 
 
