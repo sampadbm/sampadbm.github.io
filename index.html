@@ -69,7 +69,7 @@
 
         .font-sacramento{
             font-family: 'Sacramento', cursive;
-            font-size: x-large;
+            font-size: large;
         }
 
 
@@ -331,9 +331,9 @@
                    &gt;
                 </b>
                 <p class="ui centered grid font-amatic" style="color: grey;">
-                    <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank">DRY</a>
-                    <a href="https://en.wikipedia.org/wiki/KISS_principle" target="_blank">KISS</a> 
-                    <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank">DRY</a>
+                    <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank" style="color: white;">DRY</a>
+                    <a href="https://en.wikipedia.org/wiki/KISS_principle" target="_blank" style="color: white;">KISS</a> 
+                    <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank" style="color: white;">DRY</a>
 
                 </p>
                 
@@ -676,13 +676,14 @@
         {
            
 
-            el = $("#message")
-            el.on('keydown', function(e) {
+            
+            $("#message").on('keydown', function(e) {
             var keyCode = e.keyCode || e.which;
             
             if (keyCode == 13) { 
                     
                     
+                    el = $(e.target);
 
                     msg=el.val()
                     
@@ -711,7 +712,7 @@
 
 <!--- YML SITE DESCRIPTION --->
 
-<!-- production version, optimized for size and speed -->
+<!-- production version, optimized for size and speed -->www.google.com/search?client=opera&q=el+%3D&sourceid=opera&ie=UTF-8&oe=UTF
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.13.1/js-yaml.js"></script>
 
