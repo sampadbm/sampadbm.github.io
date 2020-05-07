@@ -26,7 +26,16 @@ soundcloud_playlist:
 
 
 main_menu:
-  - Blog
-  - Music
-  - Work
-  - Projects
+  Blog :
+    yml: __landing/sidemenu/configs/blog.yml
+    template: __landing/sidemenu/templates/blog.html
+  Music:
+    yml: __landing/sidemenu/configs/music.yml
+    template: __landing/sidemenu/templates/music.html
+  Work:
+    yml: __landing/sidemenu/configs/work.yml
+    template: __landing/sidemenu/templates/work.html
+  Projects:
+    yml: __landing/sidemenu/configs/projects.yml
+    template: __landing/sidemenu/templates/projects.html
+

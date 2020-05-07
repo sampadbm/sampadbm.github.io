@@ -351,7 +351,7 @@
 
             <div id="mainmenu" class="top-gap-xlarge sampy_mid_info_header">
                 <ul>
-                    <li v-for="mm in mainmenu"> {{mm}} </li>
+                    <li v-for="(value,menuname) in mainmenu"> <a v-on:click="menuclick" :href='"#"+menuname'>{{menuname}}</a></li>
                 </ul>
                 
             </div>
@@ -361,20 +361,14 @@
         <!-- RIGHT HALF -->
         <div class="column">
 
-            <div class="top-gap sampy_mid_info_header">
-                <ul>
-                    <li>hello</li>
-                    <li>hello</li>
-                    <li>hello</li>
-                    <li>hello</li>
-                </ul>
+            <div id="sidemenu" class="top-gap sampy_mid_info_header">
+
+
+                
             </div>
 
         </div>
         
-
-        
-      
     </div>
 </body>
 
@@ -708,8 +702,6 @@
 <!-- FORM MESSAGE-->
 
 
-
-
 <!--- YML SITE DESCRIPTION --->
 
 <!-- production version, optimized for size and speed -->www.google.com/search?client=opera&q=el+%3D&sourceid=opera&ie=UTF-8&oe=UTF
@@ -752,20 +744,76 @@
             el: '#mainmenu',
             data: {
                 mainmenu: sitedata.main_menu
+            },
+
+            methods:{
+
+                menuclick: function (e) {
+                
+                
+
+                /// HANDLE MAIN MENU and load SIDEMENU
+                
+                menu_clicked_name = e.target.text.trim()
+                menu_clicked = this.mainmenu[menu_clicked_name]
+
+                
+                
+                loadsidemenu(menu_clicked);
+
+                /// HANDLE MAIN MENU
+
+
+              
+                }
+
             }
+           
          })
-
-
-
-
-
     
     })
 
- 
 
+    loadsidemenu = (menu_info)=>{
+
+        $.get(menu_info.template,(t)=>{
+            $("#sidemenu").html(t)
+
+            //only after template is loaded, do this
+
+            $.get(menu_info.yml,(sidemenu_yml)=>{
+
+                    
+                    sidemenu_json = jsyaml.load(sidemenu_yml);
+                    //console.log(sidemenu_json)
+                   // return
+
+                    var side_menu_app = new Vue({
+                        el: '#sidemenu',
+                        data: {
+                            sidemenudata: sidemenu_json
+                        }
+                    })
+
+                })
+                            
+        })
+
+      
+
+        
+
+
+
+
+
+    }
+
+ 
 
 </script>
 
 <!--- YML SITE DESCRIPTION --->
+
+
 
