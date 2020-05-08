@@ -315,7 +315,7 @@
             <!-- CONTACT FORM -->
             <form class="ui form top-gap-large">
                 <div class="field">
-                  <input id="message" type="text" name="message" placeholder="       [ Drop a hello - Enter to send ]">
+                  <input id="message" type="text" name="message" placeholder="                        [ Drop a hello - Enter to send ]">
                 </div>
                
               </form>
@@ -361,7 +361,7 @@
         <!-- RIGHT HALF -->
         <div class="column">
 
-            <div id="sidemenu" class="top-gap sampy_mid_info_header">
+            <div id="sidemenu" class="top-gap-xlarge sampy_mid_info_header">
 
 
                 
@@ -704,13 +704,13 @@
 
 <!--- YML SITE DESCRIPTION --->
 
-<!-- production version, optimized for size and speed -->www.google.com/search?client=opera&q=el+%3D&sourceid=opera&ie=UTF-8&oe=UTF
+<!-- production version, optimized for size and speed -->
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.13.1/js-yaml.js"></script>
 
 <script>
     
-    $.get("index.yml", (data,status)=>
+    $.get("__landing/index.yml", (data,status)=>
     {
          window.sitedata = jsyaml.load(data);
 
@@ -743,7 +743,7 @@
          var app_main_menu = new Vue({
             el: '#mainmenu',
             data: {
-                mainmenu: sitedata.main_menu
+                mainmenu: sitedata.main_menu.data
             },
 
             methods:{
@@ -759,7 +759,7 @@
 
                 
                 
-                loadsidemenu(menu_clicked);
+                loadsidemenu(menu_clicked,sitedata.main_menu);
 
                 /// HANDLE MAIN MENU
 
@@ -774,14 +774,22 @@
     })
 
 
-    loadsidemenu = (menu_info)=>{
+    loadsidemenu = (menu_info, extras)=>{
 
-        $.get(menu_info.template,(t)=>{
+        //console.log(extras);
+        //return
+
+        //menu_info -> {"yml":"whatever.yml","template":"whateverelse.html"}
+
+        template_url = extras.baseurl + extras.template_relative_url + menu_info.template
+        yml_url = extras.baseurl + extras.yml_relative_url + menu_info.yml
+
+        $.get(template_url,(t)=>{
             $("#sidemenu").html(t)
 
             //only after template is loaded, do this
 
-            $.get(menu_info.yml,(sidemenu_yml)=>{
+            $.get(yml_url,(sidemenu_yml)=>{
 
                     
                     sidemenu_json = jsyaml.load(sidemenu_yml);
@@ -798,13 +806,6 @@
                 })
                             
         })
-
-      
-
-        
-
-
-
 
 
     }

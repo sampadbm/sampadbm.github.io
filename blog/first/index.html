@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome file</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<style>
+    body{
+        background-color: rgba(50,0,100,0.2);
+    }
+</style>
+
+<body class="stackedit">
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+    </div>
+  </div>
+  <div class="stackedit__right">
+    <div class="stackedit__html">
+      
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+
+
+<script>
+    //LOAD Markdown
+    fetch("index.md").then(md=>md.text()).then(md=>{
+        element = document.querySelector(".stackedit__html");
+        element.innerHTML = marked(md)
+
+         // MAKE Table of Content
+             tocbot.init({
+            // Where to render the table of contents.
+            tocSelector: '.stackedit__toc',
+            // Where to grab the headings to build the table of contents.
+            contentSelector: '.stackedit__html',
+            // Which headings to grab inside of the contentSelector element.
+            headingSelector: 'h1, h2, h3',
+            // For headings inside relative or absolute positioned containers within content.
+            hasInnerContainers: true,
+            orderedList: false,
+            });
+
+         
+    })
+
+
+  
+  
+
+</script>
