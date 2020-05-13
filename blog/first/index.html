@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome file</title>
-  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+  <link rel="stylesheet" href="/__resources/stackedit/style.css" />
 </head>
 
 <style>
     body{
-        background-color: rgba(50,0,100,0.2);
+        background-color: rgba(50,0,20,0.2);
     }
 </style>
 
@@ -44,7 +44,7 @@
         element.innerHTML = marked(md)
 
          // MAKE Table of Content
-             tocbot.init({
+            tocbot.init({
             // Where to render the table of contents.
             tocSelector: '.stackedit__toc',
             // Where to grab the headings to build the table of contents.
@@ -61,6 +61,6 @@
 
 
   
-  
-
+   //change commento background
+   setTimeout(()=>{document.getElementById("commento-textarea-root").style.background = "inherit"},3000);
 </script>
