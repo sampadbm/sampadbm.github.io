@@ -10,14 +10,49 @@
 
 <style>
     body{
-        background-color: rgba(50,0,20,0.2);
+      
+      /*background-color: rgba(50,0,20,0.2);*/
+      background-color: #A9B4C2;
     }
+
+    .stackedit__left
+    {
+      background-color:#3C6997;
+    }
+
+    .stackedit__left  ul
+    {
+      color:#F0F3F5;
+    }
+
+    .stackedit__left  ul ul
+    {
+      color: #A9B4C2 ;
+    }
+
+
+  
+
+   
+
+    #commento-textarea-root {
+
+        background : inherit;
+      }
+
+
+    #commento {
+      width: 80%;
+      position: relative;
+      margin-left: 10%;
+    }
+
 </style>
 
 <body class="stackedit">
   <div class="stackedit__left">
     <div class="stackedit__toc">
-      
+
     </div>
   </div>
   <div class="stackedit__right">
@@ -29,7 +64,10 @@
 </html>
 
 
-<script defer src="https://cdn.commento.io/js/commento.js"></script>
+
+
+<script defer src="http://localhost:9090/js/commento.js"></script>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -56,11 +94,10 @@
             orderedList: false,
             });
 
-         
+
     })
 
 
-  
-   //change commento background
-   setTimeout(()=>{document.getElementById("commento-textarea-root").style.background = "inherit"},3000);
+
+
 </script>
