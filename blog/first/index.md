@@ -1,3 +1,7 @@
+---
+theme: colorful
+---
+
 # Hello I Am Great
 ## World
 

@@ -4,61 +4,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome file</title>
-  <link rel="stylesheet" href="/__resources/stackedit/style.css" />
+  <title>Over Sampying</title>
+  <link rel="stylesheet" href="/__resources/stackedit/style.css"/>
+  <link rel="stylesheet" href="/__resources/sampy/themes/base.css"/>
+  <link id="themeloader" rel="stylesheet" :href="'/__resources/sampy/themes/' + themename + '.css'">
 </head>
 
-<style>
-    body{
-      
-      /*background-color: rgba(50,0,20,0.2);*/
-      background-color: #A9B4C2;
-    }
-
-    .stackedit__left
-    {
-      background-color:#3C6997;
-    }
-
-    .stackedit__left  ul
-    {
-      color:#F0F3F5;
-    }
-
-    .stackedit__left  ul ul
-    {
-      color: #A9B4C2 ;
-    }
 
 
+<!--<body class="stackedit">-->
+<body>  
+  <div class="stackedit">
+
+      <div class="stackedit__left">
+        <div class="stackedit__toc"></div>
+        <p class="themebox"> theme: {{themename}}</p>
+      </div>
+
+      <div class="stackedit__right">
+        <div class="stackedit__html"></div>
+        <div id="commento"></div>
+      </div>
+
+  </div>
   
-
-   
-
-    #commento-textarea-root {
-
-        background : inherit;
-      }
-
-
-    #commento {
-      width: 80%;
-      position: relative;
-      margin-left: 10%;
-    }
-
-</style>
-
-<body class="stackedit">
-  <div class="stackedit__left">
-    <div class="stackedit__toc">
-
-    </div>
-  </div>
-  <div class="stackedit__right">
-    <div class="stackedit__html"></div>
-    <div id="commento"></div>
-  </div>
 </body>
 
 </html>
@@ -73,31 +42,18 @@
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.14.0/js-yaml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.19/lodash.core.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
 
-<script>
-    //LOAD Markdown
-    fetch("index.md").then(md=>md.text()).then(md=>{
-        element = document.querySelector(".stackedit__html");
-        element.innerHTML = marked(md)
-
-         // MAKE Table of Content
-            tocbot.init({
-            // Where to render the table of contents.
-            tocSelector: '.stackedit__toc',
-            // Where to grab the headings to build the table of contents.
-            contentSelector: '.stackedit__html',
-            // Which headings to grab inside of the contentSelector element.
-            headingSelector: 'h1, h2, h3',
-            // For headings inside relative or absolute positioned containers within content.
-            hasInnerContainers: true,
-            orderedList: false,
-            });
-
-
-    })
+<script src="/__resources/sampy/js/main.js"></script>
 
 
 
 
-</script>
+
+
+
+
+
