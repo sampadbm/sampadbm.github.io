@@ -81,12 +81,7 @@ function extract_front_matter(data){
       })
 
       window.v_themebox = v_themebox  
-      
-
-
-      
-
-
+    
 
     }
 
