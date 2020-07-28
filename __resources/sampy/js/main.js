@@ -80,7 +80,7 @@ function extract_front_matter(data){
         }
       })
 
-      window.v_themebox = v_themebox  
+      window.v_themebox = v_themebox;
     
 
     }
@@ -88,7 +88,6 @@ function extract_front_matter(data){
 
 
   
-
   //LOAD Markdown
   fetch("index.md").then(md=>md.text()).then(md=>{
       element = document.querySelector(".stackedit__html");

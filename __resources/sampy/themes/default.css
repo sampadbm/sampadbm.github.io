@@ -1,18 +1,4 @@
 
-.themebox{
-
-  color: black;
-  font-style: italic;
-  font-family: monospace;
-  
-  padding: 5%;
-  font-variant: small-caps;
-  text-decoration: dotted underline;
-  position: absolute;
-  bottom: 0;
-
-}
-
 .stackedit__right{
 
   /*background-color: rgba(50,0,20,0.2);*/
@@ -56,15 +42,3 @@
 
 
 
-
-#commento-textarea-root {
-
-    background : inherit;
-  }
-
-
-#commento {
-  width: 80%;
-  position: relative;
-  margin-left: 10%;
-}

@@ -30,6 +30,34 @@
 
 }
 
+.themebox a{
+  color: black;
+}
+.themebox a:hover{
+  color: red;
+}
+
+
+
+
+.themebox label{
+  width:50%;
+  background-color: rgba(0,0,0,0.25);
+  text-decoration: double underline;
+}
+.themebox select{
+
+  background: rgba(0,0,255,0.25);
+
+  width: 50%;
+  margin-bottom: -0.5em;
+  border:0;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+
+
 
 
 
