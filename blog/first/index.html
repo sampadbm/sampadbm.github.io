@@ -7,7 +7,9 @@
   <title>Over Sampying</title>
   <link rel="stylesheet" href="/__resources/stackedit/style.css"/>
   <link rel="stylesheet" href="/__resources/sampy/themes/base.css"/>
-  <link id="themeloader" rel="stylesheet" :href="'/__resources/sampy/themes/' + themename + '.css'">
+  <link id="themeloader" rel="stylesheet" :href="'/__resources/sampy/themes/' + current_theme + '.css'">
+
+  <link rel="stylesheet" type="text/css" href="/__resources/semantic/semantic.min.css">
 </head>
 
 
@@ -18,7 +20,19 @@
 
       <div class="stackedit__left">
         <div class="stackedit__toc"></div>
-        <p class="themebox"> theme: {{themename}}</p>
+
+        <div class="themebox"> 
+            <p>
+              &copy; sampy-2020 | Made with <i class="red heart icon small"></i> using stackedit, VueJs, markedjs, js-yaml, Tocbot  &amp; semantic-ui
+            </p>
+
+            <label>Theme -> </label>
+            <select @change="loadtheme">
+              <option  v-for="theme in themes_available" :value="theme">{{theme}}</option>
+            </select>
+            
+          
+          </div>
       </div>
 
       <div class="stackedit__right">
@@ -38,22 +52,13 @@
 <script defer src="http://localhost:9090/js/commento.js"></script>
 
 
-
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.14.0/js-yaml.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.19/lodash.core.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.19/lodash.core.min.js"></script>-->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
 
 <script src="/__resources/sampy/js/main.js"></script>
-
-
-
-
-
-
-
-
 

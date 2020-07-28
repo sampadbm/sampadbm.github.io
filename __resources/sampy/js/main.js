@@ -1,3 +1,6 @@
+//requires marked.min.js, tocbot.min.js, js-yaml.min.js, vue.min.js
+
+
 ISA_DEBUG=0
 
 
@@ -46,26 +49,42 @@ function extract_front_matter(data){
 
 
 
+    
+
     function renderVue(__frontmatter)
     {
       __fm = __frontmatter;
 
-      var v_themebox = new Vue({
-        el: '.themebox',
-        data: {
-          themename: __fm["theme"]
-        }
-      })
 
       var v_themeloader = new Vue({
         el: '#themeloader',
         data: {
-          themename: __fm["theme"]
+          current_theme: "", //load the first theme
+        },
+       
+      })
+
+      window.v_themeloader = v_themeloader
+
+      var v_themebox = new Vue({
+        el: '.themebox',
+        data: {
+          themes_available: __fm["themes"],
+        },
+        methods: {
+          loadtheme: function (event) {
+            selected_theme = event.target.value
+            if(ISA_DEBUG) console.log("Selected new theme -> "+ selected_theme)
+            v_themeloader.current_theme = selected_theme
+          }
         }
       })
 
-      window.v_themeloader = v_themeloader;
-      window.v_themebox = v_themebox;
+      window.v_themebox = v_themebox  
+      
+
+
+      
 
 
 
@@ -87,13 +106,13 @@ function extract_front_matter(data){
 
 
       //Dynamically load theme
-      if ("theme" in fm){
-          themename = fm["theme"]
+      if ("themes" in fm){
+          //themename = fm["themes"]
           //includeCSSfile("/__resources/sampy/themes/"+ themename +".css")
       }
       else
       {
-        fm["theme"] = "default"
+        fm["theme"] = ["default"]
       }
 
       //render the stuff using VueJS
@@ -122,5 +141,4 @@ function extract_front_matter(data){
 
 
   //setInterval(()=>{window.location.reload()},5000)
-
 
