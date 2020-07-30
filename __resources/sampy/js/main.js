@@ -112,23 +112,34 @@ function extract_front_matter(data){
       //render the stuff using VueJS
       renderVue(fm)
   
-
+      //Actual Markdown Content (no frontmatter)
       onlymd = extracted[1]
+      
+      //render using markedjs
+      //element.innerHTML = marked(onlymd)
 
-      element.innerHTML = marked(onlymd)
+      // render using texme + external renderer = markedjs 
+      element.innerHTML = texme.render(onlymd)
 
-       // MAKE Table of Content
-          tocbot.init({
-          // Where to render the table of contents.
-          tocSelector: '.stackedit__toc',
-          // Where to grab the headings to build the table of contents.
-          contentSelector: '.stackedit__html',
-          // Which headings to grab inside of the contentSelector element.
-          headingSelector: 'h1, h2, h3',
-          // For headings inside relative or absolute positioned containers within content.
-          hasInnerContainers: true,
-          orderedList: false,
-          });
+      // MAKE Table of Content
+      tocbot.init({
+      // Where to render the table of contents.
+      tocSelector: '.stackedit__toc',
+      // Where to grab the headings to build the table of contents.
+      contentSelector: '.stackedit__html',
+      // Which headings to grab inside of the contentSelector element.
+      headingSelector: 'h1, h2, h3',
+      // For headings inside relative or absolute positioned containers within content.
+      hasInnerContainers: true,
+      orderedList: false,
+      });
+
+
+      // MathJax was never called by texme as we prevented running of texme.renderPage using th4e option -> renderOnLoad: false 
+      // Manually run the MathJax Typeset function -> see texme.renderPage to get the idea how it is run
+      outputElement = document.querySelector(".stackedit__html");
+      window.MathJax.Hub.Queue(['Typeset', window.MathJax.Hub, outputElement])
+      
   })
 
 

@@ -7,6 +7,9 @@ themes: [default,colorful]
 
 This is so cool
 
+Let me throw some latex math here
+
+$$ e^{i \pi} + 1 = 0. $$
 
 ```
  This is awesome
