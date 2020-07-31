@@ -1,0 +1,27 @@
+{
+  "name": "sampy-reboot",
+  "version": "1.0.0",
+  "description": "Sampy's website remix",
+  "main": "index.js",
+  "dependencies": {
+    "uglify-js": "latest",
+    "standard": "latest",
+    "prettier": "latest",
+    "stylelint": "latest",
+    "stylelint-config-standard": "latest"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/neveisa/sampy-reboot.git"
+  },
+  "author": "Sampad B Mohanty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neveisa/sampy-reboot/issues"
+  },
+  "homepage": "https://github.com/neveisa/sampy-reboot#readme"
+}

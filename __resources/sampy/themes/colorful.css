@@ -1,41 +1,28 @@
 
-.stackedit__right{
+.stackedit__right {
+  /* background-color: rgba(50,0,20,0.2); */
 
-  /*background-color: rgba(50,0,20,0.2);*/
-  /*background: rgb(2,0,36);*/
+  /* background: rgb(2,0,36); */
   min-height: 100%;
-
-    background-image: linear-gradient(to left top, #eb79d7, #c289ea, #9495f0, #679deb, #44a1dc);
-
+  background-image: linear-gradient(to left top, #eb79d7, #c289ea, #9495f0, #679deb, #44a1dc);
 }
 
-.stackedit__left
-{
-     background-image: linear-gradient(to bottom, #051937, #003753, #00565b, #267253, #748949);
-
+.stackedit__left {
+  background-image: linear-gradient(to bottom, #051937, #003753, #00565b, #267253, #748949);
 }
 
-.stackedit__left  ul
-{
-
-  color:#F0F3F5;
-  font-family:monospace;
+.stackedit__left ul {
+  color: #f0f3f5;
+  font-family: monospace;
   font-weight: bold;
   font-variant: small-caps;
-
 }
 
-.stackedit__left  ul a:hover
-{
+.stackedit__left ul a:hover {
   border-radius: 0;
   font-stretch: expanded;
 }
 
-.stackedit__left  ul ul
-{
-  color: rgb(250,200,20);
+.stackedit__left ul ul {
+  color: rgb(250, 200, 20);
 }
-
-
-
-

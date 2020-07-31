@@ -1,149 +1,115 @@
 
-
 /* Hide scroll bar for Firefox */
- .stackedit{
-  /*scrollbar-color: rgba(0,0,0,0) rgba(0,0,0,0);*/
- }
+.stackedit {
+  scrollbar-color: rgba(0,0,0,0) rgba(0,0,0,0); */
+}
 
-  /* Hide scroll bar for Chrome and Opera */
- ::-webkit-scrollbar {
+/* Hide scroll bar for Chrome and Opera */
+::-webkit-scrollbar {
   display: none;
-  }
-
+}
 
 .themebox {
   color: black;
   font-style: italic;
   font-family: monospace;
-  
-  
   font-variant: small-caps;
-
   text-align: center;
-
   position: absolute !important;
   bottom: 7em !important;
-
-  
   height: 1em;
-  width:100%;
-
+  width: 100%;
 }
 
-.themebox a{
+.themebox a {
   color: black;
 }
-.themebox a:hover{
+
+.themebox a:hover {
   color: red;
+  font-weight: bold;
+  font-size: large;
+  background-blend-mode: difference;
 }
 
-
-
-
-.themebox label{
-  width:50%;
-  background-color: rgba(0,0,0,0.25);
+.themebox label {
+  width: 50%;
+  background-color: rgba(0, 0, 0, 0.25);
   text-decoration: double underline;
 }
-.themebox select{
 
-  background: rgba(0,0,255,0.25);
-
+.themebox select {
+  background: rgba(0, 0, 255, 0.25);
   width: 50%;
   margin-bottom: -0.5em;
-  border:0;
+  border: 0;
   appearance: none;
   -webkit-appearance: none;
 }
 
+.stackedit__right {
+  /* background-color: rgba(50,0,20,0.2); */
 
-
-
-
-
-.themebox label{
-  width:50%;
-  background-color: rgba(0,0,0,0.25);
-  text-decoration: double underline;
-}
-.themebox select{
-
-  background: rgba(0,0,255,0.25);
-
-  width: 50%;
-  margin-bottom: -0.5em;
-  border:0;
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-
-
-.stackedit__right{
-
-  /*background-color: rgba(50,0,20,0.2);*/
-  /*background: rgb(2,0,36);*/
+  /* background: rgb(2,0,36); */
   min-height: 100%;
-  
-  background-color: lightsteelblue ;
-   
+  background-color: lightsteelblue;
   overflow: auto;
-  
+
+  padding-top: 5em;
 }
 
+.stackedit__left {
+  background-color: bisque;
 
-
-.stackedit__left
-{
-  background-color: bisque ;
-  /*scrollbar-color: rebeccapurple green; */
-  
+  /* scrollbar-color: rebeccapurple green; */
 }
 
-
-.stackedit__left > ul > li:first-child
-{
+.stackedit__left > ul > li:first-child {
   text-decoration: underline overline;
 }
 
-.stackedit__left  ul
-{
-
-  /*color:#F0F3F5;*/
-  font-family:monospace;
+.stackedit__left ul {
+  /* color:#F0F3F5; */
+  font-family: monospace;
   font-weight: bold;
   font-variant: small-caps;
 }
 
-.stackedit__left  ul a:hover
-{
+.stackedit__left ul a:hover {
   border-radius: 0;
   font-stretch: expanded;
 }
 
 .stackedit__left ul ul li a::before {
-  content: "•"; 
-  display: inline-block; 
+  content: "•";
+  display: inline-block;
   width: 1em;
-
 }
 
-.stackedit__left  ul ul
-{
-  /*color: rgb(250,200,20);*/
+.stackedit__left ul ul {
+  /* color: rgb(250,200,20); */
 }
-
-
-
 
 #commento-textarea-root {
-
-    background : inherit;
-  }
-
+  background: inherit;
+}
 
 #commento {
   width: 80%;
   position: relative;
   margin-left: 10%;
+}
+
+
+hr {
+  background-color: black !important;
+}
+
+
+/**
+* MATHJAX SPECIFICS
+**/
+.MJXc-display, .katex-display {
+  padding: 1em !important;
+  border: dashed rgba(50, 0, 100, 0.5) 1px !important;
 }
