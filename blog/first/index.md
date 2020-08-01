@@ -13,20 +13,20 @@ In todays cloud infrastructure, we have thousands of powerful machines (physical
 
 Each such task might itself consist of subtasks which might have interdependencies and hence a natural ordering of subtasks. The dependencies can be captured in a directed acyclic graph (DAG). Hence a complete task can be represented as a DAG of subtasks. 
 
+<p align='center'>
+    <img height="75%" width="75%" src="dag9.png"/>
+    <p align='center'> <u><b>Fig: 1 - Task as DAG</b></u></p>
+</p>
+
 Let us have a task which consists of 4 subtasks T0, T2, T3 and T3.
 Also there are 8 machines M0, M2,...., M7 which are all capable of running the subtasks. These machines have cost of communication between themselves which is captured in a **communication cost matrix** of size 8 x 8.
 
 <p align='center'>
     <img height="75%" width="75%" src="4_network_costs.png"/>
-    <p align='center'> <u><b>Fig: 1 - Network Cost Matrix [in $/GB transfer]</b></u></p>
+    <p align='center'> <u><b>Fig: 2 - Network Cost Matrix [in $/GB transfer]</b></u></p>
 </p>
 
-<p align='center'>
-    <img height="75%" width="75%" src="dag9.png"/>
-    <p align='center'> <u><b>Fig: 2 - Task as DAG</b></u></p>
-</p>
-
-However each of these machines charge a cost for running the subtasks which can be captured in a **compute cost matrix** of size 4 x 8.
+However, each of these machines charge a cost for running the subtasks which can be captured in a **compute cost matrix** of size 4 x 8.
 
 <p align='center'>
     <img height="75%" width="75%" src="4_direct_task_cpu_costs.png"/>
