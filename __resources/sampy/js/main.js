@@ -1,5 +1,4 @@
 // requires marked.min.js, tocbot.min.js, js-yaml.min.js, vue.min.js
-
 var ISA_DEBUG = 0;
 
 function extract_front_matter(data) {
@@ -73,6 +72,22 @@ function renderVue(__frontmatter) {
   window.v_themebox = v_themebox;
 }
 
+
+
+function ENTRY(){
+
+
+//check if MD-RENDERER Library is loaded
+MD_RENDERER_LOADED= false;
+MATH_RENDERER_LOADED= false;
+if (window.commonmark) {MD_RENDERER_LOADED='CommonMark'}//pass
+if (window.MathJax.typeset) {MATH_RENDERER_LOADED='MathJax'} //MathJax maybe loade but MathJax.typeset might not be ready 
+
+if(MD_RENDERER_LOADED && MATH_RENDERER_LOADED){
+  console.log(`===> Rendering using ${MD_RENDERER_LOADED} and ${MATH_RENDERER_LOADED}`);
+}
+else {setTimeout(ENTRY,50);return;} //call yourself again and return immediately
+
 // LOAD Markdown
 fetch("index.md")
   .then((md) => md.text())
@@ -118,14 +133,17 @@ fetch("index.md")
       orderedList: false,
     });
 
-    // MathJax was never called by texme as we prevented running of texme.renderPage using th4e option -> renderOnLoad: false
+    // MathJax was never called by texme as we prevented running of texme.renderPage using the option -> renderOnLoad: false
     // Manually run the MathJax Typeset function -> see texme.renderPage to get the idea how it is run
-
-    renderMathJax = ()=>{MathJax.Hub.Queue(["Typeset", MathJax.Hub, element])}
-    renderKatex = ()=>{renderMathInElement(document.body)}
+    
+    window.MathJax.typeset()
+    //renderMathJax = ()=>{MathJax.Hub.Queue(["Typeset", MathJax.Hub, element])}
+    //renderKatex = ()=>{renderMathInElement(document.body)}
     //renderMathJax()
     //window.onload = renderMathJax //load when page is ready, recall texme loads MathJax, hence MathJax needs to be loaded when we call renderMathJax
-    window.onload = renderKatex
+    //window.onload = renderKatex
   });
+}
 
+ENTRY()
 // setInterval(()=>{window.location.reload()},5000)
