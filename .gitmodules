@@ -1,0 +1,3 @@
+[submodule "__resources/texme"]
+	path = __resources/texme
+	url = https://github.com/neveisa/texme
