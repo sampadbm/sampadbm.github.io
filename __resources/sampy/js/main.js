@@ -81,12 +81,16 @@ function ENTRY(){
 MD_RENDERER_LOADED= false;
 MATH_RENDERER_LOADED= false;
 if (window.commonmark) {MD_RENDERER_LOADED='CommonMark'}//pass
-if (window.MathJax.typeset) {MATH_RENDERER_LOADED='MathJax'} //MathJax maybe loade but MathJax.typeset might not be ready 
+if (window.MathJax && window.MathJax.typeset) {MATH_RENDERER_LOADED='MathJax'} //MathJax maybe loaded but MathJax.typeset might not be ready
+
+if (window.marked){MD_RENDERER_LOADED='marked'}//pass
+if (window.katex) {MATH_RENDERER_LOADED='KATEX'} //KATEX is ready
 
 if(MD_RENDERER_LOADED && MATH_RENDERER_LOADED){
   console.log(`===> Rendering using ${MD_RENDERER_LOADED} and ${MATH_RENDERER_LOADED}`);
 }
 else {setTimeout(ENTRY,50);return;} //call yourself again and return immediately
+
 
 // LOAD Markdown
 fetch("index.md")
@@ -136,7 +140,21 @@ fetch("index.md")
     // MathJax was never called by texme as we prevented running of texme.renderPage using the option -> renderOnLoad: false
     // Manually run the MathJax Typeset function -> see texme.renderPage to get the idea how it is run
     
-    window.MathJax.typeset()
+    if (MATH_RENDERER_LOADED=='MathJax'){
+      window.MathJax.typeset();
+    }else if(MATH_RENDERER_LOADED=='KATEX'){
+      // Seems not required to call here as we are calling this in the index.html while
+      // loading Katex library (using defer, as mentioned here -https://katex.org/docs/autorender.html) and it seems to work-> 
+      
+       //renderMathInElement(document.body); 
+
+       //order of $ and $$ passed to the delimiters maters -> https://github.com/KaTeX/KaTeX/issues/712
+       renderMathInElement(document.body,{delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false}
+      ]});
+
+    }
     //renderMathJax = ()=>{MathJax.Hub.Queue(["Typeset", MathJax.Hub, element])}
     //renderKatex = ()=>{renderMathInElement(document.body)}
     //renderMathJax()
