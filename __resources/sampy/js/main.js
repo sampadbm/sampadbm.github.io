@@ -112,6 +112,27 @@ fetch("index.md")
       fm.themes = ["default"];
     }
 
+    if ('title' in fm){
+	    document.title = fm.title; 
+    } else {
+	    var title='Sampying'
+	    var href = window.location.href.split('/');
+	    for (var i=0; i<href.length; i++)
+	    {
+		    if (href[i]=='blog')
+		    {
+			    title = href[i+1]; //the part of URL after blahblahblah/blog/{title}/subtitle 
+			    break;
+		    }
+	    }
+	   
+	    //if the folder in /blog has a space - e.g hello%20world will become hello world
+	    title = decodeURIComponent(title).toUpperCase();	    
+	    console.log('--> Setting title to - ' + title)
+	    document.title = title
+    }
+
+
     // render the stuff using VueJS
     renderVue(fm);
 
@@ -160,6 +181,8 @@ fetch("index.md")
     //renderMathJax()
     //window.onload = renderMathJax //load when page is ready, recall texme loads MathJax, hence MathJax needs to be loaded when we call renderMathJax
     //window.onload = renderKatex
+    
+    hljs.initHighlighting()
   });
 }
 

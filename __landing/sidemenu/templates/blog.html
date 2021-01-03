@@ -1,1 +1,6 @@
-{{ sidemenudata.hello }}
+
+<ul>
+	<li v-for="(blog,cat) in sidemenudata">
+		<a style='color:#fd5e53' target='blank' :href="'/blog/' + blog + '/'"> {{ blog }} </a>
+	</li>
+</ul>

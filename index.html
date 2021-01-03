@@ -264,7 +264,7 @@
 
                
                 <!--SC PLAYER -->
-                <div id="player-status" style="display:none;">
+                <div id="player-status" style="display:block;">
 
                     <div class="ui active progress tiny orange" id="play-loader" data-percent='100'>
                         <div class="bar" style="height: 0.1em;" >
@@ -312,7 +312,7 @@
                
                 <b class="ui horizontal inverted divider">
                     &lt;
-                   <a> <i class="icon copyright outline small"></i>Sampy 2020 </a> |
+                   <a> <i class="icon copyright outline small"></i>Sampy 2021 </a> |
                    <a target="_blank" href="https:///instagram.com/nevesense"><i class="icon instagram"></i></a> |
                    <a target="_blank" href="https://facebook.com/sampad.mohanty.7"><i class="icon facebook"></i></a> 
                    &gt;
@@ -366,12 +366,7 @@
 
 
     // PLAYLIST
-    playlist=[
-        'https://soundcloud.com/goujimusic/sam-hulick-uncharted-worlds-remix',
-        //"https://soundcloud.com/marcoorlandoproductions/the-terminator-soundtrack-love",
-        //"https://soundcloud.com/dj-rodder/mass-effect-2-galaxy-map-theme",
-
-    ]
+    playlist=[] // check the config.yml file in __landing/
 
 
     $("#prompt-agree, #prompt-disagree").click(()=>{
@@ -772,6 +767,8 @@
         yml_url = extras.baseurl + extras.yml_relative_url + menu_info.yml
 
         $.get(template_url,(t)=>{
+
+	    //insert this template into sidemenu
             $("#sidemenu").html(t)
 
             //only after template is loaded, do this
@@ -780,9 +777,9 @@
 
                     
                     sidemenu_json = jsyaml.load(sidemenu_yml);
-                    //console.log(sidemenu_json)
+                    console.log(sidemenu_json)
                    // return
-
+		    
                     var side_menu_app = new Vue({
                         el: '#sidemenu',
                         data: {

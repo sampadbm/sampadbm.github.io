@@ -17,13 +17,21 @@ quote:
 soundcloud_playlist:
   - "https://soundcloud.com/arnav-thecode/deadmau5-strobe-arnavs-acoustic-version"
   - "https://soundcloud.com/arnav-thecode/deadmau5-strobe-arnavs-acoustic-version"
-  - "https://soundcloud.com/arnav-thecode/deadmau5-strobe-arnavs-acoustic-version"
-  - "https://soundcloud.com/arnav-thecode/deadmau5-strobe-arnavs-acoustic-version"
-  - "https://soundcloud.com/arnav-thecode/deadmau5-strobe-arnavs-acoustic-version"
   - "https://soundcloud.com/goujimusic/sam-hulick-uncharted-worlds-remix"
-  - "https://soundcloud.com/marcoorlandoproductions/the-terminator-soundtrack-love"
   - "https://soundcloud.com/dj-rodder/mass-effect-2-galaxy-map-theme"
-
+  - 'https://soundcloud.com/goujimusic/sam-hulick-uncharted-worlds-remix'
+  - 'https://soundcloud.com/wolf-raven/05-wolf-and-raven-on-the-run'
+  - 'https://soundcloud.com/nervous_testpilot/deus-ex-unatco-remix'
+  - 'https://soundcloud.com/silentgloves/arcturus-original-mix'
+  - 'https://soundcloud.com/castroe/coagulator'
+  - 'https://soundcloud.com/saffarimusica/1984a'
+  - 'https://soundcloud.com/echosoftmusic/gravitar'
+  - 'https://soundcloud.com/kniogyse/mega-drive-converter'
+  - 'https://soundcloud.com/alpharisc/break-me'
+  - 'https://soundcloud.com/sunsetprotocol/singularity'
+  - 'https://soundcloud.com/earmake/galactic-odyssey'
+  - 'https://soundcloud.com/the-rain-sword/t-800'
+  - 'https://soundcloud.com/thespoonybard/dewerdrye-warehouse'
 
 main_menu:
   baseurl: __landing/sidemenu/
