@@ -257,7 +257,7 @@
 
 
                 <div class="prompt" style="color:grey;padding-top: 1em;">
-                    <span>Agree to view media contents? &nbsp;</span>
+                    <span>Load media contents? &nbsp;</span>
                     <i id="prompt-agree" class="check icon"></i>
                     <i id="prompt-disagree" class="close icon"></i>
                 </div>
@@ -373,7 +373,7 @@
 
         animation_time = 3000;
 
-        $("#sciframe").css({'opacity':0.5})//.hide();
+        $("#sciframe").css({'opacity':0.5})//.hide(); // enabling hiding here this seems to prevent playing of track 
 
         $("#prompt-agree, #prompt-disagree").fadeOut();
         $(".prompt span").hide()
@@ -391,11 +391,11 @@
                 {
                     $("#player-status").slideUp(); // hide this
                     $("#sciframe").slideDown(2000); // show this
-                        
+			 
                 }
                 
                 
-                }); },animation_time*1.5); // no need to show soundcloud frame now that the prompt attempts playing the music
+                }); },animation_time*3.5); // no need to show soundcloud frame now that the prompt attempts playing the music
 
         //make personal info visible
         $("#sampy-personal").hide().css({"visibility":"visible"}).fadeIn(2000);
@@ -404,8 +404,17 @@
         //$("#quote").hide().css({"visibility":"visible"}).fadeIn(2000).transition("jiggle",2000);
         setTimeout ( ()=>{$("#quote b").fadeIn(5000);},3000);
 
-        //attempt to start playing
-        load_track(0);
+		    //attempt to start playing -> there wasn't any otherway to force it (this is similar to strategy on sampy old website)
+
+	function keep_trying_to_play(){
+			SCAPI.isPaused((e)=>{
+					console.log('-> retrying to play')
+					if(e) load_track(0)
+					else setTimeout(()=>clearInterval(window.PLAY_RETRY),3000);
+				})
+	}
+	window.PLAY_RETRY = setInterval(keep_trying_to_play,1500);
+
 
 
         });
@@ -426,6 +435,8 @@
             -1 - prev
             +1 - next
         */
+
+
         if( typeof window.current_track == 'undefined' ) {
             current_track = Math.floor(Math.random() * playlist.length);
 
@@ -469,7 +480,7 @@
 
 
                 //slide UP
-                $("#sciframe").slideUp();
+		$("#sciframe").slideUp();
 
             }
         });
