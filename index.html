@@ -264,7 +264,7 @@
 
                
                 <!--SC PLAYER -->
-                <div id="player-status" style="display:none">
+                <div id="player-status" style="display:block">
 
                     <div class="ui active progress tiny orange" id="play-loader" data-percent='100'>
                         <div class="bar" style="height: 0.1em;" >
@@ -373,7 +373,7 @@
 
         animation_time = 3000;
 
-        $("#sciframe").css({'opacity':0.5}).hide();
+        $("#sciframe").css({'opacity':0.5})//.hide();
 
         $("#prompt-agree, #prompt-disagree").fadeOut();
         $(".prompt span").hide()
