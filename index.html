@@ -463,27 +463,42 @@
 
         
         //load the track using 'current_track' URL and set title after load is complete
-        SCAPI.load(playlist[current_track],
-        {
-            
+	function load_n_play(){
+	    SCAPI.load(playlist[current_track],
+		{
+		    
 
-            "callback":()=>
-            {
-                load_play_interval = 1000;
-                SCAPI.play();
+		    "callback":()=>
+		    {
+			load_play_interval = 1000;
+			SCAPI.play();
 
-                el = $("#play-title p");
+			el = $("#play-title p");
 
-                el.fadeOut(load_play_interval/2);
-                setTimeout ( ()=>{play_title_set();},load_play_interval/2); //set title
-                el.fadeIn(load_play_interval/2);
+			el.fadeOut(load_play_interval/2);
+			setTimeout ( ()=>{play_title_set();},load_play_interval/2); //set title
+			el.fadeIn(load_play_interval/2);
 
 
-                //slide UP
-		$("#sciframe").slideUp();
+			//slide UP
+			$("#sciframe").slideUp();
 
-            }
-        });
+		    }
+		 })
+	       }
+	    
+	    //call once
+	    load_n_play();
+
+	    window.LOAD_PLAY_RETRY = setInterval(()=>{
+		    console.log('retyring load_n_play...')
+		    SCAPI.isPaused((e)=>{
+			    if(e) load_n_play();
+			    else clearInterval(window.LOAD_PLAY_RETRY);
+
+		    })
+	    },1500);
+
 
 
  
