@@ -32,6 +32,15 @@ soundcloud_playlist:
   - 'https://soundcloud.com/earmake/galactic-odyssey'
   - 'https://soundcloud.com/the-rain-sword/t-800'
   - 'https://soundcloud.com/thespoonybard/dewerdrye-warehouse'
+  - 'https://soundcloud.com/ageofvolt/future-past-extended-rework'
+  - 'https://soundcloud.com/icarusproject-uk/epochal'
+  - 'https://soundcloud.com/arwelone/windlands'
+  - 'https://soundcloud.com/danieltusjak/starmade-trailer'
+  - 'https://soundcloud.com/danieltusjak/starmade-trailer'
+  - 'https://soundcloud.com/danieltusjak/starmade-trailer'
+  - 'https://soundcloud.com/kalax/tangerine-dream-love-on-a-real-train-kalax-remake'
+  - 'https://soundcloud.com/kalax/tangerine-dream-love-on-a-real-train-kalax-remake'
+  - 'https://soundcloud.com/time-travel-beats/crystalis'
 
 main_menu:
   baseurl: __landing/sidemenu/
