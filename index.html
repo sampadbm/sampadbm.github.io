@@ -489,6 +489,10 @@
 		 })
 	       }
 	    
+	    //clear previous LOAD_PLAY_RETRY if defined
+	    if(typeof window.LOAD_PLAY_RETRY !== 'undefined') 
+		    clearInterval(window.LOAD_PLAY_RETRY); 
+	    
 	    //call once
 	    load_n_play();
 
