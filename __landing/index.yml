@@ -52,7 +52,7 @@ main_menu:
       template: blog.html
     Courses:
       yml: courses.yml
-      template: courses.yml
+      template: courses.html
       #Work:
       #yml: work.yml
       #template: work.html

@@ -1,6 +1,12 @@
+<table>
+	<tbody>
+	<tr v-for="(classes,semester) in sidemenudata">
+		<th style='color:indianred;'> {{ semester }} </th>
+		
+		<td style='border-left: 1px dashed red; border-radius:3em'>
+			<li v-for="cls in classes">{{ cls }}</li>	
+		</td>
+	</tr>
 
-<ul>
-	<li v-for="semester in sidemenudata">
-		<a style='color:indianred' target='blank' :href="'/blog/' + blog + '/'"> {{ semester }} </a>
-	</li>
-</ul>
+	</tbody>
+</table>

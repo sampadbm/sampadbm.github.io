@@ -209,8 +209,16 @@
             /* INPUT */
 
 
+            /* Hide scrollbar for Chrome, Safari and Opera */
+	    ::-webkit-scrollbar {
+		      display: none;
+	    }
 
- 
+	    /* Hide scrollbar for IE, Edge and Firefox */
+	    * {
+		      -ms-overflow-style: none;  /* IE a */
+		        scrollbar-width: none;  /* Fir
+	      }
 
     </style>
 
@@ -219,7 +227,7 @@
 
 <body>
     
-    <div id="body_container" class="ui three column doubling stackable grid container" style="height: 100%;">
+    <div id="body_container" class="ui three column doubling stackable grid container" style="max-height: 100vh; overflow-y:auto">
 
         
 
@@ -348,7 +356,7 @@
         <!-- RIGHT HALF -->
         <div class="column">
 
-            <div id="sidemenu" class="top-gap-xlarge sampy_mid_info_header">
+            <div id="sidemenu" class="top-gap-xlarge sampy_mid_info_header"  style='max-height:80vh; overflow-y:auto; padding-top:0; margin-top:30%;'>
 
 
                 
@@ -797,7 +805,8 @@
 
         template_url = extras.baseurl + extras.template_relative_url + menu_info.template
         yml_url = extras.baseurl + extras.yml_relative_url + menu_info.yml
-
+	    console.log(`yml_url: ${yml_url}`);
+	    console.log(`template_url:${template_url}`);
         $.get(template_url,(t)=>{
 
 	    //insert this template into sidemenu
