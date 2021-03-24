@@ -456,6 +456,7 @@
         {
             current_track--;
             current_track = current_track % playlist.length;
+	    if(current_track<0) current_track += playlist.length;
         }
 
         
