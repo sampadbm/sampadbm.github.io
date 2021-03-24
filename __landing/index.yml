@@ -50,15 +50,18 @@ main_menu:
     Blog :
       yml: blog.yml
       template: blog.html
-    Work:
-      yml: work.yml
-      template: work.html
-    Projects:
-      yml: projects.yml
-      template: projects.html
-    Music:
-      yml: music.yml
-      template: music.html
-    Gallery:
-      yml: gallery.yml
-      template: gallery.html
+    Courses:
+      yml: courses.yml
+      template: courses.yml
+      #Work:
+      #yml: work.yml
+      #template: work.html
+      #Projects:
+      #yml: projects.yml
+      #template: projects.html
+      #Music:
+      #yml: music.yml
+      #template: music.html
+      #Gallery:
+      #yml: gallery.yml
+      #template: gallery.html
