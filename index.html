@@ -406,15 +406,16 @@
 
 		    //attempt to start playing -> there wasn't any otherway to force it (this is similar to strategy on sampy old website)
 
-	function keep_trying_to_play(){
+	/*function keep_trying_to_play(){
 			SCAPI.isPaused((e)=>{
 					console.log('-> retrying to play')
 					if(e) load_track(0)
 					else setTimeout(()=>clearInterval(window.PLAY_RETRY),3000);
 				})
 	}
-	window.PLAY_RETRY = setInterval(keep_trying_to_play,1500);
-
+	window.PLAY_RETRY = setInterval(keep_trying_to_play,1500);*/
+	
+	load_track(0); //load random track
 
 
         });
@@ -494,7 +495,7 @@
 		    console.log('retyring load_n_play...')
 		    SCAPI.isPaused((e)=>{
 			    if(e) load_n_play();
-			    else clearInterval(window.LOAD_PLAY_RETRY);
+			    else setTimeout(()=>clearInterval(window.LOAD_PLAY_RETRY),2000);
 
 		    })
 	    },1500);
