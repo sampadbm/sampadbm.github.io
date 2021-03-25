@@ -374,6 +374,10 @@
 
 	$("#prompt-disagree").click(()=>{
 		$("#prompt-agree, #prompt-disagree").fadeOut();
+		$(".prompt span").hide()
+		$("#quote p").append("<i></i>")
+		$("#quote i").eq(-1).html(" &nbsp; <i class='heart icon red'></i>").css({"color":"white"}).fadeIn().fadeOut().fadeIn().fadeOut(animation_time);
+		
 	})
 
     // PLAYLIST
