@@ -372,6 +372,9 @@
 <script src="https://w.soundcloud.com/player/api.js"></script>
 <script>
 
+	$("#prompt-disagree").click(()=>{
+		$("#prompt-agree, #prompt-disagree").fadeOut();
+	})
 
     // PLAYLIST
     playlist=[] // check the config.yml file in __landing/
