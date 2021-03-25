@@ -1,6 +1,14 @@
+<table>
+	<tbody>
+	<tr v-for="(blogs,cat) in sidemenudata">
+		<th style='color:indianred;'> <b>{{ cat }}</b> </th>
+		
+		<td style='border-left: 1px dashed red; border-radius:3em'>
+			<li v-for="blog in blogs">
+				<a style='color:indianred' target='blank' :href="'/blog/' + blog + '/'"> {{ blog }} </a>
+			</li>	
+		</td>
+	</tr>
 
-<ul>
-	<li v-for="(blog,cat) in sidemenudata">
-		<a style='color:indianred' target='blank' :href="'/blog/' + blog + '/'"> {{ blog }} </a>
-	</li>
-</ul>
+	</tbody>
+</table>
