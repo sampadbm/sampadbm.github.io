@@ -53,7 +53,9 @@ main_menu:
     Courses:
       yml: courses.yml
       template: courses.html
-      #Work:
+    Teachers and Mentors:
+      yml: mentors.yml
+      template: mentors.html
       #yml: work.yml
       #template: work.html
       #Projects:

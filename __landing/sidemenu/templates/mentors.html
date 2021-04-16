@@ -1,0 +1,12 @@
+<table>
+	<tbody>
+	<tr v-for="(mentors,timeline) in sidemenudata">
+		<th style='color:indianred;'> <b>{{ timeline }}</b> </th>
+		
+		<td style='border-left: 1px dashed red; border-radius:3em'>
+			<li v-for="mentor in mentors">{{ mentor }}</li>	
+		</td>
+	</tr>
+
+	</tbody>
+</table>
