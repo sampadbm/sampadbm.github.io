@@ -56,6 +56,9 @@ main_menu:
     Teachers and Mentors:
       yml: mentors.yml
       template: mentors.html
+    Quotes:
+      yml: quotes.yml
+      template: quotes.html
       #yml: work.yml
       #template: work.html
       #Projects:

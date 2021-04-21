@@ -1,0 +1,12 @@
+<table>
+	<tbody>
+	<tr v-for="(quotes,author) in sidemenudata">
+		<th style='color:indianred;'> <b>{{ author }}</b> </th>
+		
+		<td style='border-left: 1px dashed red; border-radius:3em'>
+			<li v-for="q in quotes">{{ q }}</li>	
+		</td>
+	</tr>
+
+	</tbody>
+</table>
