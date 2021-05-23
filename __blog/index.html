@@ -88,16 +88,23 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.csss">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
 -->
-<link rel="stylesheet"
+<!--<link rel="stylesheet"
 	href="//unpkg.com/@highlightjs/cdn-assets@10.5.0/styles/default.min.css">
+<style>-->
+
+<link rel="stylesheet"
+	href="/__resources/highlightjs/styles/idea.css">
 <style>
+
 .hljs {
 
 	/*background: none !important ;*/
 	background-color: rgba(0,0,0,0.05) ;
 }
 </style>
-<script src="//unpkg.com/@highlightjs/cdn-assets@10.5.0/highlight.min.js"></script>
+<!--<script src="//unpkg.com/@highlightjs/cdn-assets@10.5.0/highlight.min.js"></script>-->
+<script src="/__resources/highlightjs/highlight.pack.js"></script>
+
 <!--  hljs.initHighlighting() is called inside the main.js/blog.js after loading Markdown -->
 
 <script>
@@ -125,3 +132,27 @@
   console.log('<<--->> Make sure to git submodule update --init --recursive')
 </script>
 
+<style>
+/* IMAGE CAPTION USING ADJACENT SELECTOR img + em */
+.stackedit__html img{
+	margin-left: auto;
+	margin-right:auto;
+	/*vertical-align: middle;*/
+	display: flex;
+}
+.stackedit__html img+em{
+	margin-top: 0.5em;
+    font-family: cursive;
+    display: grid;
+    justify-content: center;
+    color: black;
+    text-decoration: underline;
+}
+
+.stackedit__html table img+td{
+	margin-top: 0.5em;
+    display: grid;
+    justify-content: center;
+}
+/* IMAGE CAPTION USING ADJACENT SELECTOR img + em */
+</style>

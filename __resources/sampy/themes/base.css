@@ -23,13 +23,15 @@
 
 .themebox a {
   color: black;
+  transition-duration: 1.5s;
 }
 
 .themebox a:hover {
-  color: red;
+  color: purple;
   font-weight: bold;
   font-size: large;
   background-blend-mode: difference;
+  transition-duration: 0.75s;
 }
 
 .themebox label {
@@ -56,6 +58,9 @@
   overflow: auto;
 
   padding-top: 5em;
+
+  font-family: courier;
+  text-justify: inter-character !important;
 }
 
 .stackedit__left {
