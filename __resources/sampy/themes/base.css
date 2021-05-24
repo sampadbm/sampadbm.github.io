@@ -49,6 +49,8 @@
   -webkit-appearance: none;
 }
 
+
+/* MARKDOWN RELATED */
 .stackedit__right {
   /* background-color: rgba(50,0,20,0.2); */
 
@@ -59,9 +61,32 @@
 
   padding-top: 5em;
 
-  font-family: courier;
-  text-justify: inter-character !important;
 }
+
+.stackedit__html h1:first-child{
+	text-align: center;
+	/*text-decoration: underline dashed;*/
+}
+
+.stackedit__html h2,h3,h4,h5,h6 {
+	text-decoration: underline 1px dashed;	
+}
+
+.stackedit__html p{
+	text-justify: inter-character;
+	text-align: justify;	
+}
+
+.stackedit__html a {
+	font-weight: bold;
+	mix-blend-mode: difference;	
+}
+
+.stackedit__html a:hover {
+	text-decoration: underline dotted;
+}
+
+/* MARKDOWN RELATED END */
 
 .stackedit__left {
   background-color: bisque;

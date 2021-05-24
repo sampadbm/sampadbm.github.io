@@ -182,7 +182,8 @@ fetch("index.md")
     //window.onload = renderMathJax //load when page is ready, recall texme loads MathJax, hence MathJax needs to be loaded when we call renderMathJax
     //window.onload = renderKatex
     
-    hljs.initHighlighting()
+    // hljs.initHighlighting() // <-- depricated as of highlightjs 10.6, use highlightAll()
+    hljs.highlightAll()
   });
 }
 

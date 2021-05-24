@@ -5,6 +5,11 @@
   /* background: rgb(2,0,36); */
   min-height: 100%;
   background-image: linear-gradient(to left top, #eb79d7, #c289ea, #9495f0, #679deb, #44a1dc);
+  font-family: Courier New;
+}
+
+.stackedit__right h1,h2,h3,h4,h5,h6{
+	font-family: Courier New !important;
 }
 
 .stackedit__left {
