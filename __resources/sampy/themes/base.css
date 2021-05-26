@@ -1,3 +1,12 @@
+/* Do not break inside images whie printing as PDF 
+https://stackoverflow.com/questions/2649169/print-styles-how-to-ensure-image-doesnt-span-a-page-break
+*/
+
+img {    page-break-before: auto; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */    
+		  page-break-after: auto; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */    
+		  page-break-inside: avoid; /* or 'auto' */
+}
+
 
 /* Hide scroll bar for Firefox */
 .stackedit {
