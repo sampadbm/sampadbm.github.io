@@ -1,10 +1,8 @@
 
 
 
-sampy_personal_quote: "had a thing for physics,
-                       engaged to engineering,
-                       sleepless nights with computers,
-                       trying to woo maths."
+sampy_personal_quote: "Why are we here?"
+
 quote:
   text: "By three methods we may learn wisdom: 
         First, by reflection, which is noblest; 
@@ -39,7 +37,7 @@ soundcloud_playlist:
 #  - 'https://soundcloud.com/danieltusjak/starmade-trailer'
 #  - 'https://soundcloud.com/danieltusjak/starmade-trailer'
   - 'https://soundcloud.com/kalax/tangerine-dream-love-on-a-real-train-kalax-remake'
-  - 'https://soundcloud.com/kalax/tangerine-dream-love-on-a-real-train-kalax-remake'
+#  - 'https://soundcloud.com/kalax/tangerine-dream-love-on-a-real-train-kalax-remake'
   - 'https://soundcloud.com/time-travel-beats/crystalis'
   - 'https://soundcloud.com/scottbuckley/the-climb-cc-by'
 
