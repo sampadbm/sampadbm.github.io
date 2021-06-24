@@ -690,9 +690,12 @@
 
         //console.log(audioevent)
 
-        // update only 33% of time
-        if (Math.random() < 0.3333) playloader.progress({'percent': (audioevent.loadedProgress*100)});
-	    if (Math.random() < 0.3333) playprogress.progress({'percent': (audioevent.relativePosition*100)});
+		//only update if window is in focus
+		if (document.hasFocus()){
+	        // update only 33% of time
+	        if (Math.random() < 0.3333) playloader.progress({'percent': (audioevent.loadedProgress*100)});
+		    if (Math.random() < 0.3333) playprogress.progress({'percent': (audioevent.relativePosition*100)});
+		}
         
         //console.log(audioevent.relativePosition*100)
 
