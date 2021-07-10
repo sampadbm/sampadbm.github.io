@@ -58,6 +58,10 @@ main_menu:
     Quotes:
       yml: quotes.yml
       template: quotes.html
+    Inspired By:
+      yml: inspiredby.yml
+      template: inspiredby.html
+        
       #yml: work.yml
       #template: work.html
       #Projects:

@@ -32,7 +32,8 @@ columns in a matrix. For example, let's assume a matrix is written on a see thro
 looking at the same matrix such that the glass board separates you and your friend, i.e you and your friend are looking at the
 matrix from opposite sides of the glass board. Now it becomes tricky to infer which exact element of the matrix is pointed to when
 we speak of the index, say, $ (3,5) $. Your friend and you might end up referring to different elements of the matrix given the 
-same index $ (3,5) $. The implicit assumption while referring to matrices is that the matrix is looked at by different peopl from the
+same index $ (3,5) $. Here we are assuming that the matrix is written in english numerals and hence assume that we read and write
+from right to left. The implicit assumption while referring to matrices is that we assume the matrix is looked at by different people from the
 same side and this is not a problem most of the times since we usually don't write matrices on transparent pages of a book or 
 glass boards. However, with tensors, it is a bit tricky. Since we cannot represent 3 way tensors and beyond on our 2D papers and
 boards, there is a need to define and fix a direction which we all agree on to look at a tensor. And even if we had transparent pages, 
