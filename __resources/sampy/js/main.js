@@ -193,7 +193,7 @@ ENTRY()
 
 // Add target blank to all links in the Markdown content
 function add_target_blank(){
-			var ahref = document.querySelectorAll("stackedit__html a");
+			var ahref = document.querySelectorAll(".stackedit__html a");
 			for(var i = 0; i < ahref.length; i++){
 			    ahref[i].setAttribute('target','_blank')
 			}
