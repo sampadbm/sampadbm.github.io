@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Over Sampying</title>
+  <title>Blog</title>
   <link rel="stylesheet" href="/__resources/stackedit/style.css"/>
   
   <link rel="stylesheet" href="/__resources/sampy/themes/base.css"/>
@@ -79,7 +79,7 @@
   
   //useMathJax = false prevents loading of MathJax Library - see texme.main implementation 
   // there was no way to prevent loading of commonmark, hence the work around is to make commonmarkURL empty and hence will not be loaded
-  window.texme = { renderOnLoad: false, externalMarkdownRenderer: marked, useMathJax: false, commonmarkURL: ''}
+  window.texme = { onRenderPage: ()=>{console.log(123)},renderOnLoad: false, externalMarkdownRenderer: marked, useMathJax: false, commonmarkURL: ''}
 
 </script>
 
@@ -134,10 +134,13 @@
 </script>
 
 <script>
-	var ahref = document.querySelectorAll("a");
-	for(var i = 0; i < ahref.length; i++){
-	    ahref[i].setAttribute('target','_blank')
-	}
+
+function add_target_blank(){
+			var ahref = document.querySelectorAll("a");
+			for(var i = 0; i < ahref.length; i++){
+			    ahref[i].setAttribute('target','_blank')
+			}
+		}
 </script>
 
 
