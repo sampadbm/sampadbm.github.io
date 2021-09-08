@@ -184,6 +184,10 @@ fetch("index.md")
     
     // hljs.initHighlighting() // <-- depricated as of highlightjs 10.6, use highlightAll()
     hljs.highlightAll()
+
+	//add target=_blank to all a href in markdown doc
+    add_target_blank()
+    
   });
 }
 
@@ -198,4 +202,3 @@ function add_target_blank(){
 			    ahref[i].setAttribute('target','_blank')
 			}
 		}
-add_target_blank()
