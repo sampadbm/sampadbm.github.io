@@ -59,7 +59,7 @@ minimum since the Hessian evaluated at the critical point $H_{f}(c/2,c/2)$ will 
 be positive. 
 
 > Hence the **minimum is obtained when x and y are equal** 
-> and the minimum value is $$f(c/2,c/2) = \frac{c^2}{2}$$
+> and the minimum value is $ f(c/2,c/2) = \frac{c^2}{2} $
 
  
 ### Problem-2
