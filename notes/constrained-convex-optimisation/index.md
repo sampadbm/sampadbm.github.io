@@ -146,7 +146,7 @@ $$
 
 >
 > Hence the critical point occurs when $\color{purple}x=y=\frac{k}{2}$. 
->
+> The minimum value is $f(k/2,k/2) = h(k/2)+h(k/2) = 2h(k/2)$
 
 To find if the critical point is minimum or maximum, we can check its
 Hessian matrix.
