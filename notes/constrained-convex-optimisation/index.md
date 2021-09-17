@@ -56,7 +56,10 @@ $$
 Since the Hessian matrix is positive semi-definite for all (x,y), 
 the function is convex and hence a critical point can only be a 
 minimum since the Hessian evaluated at the critical point $H_{f}(c/2,c/2)$ will also
-be positive. Hence the **minimum is obtained when x and y are equal**.
+be positive. 
+
+> Hence the **minimum is obtained when x and y are equal** 
+> and the minimum value is **f(c/2,c/2) = \frac{c^2}{2}**
 
  
 ### Problem-2
