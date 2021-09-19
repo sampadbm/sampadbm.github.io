@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="https://unpkg.com/mvp.css">
+    <title>Tracking</title>
+    <style>
+    body{
+        height: 100vh;
+    	background-color: #0093E9;
+    	background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    }
+    </style>
+  </head>
+  <body>
+	<main>
+			
+		<div>		
+				<button>classwork</button>
+				<button>tawork</button>
+				<button>research</button>
+				<button>leisure</button>
+				<button>sleep</button>
+				<button>social</button>
+				<button>leisure</button>
+				<button>others</button>
+
+				<hr/>
+				<input style='float:left;' id='start' type='time'/>		
+				
+				<input style='margin-left:2em;float:left' id='end' type='time'/>					
+
+				<hr/>
+				<input id='log' style='width:100%; color:lightgreen;background:rgba(100,50,100,0.25)'/>
+
+				<button id='submit' style='color:black'>log</button>			
+
+		</div>
+
+		
+	</main>
+	
+  </body>
+</html>
+
+<script>
+
+	window.ACTIVITY = "classwork"
+
+	buttons = document.querySelectorAll("button");
+	for (var i=0; i<buttons.length; i++)
+	{
+		b=buttons[i];
+		b.addEventListener('click', function() {
+		    this.style.color = "purple";
+		    window.ACTIVITY = this.innerHTML; 
+		  });
+	}
+
+	document.querySelectorAll('#submit')[0].addEventListener('click',
+	()=>{
+		start=document.querySelectorAll('#start')[0].value;
+		end=document.querySelectorAll('#end')[0].value;
+		logdata=document.querySelectorAll('#log')[0].value;
+
+		URL="https://maker.ifttt.com/trigger/log/with/key/owfKAf8HDtiS-GyQoLwfn"
+		URL="http://lab.ee250io.tk:9999/forward"
+		sep=","
+		payload=`${start}|||${end}|||${window.ACTIVITY}|||${logdata}`
+		jsonload = {value1: payload, value2:"", value3:""}
+		console.log(jsonload),
+		fetch(URL,
+		{
+
+			headers: {'content-type': 'application/x-www-form-urlencoded'},
+			mode: 'no-cors',
+			method: 'post',
+			body:  JSON.stringify(jsonload)
+			
+		}).then(alert('done'))
+	})
+
+</script>
