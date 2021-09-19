@@ -18,14 +18,14 @@
 	<main>
 			
 		<div>		
-				<button>classwork</button>
-				<button>tawork</button>
-				<button>research</button>
-				<button>leisure</button>
-				<button>sleep</button>
-				<button>social</button>
-				<button>leisure</button>
-				<button>others</button>
+				<button class='activity'>classwork</button>
+				<button class='activity'>tawork</button>
+				<button class='activity'>research</button>
+				<button class='activity'>leisure</button>
+				<button class='activity'>sleep</button>
+				<button class='activity'>social</button>
+				<button class='activity'>leisure</button>
+				<button class='activity'>others</button>
 
 				<hr/>
 				<input style='float:left;' id='start' type='time'/>		
@@ -49,7 +49,7 @@
 
 	window.ACTIVITY = "classwork"
 
-	buttons = document.querySelectorAll("button");
+	buttons = document.querySelectorAll(".activity");
 	for (var i=0; i<buttons.length; i++)
 	{
 		b=buttons[i];
