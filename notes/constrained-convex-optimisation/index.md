@@ -114,8 +114,8 @@ We have three equations, 1 from $\color{brown}eq1$ and 2 from $\color{turquoise}
 $$
 \begin{aligned}
 	 let\; p(x,y) := f + \lambda g = f(x,y) + \lambda g(x,y)\\
-	 	= h(x)+h(y)+\lambda(x+y) \\
-	 	= {h(x)+\lambda x} + {h(y)+\lambda y} 
+	 	= h(x)+h(y)+\lambda(x+y-k) \\
+	 	= {h(x)+\lambda x} + {h(y)+\lambda y} - \lambda \dot k 
 	 	\\\;\\
 
 	 	\implies \nabla p = [p_x,\;\; p_y] = [h'(x)+\lambda \;\; ,\;\;h'(y)+\lambda]
