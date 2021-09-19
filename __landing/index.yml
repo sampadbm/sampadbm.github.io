@@ -64,7 +64,9 @@ main_menu:
     Inspired By:
       yml: inspiredby.yml
       template: inspiredby.html
-        
+    Tools:
+        yml: tools.yml
+        template: tools.html
       #yml: work.yml
       #template: work.html
       #Projects:
