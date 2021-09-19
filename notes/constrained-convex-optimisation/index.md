@@ -76,7 +76,7 @@ h''(x) > 0 \; \forall\; x\in\mathbb{R}, \;
 or\; equivalently,
 \\
  
-a < b \iff h(a) < h(b) \; \forall \; a,b \in \mathbb{R}
+a < b \iff h'(a) < h'(b) \; \forall \; a,b \in \mathbb{R}
 \end{aligned} \;\\
 
 $$
