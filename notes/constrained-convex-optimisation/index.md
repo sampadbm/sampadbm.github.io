@@ -115,7 +115,7 @@ $$
 \begin{aligned}
 	 let\; p(x,y) := f + \lambda g = f(x,y) + \lambda g(x,y)\\
 	 	= h(x)+h(y)+\lambda(x+y-k) \\
-	 	= {h(x)+\lambda x} + {h(y)+\lambda y} - \lambda \dot k 
+	 	= {h(x)+\lambda x} + {h(y)+\lambda y} - \lambda k 
 	 	\\\;\\
 
 	 	\implies \nabla p = [p_x,\;\; p_y] = [h'(x)+\lambda \;\; ,\;\;h'(y)+\lambda]
