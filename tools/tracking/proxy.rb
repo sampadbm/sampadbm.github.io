@@ -1,6 +1,13 @@
 require 'sinatra'
 require 'json'
 require 'httparty'
+require 'sinatra/cors'
+
+
+set :allow_origin, "*"
+set :allow_methods, "GET,HEAD,POST"
+set :allow_headers, "*"
+#set :expose_headers, "*"
 
 headers = { 
   "content-type"  => "application/json",
