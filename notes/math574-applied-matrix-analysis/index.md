@@ -366,5 +366,126 @@ Example: $E_1 = \{ e_1, e_2, e_3,e_4, e_5, e_6, e_7\}, E_2 = \{ e_6, e_7, e_8, e
 where $\{ e_1, e_2,...,e_{10} \}$ is the standard/canonical/natural basis of $V$.
 
 
-**Solution q14b**
-Since $$
+**Solution q14b:**
+Since $ max\{ dim(E_1), dim(E_2) \} \leq  dim(E_1 + E_2)$, 
+ we have a minimum dimension of $7 = dim(E_1)$.
+
+Example: $E_1 = \{ e_i | i=1,...,7 \}, E_2 = \{ e_i | i=1,...,5\}$.
+
+
+**Solution q14c:**
+For direct sum, there can be no common elements in $E_1$ and $E_2$ except 0, i.e
+$E_1 \cap E_2 = 0 $. Also for direct sum, $dim(E_1) + dim(E_2) = dim(E_1 + E_2)$
+which is not going to be the case here. 
+
+Hence $V$ cannot be the direct sum $V = E_1 + E_2$ of these subspaces.
+
+**Solution q14d:**
+Maximum possible dimension for $E_1 \cap E_2$ is $5 = min\{ dim(E_1), dim(E_2) \}$.
+
+
+**Solution q14e:**
+If $E_1,E_2 \subseteq \mathbb{R^10}$, then minimum possible dimension of $E_1 \cap E_2$
+is 2. 
+
+If $E_1,E_2 \subseteq \mathbb{R^{15}}$, minimum possible dimension of $E_1 \cap E_2$ is 0.
+
+
+![](q7q8.png)
+
+**Solution q7:**
+
+We know that the rank of a matrix = row rank = column rank.
+By the mechanics of matrix multiplication, we know that the columns of $ST$
+are the linear combination of the columns of $S$ i.e the columns of $ST$ are
+in the column space of $S$. Hence column rank of $S$ is at max equal to 
+column rank of the matrix $S$. 
+
+Similarly by the mechanics of matrix multiplication, the rows of $ST$ are the
+linear combination of the rows of the matrix $T$. Hence all the rows of $ST$
+ lie in the row space of $T$. Hence row rank of $ST$ is at max equal to the 
+ row rank of matrix $T$.
+
+ Using the above two information, 
+
+ 
+$$
+rank(ST) = colrank(ST) \leq colrank(S) = rank(S)\\
+rank(ST) = rowrank(ST) \leq rowrank(T) = rank(T) 
+\\ \Updownarrow \\
+rank(ST) \leq min \{ rank(S), rank(T) \} \;\;\; _\blacksquare
+$$
+
+
+**Example for strict inquality:**
+Let $rank(S),rank(T) > 0$.
+
+If $colspace(T) \subseteq nullspace(S)$, then $ST = 0\\$ 
+and hence $rank(ST) = 0 < min\{ rank(S), rank(T) \}$.
+
+Also since $rank(A) = rank(A^T)$, if $rowspace(S) \subseteq leftnullspace(T)$,
+then $ST=0$ and hence $rank(ST)=0$ leading to the strict inequality.
+
+However, such extreme cases are not required for strict inequality.
+If $colspace(T) \cap nulspace(S) \neq \{0\}$, then there is strict inequality.
+
+Similary, if $rowspace(S) \cap leftnullspace(T)$, then there is strict inequality.
+
+
+**Condition for strict equality:**
+
+$$
+colspace(T) \cap nullspace(S) = \{0\}
+\\ \Updownarrow \\
+rank(ST) = min \{ rank(S), rank(T) \} 
+$$
+
+Arguing the other direction $ rank(ST) = min \{ rank(S), rank(T) \} \implies colspace(A) \cap nullspace(S) = \{ 0 \} $ is not very difficult.
+We argue by contradiction. Let $ \vec{0} \neq \vec{v} \in colspace(T) \cap nullspace(S) $. 
+
+Then $\vec{v} \in colspace(T), \vec{v} \in nullspace(S)$. 
+Since $colspace(T), nullspace(S)$ are subspaces, hence 
+$\lambda \vec{v} \in colspace(T)$ and $ \lambda \vec{v} \in nullspace(S)$
+
+Let $rank(T) \leq rank(S)$ and $rank(ST) = rank(T)$.
+
+Also let $dim(colspace(T))= columnrank(T) = t$.
+
+Since $\lambda \vec{v}$ is a subspace, let us write $colspace(T) = span(\vec{v}) \oplus Z $ for some subspace Z with  $dim(Z) = t-1$.
+
+Thinking of $ST$ as a composition of linear transformations, the columnspace of $T$ is input to the linear transformation $L_S$ represented by $S$.
+Hence the input to $S$ is $colspace(T) =  span(\vec{v}) \oplus Z$.
+
+$L_S( span(\vec{v}) \oplus Z) = L_S(span(\vec{v})) + L_S(Z) = \vec{0} + L_S(Z) = L_S(Z)$ 
+
+Hence, $rank(ST) = dim( L_S( span(\vec{v}) \oplus Z)) = dim( L_S(Z) ) \leq dim(Z) = t-1 = rank(T)-1$. 
+
+This is a contradiction as we started with $rank(ST) =  rank(T)$.
+
+
+**Solution q8:**
+
+This is a special case of Q7 with S=T.
+
+We already know that if $ colspace(T) \cap nulspace(S) \neq \{0\} $, 
+then $rank(ST) < min \{ rank(S), rank(T) \}$.
+Otherwise $rank(ST) = min \{ rank(S), rank(T) \}$.
+
+Now, realise that $colspace = image$ and $nulspace = kernel$.
+
+If $ \{0\} = colspace(T) \cap nulspace(S) = im(T) \cap ker(S) = im(T) \cap ker(S) $,
+then equality holds and 
+$rank(ST) = min \{ rank(S), rank(T) \}$. 
+
+
+Now setting $S=T$ in the above statement,
+
+If $ \{0\} = ker(T) \cap im(T)$, then $ rank(T^2) = min \{ rank(T), rank(T)\} = rank(T) $.
+
+Hence, 
+
+$$
+ker(T) \cap im(T) = \{ 0 \}
+\\ \Updownarrow \\
+rank(T^2) = rank(T)
+$$
