@@ -151,7 +151,7 @@ vector space $G$. This can be verified by applying the above 3 conditions.
 Similarly, a basis for $G$ is given by $\{ 1,x,x^2,....,x^{k-1} \}$. Hence clearly $dim(G) = k$.
 $\forall g \in G \implies g \in \mathbb{K[x]}$, however, $g \not\in E$.
 
-Also $\forall f in E, \implies f \in \mathbb{K[x]}$. Hence $E \subseteq G$
+Also $\forall f \in E, \implies f \in \mathbb{K[x]}$. Hence $E \subseteq G$
 
 Hence clearly $E \subseteq \mathbb{K[x]}$ but cannot span all of $\mathbb{K[x]}$. Hence $E$ must
 be a subspace of $\mathbb{K[x]}$.
@@ -159,8 +159,20 @@ be a subspace of $\mathbb{K[x]}$.
 Also $ F+G = \mathbb{K[x]}$ and  $F \cap G = \phi $.
 
 
-**Solution-q3b**
+**Solution-q2b**
+![](subalgebra.png)
+*[Source: Dimensions of Matrix Subalgebras, Phillip T. Heikoop](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwiy6_KT6ozzAhV5IDQIHW5nCpcQFnoECB0QAQ&url=https%3A%2F%2Fdigital.wpi.edu%2Fdownloads%2Fxk81jn96k%3Flocale%3Dzh&usg=AOvVaw1h2Mck6NPmWP9sdA45BQGG)*
 
+
+**To show** - $E_r$ is a subalgebra of $\mathbb{K[x]}$ i.e
+$ \forall \; f,h \in E \implies f \cdot h \in E$.
+
+let $f = \sum_{n \geq r}{c_n x^n} $ and $h = \sum_{n \geq r}{d_n x^n} \\\;\\$
+$\implies f \cdot h = \sum_{n \geq r}\big({\sum_{i+j=n}{c_i d_j}\big) x^n}$
+
+Clearly $f \cdot h \in E$ $\;\;\; _\blacksquare$ 
+
+Hence $E_r$ is a subalgebra of $\mathbb{K[x]}$ 
 
 **Solution-q3:**
 
@@ -196,3 +208,163 @@ that the argument above works for any arbitrary $y \in W_2$ and
  hence $\forall y \in W_2, y \in W_1 \cap W_1$. Hence we must have $W2 \subseteq W1$. 
  
 
+**page43: Q5,Q6,Q11**
+
+![](p43q5q6.png)
+![](p43q11.png)
+
+**Solution q5**
+
+Without loss of generality, let us assume that the nonzero polynomials
+$f_1,...,f_n \in \mathbb{K[x]}$ be ordered by ascending degrees.
+
+Let $ 0 < d_i = deg(f_i) \in \mathbb{N}$. So $d_n \geq ... \geq d_1$.
+
+Since $d_i \in \mathbb{N}$ and $f_i$ have different degrees,
+hence $d_i - d_{i-1} \geq 1 $
+Also since $f_1$ is nonzero, $d_1 \geq 1$
+$$
+\begin{aligned}
+
+d_n - d_{n-1} \geq 1 \\
+d_{n-1} - d_{n-2} \geq 1 \\
+. \\
+. \\
+. \\
+d_2 - d_1 \geq 1 \\
+d_1 \geq 1 \\
+---------\\
+\implies d_n \geq n
+
+\end{aligned}
+$$
+ 
+We know that we have an isomorphism between the polynomials of maximum degree
+$d_n$ and $\mathbb{K^{d_n}}$. Invoking this isomorphism, each of our nonzero
+polynomial $f_i$ has a vector representation 
+$\vec{v_i} \langle k_{i1}, ...k_{id_n} \rangle \in \mathbb{K^d_n}$.
+
+Let us arrange the vector representations of the $n$ polynomials as the 
+rows of a matrix of shape $n \times d_n$ and since $n \leq d_n$, this either
+square or a fat matrix. The top row is $\vec{v_n}$, second $\vec{v_{n-1}}$ and so on till
+we fill the last($n^{th}$) row with $\vec{v_1}$.
+
+This matrix is clearly in row echelon form since we filled he rows in descending order 
+of polynomial degrees. Since $d_1 > 0 \implies \vec{v_1} $, and the last row is nonzero.
+Hence all the rows of this matrix are non-zero and hence the rows are independent.
+
+Due to the isomorphism between the polynomials and their vector representations 
+(which are also the rows of this matrix), since the rows of the matrix are independent, 
+so are the polynomials. $\;\;\; _\blacksquare$
+
+**Solution q6**
+
+Any symmetric matrix in $M(2,\mathbb{K})$ can be written in the form of 
+$M = \begin{bmatrix}
+   a & b \\
+   b & d
+\end{bmatrix}$.
+
+To prove that a set is a basis of a subspace, we need to show -
+1. the elements of the set can span the subspace.
+2. the elements of the set are independent.
+
+For 1, we need to show that we can span any matrix $M$ using
+
+$
+M_1=
+\begin{bmatrix}
+   1 & 0 \\
+   0 & 0
+\end{bmatrix}
+
+M_2=
+\begin{bmatrix}
+   0 & 0 \\
+   0 & 1
+\end{bmatrix}
+
+M_3=
+\begin{bmatrix}
+   0 & 1 \\
+   1 & 0
+\end{bmatrix}
+$.
+
+Clearly, $ aM_1 + dM_2 + bM_3 = M \; \forall \;a,b,c \in \mathbb{K} $ and hence we can reach any $M$
+and hence span $M(2,\mathbb{K})$.
+
+For 2, we need to show that $M_1, M_2$ and $M_3$ are independent. Let us assume they are dependent.
+Hence $ \alpha M_1 + \delta M_2 + \gamma M_3 = 
+\begin{bmatrix}
+   0 & 0 \\
+   0 & 0
+\end{bmatrix}
+\;s.t \;\; \alpha^2 + \beta^2 + \delta^2 \neq 0$ i.e not all of $\alpha,\beta,\gamma \in \mathbb{K}$
+ are $0$.
+
+$$
+\alpha M_1 + \delta M_2 + \beta M_3 = 
+\begin{bmatrix}
+   \alpha & \beta \\
+   \beta & \delta
+\end{bmatrix}
+=\begin{bmatrix}
+   0 & 0 \\
+   0 & 0
+\end{bmatrix}
+
+\\
+\Updownarrow
+\\
+
+\alpha = \beta = \delta = 0
+$$
+
+This is a contradiction since $\alpha, \beta, \gamma$ cannot all be zero (trivial) if $M_1, M_2, M_3$ are 
+assumed to be dependent. Hence our assumption must be wrong since we could not find a non-trivial
+$\alpha, \beta, \delta$ for which $\alpha M_1 + \delta M_2 + \beta M_3 = \begin{bmatrix}
+   0 & 0 \\
+   0 & 0
+\end{bmatrix}$.
+
+**Solution q11a**
+
+$S_1 \subseteq S_2 \iff \forall \; x \in S_1 , x \in S_2$.
+
+$S_2 = S_1 \cup (S_2 - S_1)$ and $S_2 \cap S_1 = \phi$
+
+$span(S_1) = \sum_{x_i \in S_1}{\alpha_i x_i}$ 
+
+$span(S_2) = 
+\sum_{y_i \in S_2}{\beta_i y_i} \\
+= \sum_{y_i \in S_1 \cup (S_2 - S_1)}{\beta_i y_i} \\
+= \sum_{y_i \in S_1}{\beta_i y_i} + \sum_{y_i \in (S_1 - S_1)}{\beta_i y_i}
+\\
+= span(S_1) + span(S_2 - S_1) \geq span(S_1)
+$
+
+Hence, $span(S_22) \geq span(S_1)$  $\;\;\;_\blacksquare$
+
+**Solution q11b**
+
+Let $ a, b, c \in \mathbb{K^n}$.
+Let $S_1 = \{ a,b \}$ and $S_2 = \{ a, \alpha a + \beta b, b \}$ 
+ where $\aplha, \beta \in \mathbb{K}$.
+
+Clearly $S_1 \subsetneqq S_2$ but $span(S_1) = span(\{a,b\}) = span(S_2)$.
+
+
+**Page44 Q14**
+![](p44q14.png)
+
+**Solution q14a:**
+Given - $dim(V)=10$, $E_1, E_2 \subseteq V$, hence $dim(E_1 + E_2) \le1 10$.
+Hence $max \; of \; dim (E_1+E_2)$ is 10.
+
+Example: $E_1 = \{ e_1, e_2, e_3,e_4, e_5, e_6, e_7\}, E_2 = \{ e_6, e_7, e_8, e_9, e_{10}\}$
+where $\{ e_1, e_2,...,e_{10} \}$ is the standard/canonical/natural basis of $V$.
+
+
+**Solution q14b**
+Since $$
