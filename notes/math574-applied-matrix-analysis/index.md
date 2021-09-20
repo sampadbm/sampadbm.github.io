@@ -395,7 +395,8 @@ If $E_1,E_2 \subseteq \mathbb{R^{15}}$, minimum possible dimension of $E_1 \cap 
 
 **Solution q7:**
 
-We know that the rank of a matrix = row rank = column rank.
+We know that the rank of a matrix = row rank = column rank 
+(this isn't true for tensors of order 3 or more - some information is provide from Kruskal's theorem and Kruskal rank).
 By the mechanics of matrix multiplication, we know that the columns of $ST$
 are the linear combination of the columns of $S$ i.e the columns of $ST$ are
 in the column space of $S$. Hence column rank of $S$ is at max equal to 
