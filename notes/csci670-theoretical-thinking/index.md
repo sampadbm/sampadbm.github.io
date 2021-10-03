@@ -6,7 +6,7 @@ themes: ["colorful"]
 <p style="text-align:center; color:#7A306C"> <b>18th September, 2021</b> </p>
 
 <p style='text-align:center;color:green'><b> 
-Research Writing I assignment for CSCI670 Fall2021 | Prof. Teng Shang-Hua
+Theoretical Thinking I assignment for CSCI670 Fall2021 | Prof. Teng Shang-Hua
 </b></p>
 
 ---
