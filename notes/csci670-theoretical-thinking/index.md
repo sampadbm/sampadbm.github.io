@@ -35,7 +35,7 @@ who is a co-author on this paper. I ran into the Geometric Deep Learning paper o
 since I like geometry and deep learning is something I don't feel comfortable with - so they kinda 
 balance by combining my discomfort and interest. Earlier, the website contained a set of
 papers all related to geometric deep learning(I had looked into only one or two) but one fine day
-I found this paper that put together the unified framework.
+I found this one paper that put together the unified framework.
 
 
 ### 
