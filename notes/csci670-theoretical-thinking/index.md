@@ -412,6 +412,8 @@ $$
 
 Max can be applied on finer scales and then reapplied on the outcomes(coarser) of their applications on 
 finer scales (See [Geometric DL-3.4](https://arxiv.org/pdf/2104.13478.pdf)).
+
+
 Another function that comes to mind is the center
 of mass function. Center of mass of a system can be calculated by first applying it to subsystems 
 of the system and then applying again
@@ -459,3 +461,42 @@ $$
 Hence C is comatible with the fining-coarsing operation and under this operation,  the lumped tuple representation of the system
 $\langle M,P \rangle$ of the system is invariant to how the fining and coarsing is done 
 (i.e details of set partitioning for fining is immaterial)
+
+
+> Fractional part operator $\{x\} = x - \lfloor x \rfloor$ also has a similar property over addition (not over sets).
+
+$$
+
+\begin{aligned}
+	A = x_1 + x_2 + ... + x_n + y_1 + y_2 + ... + y_m \\
+	A = X + Y
+	\\
+
+	\implies \{ A \} = \{ X + Y \} = \{ \{ X \} + \{ Y \} \} 
+	\\
+	s.t \; \{ X \} = \{ \{x_1\} + \{x_2\} + ... + \{x_n\} \}
+	\\ and \;
+	\{ Y \} = \{ \{y_1\} + \{y_2\} + ... + \{y_m\} \}
+
+	
+\end{aligned}
+$$
+
+> Same goes for the modulo operator %.
+
+$$
+\begin{aligned}
+	A = x_1 + x_2 + ... + x_n + y_1 + y_2 + ... + y_m \\
+	A = X + Y
+	\\
+
+	\implies A \% q  =  (X + Y) \% q = ( (X \% q) + (Y \% q) ) \% q
+	\\
+	s.t \; X \% q = (x_1\%q + x_2\%q + ... + x_n\%q) \% q
+	\\
+	and \; Y \% q = ( y_1\%q + y_2\%q + ... + y_m\%q ) \% q
+
+\end{aligned}
+$$.
+
+
