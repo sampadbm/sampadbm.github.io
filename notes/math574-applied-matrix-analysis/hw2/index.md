@@ -445,7 +445,7 @@ For a) set $T^T$ to $S$ and $T$ becomes $S^T$. Now the proof is same as in b) wi
 
 
 
-##### Q6: page 137 - q4
+##### Q8: page 137 - q4
 ![](q8.png)
 
 ##### Solution:
