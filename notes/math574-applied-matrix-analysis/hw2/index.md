@@ -438,7 +438,7 @@ Let us think about a tall matrix $T$, say 3x2 (think of an isometry, i.e columns
 
 Now, $T^T$, which is 2x3 and takes all points in this $C$ to all of rowspace($T$) = $R^2$ in the domain of T. Hence $T^T$ is onto. However, $T^T$ will map multiple points to the same image and hence is not one-to-one, which is fine.
 
-On the contrary, if the two columns of $T$ were not independent, then the rowspace(T)=$R^2$ would have been mapped to a line in columnspace=$R^3$ (assuming that the two columns aren't both zero, in which case T=0).So $T$ si not one-to-one and hence now, $T^T$ being linear, can only map back the line in $R^3$ back to a lin rowspace(T)=$R^2$ and hence $T^T$ is not onto.  
+On the contrary, if the two columns of $T$ were not independent, then the rowspace(T)=$R^2$ would have been mapped to a line in columnspace=$R^3$ (assuming that the two columns aren't both zero, in which case T=0).So $T$ si not one-to-one and hence now, $T^T$ being linear, can only map back the line in $R^3$ back to a line in rowspace(T)=$R^2$ and hence $T^T$ is not onto.  
 
 
 For a) set $T^T$ to $S$ and $T$ becomes $S^T$. Now the proof is same as in b) with S instead of T.
