@@ -433,7 +433,7 @@ While I have definitely made progress towards recovery (can understand dual spac
 
 I will sketch a non-rigorous proof for part b) below.
 
-Let us think about a tall matrix $T$, say 3x2 (think of an isometry, i.e columns of T are orthonormal, but all we need is just independence of the columns). Then $T$ sends vectors in $R^2$ to $R^3$. If $T$ is one-to-one, then the image of $T$ which is also the columnspace($T$) is going to be a 2 dimensional subspace/plane in $R^3$. Let's call this subspace $C$ = colomunspace($T$). Clearly $T$ is on-to-one.
+Let us think about a tall matrix $T$, say 3x2 (think of an isometry, i.e columns of T are orthonormal, but all we need is just independence of the columns). Then $T$ sends vectors in $R^2$ to $R^3$. If $T$ is one-to-one, then the image of $T$ which is also the columnspace($T$) is going to be a 2 dimensional subspace/plane in $R^3$. Let's call this subspace $C$ = colomunspace($T$). Clearly $T$ is one-to-one.
 
 
 Now, $T^T$, which is 2x3 and takes all points in this $C$ to all of rowspace($T$) = $R^2$ in the domain of T. Hence $T^T$ is onto. However, $T^T$ will map multiple points to the same image and hence is not one-to-one, which is fine.
