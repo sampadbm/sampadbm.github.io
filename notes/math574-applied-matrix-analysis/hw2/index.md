@@ -2,7 +2,7 @@
 themes: ["colorful"]
 ---
 
-# MATH574 : Homework-1
+# MATH574 : Homework-2
 <p style="text-align:center; color:#7A306C"> <b>9th October, 2021</b> </p>
 <p style='text-align:center;color:green'><b>
 Notes from MATH574: Applied Matrix Analysis (Prof. Robert Guralnick).</b></p>
