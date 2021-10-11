@@ -5,7 +5,7 @@ themes: ["colorful"]
 # MATH574 : Homework-1
 <p style="text-align:center; color:#7A306C"> <b>19th September, 2021</b> </p>
 <p style='text-align:center;color:green'><b>
-Notes from MATH574: Applied Matrix Analysis (Prof. Robert Guralnik).</b></p>
+Notes from MATH574: Applied Matrix Analysis (Prof. Robert Guralnick).</b></p>
 
 
 ---
