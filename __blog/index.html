@@ -79,7 +79,7 @@
   
   //useMathJax = false prevents loading of MathJax Library - see texme.main implementation 
   // there was no way to prevent loading of commonmark, hence the work around is to make commonmarkURL empty and hence will not be loaded
-  window.texme = { onRenderPage: ()=>{console.log(123)},renderOnLoad: false, externalMarkdownRenderer: marked, useMathJax: false, commonmarkURL: ''}
+  window.texme = { onRenderPage: ()=>{console.log(123)},renderOnLoad: false, externalMarkdownRenderer: marked.marked, useMathJax: false, commonmarkURL: ''}
 
 </script>
 
