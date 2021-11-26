@@ -19,7 +19,7 @@ Theoretical Thinking II assignment for CSCI670 Fall2021 | Prof. Teng Shang-Hua
 &nbsp;
 
 
-1. What is the practical background of your problem?
+1. **What is the practical background of your problem?**
 
  The overall goal is motivated by General Motor's idea of zero congestion, zero crashes an zero emission. In particular, we will be looking at the traffic patterns of about 4000 taxis in Shanghai collected in 2007 for over a month. Our goal is to see if we can identify any traffic pattern from the dataset which can help us estimate traffic in the places in the city where might have sparse datapoints, or where might have missing data, or if we wanted to predict the traffic a few hours ahead in time. 
 
@@ -36,7 +36,7 @@ The key contents of the dataset that we are using are -
 | . 		| .	 		|. 			| . 	|	
 
 
-2. What is the mathematical definition of your problem?
+2. **What is the mathematical definition of your problem?**
 
 The formulation of the problem is parallel to that of the completing an incomplete matrix in the collaborative filtering of partially reviewed movies in the [Netflix Prize](https://en.wikipedia.org/wiki/Netflix_Prize).
 
@@ -67,11 +67,9 @@ $$
 ![](tensor-decomp.png)
 *[tensor decomposition (source: medium post)](https://medium.com/@mohammadbashiri93/tensor-decomposition-in-python-f1aa2f9adbf4)*
 
- 
 
 
-
-3. What are the interesting algorithmic questions concering your problem?
+3. **What are the interesting algorithmic questions concering your problem?**
 
 For the matrix case with no missing data, we already have good decomposition algorithms which are pretty good at what they do and hence we can easily say if a low rank matrix can explain a large amount of the variance present in the data to answer the 1st question. However, for the case of tensors, there has been a lot of work in the last decade to make tensor decomposition libraries but we are still far away from being fast on large tensors. Unlike matrices whose rank are well defined (in multiple ways) and unique, a similar property for the tensor is a bit more difficult and sometimes not unique - for example, a rank k tensor can sometimes be approximated infinitely by a rank k-1 tensor. 
 
@@ -81,9 +79,28 @@ Our questions -
 
 - Are there patterns in corresponsing days of the weekly data. 
 Mathematically, if $X_{Th1}$ and $X_{Th2}$ be the data (matrix or tensor representation) for Thursday of week1 and the thursday of week2, can we find any invariant subspaces between the two.
+Mathematically, the factors from the low rank decompositions of the two tensors should lie in approximately the same subspace. A measure by which the two subspaces differ is the sum of the least squares errors in fitting one set of factors by the others for all the modes of the tensor.
+
+- Compare the performance of the tensor and the matrix representations is being able to discover these subspaces, if they exist at all. The rank k matrix decomposition has k+k(400+24) parameters and tensor decomposition has k+k(20+20+24) parameters - we compare how much of the original data is captured by these two decompositions vs the number of parameters.
+
+- If there exist low rank approximations and invariance of underlying subspaces from week to week, can we use them to impute the missing values or predict future values. For example, if we have complete data for the week1 Thursday, then we can decompose this data and get the rank-1 factors of $X_{Th1}$. 
+
+Decomposition - 
+$$
+	X_{Th1} \approx \sum_{i=0}^{R}{ \alpha_i (a_i \circ b_i \circ c_i) }
+$$
+
+We can then find the coefficients ($\beta_i, i \in \{ 1,2,3...k\}$) that best fit $X_{Th2}$ in a least squares sense using the rank-1 factors of $X_{Th2}$.  
+
+Since we assumed that the underlying rank one subspace is relatively invariant from one week to the other in the corresponsnig days, we use the above $a_i, b_i$ and $c_i$, find $\beta_i$ for the best least squares fit.
+
+$$
+	X_{Th2} = \sum_{i=0}^{R}{ \beta_i (a_i \circ b_i \circ c_i)}
+$$
+
+Using the above $\beta_i$ values, one can impute the missing datapoints.
 
 
-- Compare the performance of the tensor and the matrix representations is being able to discover these subspaces, if they exist at all.
+4. **What is the state of the art for modeling and solving this problem?**
 
-- 
 
