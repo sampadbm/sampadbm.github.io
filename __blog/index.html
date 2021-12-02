@@ -22,7 +22,7 @@
       <div class="stackedit__left">
         <div class="stackedit__toc"></div>
 
-        <div class="themebox"> 
+        <div class="themebox">
             <p>
               &copy; sampy-2021 | Handcrafted using 
               <a href="https://github.com/benweet/stackedit" target="_blank">StackEdit</a>,
@@ -40,8 +40,7 @@
             <select @change="loadtheme">
               <option  v-for="theme in themes_available" :value="theme">{{theme}}</option>
             </select>
-            
-          
+
           </div>
       </div>
 
@@ -131,6 +130,10 @@
   //console.log('<<--->> Make sure to git checkout -b externalrenderer on neveisa/texme')
   console.log('<<--->> Make sure to git submodule update --init --recursive')
   console.log('<<--->> cd into __resources/texme and git branch origin/externalrenderer')
+
+  console.log('<<===>> For live reload, on the console, use ->\n\t livereload = setInterval(ENTRY, 5000);')
+  console.log('<<===>> To cancel live reload, use ->\n\t clearInterval(livereload);')
+
 </script>
 
 

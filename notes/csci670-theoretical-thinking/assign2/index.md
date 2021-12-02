@@ -103,4 +103,14 @@ Using the above $\beta_i$ values, one can impute the missing datapoints.
 
 4. **What is the state of the art for modeling and solving this problem?**
 
+The state of the art models are all deeplearning based models. Although there have been discussions [(ref.)](https://michaelaalcorn.medium.com/are-linear-models-actually-easily-interpretable-a7662cd3de4b) about linear regressions and similar methods being no more interpretable than deeplearning, we want to work on linear algebra methods for solving the problem as we think it is more interpretable than the deeplearning methods.
+
+The state of the art models are based on Graph Neural Networks and Autoencoders.
+
+5. **What are the interesting open questions inspired by your formulation?**
+
+Some of the open questions are - 
+
+- Can we impute the missing data without using the data from the previous week.
+- Can the method be applied to more than just the density data? What about origin-destination based metrics/features?- Can we bring nonlinearity into the model while still keeping it relatively interpretable.
 
