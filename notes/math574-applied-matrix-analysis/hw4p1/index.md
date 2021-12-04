@@ -190,8 +190,20 @@ From $\color{red} eq.1$ and $\color{red} eq.2$
 $$
 	 		E_{kk} = e^{i\theta} = e^{T_{kk}} \\\;\\
 
-	 		\implies T_{kk} = i \theta
+	 		\implies T_{kk}
+	 		 = i \theta \;\;\; _\blacksquare
 $$
 
 
 Since $T_{kk}$ are the eigenvalues of $A$, $T_{kk} = i\theta$ for some $\theta$ means that they are all purely imaginary except when $\theta = 0$ which is when it is both purely imaginary and real. $\; _\blacksquare$
+
+
+**Alternate short proof**
+
+Let $k$ be an eigenvalue with eigenvector $v$ for the skew symmetric matrix $A$, i.e $Av = kv$
+
+
+$$ 
+	k \lang v,v \rang = \lang kv, v \rang = <Av, v>
+
+$$
