@@ -200,10 +200,25 @@ Since $T_{kk}$ are the eigenvalues of $A$, $T_{kk} = i\theta$ for some $\theta$ 
 
 **Alternate short proof**
 
+Note - 
+
+$$
+	\lang k a,b \rang = k \lang a,b \rang
+
+	\\ \; \\
+
+	\lang a, kb \rang = -k \lang a, b \rang
+
+	\\ \; \\
+
+	\lang a, b \rang = \overline{ \lang b, a \rang }  
+$$
+
 Let $k$ be an eigenvalue with eigenvector $v$ for the skew symmetric matrix $A$, i.e $Av = kv$
 
 
 $$ 
-	k \lang v,v \rang = \lang kv, v \rang = <Av, v>
+	k \lang v, v \rang = \lang kv, v \rang = \lang Av, v \rang
+	= \overline{ \lang v, Av \rang } = \lang     
 
 $$
