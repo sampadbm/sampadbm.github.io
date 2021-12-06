@@ -9,6 +9,26 @@ Notes from MATH574: Applied Matrix Analysis (Prof. Robert Guralnick).</b></p>
 
 ---
 
+
+###### HW4 : PART2
+
+![](part2.png)
+
+>1. $\color{lightgreen}TRUE$
+
+>2. $\color{darkred}FALSE$
+![](p2q2.png)
+
+>3. $\color{darkred} UNKOWN$
+
+>4. $\color{lightgreen}TRUE \\$
+Reason: The matrix A is row stochastic and hence has row sum equal to 1. Hence $A \vec{1} = \vec{1}$ and $1$ is the largest eigenvector with the largest eigenvalue 1. So A^n converges to this eigenvector due to power iteration.
+
+>5. $\color{darkred} FALSE$
+> Reason: Lets take the example of $B = \begin{bmatrix} 0 & 1 \\ 1 & 0\end{bmatrix}$. Clearly the charecteristics function is $\lambda ^ 2 - 1$ and the eigenvalues are $+1$ and $-1$. We also know that we can purturb the eigenvalues of A to $\lambda + \epsilon$ by modifying A into $A + \epsilon I$. Since the above matrix is almost positive (but not quite), we purturb it by $B + \epsilon I $ so that $0 < \epsilon < 1$ making it positive but the eigenvalues $-1 + e$ which is still negative.
+
+
+----------------------------
 Q5.
 ![](q5.png)
 
@@ -240,5 +260,6 @@ $$
 	\\
 	\implies Re(\lambda) = 0 \;\;\; _\blacksquare
 $$
+
 
 
