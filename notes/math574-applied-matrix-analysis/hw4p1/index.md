@@ -12,6 +12,8 @@ Notes from MATH574: Applied Matrix Analysis (Prof. Robert Guralnick).</b></p>
 Q5.
 ![](q5.png)
 
+
+
 Properties of a Skew Symmetric Matrix A of shape n x n - 
 
 $$
@@ -176,7 +178,29 @@ $$
 	\implies \color{green} e^M = P e^D P^{-1} \;\;\; _\blacksquare
 $$
 
-**We will first show that if the skew symmetric matrix is diagonalizable, then its eigenvalues are all purely imaginary.**
+**Let's prove that if A is skew symmetric, then A is diagonalizable**
+
+**Normal Matrices**
+A matrix $B$ is called normal iff
+$$
+	B^*B = BB^*
+$$
+
+**Fact:**
+> All normal matrices are diagonalizable 
+
+Below, we show that if A is a real skew symmetric, it is normal too
+
+$$
+	A^*A = A^TA = -A^2 \\ \; \\
+
+	AA^* = AA^T = A(-A) = -A^2 \\ \; \\
+
+	\implies AA^* = A^*A
+$$
+
+
+**Now we show that if the skew symmetric matrix is diagonalizable, then its eigenvalues are all purely imaginary.**
 
 If A is diagonalizable, $A = WTW^{-1}$ where T is diagonal with the eigenvalues of A.
 
@@ -200,25 +224,21 @@ Since $T_{kk}$ are the eigenvalues of $A$, $T_{kk} = i\theta$ for some $\theta$ 
 
 **Alternate short proof**
 
-Note - 
-
 $$
-	\lang k a,b \rang = k \lang a,b \rang
+	A + A^* =A + A^T =  0 \;\;\; \color{green} (by \; def. \; of \; real \; skew \; symmetric) \color{black} \\ \; \\
+	\implies	v^* (A + A^*) v = 0 \\
+	\implies v^*Av + v^*A^*v = 0 \\
+	\implies v^*Av + (Av)^*v = 0 \\
+	\;\\
 
-	\\ \; \\
+	\implies v^*  \lambda v + (\lambda v)^* v = 0 \\
+	\implies \lambda v^*v + \overline \lambda v^*v = 0 \\\;\\
+	\implies ( \lambda + \overline \lambda) v^*v = 0 \\ \; \\
+	\implies ( \lambda + \overline \lambda) |v|^2 = 0 \\ \; \\
 
-	\lang a, kb \rang = -k \lang a, b \rang
-
-	\\ \; \\
-
-	\lang a, b \rang = \overline{ \lang b, a \rang }  
+	\implies \lambda + \overline \lambda = 0 \; \; (\color{green} \because \; v \neq 0 \color{black} ) 
+	\\
+	\implies Re(\lambda) = 0 \;\;\; _\blacksquare
 $$
 
-Let $k$ be an eigenvalue with eigenvector $v$ for the skew symmetric matrix $A$, i.e $Av = kv$
 
-
-$$ 
-	k \lang v, v \rang = \lang kv, v \rang = \lang Av, v \rang
-	= \overline{ \lang v, Av \rang } = \lang     
-
-$$
