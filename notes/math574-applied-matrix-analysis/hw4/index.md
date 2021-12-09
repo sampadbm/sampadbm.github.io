@@ -9,26 +9,95 @@ Notes from MATH574: Applied Matrix Analysis (Prof. Robert Guralnick).</b></p>
 
 ---
 
+Q4. 
+![](q4.png)
 
-###### HW4 : PART2
+a) We know A is positive definite, hence for any non-zero $\vec{x}$, we have -
+$$
+	x^* A x > 0
+$$
 
-![](part2.png)
+Some useful Lemma's
 
->1. $\color{lightgreen}TRUE$
+**Lemma 1A: Unitary Similarity transform preserves Positive definiteness**
 
->2. $\color{darkred}FALSE$
-![](p2q2.png)
+We also know that positive definiteness does not change under unitary similarity transform, i.e if $U$ is an orthonormal matrix such that $U^*U = I = UU^*$, then $B = U^{-1} A U = U^* A U$ is positive definite as well.
 
->3. $\color{darkred} UNKOWN$
+Proof - 
+For any non-zero $\vec{y}$, we have
+$$
+	y^* B y =   y^* U^* A U y = (Uy)^* A (Uy) = x^* A x > 0
+$$
+where $\vec{x} = U \vec{y}$ is non-zero as $U$ is invertible and $\vec{x}$ is non-zero.
 
->4. $\color{lightgreen}TRUE \\$
-Reason: The matrix A is row stochastic and hence has row sum equal to 1. Hence $A \vec{1} = \vec{1}$ and $1$ is the largest eigenvector with the largest eigenvalue 1. So A^n converges to this eigenvector due to power iteration.
+**Lemma 1B: Similarity transform preserves positive definiteness.**
 
->5. $\color{darkred} FALSE$
-> Reason: Lets take the example of $B = \begin{bmatrix} 0 & 1 \\ 1 & 0\end{bmatrix}$. Clearly the charecteristics function is $\lambda ^ 2 - 1$ and the eigenvalues are $+1$ and $-1$. We also know that we can purturb the eigenvalues of A to $\lambda + \epsilon$ by modifying A into $A + \epsilon I$. Since the above matrix is almost positive (but not quite), we purturb it by $B + \epsilon I $ so that $0 < \epsilon < 1$ making it positive but the eigenvalues $-1 + e$ which is still negative.
+This can be easily seen because similarity transform preserves eigenvalues and since all eigenvalues being positive means positive definite, positive definiteness is preserved.
+
+The eigenvalues of $A$ are the roots of $det(A - \lambda I)$.
+
+Let $B = R^{-1}AR$.
+Proof that eigenvalues are preserved in similarity trasnformation - 
+
+$$
+	B - \lambda I  = R^{-1}AR - \lambda I \\
+	=  R^{-1} A R - \lambda R^{-1} I R \\
+	= R^{-1}(A - \lambda I) R 
+
+	\\ \; \\
+	
+	\implies det(B - \lambda I) = \color{darkred} \; det(R^{-1}) \; \color{green} det(A - \lambda I) \color{darkred} \;det (R) \\
+
+	\color{black}
+	\\ \; \\
+	\implies det(B - \lambda I) = \color{green}det( A - \lambda I ) 
+		
+$$ 
 
 
-----------------------------
+Since the characteristics polynomials of A and B are the same, so are the roots and hence the eigenvalues.
+
+
+Now, we claim that any principal minor of $A$ can be converted into the leading principal minor of a matrix C, i.e the top-left corner block of $C$ of size $d \times d$. This can be achieved by a suitable permutation matrix $P$ (all permutation matrices are unitary) as $C = P^TAP$. Since unitary similarity preserves positive definiteness, $A$ is positive definite $\iff$ $C$ is positive definite.
+
+We know that $C$ is an $n \times n$ definite matrix and hence $x^T C x > 0 \; \forall \; x \neq 0$. Let us make the last $n - d$ entries of the length $n$ vector $\vec{x}$ zero and copy the first $d$ entries to form $\vec{y}$ of length $d$.
+
+Now, we can easily see that $x^T C x = y^T B y$ and hence $y^T B y > 0$.
+
+We could have proved this without introducing the permutation matrix $P$ and the matrix $C$. This can be done by the following construction - 
+
+Let $B$ be a $d \times d$ principal subminor block matrix such that the rows and columns at the indices $i_1, i_2, ... i_d$ that correspond to the entries selected in the principal minor with respect to the matrix $A$. We know that length $n$ vectors $\vec{x}  \neq 0$, we have $x^T A x > 0$. Now let us suppress all the entries in $\vec{x}$ at the indices not in ${i_1, i_2, i_3, ... i_d }$ by making those entries 0. Now let us construct the vector $\vec{z}$ of length $d$ by taking the entries of $\vec{x}$ at the indices $i_1, i_2, ... i_d$.
+
+For this construction, clearly, $ x^T A x = z^T B z$ and hence $z^T B z > 0$ which shows that $B$ is definite.
+
+Now, let's show that $B$ has largest eigenvalue $\leq \lambda_1$.
+
+We know that $\lambda_1 = \max \frac{x^T A x}{x^Tx}$.
+Also, if $\alpha_1$ is the largest eigenvalue of $B$, then $\alpha_1 = \max \frac{z^T B z}{z^T z}$.
+
+Let us take the $d$ dimensional hypersphere such that $|z|^2 = z^T z = 1 $. Now, let us construct the vector $\vec{w}$ similar to our previous construction, i.e copy the entries of $\vec{z}$ into $\vec{w}$ at the corresponding indices $i_1, i_2, i_3, ..., i_d$ and all the other indices being filled with value 0. So in this construction, $|w|^2 = w^T w = z^T z = 1$. 
+
+Let $\vec{x}$ be any arbitrary vector. Since $\vec{w}$ is aspecial subset with a certain structure/constraint of the arbitrary vectors $\vec{x}$, we must have - 
+$$
+\max \frac{w^T A w}{w^T w} \leq \max \frac{x^T A x}{x^T x} = \lambda_1
+$$
+
+So under this construction of $w$ from $z$, we have - 
+
+$$
+ \frac{z^T B z}{z^T z} = \frac{w^T A w}{w^T w}
+
+ \\ \; \\
+
+ \implies \color{green} \max \frac{z^T B z}{z^Tz} \color{black} = \max \frac{w^T A w}{w^T w} \leq \color{darkred} \max \frac{x^T A x}{x^Tx} \color{black}
+
+ \\ \; \\
+ 
+ \implies \color{green} \alpha_1 \leq \color{darkred}\lambda_1 \;\;\; \color{black}_\blacksquare
+$$
+
+b)
+----------------------------------------------------------
 Q5.
 ![](q5.png)
 
@@ -261,5 +330,46 @@ $$
 	\implies Re(\lambda) = 0 \;\;\; _\blacksquare
 $$
 
+----------------------------------------------------------
 
+###### HW4 : PART2
+
+![](part2.png)
+
+>1. $\color{lightgreen}TRUE$
+
+>2. $\color{darkred}FALSE$
+![](p2q2.png)
+
+>3. $\color{darkred} UNKOWN$
+
+>4. $\color{lightgreen}TRUE \\$
+Reason: The matrix A is row stochastic and hence has row sum equal to 1. Hence $A \vec{1} = \vec{1}$ and $1$ is the largest eigenvector with the largest eigenvalue 1. So A^n converges to this eigenvector due to power iteration.
+
+>5. $\color{darkred} FALSE \\$
+> Reason: Lets take the example of $B = \begin{bmatrix} 0 & 1 \\ 1 & 0\end{bmatrix}$. Clearly the charecteristics function is $\lambda ^ 2 - 1$ and the eigenvalues are $+1$ and $-1$. We also know that we can purturb the eigenvalues of A to $\lambda + \epsilon$ by modifying A into $A + \epsilon I$. Since the above matrix is almost positive (but not quite), we purturb it by $B + \epsilon I $ so that $0 < \epsilon < 1$ making it positive but the eigenvalues $-1 + e$ which is still negative.
+
+>6. $\color{lightgreen} TRUE$
+
+>7. $\color{lightgreen} TRUE$
+
+>8. $\color{lightgreen} TRUE \\$
+> Reason: The dimension of a complex matrix C of shape $n \times n$ is $2n^2$. This is because we can completely describe $C$ as $C =  A + iB$ where $A$ and $B$ are both real matrices of shape $n \times n$. Since $C$ is Hermitian, hence$$
+	C^* = C \\
+	\implies (A + iB)^* = A + iB \\
+	\implies A^* + (iB)^* = A + iB \\
+	\implies A^* + (i)^*B^* = A + iB \\
+	\implies A^T + (-i)B^T = A + iB \\
+	\implies A^T + i(-B^T) = A + iB \\
+	\implies A^T = A , B^T = -B	\\
+	\color{green} \because \; complex \; and \; imaginary \; parts \; must \; match \; entrywise
+$$ 
+So $A$ is real symmetric and $B$ is real skew-symmetric.
+We know that symmetric matrix have dimension $\frac{n(n+1)}{2}$ and skew-symmetric matrices have dimension $\frac{n(n-1)}{2}$ which add up to $\frac{n^2}{2}$.
+
+>9. $\color{lightgreen} TRUE \\$
+$ B^* = (\overline{B})^T  = (B)^T = B^T$ as $\overline{B} = B$ since $B$ is real.
+
+>10. $\color{lightgreen} TRUE \\$
+> Because of "field extension".
 
