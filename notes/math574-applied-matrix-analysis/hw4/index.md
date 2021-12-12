@@ -2,12 +2,42 @@
 themes: ["colorful"]
 ---
 
-# MATH574 : Homework-3
+# MATH574 : Homework-4
 <p style="text-align:center; color:#7A306C"> <b>1st December, 2021</b> </p>
 <p style='text-align:center;color:green'><b>
 Notes from MATH574: Applied Matrix Analysis (Prof. Robert Guralnick).</b></p>
 
 ---
+
+Q3.
+![](q3.png)
+
+a) Let $\vec{v_1}$ be of unit norm {norm, as defined by ||.||} eigenvector corresponding to the largest eigenvalue $\lambda_1 = \rho(A)$ so that $Av_1 = \lambda_1 v_1$. Note that any eigenvector corresponding to $\lambda_1$ can be scaled to obtain a vector of unit norm (according to $||.||$) which we call as $v_1$.
+
+If $S =  \{ v \;\;\; |  \;\;\; || v || = 1 \}$, then clearly $v_1 \in S$. Let $R = \{ v_1 \}$ be a singleton.
+
+Since $v_1$ is contained in $S$, we expect $\max \{||Av|| \;\;\; | \;\;\; v \in S \} \geq ||Av_1||$. This is because in the extended domain $S$, we expect to find an optimiser atleast as good as in the limited set $R$.
+
+Hence, 
+
+$$
+	|||  A  ||| = \max \{ || Av || \;\;\; | \;\;\; v \in S \} \geq || Av_1 || = || \lambda_1 v_1 || \\
+	= \lambda_1 \color{darkred} || v_1 || \color{black} \;\; (  \color{green} \; \because norm \; is \; linear \color{black}) \\
+	= \lambda_1 \color{darkred}1 \color{black}\\
+	= \lambda_1  
+
+	\\ \; \\
+
+	\implies ||| A ||| \geq \lambda_1 = \rho(A) \;\;\; _\blacksquare
+$$
+
+
+b)
+
+
+c) This is almost same as a) but we need to show that $\forall \; \epsilon > 0\;, \rho(A) + \epsilon > ||| A |||$ for some operator norm $|||.|||$.
+
+-----------------------------------------
 
 Q4. 
 ![](q4.png)
@@ -66,9 +96,27 @@ Now, we can easily see that $x^T C x = y^T B y$ and hence $y^T B y > 0$.
 
 We could have proved this without introducing the permutation matrix $P$ and the matrix $C$. This can be done by the following construction - 
 
-Let $B$ be a $d \times d$ principal subminor block matrix such that the rows and columns at the indices $i_1, i_2, ... i_d$ that correspond to the entries selected in the principal minor with respect to the matrix $A$. We know that length $n$ vectors $\vec{x}  \neq 0$, we have $x^T A x > 0$. Now let us suppress all the entries in $\vec{x}$ at the indices not in ${i_1, i_2, i_3, ... i_d }$ by making those entries 0. Now let us construct the vector $\vec{z}$ of length $d$ by taking the entries of $\vec{x}$ at the indices $i_1, i_2, ... i_d$.
+Let $B$ be a $d \times d$ principal subminor block matrix such that the rows and columns at the indices $i_1, i_2, ... i_d$ that correspond to the entries selected in the principal minor with respect to the matrix $A$. We know that length $n$ vectors $\vec{x}  \neq 0$, we have $x^T A x > 0$. Now let us suppress all the entries in $\vec{x}$ at the indices not in ${i_1, i_2, i_3, ... i_d }$ by making those entries 0. Now let us construct the vector $\vec{z}$ of length $d$ by taking the entries of $\vec{x}$ at the indices $i_1, i_2, ... i_d$. 
+
+Thus, in block form, $x = [ z \;\;\;0]^T$.
+Also in block form - 
+
+$$
+	A = \begin{bmatrix}
+		B & G \\
+		G^T & H
+	\end{bmatrix}
+$$
 
 For this construction, clearly, $ x^T A x = z^T B z$ and hence $z^T B z > 0$ which shows that $B$ is definite.
+
+$$
+	x^T A x = [z \;\; 0] \begin{bmatrix}
+		B & G \\
+		G^T & H
+	\end{bmatrix} \begin{bmatrix} z \\ 0 \end{bmatrix} 
+	= z^T B z 
+$$
 
 Now, let's show that $B$ has largest eigenvalue $\leq \lambda_1$.
 
@@ -77,10 +125,11 @@ Also, if $\alpha_1$ is the largest eigenvalue of $B$, then $\alpha_1 = \max \fra
 
 Let us take the $d$ dimensional hypersphere such that $|z|^2 = z^T z = 1 $. Now, let us construct the vector $\vec{w}$ similar to our previous construction, i.e copy the entries of $\vec{z}$ into $\vec{w}$ at the corresponding indices $i_1, i_2, i_3, ..., i_d$ and all the other indices being filled with value 0. So in this construction, $|w|^2 = w^T w = z^T z = 1$. 
 
-Let $\vec{x}$ be any arbitrary vector. Since $\vec{w}$ is aspecial subset with a certain structure/constraint of the arbitrary vectors $\vec{x}$, we must have - 
+Let $\vec{x}$ be any arbitrary vector. Since $\vec{w}$ is a special subset with a certain structure/constraint of the arbitrary vectors $\vec{x}$, we must have - 
 $$
 \max \frac{w^T A w}{w^T w} \leq \max \frac{x^T A x}{x^T x} = \lambda_1
 $$
+This is basically saying that if the domain of optimisation is extended, we cannot find a worse optimisation than in the original domain since we can always select the best optimizer in the original domain when domain is extended.
 
 So under this construction of $w$ from $z$, we have - 
 
@@ -96,7 +145,23 @@ $$
  \implies \color{green} \alpha_1 \leq \color{darkred}\lambda_1 \;\;\; \color{black}_\blacksquare
 $$
 
-b)
+b) I will invoke the $\color{darkred}interlacing \; theorem$ here which states that if $A \in \mathbf{R}^{n \times n}$ is symmetric and $B \in \mathbf{R}^{m \times m}$ is a principal minor of $A$, then the eigenvalues $\lambda_1, \lambda_2, ..., \lambda{n}$ of $A$ and $\beta_1, \beta_2,...\beta_{n-1}$ of $B$ in increasing orders, then th follow the interlacing holds - 
+$$
+	\lambda_k \leq \beta_k \leq \lambda_{k + n - m}  
+$$
+A proof for this can be found [here.](https://people.orie.cornell.edu/dpw/orie6334/Fall2016/lecture4.pdf)
+
+
+Now, for $m = n - 1$, we have
+$$
+	\lambda_k \leq \beta_k \leq \lambda_{k + 1}  
+$$
+ 
+Hence, for the largest eigenvalue $\beta_{n-1}$ of $B$, we have $ \lambda_{n-1} \leq \beta_{n-1} \leq \lambda_n $.
+
+Since in our question the indexing is in decreasing order(i.e the largest eigenvalues are $\lambda_1$ and $\beta_1$), we have - 
+ $$ \lambda_2 \leq \beta_{1} \leq \lambda_1 \;\;\; _\blacksquare$$ 
+
 ----------------------------------------------------------
 Q5.
 ![](q5.png)
@@ -341,8 +406,9 @@ $$
 >2. $\color{darkred}FALSE$
 ![](p2q2.png)
 
->3. $\color{darkred} UNKOWN$
-
+>3. $\color{lightgreen} TRUE\\$
+Reason: Let $B$ be the $2 \times 2$ matrix. Since trace is zero, hence $\lambda_1 + \lambda_2 = 0$. Similarly as it is rank one, one of the eigenvalues is zero, WLOG $\lambda_1 = 0$. Hence $\lambda_2 = 0$. Since $\lambda_1 = 0 = \lambda_2$, the characteristics function must be $\lambda^2 = 0$. By Cayley-Hamilton theorem, $B^2 = 0$. Hence $B$ is nilpotent. Now, let us consider the other direction. If $B$ is nilpotent, then $B^k = 0$ for some $k>0$. Hence the eigenvalues of $B^k$ are $\alpha_1 = 0 = \alpha_2$. Let $\lambda_1$ and $\lambda_2$ be the eigenvalues of the matrix $B$. We know that $\lambda_i^k = \alpha_i$ or $\lambda_i = \alpha_i^{\frac{1}{k}}$ for $i = {1,2}$. Hence $\lambda_i = \alpha_i^{\frac{1}{k}} = 0^{\frac{1}{k}} = 0$. Hence $Tr(B) = \sum_{i}{\lambda_i} = 0$. Hence the trace and the determinant of all nilpotent matrices is zero. If we do not consider the trivial zero matrix as a nilpotent matrix, for determinant to be zero for a $2 \times 2$ matrix, it has to be less than rank 2 and hence has to be rank $1$ to be nilpotent (as rank 0 means the matrix is zero matrix). So the statement in the question is $\color{lightgreen}TRUE$.
+ 
 >4. $\color{lightgreen}TRUE \\$
 Reason: The matrix A is row stochastic and hence has row sum equal to 1. Hence $A \vec{1} = \vec{1}$ and $1$ is the largest eigenvector with the largest eigenvalue 1. So A^n converges to this eigenvector due to power iteration.
 
