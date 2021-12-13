@@ -2,15 +2,65 @@
 themes: ["colorful"]
 ---
 
-# MATH574 : Homework-4
+# MATH574 : Homework-4 (take home final)
 <p style="text-align:center; color:#7A306C"> <b>1st December, 2021</b> </p>
 <p style='text-align:center;color:green'><b>
 Notes from MATH574: Applied Matrix Analysis (Prof. Robert Guralnick).</b></p>
 
 ---
 
+Q1.
+![](q1.png)
+
+
+$\color{darkred}DO \; THIS$
+
+
+Q2.
+![](q2.png)
+
+$$
+N = \begin{bmatrix}
+	0 & m_1 & 0 & 0 & 0 \\
+	0 & 0 & m_2 & 0 & 0 \\
+	0 & 0 & 0 & m_3 & 0 \\
+	0 & 0 & 0 & 0 & m_4 \\
+	0 & 0 & 0 & 0 & 0 \\
+\end{bmatrix}
+
+\\ \; \\
+
+\sum_{i=1}^{n-1}{m_i \; e_i \; \; e_{i+1}^T }
+$$
+
+Hence, $ N e_{k+1} = m_k e_k $
+
+Hence,
+
+$$
+	N^2 = \sum_{i=1}^{n-1} m_i e_i e_{i+1}^T  \; \sum_{j=1}^{n-1} m_j e_j e_{j+1}^T \\
+	
+	= \sum_{i=2}^{n-1} { (m_{i} e_i e_{i+1}^T) \; (m_{i+1} e_{i+1} e_{i+2}^T) } \color{darkred} \;\;\; \because e_i^T e_j = 0 \; when \; i \neq j  \color{black} \\
+	
+	= \sum_{i=2}^{n-1}{m_i m_{i+1} \;\;  e_i \;\; (e_{i+1}^T e_{i+1}) \;\; e_{i+2}^T  }\\
+
+	= \sum_{i=2}^{n-1}{m_i m_{i+1}e_i  e_{i+2}^T } 
+$$
+
+And hence by induction, 
+
+$$
+	N^k = \sum_{i=k}^{n-1}{\;\bigg(\prod_{i}^{i+k-1}{m_i} \bigg)  e_i e_{i+k}^T}
+$$
+
+Clearly after $k=n-1$, we have $N^k = 0$. Hence $N$ is nilpotent.
+
+b) $N$ is similar to a single Jordan block when all the $m_i$ are equal. This is because a single Jordan block has $1s$ on the diagonal above the main diagonal and we can get this block if all $m_i = m$ so that we can factor out $m$ from the block.
+
 Q3.
 ![](q3.png)
+
+
 
 a) Let $\vec{v_1}$ be of unit norm {norm, as defined by ||.||} eigenvector corresponding to the largest eigenvalue $\lambda_1 = \rho(A)$ so that $Av_1 = \lambda_1 v_1$. Note that any eigenvector corresponding to $\lambda_1$ can be scaled to obtain a vector of unit norm (according to $||.||$) which we call as $v_1$.
 
@@ -35,7 +85,26 @@ $$
 b)
 
 
-c) This is almost same as a) but we need to show that $\forall \; \epsilon > 0\;, \rho(A) + \epsilon > ||| A |||$ for some operator norm $|||.|||$.
+c) This is almost same as a) but we need to show that $\forall \; \epsilon > 0\;,\; \rho(A) + \epsilon > ||| A |||$ for some operator norm $|||.|||$, we have $|||A||| < \rho(A) + \epsilon$.
+
+Let us consider a real symmetric matrix $A$.
+We know that the largest singular value of the matrix $A$ is given by the operator norm of A w.r.t to the $L_2$ vector norm, i.e $\sigma_1 = \max \{ || Av || \;\; | \;\;  ||v||=1 \}$
+
+We can also show that the eigenvalues of the matrix are the same as the singular values in magnitude and hence the largest eigenvalue is the same as the largest singular value in magnitude.
+
+Hence we have,
+
+$$
+	||| A ||| =  \sigma_1  =   = | \lambda_1 | \\
+	\implies ||| A ||| = \sigma_1 < |\lambda_1| + \epsilon \\
+	\implies ||| A ||| < |\lambda_1| + \epsilon \; \forall \; \epsilon > 0 
+
+	\\ \; \\
+
+	\implies ||| A ||| < \rho(A) + \epsilon	 
+$$
+
+Hence $\rho(A)$ is the largest real number $a$ such that no norm exist such that $||| A ||| < a$, i.e $||| A ||| \geq a$.
 
 -----------------------------------------
 
