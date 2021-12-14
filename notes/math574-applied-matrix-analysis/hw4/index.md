@@ -12,9 +12,336 @@ Notes from MATH574: Applied Matrix Analysis (Prof. Robert Guralnick).</b></p>
 Q1.
 ![](q1.png)
 
+$L_A : \mathbb{F}^{n \times n} \rightarrow \mathbb{F}^{n \times n}$ is a linear transformation and hence we can write a matrix which represents this transformation when the input and output basis are selected.
 
-$\color{darkred}DO \; THIS$
+$L_A(C) = AC$
 
+Let the basis for $C \in \mathbb{F}^{n \times n}$ be of the form $e_i e_j^T \; \forall \; i,j \in \{ 1,2,3,...,n\}$, i.e we have all the entries zero except the $(i,j)$ entry which is $1$.
+
+Let us think of a simple caase of $n = 3$ for understanding. Let $A = \begin{bmatrix} \; a_1 & | &  a_2 & | &  a_3 \; \end{bmatrix}$ where $a_i$ are column vectors of shape $n \times 1$.
+
+Now, the standard basis for $C \in \mathbb{F}^{3 \times 3}$ be -
+$$
+\begin{bmatrix}
+	1 & 0 & 0 \\
+	0 & 0 & 0 \\
+	0 & 0 & 0 \\
+\end{bmatrix},
+\begin{bmatrix}
+	0 & 0 & 0 \\
+	1 & 0 & 0 \\
+	0 & 0 & 0 \\
+\end{bmatrix},
+\begin{bmatrix}
+	0 & 0 & 0 \\
+	0 & 0 & 0 \\
+	1 & 0 & 0 \\
+\end{bmatrix}, \\ \; \\
+
+\begin{bmatrix}
+	0 & 1 & 0 \\
+	0 & 0 & 0 \\
+	0 & 0 & 0 \\
+\end{bmatrix},
+\begin{bmatrix}
+	0 & 0 & 0 \\
+	0 & 1 & 0 \\
+	0 & 0 & 0 \\
+\end{bmatrix},
+\begin{bmatrix}
+	0 & 0 & 0 \\
+	0 & 0 & 0 \\
+	0 & 1 & 0 \\
+\end{bmatrix}, \\ \; \\
+
+\begin{bmatrix}
+	0 & 0 & 1 \\
+	0 & 0 & 0 \\
+	0 & 0 & 0 \\
+\end{bmatrix},
+\begin{bmatrix}
+	0 & 0 & 0 \\
+	0 & 0 & 1 \\
+	0 & 0 & 0 \\
+\end{bmatrix},
+\begin{bmatrix}
+	0 & 0 & 0 \\
+	0 & 0 & 0 \\
+	0 & 0 & 1 \\
+\end{bmatrix}
+$$
+
+
+The corresponding outputs (in standard basis) when we plug the elements of the standard basis as input to $L_A$ one by one are - 
+
+$$
+
+	\begin{bmatrix}
+		\; a_1 & | & 0 & | & 0 \; 
+	\end{bmatrix},
+
+	\begin{bmatrix}
+	 		\; a_2 & | & 0 & | & 0 \; 
+	\end{bmatrix},
+	
+	\begin{bmatrix}
+	 	 	\; a_3 & | & 0 & | & 0 \; 
+	\end{bmatrix}, \\ \; \\
+
+	\begin{bmatrix}
+		\; 0 & | & a_1 & | & 0 \; 
+	\end{bmatrix},
+	\begin{bmatrix}
+		\; 0 & | & a_2 & | & 0 \; 
+	\end{bmatrix},
+	\begin{bmatrix}
+		\; 0 & | & a_3 & | & 0 \; 
+	\end{bmatrix}, \\ \; \\
+
+	\begin{bmatrix}
+		\; 0 & | & 0 & | & a_1 \; 
+	\end{bmatrix},
+	\begin{bmatrix}
+		\; 0 & | & 0 & | & a_2 \; 
+	\end{bmatrix},
+	\begin{bmatrix}
+		\; 0 & | & 0 & | & a_3 \; 
+	\end{bmatrix}	 	 
+$$
+
+Since any linear transform can be represented in the form of a matrix, we would like to write this matrix representation for the above input-ooutput bases we have chosen. We can do this by using a vector representation of the input and output matrices. This can be done by the [vectorization operator](https://en.wikipedia.org/wiki/Vectorization_(mathematics)) which stacks the $n \times 1$ shaped columns of a $n \times m$ matrix to give a $mn \times 1$ column vector. 
+
+Hence, the input basis respresented as vectors become - 
+$$
+	\begin{bmatrix}
+			1 \\ 0 \\ 0 \\ \\ 0 \\ 0 \\ 0 \\ \\ 0 \\ 0 \\ 0
+	 \end{bmatrix},
+
+	 \begin{bmatrix}
+	 		0 \\ 1 \\ 0 \\ \\ 0 \\ 0 \\ 0 \\ \\ 0 \\ 0 \\ 0
+	 \end{bmatrix},
+	 
+	 \begin{bmatrix}
+	 		0 \\ 0 \\ 1 \\ \\ 0 \\ 0 \\ 0 \\ \\ 0 \\ 0 \\ 0
+	 \end{bmatrix},
+
+	 \;\;\;\;\;
+	 
+	 \begin{bmatrix}
+	 		0 \\ 0 \\ 0 \\ \\ 1 \\ 0 \\ 0 \\ \\ 0 \\ 0 \\ 0
+	 \end{bmatrix},
+
+	 \begin{bmatrix}
+	 		0 \\ 0 \\ 0 \\ \\ 0 \\ 1 \\ 0 \\ \\ 0 \\ 0 \\ 0
+	 \end{bmatrix},	
+
+
+	 \begin{bmatrix}
+	 		0 \\ 0 \\ 0 \\ \\ 0 \\ 0 \\ 1 \\ \\ 0 \\ 0 \\ 0
+	 \end{bmatrix},	
+
+	 \;\;\;\;\;
+
+	 \begin{bmatrix}
+	 		0 \\ 0 \\ 0 \\ \\ 0 \\ 0 \\ 0 \\ \\ 1 \\ 0 \\ 0
+	 \end{bmatrix},
+
+	 \begin{bmatrix}
+	 		0 \\ 0 \\ 0 \\ \\ 0 \\ 0 \\ 0 \\ \\ 0 \\ 1 \\ 0
+	 \end{bmatrix},	
+
+
+	 \begin{bmatrix}
+	 		0 \\ 0 \\ 0 \\ \\ 0 \\ 0 \\ 0 \\ \\ 0 \\ 0 \\ 1
+	 \end{bmatrix}
+	
+$$
+
+Clearly, the above represent the standard basis {$e_1,e_2,...,e_9$} for $\mathbb{F}^{9}$.
+
+
+Now, the outputs in the vector representation (using the vectorization operator) are given by - 
+
+$$
+
+	\begin{bmatrix}
+			a_1 \\ -  \\ 0 \\ - \\ 0
+	\end{bmatrix},
+	
+	\begin{bmatrix}
+			a_2 \\ - \\ 0 \\ - \\ 0
+	\end{bmatrix},
+
+	\begin{bmatrix}
+			a_3 \\ - \\ 0 \\ - \\ 0
+	\end{bmatrix},
+
+	\;\;\;\;
+
+	\begin{bmatrix}
+			0 \\ - \\ a_1 \\ - \\ 0
+	\end{bmatrix},
+	
+	\begin{bmatrix}
+			0 \\ - \\ a_2 \\ - \\ 0
+	\end{bmatrix},
+
+	\begin{bmatrix}
+			0 \\ - \\ a_3 \\ - \\ 0
+	\end{bmatrix},
+
+	\;\;\;\;
+
+	\begin{bmatrix}
+			0 \\ - \\ 0 \\ - \\ a_1
+	\end{bmatrix},
+	
+	\begin{bmatrix}
+			0 \\ - \\ 0 \\ - \\ a_2
+	\end{bmatrix},
+
+	\begin{bmatrix}
+			0 \\ - \\ 0 \\ - \\ a_3
+	\end{bmatrix}
+	
+$$
+
+
+Since the representation $\phi_{L}$ of a linear transformation $L$ in a given ordered input-output basis is essentially the matrix whose columns are the representations of the output (in the output basis) when we plug in the elements of the ordered input basis (represented in the input basis itself and hence are the elements e_1, e_2, ...,e_n ,   i.e the standard basis vectors) into $L$, we have - 
+
+$$
+	\phi_{L_A} = 
+
+	\begin{bmatrix}
+
+		\; a_1 & | &  a_2 & | & a_3 & \bigg| &  0 & | & 0 & | & 0 & \bigg| & 0 & | & 0 & | & 0 \;  \\
+
+	 - & - & - & - & -  &\cdot& - & - & - & - & - &\cdot& - & - & - & -  & - \\
+				\; 0 & | &  0 & | & 0 & \bigg| &  a_1 & | & a_2 & | & a_3 & \bigg| & 0 & | & 0 & | & 0 \;  \\
+
+	 - & - & - & - & -  &\cdot& - & - & - & - & - &\cdot& - & - & - & -  & - \\
+
+
+				\; 0 & | &  0 & | & 0 & \bigg| &  0 & | & 0 & | & 0 & \bigg| & a_1 & | & a_2 & | & a_3 \;  
+
+
+	\end{bmatrix} 
+
+	\\ \; \\
+
+	= \begin{bmatrix}
+		A & | & 0 & | & 0 \\
+		- & \cdot & - & \cdot  & - \\
+		0 & | & A & | & 0 \\
+		- & \cdot  & - & \cdot  & - \\
+		0 & | & 0 & | & A \\
+	\end{bmatrix} 
+
+	\\ \; \\
+
+	= I_{n \times n} \otimes A 
+	\; \;  \color{darkgreen} [ \otimes \; \rightarrow Kronecker \; Product \color{black} ]
+	
+$$
+
+Just to summarize, the output $L_A(C)$ for any matrix $C$ can them be written as -
+
+$$
+	vectorize(L_A(C)) = \phi_{L_A} \;  vectorize(C)  
+$$
+
+The above is an interesting use of [Kronecker Product](https://en.wikipedia.org/wiki/Kronecker_product) to capture the linearity operation of a matrix operating on another matrix (which is then treated as a vector by using [vectorize operator](https://en.wikipedia.org/wiki/Vectorization_(mathematics))).
+
+
+> The following is taken from the wikipedia page called [Vectorization](https://en.wikipedia.org/wiki/Vectorization_(mathematics)).
+ ![](vectorization-kronecker.png)
+ 
+Now, the question wants us to compare the characteristics and minimal polynomial of the matrix $\phi_{L_A}$ with that of the matrix $L_A$ and see if there is any relation.
+
+Clearly, the matrix $\phi_{L_A}$ is block diagonal with the diagonal blocks being equal to $A$. 
+
+We know that the determinant of a block diagonal matrix (diagonal blocks are square matrices) is the product of the determinants of the diagonal blocks. The proof can be found [here](https://proofwiki.org/wiki/Determinant_of_Block_Diagonal_Matrix). 
+
+Hence,
+
+$$
+	\phi_{L_A} - \lambda I_{9\times9} \\ \; \\
+	
+	=  \begin{bmatrix}
+		A & | & 0 & | & 0 \\
+		- & \cdot & - & \cdot  & - \\
+		0 & | & A & | & 0 \\
+		- & \cdot  & - & \cdot  & - \\
+		0 & | & 0 & | & A \\
+	\end{bmatrix}
+	 
+	- \lambda
+	
+	\begin{bmatrix}
+		I_{3\times3} & | & 0 & | & 0 \\
+		- & \cdot & - & \cdot  & - \\
+		0 & | & I_{3\times3} & | & 0 \\
+		- & \cdot  & - & \cdot  & - \\
+		0 & | & 0 & | & I_{3\times3} \\
+	\end{bmatrix}  \\ \; \\
+	
+	=  \begin{bmatrix}
+		A & | & 0 & | & 0 \\
+		- & \cdot & - & \cdot  & - \\
+		0 & | & A & | & 0 \\
+		- & \cdot  & - & \cdot  & - \\
+		0 & | & 0 & | & A \\
+	\end{bmatrix}
+	 
+	- 
+	
+	\begin{bmatrix}
+		\lambda I_{3\times3} & | & 0 & | & 0 \\
+		- & \cdot & - & \cdot  & - \\
+		0 & | & \lambda I_{3\times3} & | & 0 \\
+		- & \cdot  & - & \cdot  & - \\
+		0 & | & 0 & | & \lambda I_{3\times3} \\
+	\end{bmatrix} \\ \; \\
+
+		
+	=  \begin{bmatrix}
+		A - I_{3\times3}& | & 0 & | & 0 \\
+		- & \cdot & - & \cdot  & - \\
+		0 & | & A - I_{3\times3}& | & 0 \\
+		- & \cdot  & - & \cdot  & - \\
+		0 & | & 0 & | & A - I_{3\times3} \\
+	\end{bmatrix}
+
+	\\ \; \\
+
+	\implies \det(\phi_{L_A} - \lambda I_{9\times9}) = det(A - I_{3\times3}) \cdot  det(A - I_{3\times3}) \cdot  det(A - I_{3\times3}) 
+
+	\\ \; \\
+
+	\implies \det(\phi_{L_A} - I_{9 \times 9}) = det(A - I_{3\times 3})^3 
+
+	\\ \; \\
+
+	\implies charpoly(\phi_{L_A}) = charpoly(A)^3
+$$
+
+By generalizing from $n=3$ to arbitrary $n$, we find the following - 
+
+$$
+	charpoly(\phi_{L_A}) = charpoly(A)^n
+$$
+
+Now, let us observe a few things - 
+
+Lemma 1: If a matrix $B_{}$
+$$
+
+$$
+
+Since the diagonal blocks of $\phi_{L_A}$ are all the same, we claim that the minimal polynomial of $\phi_{L_A}$ is same as that of $A$, i.e 
+$$
+	minpoly(\phi_{L_A}) = minpoly(A)
+$$
 
 Q2.
 ![](q2.png)
