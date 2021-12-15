@@ -12,6 +12,9 @@ Notes from MATH574: Applied Matrix Analysis (Prof. Robert Guralnick).</b></p>
 Q1.
 ![](q1.png)
 
+
+a) 
+
 $L_A : \mathbb{F}^{n \times n} \rightarrow \mathbb{F}^{n \times n}$ is a linear transformation and hence we can write a matrix which represents this transformation when the input and output basis are selected.
 
 $L_A(C) = AC$
@@ -240,7 +243,7 @@ $$
 	\\ \; \\
 
 	= I_{n \times n} \otimes A 
-	\; \;  \color{darkgreen} [ \otimes \; \rightarrow Kronecker \; Product \color{black} ]
+	\; \;  \color{darkgreen} [ \otimes \; \rightarrow Kronecker \; Product ] \color{black}
 	
 $$
 
@@ -333,17 +336,98 @@ $$
 
 Now, let us observe a few things - 
 
-Lemma 1: If a matrix $B_{}$
+Lemma 1: Let matrix $B$ of shape $n^2 \times n^2$ be a block diagonal matrix with blocks of matrices $A_i$ of shape $n \times n$ for $ i \in \{ 1,2,...n\}$. Let $f(x)$ be a polynomial. Then f(B) is the block diagonal matrix whose blocks are $f(A_i)$ for $i \in \{ 1,2,3,...,n\}$. 
+
+Proof - 		
+Since we can multiply matrices block wise, the proof is essentially the same as polynomial of a diagonal matrix being the diagonal matrix whose diagonals are the polynomials of the diagonal entries of the original matrix.  
+
+Corollary 1:
+Let $B = I_{n\times n} \otimes A$. Let $f(x)$ be a polynomial. Then $f(B) = I_{n \times n} \otimes f(A) $.
+
+
+We know from above that $\phi_{L_A} = I_{n \times n} \otimes A$. Let $g(x)$ be the minimal polynomial of $A$ such that $g(A) = 0_{n \times n}$.
+
+Using the above corrollary, 
 $$
+	g(\phi_{L_A}) = I_{n \times n} \otimes g(A) = I_{n \times n} \otimes 0_{n \times n} = 0_{n^2 \times n^2}  
 
 $$
 
-Since the diagonal blocks of $\phi_{L_A}$ are all the same, we claim that the minimal polynomial of $\phi_{L_A}$ is same as that of $A$, i.e 
+Hence, the minimal polynomial of $A$ annihilates $\phi_{L_A}$.  
+
+Now we want to see if there is an $f(x)$ such that $f(\phi_{L_A}) = 0_{n^2 \times n^2}$ and $degree(f) < degree(g)$.
+
+We will prove that the set of annihilating polynomials of $\phi_{L_A}$ and $A$ are the same, i.e $h(x)$ annihilates $A \implies$ $h(x)$ annihilates $\phi_{L_A}$.
+ 
+
+Let's prove one direction - 
+
+$$
+ 0_{n^2 \times n^2} = f(\phi_{L_A}) \\
+ \implies 0_{n^2 \times n^2} =  I_{n \times n } \otimes f(A)
+
+\\ \; \\
+\implies  0_{n^2 \times n^2} = \begin{bmatrix} 
+	f(A) & | & 0    & | & . & . & ... \\
+	- &    | & -  &   | &  \\
+	0    & | & f(A) & | & . & . & ... \\
+	.    & | & .    & | & . & . & ... \\
+	.    & | & .    & | & . & . & ... \\
+	.    & | & .    & | & . & . & ... \\
+\end{bmatrix} 
+
+\\ \; \\
+
+\implies 0_{n \times n} = f(A)
+
+$$
+
+
+Let's prove the other direction - 
+$$
+	f(A) = 0_{n \times n} \\ \; \\
+
+	\implies I_{n \times n} \otimes f(A) = I_{n \times n} \otimes 0_{n \times n} = 0_{n^2 \times n^2} \\ \; \\
+	
+	\implies f(\phi_{L_A}) = 0_{n^2 \times n^2}   
+$$
+
+So we have proved that the set of the annihilating polynomials of $A$ and $\phi_{L_A}$ are the same. 
+
+Hence the monic polynomial with the smallest degree is the same for both of them.   
+
+Hence,  
 $$
 	minpoly(\phi_{L_A}) = minpoly(A)
 $$
 
+b) 
+
+Reference - [Sylvester's Equation](https://en.wikipedia.org/wiki/Sylvester_equation)
+
+Above, we found that the representation of $L_A(C) = AC$ is $\phi_{L_A} = I_{n \times n} \otimes A$. Similarly we can verify that the representation of $R_B(C) = CB$ is $\phi_{R_B} = B^T \otimes I_{n \times n}$.
+
+Let the map be $G_{AB}(X) = AX - XB$. 
+The representation $ \phi_{G_{AB}}$ is given by $I_n \otimes A - B^T \otimes I_n$.
+
+$G_{AB}$ is non-invertible if for some non-zero X, $G_{AB}(X)=0 $ 
+
+$$
+ G_{AB}(X) = 0 \\
+ \implies G_{AB}(X) = AX - XB = 0 \\
+ \implies AX = XB
+$$
+
+By induction, 
+$$
+	A^k X = X B^k
+$$
+
+
+
+
 Q2.
+
 ![](q2.png)
 
 $$
