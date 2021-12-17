@@ -3,7 +3,7 @@ themes: ["colorful"]
 ---
 
 # MATH574 : Homework-4 (take home final)
-<p style="text-align:center; color:#7A306C"> <b>1st December, 2021</b> </p>
+<p style="text-align:center; color:#7A306C"> <b>15th December, 2021</b> </p>
 <p style='text-align:center;color:green'><b>
 Notes from MATH574: Applied Matrix Analysis (Prof. Robert Guralnick).</b></p>
 
