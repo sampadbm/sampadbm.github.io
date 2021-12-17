@@ -357,7 +357,7 @@ Hence, the minimal polynomial of $A$ annihilates $\phi_{L_A}$.
 
 Now we want to see if there is an $f(x)$ such that $f(\phi_{L_A}) = 0_{n^2 \times n^2}$ and $degree(f) < degree(g)$.
 
-We will prove that the set of annihilating polynomials of $\phi_{L_A}$ and $A$ are the same, i.e $h(x)$ annihilates $A \implies$ $h(x)$ annihilates $\phi_{L_A}$.
+We will prove that the set of annihilating polynomials of $\phi_{L_A}$ and $A$ are the same, i.e $h(x)$ annihilates $A \iff$ $h(x)$ annihilates $\phi_{L_A}$.
  
 
 Let's prove one direction - 
@@ -394,7 +394,7 @@ $$
 
 So we have proved that the set of the annihilating polynomials of $A$ and $\phi_{L_A}$ are the same. 
 
-Hence the monic polynomial with the smallest degree is the same for both of them.   
+Hence the monic polynomial with the smallest degree is the same for both of them (we have proved in earlier homeworks that there can be only one and unique such monic minimal polynomial).   
 
 Hence,  
 $$
