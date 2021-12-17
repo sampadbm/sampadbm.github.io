@@ -408,9 +408,11 @@ Reference - [Sylvester's Equation](https://en.wikipedia.org/wiki/Sylvester_equat
 Above, we found that the representation of $L_A(C) = AC$ is $\phi_{L_A} = I_{n \times n} \otimes A$. Similarly we can verify that the representation of $R_B(C) = CB$ is $\phi_{R_B} = B^T \otimes I_{n \times n}$.
 
 Let the map be $G_{AB}(X) = AX - XB$. 
-The representation $ \phi_{G_{AB}}$ is given by $I_n \otimes A - B^T \otimes I_n$.
+The representation $ \phi_{G_{AB}}$ is given by 
 
-$G_{AB}$ is non-invertible if for some non-zero X, $G_{AB}(X)=0 $ 
+$$I_n \otimes A - B^T \otimes I_n $$
+
+$G_{AB}$ is non-invertible if for some non-zero X (and hence also its span), $G_{AB}(X)=0 $ 
 
 $$
  G_{AB}(X) = 0 \\
@@ -423,9 +425,146 @@ $$
 	A^k X = X B^k
 $$
 
+Consequently, for any polynomial $t(x)$, we have - 
+$$
+	t(A) X = X t(B) \;\;\; \color{green} \rightarrow eq(a)
+$$
 
 
+If $f(\lambda)$ is the characteristics polynomial of $A$, then according to the Cayley-Hamilton theorem, we have $f(A) = 0$.
 
+From spectral mapping theorem, we know that $\sigma(h(T)) = h(\sigma(T))$ where $h(x)$ is some arbitrary polynomial and $\sigma(K)$ gives the spectrum (set of eigenvalues) of the matrix $K$.
+
+Hence, setting $h(x) = f(x)$, the characteristics polynomial of $A$, we have $\sigma(f(B)) = f(\sigma(B))$.
+
+Since there are no common eigenvalues of $A$ and $B$, hence
+$$
+	0 \neq f(\sigma(B)) = \{  f(\lambda) | \lambda \; is \; an \; eigenvalue \; of \;B\}
+
+	\\ \; \\
+
+
+	\implies 0 \neq \sigma(f(B)) = \{ \lambda | \lambda \; is \; an \; eigenvalue \; of \; f(B) \} 
+
+	\\ \; \\
+
+	 which \; means \; no \; eigenvalue \; of \; f(B) \; is \; zero
+
+	\\ \; \\ 
+
+	which \; means \; f(B) \; has \; full \; rank \; i.e \; is \; non \; singular.	
+$$
+
+
+Hence, whenever  $G_{AB} = AX - XB$ is **zero** , we have 
+
+$$
+	G_{AB} = AX - XB = 0 \\
+	\implies AX = XB \\
+	\implies f(A)X = X f(B) \;\;\; \color{green} setting \; t(x)=f(x) \; in \; eq(a) \color{black}
+
+	\\ \; \\
+
+	\implies 0 = f(A)X = X f(B) \color{green} \; \; \because f = charpoly(A) \color{black}
+
+ \\ \; \\
+
+ \implies 0 = Xf(B) \implies X = 0,  \; since \; f(B) \; is \; full \; rank.
+	
+$$
+
+
+Hence we just proved that if $A$ and $B$ do not share eigenvalues, then for $AX - XB$ to be **zero** implies $X$ is zero.
+
+Now, we will prove the other direction (since we have to show if and only if) that if $A$ and $B$ have even one common eigenvalue, then we can construct a non-zero $X$ such that $G_{AB}(X) = AX - XB = 0$.
+
+Let the common eigenvalue be $\alpha$ and the corresponding right eigenvector for $A$ and left eigenvector $B$ be $\vec{a}$ and $\vec{b}$ respectively.
+
+Note that the eigenvalues of a matrix are the same no matter if we use the left or the right eigenvectors. 
+
+The left eigenvectors are the solutions of the equation
+$$
+	x^T A = \lambda x \\
+	
+	\implies x^T (A - \lambda I) = 0^T \; for  \; some \; x 
+
+	\\ \; \\
+
+	conjugate \; transposing \; both \; sides, \; we \; get
+	\\ \; \\
+
+	(A - \lambda I)^* \; \overline{x} = \overline{0} = \vec{0} \\
+
+	 \implies det( (A - \lambda I)^* ) = \overline{ det(A - \lambda I) } = 0 \\
+
+	 \implies \overline{ det(A - \lambda I) } = 0 \\
+	\implies det(A - \lambda I)  = \overline{0} = 0 \\
+	
+	\\ \; \\
+
+	Hence \; this \; gives \; the \; same \; characteristics \; \\
+	 equation \; as \; that \; from \; the \; right \; eigenvectors. 	 
+$$
+
+Let us now construct $X = ab^T$ which is clearly non-zero as $\vec{a}$ and $\vec{b}$ are right and left eigenvectors of $A$ and $B$.
+
+Then,
+
+$$
+	G_{AB} = AX - XB = A(ab^T) - (ab^T)B \\
+	= (Aa)b^T - a(b^TB) \\
+	= (\alpha a)b^T - a(\alpha b^T) \\
+	= \alpha ab^T - \alpha ab^T \\
+	= 0
+$$
+
+Hence, when there is atleast one common eigenvalue of $A$ and $B$, we can alwasy construct a non-zero $X = ab^T$ which can make $G_{AB} = AX - XB$ *zero* and hence $G_{AB}$ is not on-to-one.  
+
+
+c) Let us generalize our findings from part b)
+
+If we take for granted (without proving) that the all possible nullspaces of $G_{AB} = AX = XB$ correspond and can be constructed from the right and left eigenvectors of $A$ and $B$ when the corresponsing eigenvalue coincide, then we have the following - 
+
+Let $A$ have distinct eigenvalues from $\alpha_1,\alpha_2,....\alpha_u$ with geometric multiplicities $p_1, p_2,....,p_u$. Similarly, let the distinct eigenvalues of $B$ be $\beta_1, \beta_2, ..., \beta_v$ and the corresponding (left? left = right?) geometric multiplicities be $q_1, q_2, ... q_v$.
+
+Let there be $K$ common eigenvalues between $A$ and $B$.
+
+For example, we may have $\alpha_3 = \beta_5$ and let the geometric multiplicities be $p_3$ and $q_5$.
+
+Let the corresponding right and left eigenvectors be $a_{3,1},a_{3,2}, ..., a_{3,p_3}$ and $b_{5,1},b_{5,2},...,b_{5,q_5}$.
+
+Clearly, $X = a_{3,i} \; b_{5,j}^T$ is in the nullspace (from part b) for $i \in \{ 1,2,...p_3\}$ and $j \in \{ 1,2,...,q_5\}$.
+
+From this example, we can see that we can construct $p_3 \times q_5$ nullspaces of dimension 1 (every $X = a_i b_j^T$ is considered one dimensional).
+
+So, since there are $K$ overlapping eigenvalues, let the index pairs for eigenvalues $\alpha's$ and $\beta's$ be given by $\{ (i_1,j_1), (i_2,j_2),...,(i_K,j_K)  \}$ i.e $\alpha_{i_1} = \beta_{j_1}, . \; . \; . \; , \alpha_{i_K} = \beta_{j_K}$.
+
+
+So the total number 1 dimensional nullspaces we can construct of the form $X = a_i b_j^T$ is given by -
+
+$$
+	dim(kernel(G_{AB})) = \sum_{t=1}^{K} {p_{i_t} \times q_{j_t}}
+$$
+
+
+Now let us look at the question at hand. What is the dimension of the kernel of $ AX - XA$. So we have $G_{AB}$ with $B = A$, i.e we have $G_{AA}$.
+
+With $A = B$, all the eigenvalues of $A$ and $B$ coincide and also have the same geometric multiplicites i.e $p_i = q_i$ for all distinct eigenvalues $i = \{ 1,2,3,...u\}$ if there are $u$ distinct eigenvalues.
+
+
+Hence we get - 
+
+$$
+	dim(kernel(G_{AA}) = \sum_{i=1}^{u} {p_i}{q_i} = \sum_{i=1}^{u} {p_i}^2 
+	
+
+$$
+
+
+Hence the dimension of the nullspace of $G_{AA} = AX - XA$ is the **sum of squares** of the geometric multiplicities of $A$.
+
+
+ 
 Q2.
 
 ![](q2.png)
