@@ -1,5 +1,6 @@
 ---
 themes: ["colorful"]
+category: courses
 ---
 
 # MATH574 : Homeworks

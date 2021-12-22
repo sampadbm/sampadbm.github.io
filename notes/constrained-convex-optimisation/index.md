@@ -1,5 +1,6 @@
 ---
 themes: ["colorful"]
+category: optimisation
 ---
 
 # Some results on optimising convex functions under simple constraints
