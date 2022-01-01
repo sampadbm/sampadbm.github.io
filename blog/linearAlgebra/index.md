@@ -1,11 +1,11 @@
 ﻿---
-themes: ["colorful"]
+themes: ["muted","colorful"]
 category: mathematics
 ---
 
 # Notes on Linear Algebra
 
-<p style="text-align:center; color:#7A306C"> <b>19th December, 2021</b> </p>
+<p style="text-align:center; color:darkred"> <b>19th December, 2021</b> </p>
 
 <p style='text-align:center;color:green'><b> 
 Interesting results in Linear Algebra
