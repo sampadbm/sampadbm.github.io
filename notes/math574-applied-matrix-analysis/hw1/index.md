@@ -72,7 +72,7 @@ cardinality, which we refer to as the dimension $dim_{\mathbb{K}}(V)$ or simply 
 > however, $dim_{\mathbb{R}}(\mathbb{C^n})=2n$
 
 
-> The basis for $\mathbb{C^n}$ over field $\mathbb{C}$ is the standrad basis $ \{e_1,e_2,...,e_n \}$
+> The basis for $\mathbb{C^n}$ over field $\mathbb{C}$ is the standard basis $ \{e_1,e_2,...,e_n \}$
 > i.e the coefficients/coordinates of the basis are elements of $\mathbb{C}\\$
 
 
