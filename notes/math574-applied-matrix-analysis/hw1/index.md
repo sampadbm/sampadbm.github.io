@@ -65,7 +65,7 @@ equal to that of a spanning set.
 
 **Corollary 1.55 (page 25):** In a finite-dimensional vector space, all bases have the same
 cardinality, which we refer to as the dimension $dim_{\mathbb{K}}(V)$ or simply $dim(V)$ or
- $|V|$ when the underlying ground field $]mathbb{K}$ is understood. 
+ $|V|$ when the underlying ground field $\mathbb{K}$ is understood. 
 
 > Always, $dim_{\mathbb{K}}(\mathbb{K^n}) = n$ and the standard basis is $\{1,e_2,....,e_n \}\\$
 > Hence, $dim_{\mathbb{C}}(\mathbb{C^n}) = n\\$
