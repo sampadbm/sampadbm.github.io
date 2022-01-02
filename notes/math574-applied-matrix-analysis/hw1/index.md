@@ -40,7 +40,7 @@ There are two ways of constructing a basis - a.**pruning** and b. **extending**
 them independent (if they already aren't).
 
 *Extending* - we start with a set of independent vector $S$ and add one vector $v_1$ at a time 
-to $S$ where $v_1$ is not in $span(S)$ already. $S_1 = S \cup {v}$ In this way, 
+to $S$ where $v_1$ is not in $span(S)$ already. $S_1 = S \cup \{v\}$ In this way, 
 we can can finally make $S_r$ as basis of $V$ (if S wasn't already)
 
 If we can not find a finite set of vectors using the extension method, then the 
