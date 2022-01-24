@@ -1,5 +1,6 @@
 ---
 themes: ["colorful"]
+category: courses
 ---
 
 # CSCI670 Theoretical Thinking - I

@@ -1,0 +1,28 @@
+.stackedit__right {
+  min-height: 100%;
+  background-color: rgb(80, 80, 80);
+}
+
+.stackedit__left {
+  background-color: rgb(53, 55, 36);
+}
+
+.stackedit__left > ul > li:first-child {
+  text-decoration: underline overline;
+}
+
+.stackedit__left ul {
+  /* color:#F0F3F5; */
+  font-family: monospace;
+  font-weight: bold;
+  font-variant: small-caps;
+}
+
+.stackedit__left ul a:hover {
+  border-radius: 0;
+  font-stretch: expanded;
+}
+
+.stackedit__left ul ul {
+  /* color: rgb(250,200,20); */
+}

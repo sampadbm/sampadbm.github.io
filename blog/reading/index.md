@@ -1,11 +1,15 @@
 ---
 themes: ["colorful"]
+category: reading
 ---
 
 # Reading List
 
 ### Mathematics
+
 - [MATHEMATICAL VIRUSES*, David Hestenes, 1992](http://geocalc.clas.asu.edu/pdf/MathViruses.pdf)
+
+- [The Unreasonable Effectiveness of Mathematics in the Natural Sciences](https://en.wikipedia.org/wiki/The_Unreasonable_Effectiveness_of_Mathematics_in_the_Natural_Sciences)
   
 ### Education
 
@@ -23,4 +27,6 @@ themes: ["colorful"]
 
 [The Internet in India and China - 2002](https://firstmonday.org/ojs/index.php/fm/article/view/997/918)
 
+
+### Philosophy of Science
 

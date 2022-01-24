@@ -1,5 +1,6 @@
 ---
 themes: ["colorful"]
+category: courses
 ---
 
 # MATH574 : Homeworks
@@ -19,6 +20,5 @@ hw3 1st November, 2021
 1. [Homework1](hw1)
 2. [Homework2](hw2)
 2. [Homework3](hw3)
-2. [Homework4 part1](hw4p1)
-2. [Homework4 part2](hw4p2)
+2. [Homework4 - take home final](hw4)
 

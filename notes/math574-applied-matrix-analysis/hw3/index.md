@@ -42,3 +42,4 @@ of a matrix are the same - i.e the eigenvalues are not only the roots of the cha
 polynomial but also the minimal polynomial.
 
 
+[Link to Full HW3 (Overleaf PDF)](Math574_hw3.pdf)

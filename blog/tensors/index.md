@@ -1,5 +1,6 @@
 ---
 themes: ["colorful"]
+category: research
 ---
 
 # Tensors: A crappy introduction | Part-1
