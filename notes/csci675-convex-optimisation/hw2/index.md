@@ -33,7 +33,7 @@ Axioms
 ------
 A1) Halfspaces are convex. $\\$
 A2) Intersection of convex sets is convex. $\\$
-A3) Set of points closer to point x than to point y is a halfspace, say $H_{xy}$.
+A3) Set of points closer to point x than to point y is a halfspace, say $H(x,y)$.
 
 
 | **part** | **convex / non-convex** | **reasoning** |
@@ -41,4 +41,5 @@ A3) Set of points closer to point x than to point y is a halfspace, say $H_{xy}$
 |a| convex | Slab = intersection of halfspaces $ \alpha \leq a^T x $ and $a^T x \leq \beta$.$\\$ Apply A1 and A2. |
 |b| convex | Rectangle = intersection of axis aligned slabs (i.e $\;a$ is an element of the standard basis or a multiple of it in the formulation in part a). $\\$ Apply A1 and A2.|
 |c| convex | Wedge = intersection of halfspaces. $\\$ Apply A1 and A2.|
-|d| convex | Let $S$ be the described set and $y$ be the point. $\\$ Let $x \in S$. $\\$
+|d| convex | Let $S$ be the described set and $x_0$ be the point. $\\$ Let a generic point $y_i \in S$. $\\$ The halfspace $H(x_0,y_i)$ describe all the points closer to $x_0$ than the point $y_i$. $\\$ Let $S_i = H(x_0,y_i)$. $\\$ Clearly, $S = \bigcap_{i} S_i = \bigcup_{i} H(x_0,y_i)$ since all $y_i \in S$ are closer to $x_0$ than any point in $T$. $\\$ Apply A1 and A2.
+|e| | |
