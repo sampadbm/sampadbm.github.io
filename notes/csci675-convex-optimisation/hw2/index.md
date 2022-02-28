@@ -1,5 +1,5 @@
 ---
-themes: ["default"]
+themes: ["default", "colorful"]
 ---
 
 # CSCI675 : Homework-2
@@ -63,6 +63,12 @@ A5) Set of points closer to point x than to point y is a halfspace, say $H(x,y)$
 | i | convex | linear inequality |
 
 
+### Q4. Operations that preserve convextiy
+![](q4.png)
 
-   
+|                                                         |
+|---------------------------------------------------------|
+| **We will solve this using 4 methods -** $\\$ 1. using algebraic definition of convex sets $\\$ 2. using direct sum of convex sets and then projecting $\\$ 3. projecting and then taking direct sum of the projections. $\\$ 4. Using multilinear operator and tensor algebra|
 
+
+Let $f((x,y_1), (x,y_2)) = (x, y_1 + y_2))$ where $f: \mathbb{R^m} \times \mathbb{R^n} \rightarrow \mathbb{R^{m+n}}$ is a multilinear function.  
