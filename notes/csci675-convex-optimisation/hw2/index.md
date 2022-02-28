@@ -68,7 +68,121 @@ A5) Set of points closer to point x than to point y is a halfspace, say $H(x,y)$
 
 |                                                         |
 |---------------------------------------------------------|
-| **We will solve this using 4 methods -** $\\$ 1. using algebraic definition of convex sets $\\$ 2. using direct sum of convex sets and then projecting $\\$ 3. projecting and then taking direct sum of the projections. $\\$ 4. Using multilinear operator and tensor algebra|
+| **We will solve this using 4 methods -** $\\$ 1. Using algebraic definition of convex sets  $\\$ 2. Projecting and then taking Minkowski sum of the projections. $\\$ 4. Using multilinear operator and tensor algebra $\\$ 2. Using direct sum of convex sets and then projecting|
 
 
-Let $f((x,y_1), (x,y_2)) = (x, y_1 + y_2))$ where $f: \mathbb{R^m} \times \mathbb{R^n} \rightarrow \mathbb{R^{m+n}}$ is a multilinear function.  
+Let $f((x,y_1), (x,y_2)) = (x, y_1 + y_2))$ where $f: \mathbb{R^m} \times \mathbb{R^n} \rightarrow \mathbb{R^{m+n}}$ is a multilinear function.
+
+Let $\\$
+$A_1 = (x,a_1), B_1 =(x,b_1) \; s.t \; A_1,B_1 \in S_1$ and $\\$
+$B_1 = (x,a_2), B_2 = (x,b_2) \; s.t \; A_2, B_2\in S_2$.$\\$
+
+
+$S_1$ is convex, $\color{purple} M_1 = \theta A_1 + (1 - \theta)B_1 = (x, \theta a_1 + (1- \theta) b_1) \in S_1 \; \forall \; \theta \in [0,1]$.
+
+Similarly, $\color{blue}M_2 = \theta A_2 + (1 - \theta)B_2 = (x, \theta a_2 + (1- \theta) b_2) \in S_2 \; \forall \; \theta \in [0,1]$.
+
+By definition, $F_A = f(A_1,A_2) = (x,a_1 + a_2) \in S_1$ and $F_B = f(B_1, B_2) = (x,b_1 + b_2) \in S_2$.
+
+We need to show that $F = \theta F_A + (1 - \theta) F_B \in S \; \forall \; \theta \in [0,1]$.
+
+$$
+	F = \theta F_A \color{crimson}+\color{black} (1 - \theta) F_B \\ \; \\
+
+	= \theta (x \;,\; a_1 + a_2) \color{crimson}+\color{black} (1 - \theta)(x \;,\; b_1 + b_2) \\\;\\
+	= (\theta x \; , \; \theta [a_1 + a_2] ) \color{crimson}+\color{black} ( (1-\theta) x \;,\; (1-\theta) [b_1 + b_2]) \\ \;\\
+
+	= (\theta x \color{crimson}+\color{black} (1 - \theta)x \; , \; [\theta a_1 \color{crimson}+\color{black} (1 - \theta)b_1] \color{crimson}+\color{black} [\theta a_2 \color{crimson}+\color{black} (1 - \theta)b_2] ) \\ \; \\
+
+	= ( x \; , \; [\theta a_1 \color{crimson}+\color{black} (1 - \theta)b_1] \color{crimson}+\color{black} [\theta a_2 \color{crimson}+\color{black} (1 - \theta)b_2] ) \\ \; \\
+
+	= f \color{green}\bigg(\color{black} ( x \; , \; \theta a_1 + (1 - \theta)b_1 ) \; , \; (x \; , \; \theta a_1 + (1 - \theta)b_1 \color{green} \bigg)\color{black} \\ \; \\
+
+	= f \color{green}\bigg(\color{black} ( x \; , \; \theta a_1 + (1 - \theta)b_1 ) \; , \; (x \; , \; \theta a_1 + (1 - \theta)b_1 \color{green} \bigg)\color{black} \\ \; \\
+	
+
+	= f \color{green}\bigg(\color{purple} ( x \; , \; \theta a_1 + (1 - \theta)b_1 ) \; \color{black}, \color{blue} \; (x \; , \; \theta a_1 + (1 - \theta)b_1 \color{green} \bigg)\color{black} \\ \; \\
+
+	= f \color{green}\bigg(\color{purple} M_1 \; \color{black}, \color{blue} \; M_2 \color{green} \bigg)\color{black} \in S \;\;\; _\blacksquare\\
+	
+$$
+
+> Theorem 1: Direct Sum of convex sets is convex.$\\ \; \\$
+$X,Y$ convex $\implies$ $X \oplus Y$ is convex. $\\$  
+If $X \subset \mathbb{R^m}$ and $Y \subset \mathbb{R^n}$ are convex sets. Let us embed $X$ and $Y$ in the first $m$ and the last $n$ dimensions of the space $\mathbb{R^{m+n}}$. Let then the direct sum of the two convex sets can be defined as the set $S = \{ \langle x,y \rangle | \;   x \in X, y \in Y \} $ where $\langle x,y \rangle \in \mathbb{R^{m+n}}$ is the concatenation of the vectors $x \in X$ and $y \in Y$.  Then $S$ is convex. $\\ \; \\$
+>Proof: $\\$
+Let $x_1, x_2 \in X$ and $y_1,y_2 \in Y$. $\\$
+Since $X$ and $Y$ are both convex, $x_3 = \alpha x_1 + (1 - \alpha)x_2 \in X$ and $y_3 = \alpha y_1 + (1 - \alpha)y_2 \in Y$. $\\$
+$\\$ Let $s_1 = \langle x_1, y_1 \rangle \in S$ and $ s_2 = \langle x_1, y_1 \rangle \in S$.$\\$
+Clearly $s_3 = \langle x_3, y_3 \rangle \in S$ by definition of direct sum.
+ We need to show that $s = \alpha s_1 + (1 - \alpha) s_2 \in S$. $\\\;\\$
+$$
+	s = \alpha s_1 + (1 - \alpha) s_2 \\
+	=  \alpha \langle x_1, y_1 \rangle + ( 1 - \alpha ) \langle x_2, y_2 \rangle \\
+	= \langle \alpha x_1 + (1 - \alpha) x_2 \; , \; \alpha y_1 + (1 - \alpha) y_2 \rangle \\
+	= \langle x_3, y_3 \rangle = s_3 \in S \;\;\; _\blacksquare
+$$ 
+
+$\\ \; \\$
+
+
+> Theorem 2: Projection operator preserves convexity $\\ \; \\$
+> Let $P$ be a projector operator such that $ P: \mathbb{R^{m+n}} \rightarrow \mathbb{R^{m}}$. $\\$ Let $X \subset \mathbb{R^{m+n}}$ be convex. $\\$ Then the image of $X$ under $P$ is convex, i.e $P(X)$ ius convex. $\\ \; \\$
+>Proof: $\\$
+Let $x_1, x_2 \in X$ $\\$
+Since X is convex, $\forall \alpha, \; 0 \leq \alpha \leq 1$ we have $x_3 = \alpha x_1 + (1 - \alpha)x_2 \in X$.
+Let $p_1 = P(x_1) \in \mathbb{R^m}$ and $p_2 = P(x_2) \in \mathbb{R^m}$ be the projections of $x_1, x_2$ respectively, i.e $p_1$ and $p_2$ are the images of $x_1$ and $x_2$ under the projection operator and hence by definition of images under operators, $p_1, p_2 \in P(X)$ $\\ \; \\$
+We need to show that the point $p_3 = \alpha p_1 + (1 - \alpha) p_2 $ belongs to the image of $X$ under $P$, i.e $p_3 \in P(X)$. $\\ \; \\$
+$$
+	p_3 = \alpha p_1 + ( 1 - \alpha) p_2 \\
+	 = \alpha P(x_1) + (1 - \alpha)P(x_2) \\
+	 = P(\alpha x_1) + P((1 - \alpha) x_2) \;\; \{ \because P \; is \; linear \} \\
+	 = P (\alpha x_1 + (1 - \alpha)x_2 ) \;\; \{ \because P \; is \; linear \} \\
+	 = P( x_3 ) \in P(X) \{ \because x_3 \in X \} \;\;\; _\blacksquare 
+$$
+
+
+> Theorem 3: Minkowski sum preserves convexity $\\$
+$A + B = \{ a + b \;| \; a \in A, b \in B  \}$ $\\ \; \\$
+We are not going to prove the following result about Minkowski sums but here is the [wiki reference.](https://en.wikipedia.org/wiki/Minkowski_addition#Convex_hulls_of_Minkowski_sums) $\\ \; \\$
+$Conv(A + B) = Conv(A) + Conv(B)$ $\\$
+i.e the convex hull of the Minkowski sum is the Minkowski sum of the convex hull of the sets. [Note that this is a special case of the general case of equivariance if we define the Minkowski sum '+' as a binary operator on convex sets.] $\\ \; \\$
+> If $X$ is a convex set, $\iff$ $Conv(X) = X$. $\\ \; \\$
+Using the above two results, we can show that the Minkowski sum of two convex sets $A$ and $B$ is convex, i.e we can show that $S = A+B$ is convex $\\$
+$$
+	Conv(S) = Conv(A + B) \\
+	= Conv(A) + Conv(B) \\
+	= A + B \;\;\; \{ \because \; A,B \; are \; convex \} \\
+	= S \\ \; \\
+
+	\implies Conv(S) = S \\ \therefore \; S=A+B \; is \; convex \;\;\; _\blacksquare
+	
+$$
+
+Now let's prove what we were asked in the question. We need to show that the image under $f((x,y_1),(x,y_2)) = (x, y_1 + y_2)$ is convex.
+Let $ U = P_Y (S_1), V = P_Y(S_2)$ and $W = P_X(S_1) \cap P_X(S_2)$ where $P_Y$ is the projection on to the last $n$ dimensions and $P_X$ is projection onto the first $m$ dimensions.
+Clearly $U$ and $V$ are convex since $S_1, S_2$ are convex. Similarly $W$ is convex because it is the intersection of the projection of convex sets $S_1$ and $S_2$ and we know that intersections and projections preserce convexity.
+
+It is easy to see that the compsition $ Minkowskisum (U, V) \oplus W  $ is precisely $f$. Since all the operations that compose $f$ preserve convexity, $f$ preserves convexity too since convexity is preserved under composition if the operations which themselves preserveconvexity as it is basically a chain of convex images.     
+
+$\color{darkred} 
+I \; will \; be \; back \; to \; the \; other\; two \; methods \; - \; 3 \; and \; 4\; when \; I \; get \; time \; later .$ 
+
+
+### Q5: Set of separating hyperplanes
+
+![](q5.png)
+
+Definition of a convex cone: A set S is a cone if $s \in S \iff \alpha s \in S \; \forall \; \alpha > 0$
+
+Clearly when $C$ and $D$ are not separable, $\langle a, b \rangle = \vec{0} \in \mathbb{R^{n+1}}$ and hence is a trivial convex cone. 
+
+When there exists a separating hyperplane, let the $ \langle a,b \rangle$ be a representation of it. 
+$$
+	a^T x \leq b \; \forall \; x \in A \; and \; a^T x \geq b \; \forall 
+$$  
+
+
+
+  
+ 
