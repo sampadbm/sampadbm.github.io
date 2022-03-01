@@ -33,8 +33,6 @@ Another interesting recent direction has been on using physics based machine lea
 
 > #### Figures
 
-> ![](rankconsistent.png)
-*rank consistency, src:[1]*
 
 >#### References
 
