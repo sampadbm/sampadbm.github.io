@@ -177,12 +177,57 @@ Definition of a convex cone: A set S is a cone if $s \in S \iff \alpha s \in S \
 
 Clearly when $C$ and $D$ are not separable, $\langle a, b \rangle = \vec{0} \in \mathbb{R^{n+1}}$ and hence is a trivial convex cone. 
 
-When there exists a separating hyperplane, let the $ \langle a,b \rangle$ be a representation of it. 
+When there exists a separating hyperplane, let the $ \langle a,b \rangle$ be a representation of it. Let us call the set of all such representations $H$.
+
 $$
-	a^T x \leq b \; \forall \; x \in A \; and \; a^T x \geq b \; \forall 
+	a^T x \leq b \; \forall \; x \in C \; and \; a^T y \geq b \; \forall \; y \in D \\
+	\implies k a^T x \leq k b \; and \; k a^T y \geq kb \; \forall \; k \geq 0 \\
+	\implies (ka)^T x \leq kb \; and \; (ka)^T y \geq kb \; \forall \; k \geq 0 \\
 $$  
 
+Hence $ \langle ka, kb \rangle = k \langle a,b \rangle \; \forall \; k > 0 $ is also the representation of the separating hyperplane and hence belongs to the set of the separating hyperplanes. Hence the set of the separating hyperplanes is a cone.
+
+Now we will prove that it is convex as well.
+Let $ \langle a_1 , b_1 \rangle$ and $\langle a_2, b_2 \rangle$ be in the set $H$.
+We have to show that $ \langle a_3, b_3 \rangle = \theta \langle a_1, b_1 \rangle + ( 1 - \theta) \langle a_2, b_2 \rangle = \langle \theta a_1 + (1 - \theta) a_2 \; , \; \theta b_1 + (1 - \theta)b_2   \rangle $ is also in the set $H$ when $0 \leq \theta \leq 1$.
+
+$$
+	Let \; x \in C \; and \; y \in D \\ \; \\
+	
+	a_1 x \leq b_1 \; \color{darkred} and \color{black} \; a_1 y \geq b_1 \\
+	a_2 x \leq b_2 \; \color{darkred} and \color{black} \; a_2 y \geq b_2 \\ 
+
+					\Updownarrow \\
+					
+	\theta a_1 x \leq \theta b_1 \;\color{darkred} and \color{black} \; \theta a_1 y \geq \theta b_1 \\
+	( 1 - \theta) a_2 x \leq ( 1 - \theta) b_2 \;  \color{darkred} and \color{black} \; ( 1 - \theta) a_2 y \geq ( 1 - \theta) b_2 \\
+	
+					\Updownarrow \\
+		
+	\theta a_1 x + ( 1 - \theta) a_2 x \leq \theta b_1 + ( 1 - \theta) b_2 \; \color{darkred} and \color{black} \; \theta a_1 y + ( 1 - \theta) a_2 y \geq \theta b_1 + ( 1 - \theta) b_2 \; \\
+
+		\Updownarrow \\
+
+		a_3 x \leq b_3 \; \color{darkred} and \color{black} \; a_3 y \geq b_3 
+
+		\\ \; \\
+		
+	   \implies \langle a_3 , b_3 \rangle \in H \;\;\; _\blacksquare 
+$$
 
 
-  
- 
+Hence the set $H$ is convex in addition to being a cone. Hence $H$, the set of representation of separating hyperplanes is a convex cone. If we restrict the hyperplanes to have a unique representation, then the set might neither be convex or a cone - for example forcing $a$ to be unit length will make the set and arc of the unit circle that is formed when we take the intersection of the convex cone $H$ and the unit circle in $\mathbb{R^{n+1}}$.
+
+
+### Q6. Support Functions
+
+![](q6.png)
+
+Basically we are looking in the direction of the vector $y$ and trying to see what is the greatest value of the dot product of $y$ with any point/position vector $x$ in the set $C$. We can see easily that since $S_C(y) = y \cdot x$, $S_C(ky) = k y \cdot x = k S_C \; \forall \; k \in \mathbb{R}$ i.e $S_C{ky} = k S_C{y}$. So if $C$ and $D$ are two sets and $S_C(y) = S_D(y)$, then $S_C(ky) = kS_C(y) = k S_D(y) = S_D(ky)$. 
+
+
+
+
+
+
+
