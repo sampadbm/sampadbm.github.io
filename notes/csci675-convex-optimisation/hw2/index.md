@@ -245,3 +245,83 @@ From the above two facts, we can see that $\color{green}y^T\color{black} \color{
 
 
 Clearly $S_C(y) = S_C(\theta)$ when $y = 1$ and $S_C(\theta) = sup \{ \langle cos \theta , sin \theta \rangle \cdot x \; | \; x \in C \}$.
+
+
+Hence $y^T x = S_C(y) \; , \; |y|=1$ are the supporting hyperplanes of the set $C$.
+
+Since $S_C(y) = S_D(y) \; \forall \; y$, hence $S_C(y) = S_D(y)$ for $|y| = 1$. 
+
+$$
+	S_C(y) = S_D(y) \; \forall \; |y|=1 \\ \; \\
+	\implies y^T x = S_C(y) \equiv y^T x = S_D(y) \\ \; \\
+	supporting \; hyperplanes \; of \; C \equiv supporting \; hyperplanes \; of \; D. 
+$$
+
+If the set of supporting hyperplanes of two convex sets $C$ and $D$ are the same, then the sets are the same since the convex sets are also defined by the set of the separating hyperplanes instead of the set of points. $\;\; _\blacksquare$
+
+
+### Q7. Euclidean Distance Matrices
+
+![](q7.png)
+
+The distance matrix satisfies $D_{ii} = 0$ and $x^T D x \leq 0$ for all $1^T x = 0 $.
+
+We need to show that the space of distance matrices is a convex cone.
+
+It is not very difficult to see that the space of such matrices form a cone.
+Let $C = kD$ where $k \geq 0, k \in \mathbb{R}$.
+
+$$
+	C_{ii} = k * D_{ii} = k * 0 = 0 \;\;\; _\blacksquare
+  
+$$
+
+For $1^T x = 0$
+
+$$
+		x^T D x \leq 0 \\
+		\implies k x^T D x  \leq 0 \;\;\; \forall k \geq 0 \\
+		\implies x^T kD x \leq 0 \\ 
+		\implies x^T C x \leq 0 \;\;\; _\blacksquare
+		 
+$$
+
+
+Now let us show that the space of such matrices is infact convex. 
+
+Let $D$ and $E$ be two euclidean distance matrices. 
+Let $F  = \alpha D + (1 - \alpha)E$ for $0 \leq \alpha \leq 1$
+$$
+	F_{ii} = \alpha D_{ii} + ( 1 - \alpha ) E_{ii} = \alpha * 0 + ( 1 - \alpha ) * 0 = 0 \;\;\; _\blacksquare
+$$
+
+for $1^T x = 0 $
+$$
+	x^T D x \leq 0 \; and \; x^T E x \leq 0 \\ \; \\
+
+	\alpha x^T D x \leq 0 \; and \; (1 - \alpha) x^T E x \leq 0 \\ \; \\
+
+	x^T \alpha D x \leq 0 \; and \; x^T (1 - \alpha)E x^T \leq 0 \\ \; \\
+
+	\implies x^T [ \alpha D + ( 1 - \alpha ) E ] x \leq 0 \\ \; \\
+
+	\implies x^T F x \leq 0 \;\;\; _\blacksquare   
+$$
+
+
+So the space of euclidean distance matrices is infact a convex cone. 
+
+
+![](q7p2.png)
+
+We need to find the dual cone of the cone of the euclidean distance matrices. 
+
+The dual of a set $Z$ is defined as the set Y  = $y \; | \; y^T z \leq 1 \; \forall z \in Z$.
+
+For a cone Z, the dual is equilvalently defined as the set Y  = $y \; | \; y^T z \leq 0 \; \forall z \in Z$.
+
+However, we already know that for al euclidean distance matrices $D$ and $1^T x = 0 $
+$$
+	x^T D x \leq 0 \\ \; \\
+	\implies (x x^T) \cdot D \leq 0   
+$$
