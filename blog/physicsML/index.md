@@ -38,7 +38,7 @@ Another interesting recent direction has been on using physics based machine lea
 
 >[1. Rank consistent ordinal regression for neural networks with application to age estimation](https://arxiv.org/abs/1901.07884)
 
->[2. Label-Free Supervision of Neural Networks with Physics and Domain Knowledge](https://arxiv.org/abs/1901.07884)
+>[2. Label-Free Supervision of Neural Networks with Physics and Domain Knowledge](https://arxiv.org/abs/1609.05566)
 
 >[3. Neural Ordinary Differential Equations ](https://arxiv.org/abs/1806.07366)
 

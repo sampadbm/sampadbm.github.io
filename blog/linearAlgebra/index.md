@@ -12,6 +12,12 @@ Interesting results in Linear Algebra
 </b></p>
 
 ---
+### Equivalent Matrices
+- Matrices that can be reached from one another using elementary row operations (EROs) are called equivalent matrices.
+- For example, all the matrices that are formed along gaussian elimination to get Row Echelon Form (REF) or the Reduced Row Echelon Form (RREF) are equivalent to the original matrix and to each other including the REF and RREF.
+- Equivalent matrices form an equivalence class and these equivalence classes partition the space of all matrices.
+- Nullspace of the equivalent matrices are the same i.e nullspace is an invariant of the equivalence class i.e all the matrices belonging to the same equivalence class have the same nullspace. This point is related to the gaussian elimination and as to why we can extract the solution (nullspace) of the original equations(matrix) from the REF or RREF form. This also tells us that nullspace of a matrix is invariant under EROs. 
+
 
 ###  Matrix representation of the linear transform captured in a Matrix Matrix Multiplication
 
