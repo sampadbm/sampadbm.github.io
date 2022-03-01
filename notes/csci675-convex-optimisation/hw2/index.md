@@ -223,11 +223,25 @@ Hence the set $H$ is convex in addition to being a cone. Hence $H$, the set of r
 
 ![](q6.png)
 
-Basically we are looking in the direction of the vector $y$ and trying to see what is the greatest value of the dot product of $y$ with any point/position vector $x$ in the set $C$. We can see easily that since $S_C(y) = y \cdot x$, $S_C(ky) = k y \cdot x = k S_C \; \forall \; k \in \mathbb{R}$ i.e $S_C{ky} = k S_C{y}$. So if $C$ and $D$ are two sets and $S_C(y) = S_D(y)$, then $S_C(ky) = kS_C(y) = k S_D(y) = S_D(ky)$. 
+Basically we are looking in the direction of the vector $y$ and trying to see what is the greatest value of the dot product of $y$ with any point/position vector $x$ in the set $C$. 
+
+Why we need the set to be closed is clear from a counterexample. If $C$ is a closed convex set and $D$ is $C$ with a hole cut out in the interior of $C$, in then the support funcitons are the same but the sets $C$ and $D$ are not.
+
+Why we need convexity for the sets $C$ and $D$ for the claim in the question will become evident when we have proved the statement.
+
+We can easily see that since $S_C(y) = y \cdot x$, $S_C(ky) = k y \cdot x = k S_C \; \forall \; k \in \mathbb{R}$ i.e $S_C{ky} = k S_C{y}$. So if $C$ and $D$ are two sets and $S_C(y) = S_D(y)$, then $S_C(ky) = kS_C(y) = k S_D(y) = S_D(ky)$. That means that once we know that the support function for the sets $C$ and $D$ are same given the vector $y$, it is the same for $C$ and $D$ for all vector in that direction (all linear combinations) of them. So we might aswell just look at the directions and not all the vectors. That is exactly what we will do, we will look at all unit vectors $y$, i.e $|y| = 1$.
+
+We observe that if the support functions $S_D(y) = S_C(y) \; \forall \; |y| = 1$, then the closed convex sets $C$ and $D$ are the same. 
+
+** fact 1: ** Recall that the vector form of a hyperplane that has the unit normal $y$ and is $d$ distance away from the origin along the direction $y$ is given by $y \cdot x = d$ or equivalently $y^T x = d$. 
+
+** fact 2: ** $y^T x =   y \cdot x = d$ gives the projection of $x$ in the direction of $y$ when $|y| = 1$.
 
 
+From the above two facts, we can see that $\color{green}y^T\color{black} \color{blue}x \color{black} = \color{green}S_C(y) \approx max(d) \color{black}$ is a $ \color{orange}hyperplane$ that supports the set $C$ at the point $x^*$ where $\color{green} S_C(y) = y^T x^* \color{black}$.
+
+![](supportfunctions.jpg)
+*support function*
 
 
-
-
-
+Clearly $S_C(y) = S_C(\theta)$ when $y = 1$ and $S_C(\theta) = sup \{ \langle cos \theta , sin \theta \rangle \cdot x \; | \; x \in C \}$.
