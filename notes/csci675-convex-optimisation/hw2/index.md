@@ -24,6 +24,8 @@ Find the question here - [Homework2 Questions](hw2questions.pdf)
 ### Q1 : Midpoint Convexity and closed set 
 ![](q1.png)
 
+$ \\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;$
+
 
 ### Q2 : Convex Sets 
 ![](q2.png)
