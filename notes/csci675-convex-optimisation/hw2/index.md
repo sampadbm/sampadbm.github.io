@@ -316,12 +316,214 @@ So the space of euclidean distance matrices is infact a convex cone.
 
 We need to find the dual cone of the cone of the euclidean distance matrices. 
 
-The dual of a set $Z$ is defined as the set Y  = $y \; | \; y^T z \leq 1 \; \forall z \in Z$.
+The polar of a set $Z$ is defined as the set $Y$  = $y \; | \; y^T z \leq 1 \; \forall z \in Z$.
 
-For a cone Z, the dual is equilvalently defined as the set Y  = $y \; | \; y^T z \leq 0 \; \forall z \in Z$.
+For a cone $Z$, the polar is equilvalently defined as the set $Y$  = $y \; | \; y^T z \leq 0 \; \forall z \in Z$.
+The dual is just the negative of the polar. Hence the dual of the cone $Z$ is given by $Y$  = $y \; | \; y^T z \geq 0 \; \forall z \in Z$.
 
-However, we already know that for al euclidean distance matrices $D$ and $1^T x = 0 $
+> Useful remarks 
+> 1. $ w^T M w = (ww^T) \cdot M $ where $\cdot$ represents the dot product in the space of matrices. 
+
+
+We already know that for all euclidean distance matrices $D$ and $1^T x = 0 $
 $$
-	x^T D x \leq 0 \\ \; \\
-	\implies (x x^T) \cdot D \leq 0   
+	x^T D x \leq 0 \;\;\; \forall \; D  \\ \; \\
+	 
+
+	\implies (x x^T) \cdot D \leq 0 \;\;\; \forall D \\ \; \\
+
+	\implies (- x x^T) \cdot D \geq 0 \;\;\; \forall D \\ \; \\
+
+	\implies - xx^T \; is \; in \; the \; dual \; cone \; of \; the \; set \; of \; euclidean \; distance \; matrices 
+	   
 $$
+
+We know that the dual of a cone is a cone and the dual cone is the cone defined by the matrices $-xx^T$ that can be constructed from $x$ under the constraint $1^T x = 0$.
+
+### Q8. Level sets of convex, concave, quasiconvex, and quasiconcave functions
+
+![](q8.png)
+
+
+**part 1**
+
+![](a8p1.png)
+
+Since the level sets show that as we move away from the center, the function increase, the only posibilities are that the function is either convex or quasi convex. 
+
+Any higher dimensional convex funciton is also convex when we take the [restriction](https://en.wikipedia.org/wiki/Restriction_(mathematics)) of the function on a one dimensional line in its domain. For our case, the convex function has domain in $\mathbb{R^2}$. So a line in the domain like the red, green and the blue lines must yield a convex function on the corresponding restrictions. 
+
+On the one dimensional restrition, the slope of a convex function can only increase as we move on the line (we can assume any direction on the line to be positive). Now, since the slope has to increase, the density of the level curves should increase as w move along any line. 
+
+Along the green line, the distance between the level curves does decrease (hence density increases). 
+Along the blue line, the density remain constant which indicates that along that direction the function increase linearly
+Along the red line, the density decreases. This shows that the function cannot be a convex funciton. 
+
+Since the sublevel sets are covnex, the function is quasiconvex. 
+
+
+**part 2**
+
+![](a8p2.png)
+
+As we can see from the level curves, the finction keeps decraseing as we move away from the center and hence the only possibilities are that the function is concave or quasi convex. However, all directions we take in the domain to for a one dimensional line to create a restriction for the function, we see that the density of the level sets at increases and hence the funciton is convex. 
+
+Since quasiconcave functions are supersets of concave functions, we conclude that the funciton is quasiconvex as well. We can also say that because the superlevel set of te function as re convex regions/sets in the domain.
+
+### Q9. 
+![](q9.png)
+
+$ \\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;$
+$\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;$
+
+### Q10. 
+![](q10.png)
+
+| **part** | **convex / non-convex** | **reasoning** |
+|----------|-------------------------|---------------|
+|  a  | convex, concave, quasiconvex, quasiconcave | expectation is linear in both $a_i$ and $p_i$ |   
+|  b  | convex, concave, quasiconvex, quasiconcave | linear in $p_i$ |
+|  c  | convex, concave, quasiconvex, quasiconcave | linear in $p_i$ | 
+|  d  | convex, quasiconvex | xlogx is a convex function (second derivative is always  positive). Sum of convex functions is convex.
+|  e  | convex, quasiconvex | quadratic function with PSD hessian|
+|  f  | not convex not concave | discontinous |
+|  g  | not convex not concave | discontinous |
+|  h  | not convex not concave | from counterexamples |
+ 
+
+### Q11 : Representation of piecewise-linear convex functions
+![](q11.png)
+
+$ \\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;$
+
+### Q12: Convex hull or envelope of a function
+![](q12.png)
+
+$ \\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;$
+
+
+### Q13: Conjugate functions
+![](q13.png)
+
+Conjugate of $f(x)$ is defined as $f^*(y) = \sup \{ y^T x - f(x) \;|\; x \in dom(f) \}$
+
+a) $ f^*(y) = \sup \{ y^T x - max(x_i) \;|\; x \in \{x_1, x_2, ..., x_n \} \} $
+
+$ \\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;$
+
+
+### Q14: Relation between polar and Lagrangian duality.
+![](q14p1.png)
+![](q14p2.png)
+
+##### part a
+
+Scaling the inequalities of [1], we get 
+
+$$
+	\text{maximize }   c^T x \\  \; \\
+	\text{subject  to } \alpha A x \preccurlyeq \alpha b
+$$
+
+The dual of it is 
+$$
+	\text{minimize }	\alpha b^T y \\
+	\text{subject to }  \alpha A^T = c \equiv A^T = \frac{x}{\alpha}\\
+	\text{           }  y \succcurlyeq 0
+$$
+
+which is not the same as the duality we have originally. 
+
+##### part b
+
+$\vec{0}$ is a strictly feasible solution and hence $A \vec{0} \prec \vec{b}$ which implies $\vec{b} \succ \vec{0}$, i.e $\vec{b}$ has each element strictly greater than $0$.
+
+
+The objectives of $(3)$ and $(1)$ are the same.
+
+So all we need to show is that the feasible set of $(1)$ and $(3)$ are the same.
+
+Let the feasible set of $(1)$ be $\color{darkred}F_1$ and that of $(3)$ be $\color{green}F_3$.
+
+$$
+	\color{darkred} F_1 \color{black} \equiv A \vec{x} \preceq \vec{b} \\ \; \\
+	\implies A_{[i,:]} \vec{x} \leq b_i \; \forall \; i=\{1,2,3,...\} \\ \; \\
+	\implies \frac{1}{b_i} A_{[i,:]} \vec{x} \leq 1 \; \forall \; i=\{1,2,3,...\} \\ \; \\
+
+	\implies \hat{A}_{[i,:]} \vec{x} \leq 1 \; where \; \hat{A}_{[i,:]} = A_{[i,:]} \\ \; \\
+
+	\implies \hat{A} \vec{x} \preceq 1 \equiv \color{green}F_3 \color{black} \;\;\; _\blacksquare 				
+$$
+
+
+##### part c
+
+Define $ \vec{z} = \vec{b} \odot \vec{y}$ or  $\color{darkred}z_i = b_i y_i$ where $\odot$ is the Hadamard Product of two matrices/vectors.
+
+We just need to show that the objectives and the constraints/feasible regions do not change by the above change of variables.
+
+
+Clearly $\;b^T y = \sum{b_i y_i} = 1^T z\\$
+
+The objectives are the same 
+$$
+	\text{minimize } b^T y \equiv \text{minimize } \sum_i \color{darkred} b_i y_i = \color{black} \sum_i \color{darkred} z_i \color{black} = 1^T z    
+$$ 
+
+Clearly $A^T y = c \implies \hat{A}^T z = c\;$ where $\; \hat{A}_{[i,:]} = \frac{1}{b} A_{[i,:]}$
+
+So the feasible region (or the constraints) do not change either. 
+
+Finally renaming the variable  $z$ to $y$ proves the statement in the question.
+
+
+##### part d
+
+Definition of polar of a set P is given by $Y = \{ y \; | \; y^T x \leq 1 \; \forall \; x \in P \}$.
+
+Let $g = \frac{1}{\nu} c$ be in the polar $P^\circ$ for some $\nu > 0$
+
+Then, by definition of the polar, 
+$$ 
+	g^T x \leq 1 \; \forall \; x \in P \\ \; \\
+
+	\implies (\frac{1}{\nu} c)^T x \leq 1 \; \forall \; x \in P \\ \; \\
+
+	\implies \frac{1}{\nu} c^T x \leq 1 \; \forall \; x \in P \\ \; \\
+
+	\implies c^T x \leq 1 * \nu \; \forall \; x \in P \;\;\; \{ \because \nu > 0 \} \\ \; \\
+
+	\implies c^T x \leq \nu \; \forall \; x \in P
+$$
+
+Let $x^*$ be the optimimum solution and the optimum objective value be $\nu^*$, i.e $\; c^T x^* = \nu^*$.
+
+Since $ c^T x \leq 0$ for any $x \in P$ and since $x^* \in P$, definitely $ c^T x^* \leq \nu $ which implies $v^* \leq \nu$.
+
+Hence $\nu$ is an upper bound on $\nu^*$ whenever $\frac{1}{\nu}c \;$ belongs to the polar $P^\circ$.
+
+
+Now we will show that $h = \frac{1}{\nu^*} c$ is in the polar $P^\circ$.
+
+We know that $x^*$ maximizes the objective $c^T x$, i.e $c^T x^* = \nu^*$ is the maximum value that can be attained for the objective. 
+
+So $\nu^* = c^T x^* \geq c^T x$ for any arbitrary $x \in P$ and hence $ \color{blue} 1 \geq \frac{c^T x}{\nu^*}$ since we assume $\nu^* > 0$ as otherwise $\frac{c}{\nu^*}$ is not well defined in part d.
+
+For any arbitrary $x \in P$, 
+
+$$
+	h^T x = (\frac{1}{\nu^*} c)^T x = (\frac{1}{\nu^*}) c^T x =  \color{blue} \frac{c^T x}{\nu^*} \leq 1 \color{black} \\ \; \\
+
+	\implies h^T x \leq 1 \; \forall \; x \in P \text{ and hence } h \text{ is in the polar} \;\;\; _\blacksquare 
+$$
+
+
+
+##### part e
+
+> Things we know - 
+> 1. Polar $P^\circ$ is the convex combination of the rows of $\hat{A}$
+> 2. $\hat{A}^T z$ is the convex compination of the rows of $\hat{A}^T$
+
+
+$ \\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;\\\;$
