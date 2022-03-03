@@ -12,5 +12,5 @@ Notes and Homeworks | Prof. Shaddin Dughmi
 
 ---
 
-- [homework1](hw1)
+- [homework1](hw1/hw1.pdf)
 - [homework2](hw2)
