@@ -96,7 +96,7 @@ else {setTimeout(ENTRY,50);return;} //call yourself again and return immediately
 fetch("index.md")
   .then((md) => md.text())
   .then((md) => {
-    var element = document.querySelector(".stackedit__html");
+    var element = document.querySelector(".main");
 
     var extracted = extract_front_matter(md);
 
@@ -148,9 +148,9 @@ fetch("index.md")
     // MAKE Table of Content
     window.tocbot.init({
       // Where to render the table of contents.
-      tocSelector: ".stackedit__toc",
+      tocSelector: ".sidebar__toc",
       // Where to grab the headings to build the table of contents.
-      contentSelector: ".stackedit__html",
+      contentSelector: ".main",
       // Which headings to grab inside of the contentSelector element.
       headingSelector: "h1, h2, h3",
       // For headings inside relative or absolute positioned containers within content.
@@ -197,7 +197,7 @@ ENTRY()
 
 // Add target blank to all links in the Markdown content
 function add_target_blank(){
-			var ahref = document.querySelectorAll(".stackedit__html a");
+			var ahref = document.querySelectorAll(".main a");
 			for(var i = 0; i < ahref.length; i++){
 			    ahref[i].setAttribute('target','_blank')
 			}
