@@ -253,7 +253,7 @@ $$
 	\;\; _\blacksquare
 $$
 
-b) We need to show that both $E_{\lambda}, M_{\srlambda}$ are invariant under operation $T$.
+b) We need to show that both $E_{\lambda}, M_{\lambda}$ are invariant under operation $T$.
 
 Let $v \in E_{\lambda}$. Then $T(v) = \lambda v \in E_{\lambda}$ since $E_{\lambda}$ is a subspace and is closed under scaling.
 

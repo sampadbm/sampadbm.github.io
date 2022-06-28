@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Reboot Sampy</title>
+
+    <link rel="icon" type="image/jpg"  href="__landing/favicon.svg" >
+
+    <!--GOOGEL FONTS-->
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css?family=Sacramento&display=swap" rel="stylesheet">  
+
+	<link href="https://unpkg.com/bonsai.css@latest/dist/bonsai.min.css" rel="stylesheet">
+	
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+	<style>
+	    body {
+	        background-image: linear-gradient(rgba(0, 0, 200, 0.45), rgba(100, 0, 0, 0.45)),url("__landing/bg.jpg");
+	        background-size: cover;
+	        color: white;
+	        height: 100vh
+	    }
+	    
+
+	</style>
+
+</head> 
+
+
+<body>
+    
+    <div id="body_container" style="--maxh:100vh; --d:grid; --gtc: 1fr 1fr 1fr; --ml:5em; --mr:5em">
+
+        
+
+        <!-- LEFT HALF -->
+        <div class="">
+
+                
+                <div id="sampy-personal" class="sampy_left_info_header font-amatic hidden-cloud" style="visibility: hidden;">
+                    
+                            <p>
+                                {{sampy_quote}}
+                            </p>
+                            <div class="ui horizontal divider">
+                                <i class="heart icon red"></i>
+                            </div>
+                    
+                </div>
+
+                
+
+                <!--<div class="font-amatic top-gap" style="color:orange;"> SAMPY </div>-->
+
+                
+
+
+                
+                
+                <div id="quote" class="font-sacramento top-gap grey ui" >
+                <p>
+                    {{q.text}}
+                  
+                <b style="color:crimson; display:none"> - {{q.author}}</b>
+                </p> 
+                </div>
+
+
+                <div class="prompt" style="color:grey;padding-top: 1em;">
+                    <span>Load media contents? &nbsp;</span>
+                    <i id="prompt-agree" class="check icon"></i>
+                    <i id="prompt-disagree" class="close icon"></i>
+                </div>
+
+               
+                <!--SC PLAYER -->
+                <div id="player-status" style="display:block">
+
+                    <div class="ui active progress tiny orange" id="play-loader" data-percent='100'>
+                        <div class="bar" style="height: 0.1em;" >
+                          <!--<div class="progress"></div>-->
+                        </div>
+
+
+                        <div id="play-title" class="label" style="color:white; float: clear;">
+                            
+                            <i id="prev-button" class='step backward icon'></i>
+                            <i id="play-button" class='play circle outline icon big'></i>
+                            <i id="next-button" class='step forward icon'></i>
+
+                            <p>
+                                
+                                <!-- NOW PLAYING TITLE GOES HERE-->
+                            </p>
+                            
+                        </div>
+                      </div>
+
+                      <div class="ui active progress green tiny" id="play-progress" data-percent='100'>
+                        <div class="bar" style="height: 0.075em;">
+                          <!--<div class="progress"></div>-->
+                        </div>
+                      </div>
+                
+                </div>
+                <div class="top-gap sc-player ui sticky" >
+                    <iframe id="sciframe" style="opacity:0;" width="100%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fdj-rodder%2Fmass-effect-2-galaxy-map-theme&amp;color=%23ff5500&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true&amp;"></iframe>
+                </div>
+
+            <!--SC PLAYER -->
+
+            <!-- CONTACT FORM -->
+            <form class="ui form top-gap-large">
+                <div class="field">
+                  <input id="message" type="text" name="message" placeholder="                        [ Drop a hello - Enter to send ]">
+                </div>
+               
+              </form>
+
+
+            <div class="top-gap-large">
+               
+                <b class="ui horizontal inverted divider">
+                    &lt;
+		    <a> <i class="icon copyright outline small"></i>Sampy 2021</a>
+                  <!-- <a target="_blank" href="https:///instagram.com/nevesense"><i class="icon instagram"></i></a> |
+		  <a target="_blank" href="https://facebook.com/sampad.mohanty.7"><i class="icon facebook"></i></a>--> 
+                   &gt;
+                </b>
+		 
+                <b class="ui horizontal inverted divider">
+			<a target='_blank' href='https://unsplash.com/photos/2LyZfqT2LEg'> <i>  @unsplash </i></a> 
+		</b>
+                <!--<p class="ui centered grid font-amatic" style="color: grey;">
+                    <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank" style="color: white;">DRY</a>
+                    <a href="https://en.wikipedia.org/wiki/KISS_principle" target="_blank" style="color: white;">KISS</a> 
+                    <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank" style="color: white;">DRY</a>
+
+		</p>-->
+                
+            </div>
+
+	
+	</div>
+
+
+        
+        
+        
+        <!-- MID HALF -->
+        <div class="column" style="">
+
+            <div id="mainmenu" class="top-gap-xlarge sampy_mid_info_header">
+                <ul>
+                    <li v-for="(value,menuname) in mainmenu"> <a v-on:click="menuclick" :href='"#"+menuname'>{{menuname}}</a></li>
+                </ul>
+                
+            </div>
+
+        </div>
+
+        <!-- RIGHT HALF -->
+        <div class="column">
+
+            <div id="sidemenu" class="top-gap-xlarge sampy_mid_info_header"  style='max-height:80vh; overflow-y:auto; padding-top:0; margin-top:30%;'>
+
+
+                
+            </div>
+
+        </div>
+        
+    </div>
+</body>
+
+
+<!-- SOUNDCLOUD-->
+<script src="https://w.soundcloud.com/player/api.js"></script>
+<script>
+
+	$("#prompt-disagree").click(()=>{
+		SCAPI.pause();
+        	animation_time = 3000;
+		$("#prompt-agree, #prompt-disagree").fadeOut();
+		$(".prompt span").hide()
+		$("#quote p").append("<i></i>")
+		$("#quote i").eq(-1).html(" &nbsp; <i class='heart icon red'></i>").css({"color":"white"}).fadeIn().fadeOut().fadeIn().fadeOut(animation_time);
+       		 setTimeout ( ()=>{$("#quote b").fadeIn(5000);},4000);
+		
+	})
+
+    // PLAYLIST
+    playlist=[] // check the config.yml file in __landing/
+
+
+    $("#prompt-agree").click(()=>{
+
+        animation_time = 3000;
+
+        $("#sciframe").css({'opacity':0.5})//.hide(); // enabling hiding here this seems to prevent playing of track 
+
+        $("#prompt-agree, #prompt-disagree").fadeOut();
+        $(".prompt span").hide()
+        $("#quote p").append("<i></i>")
+        $("#quote i").eq(-1).html(" &nbsp; <i class='heart icon red'></i>").css({"color":"white"}).fadeIn().fadeOut().fadeIn().fadeOut(animation_time);
+        
+        //wait for heart beat animation to be over 
+        setTimeout(()=>{ 
+            // slide down only if paused - for chrome, for firefox this is already playing, hence dont slide down
+            SCAPI.isPaused((e)=>{
+
+                //console.log(e); //e is true if paused
+
+                if(e) 
+                {
+                    $("#player-status").slideUp(); // hide this
+                    $("#sciframe").slideDown(2000); // show this
+			 
+                }
+                
+                
+                }); },animation_time*3.5); // no need to show soundcloud frame now that the prompt attempts playing the music
+
+        //make personal info visible
+        $("#sampy-personal").hide().css({"visibility":"visible"}).fadeIn(2000);
+
+        //make quote visible
+        //$("#quote").hide().css({"visibility":"visible"}).fadeIn(2000).transition("jiggle",2000);
+        setTimeout ( ()=>{$("#quote b").fadeIn(5000);},3000);
+
+		    //attempt to start playing -> there wasn't any otherway to force it (this is similar to strategy on sampy old website)
+
+	/*function keep_trying_to_play(){
+			SCAPI.isPaused((e)=>{
+					console.log('-> retrying to play')
+					if(e) load_track(0)
+					else setTimeout(()=>clearInterval(window.PLAY_RETRY),3000);
+				})
+	}
+	window.PLAY_RETRY = setInterval(keep_trying_to_play,1500);*/
+	
+	load_track(0); //load random track
+
+
+        });
+
+
+    //init widget
+    SCAPI = SC.Widget('sciframe');
+
+ 
+
+
+    //// HELPERS  ////
+
+    function load_track(action)
+    {
+        /* action - 
+            0 - random init
+            -1 - prev
+            +1 - next
+        */
+
+
+        if( typeof window.current_track == 'undefined' ) {
+            current_track = Math.floor(Math.random() * playlist.length);
+
+            console.log("RAND")
+        }
+
+        if(action===0); // - load the currnt_track
+
+        else if(action===1) 
+        {
+            current_track++;
+            current_track = current_track % playlist.length;
+        }
+
+        else if (action === -1)
+        {
+            current_track--;
+            current_track = current_track % playlist.length;
+	    if(current_track<0) current_track += playlist.length;
+        }
+
+        
+        console.log("Playing -> index: " + current_track + " | url: " + playlist[current_track]);
+
+
+        
+        //load the track using 'current_track' URL and set title after load is complete
+	function load_n_play(){
+	    SCAPI.load(playlist[current_track],
+		{
+		    
+
+		    "callback":()=>
+		    {
+			load_play_interval = 1000;
+			SCAPI.play();
+
+			el = $("#play-title p");
+
+			el.fadeOut(load_play_interval/2);
+			setTimeout ( ()=>{play_title_set();},load_play_interval/2); //set title
+			el.fadeIn(load_play_interval/2);
+
+
+			//slide UP
+			$("#sciframe").slideUp();
+
+		    }
+		 })
+	       }
+	    
+	    //clear previous LOAD_PLAY_RETRY if defined
+	    if(typeof window.LOAD_PLAY_RETRY !== 'undefined') 
+		    clearInterval(window.LOAD_PLAY_RETRY); 
+	    
+	    //call once
+	    load_n_play();
+
+	    window.LOAD_PLAY_RETRY = setInterval(()=>{
+		    console.log('retyring load_n_play...')
+		    SCAPI.isPaused((e)=>{
+			    if(e) load_n_play();
+			    else setTimeout(()=>clearInterval(window.LOAD_PLAY_RETRY),2000);
+
+		    })
+	    },1500);
+
+
+
+ 
+    }
+    
+    function play_title_set()
+    {
+        SCAPI.getCurrentSound((trackdata)=>{
+            $("#play-title p").html("<br>"+trackdata.title);
+        });
+    }
+/*  LIST STYLE TAKEN FROM - 
+                https://freefrontend.com/css-lists/
+                https://codepen.io/equinusocio/pen/OqpBKJ 
+            */
+
+    function play_button_play()
+    {
+
+        el=$("#play-button");
+        el.removeClass("pause");
+        el.addClass("play");
+    }
+
+    function play_button_pause()
+    {
+
+        el=$("#play-button");
+        el.removeClass("play");
+        el.addClass("pause");
+    }
+
+
+    function play_next()
+    {
+        load_track(1);
+
+    }
+
+    function play_prev()
+    {
+        load_track(-1);
+
+    }
+
+    //// HELPERS  ////
+
+
+
+   //mute and then attempt to play
+    //SCAPI.setVolume(0);
+   //attempt load and play initial track
+   //load_track(0);
+
+
+    //bind to play-button
+    $("#play-button").click(()=>
+    {
+        SCAPI.toggle();
+
+    })
+
+    //bind next button
+    $("#next-button").click(play_next);
+
+    //bind prev button
+    $("#prev-button").click(play_prev);
+
+
+
+    SCAPI.bind(SC.Widget.Events.PLAY,()=>{
+        // SET TRACK TITLE - atleast title will be correclty here
+        //play_title_set();
+
+        //set button to play
+        play_button_pause();
+
+
+        $("#sciframe").slideUp();
+        $("#player-status").slideDown();
+        $("#player-status").css({"filter":"grayscale(0)"}); // restore color
+
+        
+
+        
+
+        
+        //alert("PLAY")
+            
+
+        
+    });
+
+
+    SCAPI.bind(SC.Widget.Events.PAUSE,()=>{
+        //$("#sciframe").slideDown(1000);
+        //$("#player-status").fadeOut(2000);
+
+
+       
+        //set button to play
+        play_button_play();
+        $("#player-status").css({"filter":"grayscale(100)"});
+        //alert("PAUSE")
+
+        //$("#player-status").fadeOut(2000);
+        //$("#sciframe").slideDown(1000); ///-- no need to show soundcloud as the prompt click triggers playing
+
+
+        
+    });
+
+    SCAPI.bind(SC.Widget.Events.FINISH,()=>{
+        //$("#sciframe").slideDown(1000);
+        //$("#player-status").fadeOut(2000);
+
+        //play next
+        play_next();
+
+        //$("#player-status").slideUp(1000);
+        //$("#sciframe").slideDown(1000);
+
+        //$("#player-status").slideDown(1000);
+        //$("#sciframe").slideUp(1000);
+
+
+        
+
+        
+    });
+
+    SCAPI.bind(SC.Widget.Events.READY,()=>{
+        //$("#sciframe").slideDown(1000);
+        //$("#player-status").fadeOut(2000);
+
+
+       
+        //set title
+        play_title_set();
+        setTimeout ( ()=>{$("#player-status").css({"filter":"grayscale(100)"}).fadeOut();},1); //make gray and
+        
+
+
+        //SCAPI.play();
+        //alert("ok")
+
+        
+    });
+
+  
+
+    
+    
+
+    
+
+    window.playloader = $("#play-loader").progress();
+    window.playprogress = $("#play-progress").progress();
+
+    SCAPI.bind(SC.Widget.Events.PLAY_PROGRESS,(audioevent)=>{
+
+        //console.log(audioevent)
+
+		//only update if window is in focus
+		if (document.hasFocus()){
+	        // update only 33% of time
+	        if (Math.random() < 0.3333) playloader.progress({'percent': (audioevent.loadedProgress*100)});
+		    if (Math.random() < 0.3333) playprogress.progress({'percent': (audioevent.relativePosition*100)});
+		}
+        
+        //console.log(audioevent.relativePosition*100)
+
+    });
+
+
+</script>
+
+<!-- SOUNDCLOUD-->
+
+<!-- FORM MESSAGE-->
+<script>
+    $(document).ready(
+        ()=>
+        {
+           
+
+            
+            $("#message").on('keydown', function(e) {
+            var keyCode = e.keyCode || e.which;
+            
+            if (keyCode == 13) { 
+                    
+                    
+                    el = $(e.target);
+
+                    msg=el.val()
+                    
+
+                    //console.log(msg);
+
+                    el.val("Message submitted...");
+                    el.prop("disabled", true);
+                    //hide input field
+                    setTimeout( ()=>{ el.val(""); el.slideUp();}, 3000 ) ;
+
+                    $.post("https://formspree.io/f/xqkgrvlj", {"message":msg})
+
+
+                    //PREVENT HTML FORM SUBMISSION 
+                    e.preventDefault();
+                    return false;
+                }
+            });
+        });
+</script>
+<!-- FORM MESSAGE-->
+
+
+<!--- YML SITE DESCRIPTION --->
+
+<!-- production version, optimized for size and speed -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.13.1/js-yaml.js"></script>
+
+<script>
+    
+    $.get("__landing/index.yml", (data,status)=>
+    {
+         window.sitedata = jsyaml.load(data);
+
+         //log
+         console.log("sitedata ---> ");
+         console.log(data);
+         console.log("sitedata <--- ");
+
+
+         //update soundcloud playlist
+         window.playlist = sitedata.soundcloud_playlist;
+
+         //sampy-personal
+         var app_personal_quote = new Vue({
+            el: '#sampy-personal',
+            data: { sampy_quote: sitedata.sampy_personal_quote}
+         })
+
+
+         
+         //quote
+         var app_quote = new Vue({
+            el: '#quote',
+            data: {
+                q:sitedata.quote
+            }
+         })
+
+         // mainmenu
+         var app_main_menu = new Vue({
+            el: '#mainmenu',
+            data: {
+                mainmenu: sitedata.main_menu.data
+            },
+
+            methods:{
+
+                menuclick: function (e) {
+                
+                
+
+                /// HANDLE MAIN MENU and load SIDEMENU
+                
+                menu_clicked_name = e.target.text.trim()
+                menu_clicked = this.mainmenu[menu_clicked_name]
+
+                
+                
+                loadsidemenu(menu_clicked,sitedata.main_menu);
+
+                /// HANDLE MAIN MENU
+
+
+              
+                }
+
+            }
+           
+         })
+    
+    })
+
+
+    loadsidemenu = (menu_info, extras)=>{
+
+        //console.log(extras);
+        //return
+
+        //menu_info -> {"yml":"whatever.yml","template":"whateverelse.html"}
+
+        template_url = extras.baseurl + extras.template_relative_url + menu_info.template
+        yml_url = extras.baseurl + extras.yml_relative_url + menu_info.yml
+	    console.log(`yml_url: ${yml_url}`);
+	    console.log(`template_url:${template_url}`);
+        $.get(template_url,(t)=>{
+
+	    //insert this template into sidemenu
+            $("#sidemenu").html(t)
+
+            //only after template is loaded, do this
+
+            $.get(yml_url,(sidemenu_yml)=>{
+
+                    
+                    sidemenu_json = jsyaml.load(sidemenu_yml);
+                    console.log(sidemenu_json)
+                   // return
+		    
+                    var side_menu_app = new Vue({
+                        el: '#sidemenu',
+                        data: {
+                            sidemenudata: sidemenu_json
+                        }
+                    })
+
+                })
+                            
+        })
+
+
+    }
+
+ 
+
+</script>
+
+<!--- YML SITE DESCRIPTION --->
+
+
+

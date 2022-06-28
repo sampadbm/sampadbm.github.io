@@ -15,22 +15,27 @@
 </head>
 
 
-<body style="--d:grid; --gtc:min-content auto;">  
-  <!-- <div class="stackedit" style="--d:grid; --gtc:min-content auto;"> -->
+<body>  
+  <div "page" style="--d:grid; --gtc:1fr 6fr;">
 
-      <div class="sidebar" style="--d:grid; --gtr:auto max-content max-content; --p:1em; --pos:sticky; --top:0; --maxh:100vh" >
+      <div class="sidebar" style="--d:grid; --gtr:auto max-content; --p:1em; --pos:sticky; --top:0; --h:100vh" >
 			
-	        <div class="sidebar__toc"></div>
+	        <div class="sidebar__toc" style=""></div>
 
 	        <div class="themebox" style="--d:grid; --gtr: auto auto auto;"> 
 	            <p> 
-	              &#127279; Sampy-2021 |> made possible using: &nbsp;
+	              &#127279; Sampy-2021
+	              |> 
+	              Ingredients: &nbsp;
+	              </br>
 	              <a href="https://www.bonsaicss.com/" target="_blank"> BonsaiCSS</a>,
 	              <a href="https://vuejs.org/" target="_blank"> Vuejs</a>,
-	              <a href="https://github.com/neveisa/texme/" target="_blank">texme(fork)</a>,  
+	              <a href="https://github.com/neveisa/texme/" target="_blank">texme(fork)</a>,
+	              <!-- </br> -->
 	              <a href="https://github.com/markedjs/marked" target="_blank">markedjs</a>,
 	              <a href="https://katex.org/" target="_blank">KATEX</a>,
 	              <a href="http://nodeca.github.io/js-yaml/" target="_blank">js-yaml</a>,
+				  <!-- </br> -->
 	              <a href="https://tscanlin.github.io/tocbot/" target="_blank">tocbot</a>, 
 	              <a href="https://highlightjs.org/" target="_blank"> highlightjs</a> 
 	            </p> 
@@ -42,10 +47,10 @@
 
       </div>
 
-        <div class="main" style="--p:2em; --maxh:100%"></div> 
+        <div class="main" style="--p:2em;"></div> 
         <!-- <div id="commento"></div> -->
 
-  <!-- </div> -->
+  </div> 
   
 </body>
 
@@ -168,8 +173,16 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+.main > h1:first-of-type {
+	text-align: center;
+}
+
 code {
 	background: rgba(0,0,0,0.1) !important;
+}
+
+blockquote {
+	background-color: rgba(0,0,0,0.1)
 }
 
 .sidebar__toc li {

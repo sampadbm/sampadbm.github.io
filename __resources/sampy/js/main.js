@@ -184,7 +184,7 @@ fetch("index.md")
     
     // hljs.initHighlighting() // <-- depricated as of highlightjs 10.6, use highlightAll()
     hljs.highlightAll()
-
+	
 	//add target=_blank to all a href in markdown doc
     add_target_blank()
     
