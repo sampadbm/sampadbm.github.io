@@ -768,7 +768,7 @@ b) I will invoke the $\color{darkred}interlacing \; theorem$ here which states t
 $$
 	\lambda_k \leq \beta_k \leq \lambda_{k + n - m}  
 $$
-A proof for this can be found [here.](https://people.orie.cornell.edu/dpw/orie6334/Fall2016/lecture4.pdf)
+A proof for this can be found [here](lecture4.pdf) which was originally found at https://people.orie.cornell.edu/dpw/orie6334/Fall2016/lecture4.pdf
 
 
 Now, for $m = n - 1$, we have
