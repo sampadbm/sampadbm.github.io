@@ -80,13 +80,13 @@ function ENTRY(){
 //check if MD-RENDERER Library is loaded
 MD_RENDERER_LOADED= false;
 MATH_RENDERER_LOADED= false;
-if (window.commonmark) {MD_RENDERER_LOADED='CommonMark'}//pass
-if (window.MathJax && window.MathJax.typeset) {MATH_RENDERER_LOADED='MathJax'} //MathJax maybe loaded but MathJax.typeset might not be ready
+// if (window.MathJax && window.MathJax.typeset) {MATH_RENDERER_LOADED='MathJax'} //MathJax maybe loaded but MathJax.typeset might not be ready
 
-if (window.marked){MD_RENDERER_LOADED='marked'}//pass
+if (typeof(window.marked)!="undefined" && typeof(window.marked.parse)!="undefined"){MD_RENDERER_LOADED='marked'}//pass
 if (window.katex) {MATH_RENDERER_LOADED='KATEX'} //KATEX is ready
 
-if(MD_RENDERER_LOADED && MATH_RENDERER_LOADED){
+// if(MD_RENDERER_LOADED && MATH_RENDERER_LOADED){
+if(MATH_RENDERER_LOADED){
   console.log(`===> Rendering using ${MD_RENDERER_LOADED} and ${MATH_RENDERER_LOADED}`);
 }
 else {setTimeout(ENTRY,50);return;} //call yourself again and return immediately

@@ -11,14 +11,28 @@
 
   <link href="https://unpkg.com/sanitize.css" rel="stylesheet"/>
   <link href="https://unpkg.com/bonsai.css@latest/dist/bonsai.min.css" rel="stylesheet"> 
-
 </head>
 
 
-<body>  
-  <div "page" style="--d:grid; --gtc:1fr 6fr;">
+<script> 
+  //FOR USING MARKEDJS and KATEX
 
-      <div class="sidebar" style="--d:grid; --gtr:auto max-content; --p:1em; --pos:sticky; --top:0; --h:100vh" >
+  //SUPPORT FOR TOC and Faster LaTeX rendering
+  
+  //useMathJax = false prevents loading of MathJax Library - see texme.main implementation 
+  // there was no way to prevent loading of commonmark, hence the work around is to make commonmarkURL empty and hence will not be loaded
+  // window.texme = { onRenderPage: ()=>{console.log(123)},renderOnLoad: false, externalMarkdownRenderer: marked.marked, useMathJax: false, commonmarkURL: ''} 
+
+  window.texme = { onRenderPage: ()=>{console.log(123)}, renderOnLoad: false, useMathJax:false}
+
+</script>
+<script src="/__resources/texme/texme.js"></script>
+
+
+<body>  
+  <div "page" style="--d:grid; --gtc:2fr 7fr;">
+
+      <div class="sidebar" style="--d:grid; --gtr:auto max-content; --p:1em; --pos:sticky; --top:0; --h:100vh; --ofy:scroll;" >
 			
 	        <div class="sidebar__toc" style=""></div>
 
@@ -57,7 +71,7 @@
 </html>
 
 <!--https://marked.js.org | has headerIds options ture by default -> used in the TOC sidebar for srolling to the right section on the page-->
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.14.0/js-yaml.min.js"></script>
@@ -71,16 +85,6 @@
 -->
 
 
-<script> 
-  //FOR USING MARKEDJS and KATEX
-
-  //SUPPORT FOR TOC and Faster LaTeX rendering
-  
-  //useMathJax = false prevents loading of MathJax Library - see texme.main implementation 
-  // there was no way to prevent loading of commonmark, hence the work around is to make commonmarkURL empty and hence will not be loaded
-  window.texme = { onRenderPage: ()=>{console.log(123)},renderOnLoad: false, externalMarkdownRenderer: marked.marked, useMathJax: false, commonmarkURL: ''}
-
-</script>
 
 
 <!--<link rel="stylesheet"
@@ -112,7 +116,6 @@
 </script>
 
 
-<script src="/__resources/texme/texme.js" defer></script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
@@ -124,7 +127,7 @@
 
 
 
-<script defer src="http://localhost:9090/js/commento.js"></script>
+<script defer src="http://localhost:9090/js/commento.js"></script> 
 
 <script>
   //console.log('<<--->> Make sure to git checkout -b externalrenderer on neveisa/texme')
