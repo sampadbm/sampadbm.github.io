@@ -1,6 +1,8 @@
 COURSES:
-- csci670-advanced-analysis-of-algorithms
-- math574-applied-matrix-analysis
 - csci675-convex-optimisation
+- math574-applied-matrix-analysis
+- csci670-advanced-analysis-of-algorithms
+GENERAL:
+- phy760-computational-methods-in-physics
 OPTIMISATION:
 - constrained-convex-optimisation

@@ -1,9 +1,9 @@
+GENERAL:
+- odisha
 MATHEMATICS:
-    - linearAlgebra
+- linearAlgebra
 READING:
-    - reading
+- reading
 RESEARCH:
-    - tensors
-    - physicsML
-TRAVEL:
-    - odisha
+- physicsML
+- tensors
