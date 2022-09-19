@@ -83,6 +83,8 @@ MATH_RENDERER_LOADED= false;
 // if (window.MathJax && window.MathJax.typeset) {MATH_RENDERER_LOADED='MathJax'} //MathJax maybe loaded but MathJax.typeset might not be ready
 
 if (typeof(window.marked)!="undefined" && typeof(window.marked.parse)!="undefined"){MD_RENDERER_LOADED='marked'}//pass
+else {setTimeout(ENTRY,50);return;} //call yourself again and return immediately
+
 if (window.katex) {MATH_RENDERER_LOADED='KATEX'} //KATEX is ready
 
 // if(MD_RENDERER_LOADED && MATH_RENDERER_LOADED){
