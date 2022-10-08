@@ -1,5 +1,5 @@
 ---
-themes: ["colorful"]
+themes: ["colorful","muted"]
 ---
 
 # PHY760-Computational Methods in Physics
@@ -58,7 +58,7 @@ If the observed matrix $O$ is noiseless, then $O = D$.
 $$
 	G = \frac{O[1,i]^2 + O[1,j]^2 - O[i,j]}{2} = \frac{D[1,i]^2 + D[1,j]^2 - D[i,j]}{2}
 $$
- is a perfect Gram matrix which is positive semidefinite(PSD) and has rank d unless the points actually lie in a lower dimensional space than their tru embedding space (for eg, maybe the points lie on a line in 2D or on a line/plane in 3D).
+ is a perfect Gram matrix which is positive semidefinite(PSD) and has rank d unless the points actually lie in a lower dimensional space than their true embedding space (for eg, maybe the points lie on a line in 2D or on a line/plane in 3D).
 
 Singular Value Decomposition (SVD) of the symmetric positive-semidefinite $G$ can help us recover one such decomposition. 
 $$
