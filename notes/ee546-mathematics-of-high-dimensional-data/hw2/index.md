@@ -52,7 +52,20 @@ $$
 	||A|| \leq ||A||_F \leq \sqrt{m}{\underset{i \in \{1,...,m\}}{max}{\bigg( \sum_{j=1}^n{A_{ij}^2} \bigg)^\frac{1}{2}}}
 $$
 
-For an example where the inequality is tight, we need to make $||A|| = ||A||_F$ first. This can be achieved when the matrix is diagonal with only one entry on the diagonal non-zero. However, the second inequality can only be made tight if all the rows are of same length. Hence, the only way the two inequalities can be made tight is if the matrix is $\mathbf{0}$ or is a $1 \times 1$ matrix.
+For an example where the inequality is tight, we need to make $||A|| = ||A||_F$ first. This can be achieved when the matrix is diagonal with only one entry on the diagonal non-zero. However, the second inequality can only be made tight if all the rows are of same length. Hence, the only way the two inequalities can be made tight is if the matrix is $\mathbf{0}$ or is a $1 \times 1$ matrix.  
+
+
+Now let us look at the second inequality $||A|| \geq \frac{1}{\sqrt{mn}}\sum_{i=1}^m \big| \sum_{j=1}^n A_{ij} \big|$  
+
+We know that $||A|| = \underset{||x||_2 = ||y||_2 = 1}{max}{y^TAx}$  
+ 
+Let $x = \frac{1}{\sqrt{n}}\vec{1}$ and $y$ be such that $y_i = \frac{1}{\sqrt{n}}sgn(e_iAx)$ such that $||x||_2 = ||y||_2 = 1$  
+
+Clearly,  
+$$
+	\frac{1}{\sqrt{mn}}\sum_{i=1}^m \big| \sum_{j=1}^n{A_{ij}^2}  \big| = x^TAy \leq \underset{||x||_2 = ||y||_2 = 1}{max}{x^TAy}
+$$
+
 
 ![](q4.png)
 
@@ -77,7 +90,7 @@ Since $U$ and $V$(and hence $V^T$) are orthonormal matrices,
 $$
 	||A||_F^2 = ||U \Sigma V^T||_F = || U \Sigma ||_F = || \Sigma ||_F = \sum_{i=0}^{min(m,n)}{\sigma_i^2(A)}\\
 	\implies ||A||_F = \bigg[ \; \sum_{i=1}^{min(m,n)}{\sigma_i^2(A)} \; \bigg]^{1/2} = \bigg[ \; \sum_{i=1}^{rank(A)}{\sigma_i^2(A)} \; \bigg]^{1/2}\\
-$$
+ $$
 Clearly,
 $$
 	\sigma_{max}(A) \leq \bigg[ \; \sum_{i=1}^{rank(A)}{\sigma_i^2(A)} \; \bigg]^{1/2} \leq \bigg[ \; \sum_{i=1}^{rank(A)}{\sigma_{max}^2(A)} \; \bigg]^{1/2}\\
@@ -85,3 +98,5 @@ $$
 				\sigma_{max}(A) \leq \bigg[ \; \sum_{i=1}^{rank(A)}{\sigma_i^2(A)} \; \bigg]^{1/2} \leq \sqrt{rank(A)}\;{\sigma_{max}(A)}\\\;\\
 				||A|| \leq ||A||_F \leq \sqrt{rank(A)}\;||A|| \;\; _\blacksquare
 $$
+
+
