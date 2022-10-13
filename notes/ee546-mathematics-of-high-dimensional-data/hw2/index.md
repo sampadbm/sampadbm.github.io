@@ -1,5 +1,5 @@
 ---
-themes: ["colorful"]
+themes: ["muted","colorful"]
 ---
 
 # EE546-Mathematics of High Dimensional Data
@@ -11,7 +11,11 @@ Homework-2 EE546 Fall2022 | Prof. Mahdi Soltanolkotabi
 
 ---
 
-NOTE1:  
+
+![](q2.png)
+
+
+Let us recall that
 $$
 	||x||_2 = \underset{||y||_2 = 1}{max}{\langle y,x \rangle}
 	= \underset{||y||_2 = 1}{max}{y^Tx}
@@ -26,16 +30,29 @@ $$
 	= \underset{x}{max}{\color{brown}||A \hat{x}||_2 \color{default}} 
 	= \underset{\hat{x}}{max}{\color{brown}||A \hat{x}||_2\color{default}}
 	= \underset{||x||_2 = 1}{max}{\color{brown}||A x||_2\color{default}} = \underset{||x||_2=1}{max}\;{\color{brown}\underset{||y||_2=1}{max}{||y^TAx||_2}\color{default}}\\\;\\
-	= \underset{||x||_2=||y||_2=1}{max}\;{||y^TAx||_2}
+	= \underset{||x||_2=||y||_2=1}{max}\;{y^TAx}
 $$
 
 Hence,
 $$
-	||A|| = \underset{||x||_2=||y||_2=1}{max}\;{||y^TAx||_2}
+	||A|| = \underset{||x||_2=||y||_2=1}{max}\;{||y^TAx||_2} = max \{ \langle y,Ax  \rangle : x \in \mathbb{R}^n, y \in \mathbb{R}^m, ||x||_2 = ||y_2|| = 1 \} \;\;\;\; _\blacksquare
 $$
 
----
----
+Now we want to show that $||A||$ is infact the largest singular value of $A$, i.e $\sigma_1(A)$.  
+Let us cnsider a square matrix $A \in \mathbb{R}^{n \times n}$. Let the SVD of $A$ be $A = U \Sigma V^T$ where $\Sigma$ is diagonal and $U,\Sigma,V \in \mathbb{R}^{n \times n}$ and $U^TU = V^TV = I_{n \times n}$, i.e $U,V$ are orthonormal. 
+
+By definition, 
+$$
+	||A||^2 = \underset{||x||_2 = 1}{max}{||Ax||_2^2} = \underset{||x||_2 = 1}{max}{(Ax)^T(Ax)} = \underset{||x||_2 = 1}{max}{x^TA^TAx}
+$$
+
+If we know and accept it that $\underset{||x||_2=1}{max}x^T B x$ gives us the largest eigenvalue of $B$, then we are done since the largest eigenvalue of $A^TA$ is $\sigma_1(A)^2$
+$$
+	A^TA = (U \Sigma V^T)^T (U \Sigma V) = V \Sigma U^T U \Sigma V^T = V^T \Sigma I \Sigma V = V^T \Sigma^2 V
+$$
+
+Setting $P = V^T$, we have $A^TA = P \Sigma^2 P^{-1}$.
+
 
 ![](q3.png)
 
@@ -59,12 +76,20 @@ Now let us look at the second inequality $||A|| \geq \frac{1}{\sqrt{mn}}\sum_{i=
 
 We know that $||A|| = \underset{||x||_2 = ||y||_2 = 1}{max}{y^TAx}$  
  
-Let $x = \frac{1}{\sqrt{n}}\vec{1}$ and $y$ be such that $y_i = \frac{1}{\sqrt{n}}sgn(e_iAx)$ such that $||x||_2 = ||y||_2 = 1$  
+Let $a = \frac{1}{\sqrt{n}}\vec{1}$ and $b$ be such that $b_i = \frac{1}{\sqrt{n}}sgn(e_iAa)$ such that $||a||_2 = ||b||_2 = 1$  
 
 Clearly,  
 $$
-	\frac{1}{\sqrt{mn}}\sum_{i=1}^m \big| \sum_{j=1}^n{A_{ij}^2}  \big| = x^TAy \leq \underset{||x||_2 = ||y||_2 = 1}{max}{x^TAy}
+	\frac{1}{\sqrt{mn}}\sum_{i=1}^m \big| \sum_{j=1}^n{A_{ij}^2}  \big| = a^TAb \leq ||A|| = \underset{||x||_2 = ||y||_2 = 1}{max}{x^TAy}  \;\;\; _\blacksquare
 $$
+
+The inequality will be tight if $a$ and $b$ are the exact vectors that maximize $x^TAy$ when $x=a$ and $y=b$.  
+
+An even simpler case is $I_{n \times n}$ where $\frac{1}{\sqrt{mn}}{\sum_{i=1}^{m}\bigg| \sum_{j=1}^n I_{ij}\bigg|} = \frac{1}{n} n = 1$ and $\underset{||x||_2 = ||y||_2 = 1}{max}{x^T I y} = \underset{||x||_2  = ||y||_2 = 1}{x^Ty} = 1$  
+
+And ofcourse there are more trivial examples like the all zero matrix $0_{n \times n}$ and all $1 \times 1$ matrices.
+
+$\\\;\\$
 
 
 ![](q4.png)
