@@ -210,3 +210,23 @@ blockquote {
 	background-color: rgba(0,0,0,0);
 }
 </style>
+
+<script>
+// restore scroll position
+// https://stackoverflow.com/questions/26112503/scroll-to-same-position-on-reload-and-load#:~:text=Scroll%20to%20same%20Position%20on%20reload%20and%20load,...%204%20Full%20Code%20...%205%20Documentation%20Links
+
+setInterval(()=>{localStorage.setItem("scrollY", window.scrollY)},5000);
+
+window.onunload = function() {
+    localStorage.setItem("scrollY", window.scrollY);
+}
+
+restorescroll = function() {  
+    var scrollY = parseInt(localStorage.getItem("scrollY"));
+    if (!isNaN(scroll)) {
+        window.scroll(0, scrollY);
+    }
+}
+
+setTimeout(restorescroll, 2000)
+</script>

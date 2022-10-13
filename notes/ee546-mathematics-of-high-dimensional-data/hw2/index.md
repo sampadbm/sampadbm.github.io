@@ -51,8 +51,7 @@ $$
 	A^TA = (U \Sigma V^T)^T (U \Sigma V) = V \Sigma U^T U \Sigma V^T = V^T \Sigma I \Sigma V = V^T \Sigma^2 V
 $$
 
-Setting $P = V^T$, we have $A^TA = P \Sigma^2 P^{-1}$.
-
+Setting $P = V^T$, we have $A^TA = P \Sigma^2 P^{-1}$ which is the eigenvalue decomposition of $A^TA$ and thus the eigenvalues of $A^TA$ are contained in the diagonal matrix $\Sigma^2$ and hence are square of the singular values of $A$, i.e $\sigma_i(A)^2$
 
 ![](q3.png)
 
