@@ -46,12 +46,40 @@ $$
 	||A||^2 = \underset{||x||_2 = 1}{max}{||Ax||_2^2} = \underset{||x||_2 = 1}{max}{(Ax)^T(Ax)} = \underset{||x||_2 = 1}{max}{x^TA^TAx}
 $$
 
-If we know and accept it that $\underset{||x||_2=1}{max}x^T B x$ gives us the largest eigenvalue of $B$, then we are done since the largest eigenvalue of $A^TA$ is $\sigma_1(A)^2$
-$$
+>$$
 	A^TA = (U \Sigma V^T)^T (U \Sigma V) = V \Sigma U^T U \Sigma V^T = V^T \Sigma I \Sigma V = V^T \Sigma^2 V
 $$
+Setting $P = V^T$, we have $A^TA = P \Sigma^2 P^{-1}$ which is the eigenvalue decomposition of $A^TA$ and thus the eigenvalues of $A^TA$ are contained in the diagonal matrix $\Sigma^2$ and hence are square of the singular values of $A$, i.e $ \lambda_i(A^TA) = \sigma_i(A)^2$
 
-Setting $P = V^T$, we have $A^TA = P \Sigma^2 P^{-1}$ which is the eigenvalue decomposition of $A^TA$ and thus the eigenvalues of $A^TA$ are contained in the diagonal matrix $\Sigma^2$ and hence are square of the singular values of $A$, i.e $\sigma_i(A)^2$
+If we accept that $\underset{||x||_2=1}{max}x^T B x$ gives us the largest eigenvalue of $B$, then we are done since the largest eigenvalue of $A^TA$ is $\lambda_1(A^TA) = \sigma_1(A)^2$.
+
+Otherwise, 
+
+$$
+	\underset{||x||_2 = 1}{max}{x^TA^TAx} = \underset{||x||_2 = 1}{max}{x^TV^T \Sigma^2 Vx} =  \underset{||x||_2 = 1}{max}{(Vx)^T \Sigma^2 (Vx)}
+$$
+
+>We know that $V$ is orthonormal and hence $V^TV = I$ and $V^{-1} = V^T$. And since $V$ is orthonormal, the transformation under $V$ is an isometry (preserves lengths and angles).  
+$$
+ ||Vx||_2 = (Vx)^T(Vx) = x^TV^TVx = x^T I x = x^Tx = ||x||_2 \;\;\; \text{(length preservation)}
+$$
+$$ 
+\langle Vx, Vy \rangle = (Vx)^T(Vy) = x^T V^T V y = x^T I y = x^Ty = \langle x, y \rangle \\\;\\
+
+\implies \langle Vx, Vy \rangle = \langle x,y \rangle \\\;\\
+
+\implies ||Vx||_2 \; ||Vy||_2 \; cos(\alpha) = ||x||_2 \; ||y||_2 \; cos(\beta) \\\;\\
+\implies ||x||_2 \; ||y||_2 \; cos(\alpha) = ||x||_2 \; ||y||_2 \; cos(\beta) \\\;\\
+\implies cos(\alpha) = cos(\beta) \;\;\; \text{(angle preservation)} \\
+$$
+We also know that $||V^{-1}x||_2^2 = ||V^Tx||_2^2 = (V^Tx)^T(V^Tx) = x^TVV^Tx = x^T I x = x^T x = ||x||^2$ and hence $V^{-1} = V^T$ also 
+
+Setting $z = Vx$ we get,
+$$
+	\underset{||x||_2 = 1}{max}{x^TA^TAx} = \underset{||x||_2 = 1}{max}{x^TV^T \Sigma^2 Vx} = \underset{||x||_2 = 1}{max}{(Vx)^T \Sigma^2 (Vx)}  = \underset{||V^{-1}z||_2=1}{max}{z^T \Sigma^2 z}
+$$
+
+
 
 ![](q3.png)
 
