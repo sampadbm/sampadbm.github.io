@@ -72,12 +72,27 @@ $$
 \implies ||x||_2 \; ||y||_2 \; cos(\alpha) = ||x||_2 \; ||y||_2 \; cos(\beta) \\\;\\
 \implies cos(\alpha) = cos(\beta) \;\;\; \text{(angle preservation)} \\
 $$
-We also know that $||V^{-1}x||_2^2 = ||V^Tx||_2^2 = (V^Tx)^T(V^Tx) = x^TVV^Tx = x^T I x = x^T x = ||x||^2$ and hence $V^{-1} = V^T$ also 
+We also know that $||V^{-1}x||_2^2 = ||V^Tx||_2^2 = (V^Tx)^T(V^Tx) = x^TVV^Tx = x^T I x = x^T x = ||x||^2$.
 
 Setting $z = Vx$ we get,
 $$
-	\underset{||x||_2 = 1}{max}{x^TA^TAx} = \underset{||x||_2 = 1}{max}{x^TV^T \Sigma^2 Vx} = \underset{||x||_2 = 1}{max}{(Vx)^T \Sigma^2 (Vx)}  = \underset{||V^{-1}z||_2=1}{max}{z^T \Sigma^2 z}
+	||A||^2 = \underset{||x||_2 = 1}{max}{x^TA^TAx} = \underset{||x||_2 = 1}{max}{x^TV^T \Sigma^2 Vx} = \underset{||x||_2 = 1}{max}{(Vx)^T \Sigma^2 (Vx)}  = \underset{||V^{-1}z||_2=1}{max}{z^T \Sigma^2 z} \\\;\\
+	 = \underset{||V^Tz||_2=1}{max}{z^T \Sigma^2 z} = \underset{||z||_2=1}{max}{ \; z^T \Sigma^2 z} \;\;\;\; \color{green} \because \; ||V^{-1}z||_2 = ||V^Tz||_2 = ||z||_2
 $$
+
+Now we use the following not so popular identity for the quadratic form
+>$$
+x^T M y = \langle M, xy^T \rangle
+$$
+
+Now we have,
+$$
+	||A||^2 = \underset{||z||_2=1}{max}{\;z^T \Sigma^2 z} = \underset{||z||_2=1}{max}{ \langle \Sigma^2,zz^T \rangle}
+$$
+
+Since $||z||_2=1$, it is obvious that each entry of $zz^T$ is less than equal to $1$. Again, we observe that the diagonal of $zz^T$ are the only entries that affect the inner product $\langle \Sigma^2, zz^T \rangle$  
+
+---
 
 
 
