@@ -11,9 +11,12 @@ Homework-2 EE546 Fall2022 | Prof. Mahdi Soltanolkotabi
 
 ---
 
+## Q2
 
 ![](q2.png)
 
+
+### Q2.i
 
 Let us recall that
 $$
@@ -90,11 +93,66 @@ $$
 	||A||^2 = \underset{||z||_2=1}{max}{\;z^T \Sigma^2 z} = \underset{||z||_2=1}{max}{ \langle \Sigma^2,zz^T \rangle}
 $$
 
-Since $||z||_2=1$, it is obvious that each entry of $zz^T$ is less than equal to $1$. Again, we observe that the diagonal of $zz^T$ are the only entries that affect the inner product $\langle \Sigma^2, zz^T \rangle$  
+Since $||z||_2=1$, $\sum_{i}{z_i^2} = 1$. Also it is obvious that each entry of $zz^T$ is $z_i z_j$ and less than equal to $1$. Again, we observe that the diagonal of $zz^T$ are the only entries that affect the inner product $\langle \Sigma^2, zz^T \rangle$. Also note that the $i^{th}$ diagonal entry is $z_i^2$. Hence the sum of the diagonal entries equal $1$ as $||z||_2 = 1$. To maximize the inner product $\langle \Sigma^2, zz^T \rangle$, we must put all the weights on the largest singular value since. Since the singular values are sorted on the diagonals of $\Sigma^2$, hence $z = e_1$ where $e_1$ is the 1st standard basis. We could have also chosen $z = -e_1$.
+
+Another way of seeing this is 
+$$
+	z^T\Sigma^2 z = \langle \Sigma^2, zz^T \rangle = \langle diag(\Sigma^2), diag(zz^T) \rangle  = \sum_{i}{\sigma_i^2 z_i^2}  = \sum_{i}{k_i r_i}
+$$  
+where $k_i = \sigma_i^2$ with sorting  $k_i \geq k_{i+1}$ and $r_i = z_i^2$ with $\sum_{i}{r_i} = \sum_{i}{z_i^2} = 1$.
+
+So we have the following constrained optimisation (linear program) to solve - 
+$$
+	\text{maximize  } k_ir_i \\\;\\
+	s.t \;\;\; \sum_{i} r_i = 1 \\
+	\text{  } r_i \geq 0
+$$
+
+The maximum value of the above optimisation problem is the $k_1 = \sigma_i^2$.
+
+
+Hence $||A||^2 = \sigma_1*2$ or $||A|| = \sigma_1 = \sigma_1(A)|| \;\;\; _\blacksquare $
+
+>If the matrix $A$ is not a square matrix, then fill the matrix with zero columns/rows to make it square and apply the above arguments on the blocks to get the same result.
+
+### Q2.ii
+
+To prove 
+$$
+	\sum_{s=1}^r{\sigma_s(A)} = max\{ trace(U^T A V ) : U \in \mathbb{R}^{m \times r}, V \in \mathbb{R}^{n \times r}, \; and \; U^TU=V^TV=I 
+$$
+
+Let us first assume $A$ is square. Using sigular value decomposition of $A = P \Sigma R^T$ where $P^TP = I = R^TR$, 
+
+$$
+	trace(U^T A V) = trace(U^T P \Sigma R^T V) = trace( Q_1 \Sigma Q_2 ) 
+$$
+where $Q_1 = U^T P$ and $Q_2 = R^T V$
+
+Now we have $Q_1,Q_2$ as the variables. So
+$$
+	trace(U^T A V) = trace(Q_1 \Sigma Q_2) = trace(Q_2 Q_1 \Sigma) = trace(Q \Sigma) = \langle Q^T, \Sigma \rangle = \langle W, \Sigma \rangle
+$$
+
+where $Q = Q_2 Q_1$ and $W = Q^T$ and hence $W$ is also an orthonormal matrix as the group of orthonormal matrices are closed under multiplication and transposes. So we have
+
+$$
+	\underset{W^TW=I}{max}{\langle W, \Sigma \rangle}
+$$
+
+Clearly this is maximized when W=I since it makes no sense to put the weights on non diagonal entries of $W$ and since each row/column is constrained to have length $1$, we must put all the weight of $1$ on the diagonals entry of each row/column. 
+
+Hence we have the maximum value as
+$$
+	 \langle I, \Sigma \rangle = \sum_{s=1}^r{\sigma_s(A)} \;\;\; _\blacksquare
+$$
+
+>If we have a non-square $A$, then we add zero rows/columns to make it square and apply the above to get the same conclusion.
 
 ---
 
 
+## Q3
 
 ![](q3.png)
 
@@ -134,6 +192,7 @@ And ofcourse there are more trivial examples like the all zero matrix $0_{n \tim
 $\\\;\\$
 
 
+## Q4
 ![](q4.png)
 
 >**Lemma1:** Frobenius norm is invariant to orthonormal transformation.  
