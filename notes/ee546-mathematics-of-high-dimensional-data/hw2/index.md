@@ -11,6 +11,48 @@ Homework-2 EE546 Fall2022 | Prof. Mahdi Soltanolkotabi
 
 ---
 
+## Q1
+![](q1.png)
+
+### Q1.a
+
+>**Lemma-1** $\\$
+Let $\vec{x} \in \mathbb{R}^n$ is a random vector in $N(\vec{\mu},\Sigma)$ where $\vec{\mu} \in \mathbb{R}^n$ and $\Sigma \in \mathbb{R}^{n \times n}$ then for any $\vec{a} \in \mathbb{R}^n$, $\langle \vec{x} , \vec{a} \rangle = x^Ta = a^T x$ is a normal random variable in $N(a^T \mu, a^T \Sigma a)$.
+
+Let $Y_r \sim N(0,1)$,  $\beta = ||y||_2$ and $\alpha=1$  
+
+By **lemma-1**, $a_r^Ty \sim N(y^T0, y^T I y) = N(0,||y||_2^2) = ||y||_2 N(0,1) = \beta Y_r$
+
+Hence,
+$$
+	Z = \frac{1}{m}{\sum X_r \;\;\; \color{green}|X_r|\color{default} \;\;\;  sgn(\alpha X_r + \beta Y_r)} 
+	= \frac{1}{m}{\sum X_r \;\;\; \color{green}X_r sgn(X_r) \color{default} \;\; sgn(\alpha X_r + \beta Y_r)}
+	= \frac{1}{m}{\sum X_r^2 \; sgn(X_r) sgn(\alpha X_r + \beta Y_r)}
+$$
+
+If we set $\alpha = 1$, we have 
+$$
+	E(Z) = \frac{1}{m}\sum_{r=1}^m E[X_r^2 {sgn(X_r) sgn(\alpha X_r + \beta Y_r)} ] 
+	= \frac{1}{m} \times m \;\; E[X_r^2 {sgn(X_r) sgn(\alpha X_r + \beta Y_r)}] \\\;\\
+	= E[X_r^2 {sgn(X_r) sgn(\alpha X_r + \beta Y_r)}] \\\;\\
+	= \frac{2}{\pi} \bigg[ \tan^{-1}\bigg(\frac{\alpha}{\beta} \bigg)  + \frac{\alpha \beta}{\alpha^2 + \beta^2}\bigg] \\\;\\
+	= \frac{2}{\pi} \bigg[ \tan^{-1} \bigg( \frac{1}{||y||_2} \bigg)  + \frac{||y||_2}{1 + ||y||_2^2} \bigg]
+	
+$$
+
+
+### Q1.b
+
+We use the Chebyshev inequality to bound the random variable. If $\sigma^2 = Var(X) = E[(X - \mu)^2]$,  then Chebyshev inequality is given by 
+$$
+	Pr(|X - \mu| \geq k\sigma) \leq \frac{1}{k^2}
+$$
+
+
+Let us calcultate the variance of $Z$ which is $Var(Z) = E[Z^2] - E[Z]^2$.
+
+
+
 ## Q2
 
 ![](q2.png)
