@@ -14,6 +14,6 @@ if __name__ == "__main__":
     for i in range(m):
         D[i,i] = r - i + 1 if i <=r else 4e-3
 
-    A = X D Y.T
+    A = X @ D @ Y.T
     
     
