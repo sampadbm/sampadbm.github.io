@@ -76,7 +76,7 @@ def approximate():
 
 
     # for V
-    pbar = tqdm( range(25,700,25), colour="GREEN")
+    pbar = tqdm( range(25,975,25), colour="GREEN")
     for c in pbar:
         avg = 0
         for _ in tqdm(range(ntrials), colour="RED", leave=False):
@@ -91,7 +91,10 @@ def approximate():
 
         pbar.set_postfix({"cV":c,"eV":e})
         sns.lineplot(x=res.cV, y=res.eV)
+        plt.xlabel("cV")
+        plt.ylabel("eV")
         plt.savefig("v.png")
+        
 
 
 
@@ -112,6 +115,8 @@ def approximate():
         pbar.set_postfix({"cU":c,"eU":e})
         plt.clf()
         sns.lineplot(x=res.cU, y=res.eU)
+        plt.xlabel("cU")
+        plt.ylabel("eU")
         plt.savefig("u.png")
 
         
