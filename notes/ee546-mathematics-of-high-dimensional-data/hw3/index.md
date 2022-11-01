@@ -83,4 +83,45 @@ computation cost $ = O \bigg( \big( \frac{-6 \pm \sqrt{36 + 24\epsilon}}{4} \big
 
 ## Q2
 
+![](q2.png)
+
+### i) 
+For $U$ we get - 
+
+>|relative error in U | c |
+|---------------|---|
+|0.1|100|
+|0.05|250|
+|0.01|6000|
+![](q2/u.png)
+
+
+For $V$, we get -
+
+>|relative error in V | c |
+|---------------|---|
+|0.1|100|
+|0.05|250|
+|0.01|never|
+![](q2/v.png)
+
+---
+
+
+### ii)
+>|r|cU|plot U|cV|plot V|
+|-|--|------|--|-----|
+|2|175|![](q2/notebooks/plots/r2U.png)|175|![](q2/notebooks/plots/r2V.png)|
+|5|300|![](q2/notebooks/plots/r5U.png)|300|![](q2/notebooks/plots/r5V.png)|
+|10|350|![](q2/notebooks/plots/r10U.png)|350|![](q2/notebooks/plots/r10V.png)|
+|15|400|![](q2/notebooks/plots/r15U.png)|400|![](q2/notebooks/plots/r15V.png)|
+|20|400|![](q2/notebooks/plots/r20U.png)|400|![](q2/notebooks/plots/r20V.png)|
+
+---
+
+Plot for **c** vs **r**
+![](q2/notebooks/plots/c_vs_r.png)
+
+Maybe.
+
 
