@@ -4,3 +4,4 @@ scipy
 fire
 tqdm
 seaborn
+pandas
