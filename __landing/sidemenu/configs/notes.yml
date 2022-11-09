@@ -1,9 +1,10 @@
 COURSES:
-- csci675-convex-optimisation
-- math574-applied-matrix-analysis
-- csci670-advanced-analysis-of-algorithms
-- phy760-computational-methods-in-physics
 - ee546-mathematics-of-high-dimensional-data
-# GENERAL:
+- csci670-advanced-analysis-of-algorithms
+- math574-applied-matrix-analysis
+- csci675-convex-optimisation
+GENERAL:
+- phy760-computational-methods-in-physics
 OPTIMISATION:
+- phed-150A-table-tennis
 - constrained-convex-optimisation
