@@ -150,6 +150,8 @@ However at the same time, we find that at the same parameter size the tensor doe
 
 ![](results/modelcomplexity/mvt.png)
 
+Ofcourse this is only when we are not using a very high rank and hence are limiting model complexities of both the tensor and the matrix. However, if we let the matrix rank be high enough (max rank 24 since we are using 24 hours on the rows), then matrix outperforms the tensor method. For the tensor, we are limited by compute speed since tensor decomposition is many orders of magnitude slower than matrix decompositions and hence we cannot use a large rank to match the same parameter complexity as the matrix case.
+
 
 ## Further exploration
 
