@@ -3,8 +3,10 @@ COURSES:
 - csci670-advanced-analysis-of-algorithms
 - math574-applied-matrix-analysis
 - csci675-convex-optimisation
+- math425A-real-analysis
 GENERAL:
 - phy760-computational-methods-in-physics
 OPTIMISATION:
-- phed-150A-table-tennis
 - constrained-convex-optimisation
+TABLE-TENNIS:
+- phed-150A-table-tennis
