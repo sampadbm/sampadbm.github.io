@@ -32,17 +32,17 @@ Solution: We need to show that the axioms of metric space hold for $d_a$.
 	
 - Positivity, i.e $d_a > 0$
 
-	Since $\angle z \in [0,2\pi)]$, $\underset{x,y}{max}| \angle x - \angle y| = 2\pi$ and $\underset{x,y}{min}| \angle x - \angle y| = 0$
-	So, $\underset{x,y}{min} \; ( 2\pi - |\angle x -  \angle y|) = 0$ and hence $2\pi - |\angle x - \angle y| \geq 0$.
+	Since $\angle z \in [0,2\pi)]$, $\underset{\angle x,\angle y}{max}| \angle x - \angle y| = 2\pi$ and $\underset{\angle x,\angle y}{min}| \angle x - \angle y| = 0$
+	So, $\underset{\angle x, \angle y}{min} \; ( 2\pi - |\angle x -  \angle y|) = 0$ and hence $2\pi - |\angle x - \angle y| \geq 0$.
 
 	Hence $d_a(\angle x, \angle y) \geq 0$
 
 - Symmetry, i.e. $d_a(\angle x, \angle y) = d_a(\angle y , \angle x)$
 
-	Since absolute value function is symmetric, i.e $|\angle x - \angle y| = |\angle y - \angle x |$, so is $2\pi - |angle x - \angle y|$.
+	Since absolute value function is symmetric, i.e $|\angle x - \angle y| = |\angle y - \angle x |$, so is $2\pi - |\angle x - \angle y|$.
 	Hence $d_a$ is symmtric too.
 
-- Triangle inequality. i.e $d_a(\angle x , \angle y) \leq d_a(\angle x, \angle z) + d_a(\angle z, \angle y)$
+- Triangle inequality. i.e $d_a(\angle x , \angle y) \leq d_a(\angle x, \angle z) + d_a(\angle z, \angle y)$ is easily proved by method of exhaustion similar to  Q4 below.
 	
  
 ---
@@ -144,4 +144,69 @@ Symmetry drips from the invariance of the max operation to permutation of its ar
 Clearly $d_H(X,X) = 0$ since the inner $\inf$ is always zero and outer $\sup$ over zeros is still zero.
 Now we need to prove that $d_H(X,Y)=0 \implies X=Y$. This is also obvious from the word description of Hausdorff distance mentioned above. If $X \neq Y$, then there is some point on $X$ or $Y$ from which the nearest distance to the other set is non zero. Since we have atleast one such point, the sup over all such points is greater than this non-zero number and hence is non-zero. 
  
-All we are left with is to prove $\triangle$-inequality.
+All we are left with is to prove $\triangle$-inequality. We want to show $d_H(A,B) \leq d_H(A,C) + d_H(C,B)$.
+
+Let $a,b,c$ belong to $A,B,C$ respectively.
+
+### Q7
+![](q7.png)
+
+Let us define the images of $(p_n)$ as $(q_n)$ where $q_n:=f(p_n)$..
+
+Now let $p_n$ converge to $p$ and $q_n$ converge to $q$. To show $f$ is continuous, we need to show that $q=f(p)$. We show this by contradction. Let $f(p) \neq q$.
+
+### Q8
+![](q8.png)
+
+##### a) We need to show that all convergent sequences in $(M,d_M)$ converge in $(N,d_N)$.
+
+Let $(p_n)$ be a sequence in $(M,d_M)$. Let it converge to $p$. So for all $\delta > 0$, we can find some $J$ such that for $n>J$, $d_M(p_j,p) < \delta$.
+
+Let the image of the sequence be $(p_n)$ be $(r_n)$ with $r_n = f(p_n)$. We need to show that $r_n$ converges to some point in $N$. Let us define $r := f(p)$. We claim that $r_n$ converges to $r$. To show this we need to show that for all $\epsilon > 0 $ , there exists $K$ such that for $k > K$, $d_N(r_k,r) < \epsilon$.
+
+Due to isometry, $d_M(p_k,p)$ and $d_N(f(p_k),f(p)) = d_N(r_k,r)$ are equal. If someone gave us an $\epsilon$, we want to find a $K(\epsilon)$. Setting $\delta = \epsilon$,for some $J$ we have $d_M(p_j, p) < \delta = \epsilon$ for all $j > J$.
+
+So for all $j>J$,
+
+$$
+	d_M(p_j,p) < \delta = \epsilon \; \forall \; p > J\\
+	d_N(f(p_j),f(p)) < \epsilon  \;\;\; \because isometry \\
+	d_N(r_j,r) < \epsilon
+$$ 
+
+Hence setting $K=J$, we get the desired result that $d_M(r_k,r)<\epsilon$ for all $k>K$.
+
+##### b) We assume that f is onto $N$ (one can always have such an $M$ since if the range is not $N$, then one can take the metric subspace consisting of the range and denote it $N$ ).
+
+Now we need to prove that $f$ is one-one. We will prove this by contradiction. Let the isometry $f$ not be one-one. Then $\exist x,y \in M, x \neq y$ such that $f(x)=f(y)=a$.
+
+Now, since $x \neq y$, $d_M(x,y)>0$. But since fis an isometry, 
+$$ 
+	d_N(f(x),f(y)) = d_M(x,y) > 0 \\
+	\implies d_N(a,a) = d_M(x,y) > 0 \\
+	\implies d_N(a,a) > 0
+$$
+
+But since $(N,d_N)$ is a metric space, $d_N(a,a)=0$ and hence we have a contradiction. So $f$ must be one-one.
+
+Since $f$ is both one-one and onto, it is a bijection. Let us define the inverse of $f$ by $g:=f^{-1}$.
+
+For $f$ to be a homeomorphism, $f$ and $g$ have to be continuous bijections. Clearly $g$ is a bijection because $f$ was one-one. All we need is to show that $g$ is continuous. We do this by showing that $g$ infact is an isometry too and then applying part a) of the question on $g$ shows that $g$ is continuous.
+
+Let $x=g(a)$ and $y=g(b)$ for $a,b \in N$ and $x,y \in M$. We want to show $d_N(a,b) = d_M(g(a),g(b))$. Since $f$ is an isometry
+
+$$
+	d_N(f(x), f(y)) = d_M(x,y) \\
+	\implies d_N(f(g(a)),f(g(b))) = d_M(g(a),g(b)) \\
+	\implies d_N(a,b) = d_M(g(a),g(b)) \;\;\; \because f(g(t)) = t
+$$  
+
+Hence $g=f^{-1}$ is an isometry and by part a) it is continuous. Hence $f$ is a homeomosrphism as both $f$ and $g=f^{-1}$ are continuous bijections.
+
+##### c) I believe the question forgot to mention that the metrics in both $[0,1]$ and $[0,2]$ are the standard metric.
+
+We prove this by contradiction. 
+
+Let us assume $[0,1]$ and $[0,2]$ are isometric. This means that there exists some isometry $f:[0,1]\rightarrow [0,2]$. Let $x,y \in [0,1]$ be such that $f(x)=0 \in [0,2]$ and $f(y)=2 \in [0,2]$. 
+
+Clearly, $d(x,y) <= 1$ but $d(f(x),f(y)) = d(0,2) = 2$. Hence distance can never be preserved by any funtion $f$. Hence there exists no such isometry $f$.
