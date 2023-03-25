@@ -1,3 +1,9 @@
+---
+themes: ["muted","colorful"]
+category: notes
+---
+
+
 ### 1 
 #### a)
 $$
