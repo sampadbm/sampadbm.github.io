@@ -1,9 +1,10 @@
 COURSES:
+- csci675-convex-optimisation
 - ee546-mathematics-of-high-dimensional-data
 - csci670-advanced-analysis-of-algorithms
 - math574-applied-matrix-analysis
-- csci675-convex-optimisation
 - math425A-real-analysis
+- csci699-computational-perspectives-on-ml
 GENERAL:
 - phy760-computational-methods-in-physics
 OPTIMISATION:
