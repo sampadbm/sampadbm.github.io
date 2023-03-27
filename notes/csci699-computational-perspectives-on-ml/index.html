@@ -33,7 +33,7 @@ Presenter: Sampad Mohanty
 
 ---
 
-# Breakdown
+### Breakdown
 
 1. Introduction
 2. Results
@@ -44,7 +44,7 @@ Presenter: Sampad Mohanty
 
 ---
 
-# Introduction
+### Introduction
 
 #### <u>General consensus:</u>
 Depth $\rightarrow$ improves expressiveness, _but_ complicates optimisation.
@@ -55,11 +55,20 @@ Depth $\rightarrow$ accelerate optimisation
 Acceleration by depth $\equiv$ implicit momentum and adaptive_regularisation (from AdaGrad)
 ---
 
-# Introduction
+### Introduction
 
 * Increasing depth $\rightarrow$ increased expressiveness/ representational power
 
-* How to tell improvement in optimisation arose from acceleration and not better expressivity. 
+* How to tell improvement in optimisation arose from acceleration and not better expressivity? 
+
+
+---
+
+### Introduction
+
+* Increasing depth $\rightarrow$ increased expressiveness/ representational power
+
+* How to tell improvement in optimisation arose from acceleration and not better expressivity? 
 
 * Proposed solution is to analyze Linear Neural Networks (adding depth doesn't change expressivity)
 
@@ -67,7 +76,7 @@ Acceleration by depth $\equiv$ implicit momentum and adaptive_regularisation (fr
 matrices (overparameterization)
 ---
 
-## Results
+### Results
 
 * GD on overparametrised by depth $\equiv$ GD on shallow 1-layer NN while employing particular preconditioning scheme.
 
@@ -77,7 +86,7 @@ matrices (overparameterization)
 
 ---
 
-## Results
+### Results
 
 * Even on simple convex problems
 such as linear regression with $l_p$ loss, p > 2, overparam-
@@ -89,7 +98,7 @@ was also faster than two well-known acceleration methods - AdaGrad and AdaDelta
 
 ---
 
-## Warmup: $l_p$ Regression
+### Warmup: $l_p$ Regression
 
 
 $$
@@ -100,7 +109,7 @@ $$
 
 ---
 
-## Warmup: $l_p$ Regression
+### Warmup: $l_p$ Regression
 
 $$
 	 L( \mathbf{w1},  w2 ) = \mathbb{E}_{(x,y)\sim S} \big[ \frac{1}{p}(\mathbf{x^T w_1}w_2 - y)^p \big]
@@ -117,7 +126,7 @@ $
 
 ---
 
-## Warmup: $l_p$ Regression
+### Warmup: $l_p$ Regression
 
 $\nabla_w := \mathbb{E}\big[ (\mathbf{x^T w} - y)^{p-1} \mathbf{x}\big]$ (vec)
 
@@ -135,7 +144,7 @@ $\nabla w_2 = \mathbf{w_1^T \; \nabla w} $
 
 ---
 
-## Warmup: $l_p$ Regression
+### Warmup: $l_p$ Regression
 
 GD over $L(\mathbf{w_1}, w_2)$ with learning rate $\eta$
 
@@ -145,14 +154,14 @@ $ w2 \leftarrow w2 - \eta \nabla_{w_2}$
 
 ---
 
-## Warmup: $l_p$ Regression
+### Warmup: $l_p$ Regression
 
 $$
 	\mathbf{w} = \mathbf{w_1} w_2 = (  \mathbf{w_1 - \eta \nabla w_1})(w_2 - \eta \nabla w_2)
 $$
 
 $$
-	= \color{green}\mathbf{w_1}w_2 \color{black} - \eta ( w_2 \color{red} \nabla \mathbf{w_1} \color{black} + \mathbf{w_1} \nabla w_2) + \overbrace{\mathcal{O}(\eta^2)}^{negligible}
+	= \color{green}\mathbf{w_1}w_2 \color{black} - \eta ( w_2 \color{red} \nabla \mathbf{w_1} \color{black} + \mathbf{w_1} \nabla w_2) + \overbrace{\mathcal{O}(\eta^2)}^{\text{negligible when  } \eta \text{ is small} }
 $$
 
 $$
@@ -179,31 +188,28 @@ $\nabla w_2 = \mathbf{w_1^T \; \nabla w} $
 
 ---
 
-## Warmup: $l_p$ Regression
+### Warmup: $l_p$ Regression
 
 $$
 	\mathbf{w} =  \mathbf{w} - \eta ( w_2^2  \nabla \mathbf{w} + w_2^{-1} \mathbf{w} \nabla w_2)
-$$
-
-
-$$
 	=  \mathbf{w} - \rho \nabla \mathbf{w} - \gamma \mathbf{w} 
 $$
 
 where,
-
 $\rho = \eta \; w_2^2$  (effective learning rate, varies/adapts)
-
 and 
-
 $\gamma = \eta \; w_2^{-1} \; \nabla w_2 $  (effective momentum rate, varies/adapts)
 
-====================================================================
-Observe that $\rho$ and $\gamma$ are not affected by $\mathbf{w_1}$ or $\mathbf{ \nabla w_1}$
+
+- Observe that $\rho$ and $\gamma$ are not affected by $\mathbf{w_1}$ or $\mathbf{ \nabla w_1}$ but by the extra layer parameter $w_2$ and hence result exclusively due to overparametrisation.
+
+- What can we say about the learning rate as the training continues?
+Since usually, the parameters are initialised near zero and then descends away from zero, we can say that the learning rate becomes bigger as $w_2$ drifts aways from zero.
+- About the momentum, the momentum has a tendency to proceed in the direction of $\mathbf{w}$, i.e a tendency to move in the direction of the current position of the parameters.
 
 ---
 
-## Warmup: $l_p$ Regression
+### Warmup: $l_p$ Regression
 
 $$
 	\mathbf{w} =  \mathbf{w} - \rho \nabla \mathbf{w} - \gamma \mathbf{w} 
@@ -211,14 +217,73 @@ $$
 
 Since $\mathbf{w_1}$ and $w_2$ are initialized close to zero, so is $\mathbf{w = w_1}w_2$ 
 
-This implies that at all iterations, $\mathbf{w}$ is a weighted(linear) combination of past gradients. 
+This implies that at all iterations, $\mathbf{w}$ is a weighted(linear) combination of past gradients. Hence the current $\mathbf{w}$ lies in the span of the past and current gradients.
 
-Hence the current $\mathbf{w}$ lies in the span of the past gradients.
-
-Hence there exist $\mu(t,\tau)$, s.t 
+Hence there exist $\mu(t,\tau)$, s.t. 
 $$
-	\mathbf{w}^{t+1} \leftarrow \mathbf{w}^{t}  - \rho^t \mathbf{\nabla w}
+	\mathbf{w}^{t+1} \leftarrow \mathbf{w}^{t}  - \rho^t \mathbf{\nabla w} - \sum_{\tau=1}^{t-1}\mu^{(t,\tau)}\nabla \mathbf{w^{\tau}}
 $$ 
+
+---
+### Linear Neural Nets
+
+|Single Layer| Multi layer|
+|------------|------------|
+| ![](images/singlelayer.jpg)      | ![](images/multilayer.jpg)      |
+| $\phi^1(x) := Wx, W \in \mathbb{R}^{k \times d} $ | $ \phi^N(x) := W_N...W_2W_1x$ |
+| $L^1(W)$ | $L^N(W_1,W_2,..,W_N)$ |
+
+---
+### Effective Single Layer Network
+
+|||
+|-|-|
+|![](images/singlelayer.jpg)|![](images/multilayer.jpg)|
+
+Effective end to end weight ($W_e$)
+
+$W_e = W_N....W_2W_1$
+
+Effective loss of a multilayer linear network -
+
+$L^N(W_1,W_2,...,W_N) = L^1(W_N....W_2W_1)$ 
+
+---
+
+### Implicit Dynamics of Gradient Descent
+
+![](images/equations/eq4.png)
+
+$\lambda = $ weight decay coefficient
+ 
+Side Note : $\lambda$ comes from gradient descent on objective with regularisation - 
+$$
+	h = f + \frac{\lambda}{2}||W||^2 
+$$
+$$
+	\nabla h = \nabla \bigg( f + \frac{\lambda}{2}||W||^2 \bigg) = \nabla f + \lambda W
+$$
+$$
+	W \leftarrow W - \eta \nabla h = W - \eta \nabla f - \eta \lambda W  = (1 - \eta \lambda)W - \eta \nabla f
+$$
+Hence GD with non-zero wight decay coefficient is equivalent to GD on objective + $L_2$ regularisation
+
+---
+
+### Gradient Flow
+
+If learning rate is small, i.e $\eta^2 \approx 0$, then
+
+![](images/equations/eq6.png)
+
+---
+
+
+### Gradient Flow 
+
+![](images/equations/eq7.png)
+![](images/equations/eq8.png)
+
 
 
     </textarea>
