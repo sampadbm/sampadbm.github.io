@@ -270,7 +270,7 @@ Hence GD with non-zero wight decay coefficient is equivalent to GD on objective 
 
 ---
 
-### Gradient Flow
+### Gradient Flow: Small learning rate assumption
 
 If learning rate is small, i.e $\eta^2 \approx 0$, then
 
@@ -279,10 +279,85 @@ If learning rate is small, i.e $\eta^2 \approx 0$, then
 ---
 
 
-### Gradient Flow 
+### Gradient Flow: Initialisation assumption
 
 ![](images/equations/eq7.png)
 ![](images/equations/eq8.png)
+
+---
+
+
+### Gradient flow: Update rule
+
+![](images/equations/eq8.png)
+![](images/equations/eq10.png)
+
+---
+### Gradient flow: Update rule (vectorised form)
+
+![](images/equations/eq11.png)
+
+---
+
+### Empirical Validation: L2 and L4 Regression
+
+Do the assumptions (small learning rate, near zero init) hold in practice?
+
+![](images/empiricalvalidation2.png)
+
+- Emulation follows closely.
+- Network width does not matter (hidden layer of size 1 suffice and hence accleration can be achieved without much compute overhead).
+- Faster convergence with depth (same lr=$10^{-3}$ for all networks, which authors point out is not a fair comparision - lr must be tuned independently for all the models)
+
+---
+
+### Empirical Validation: per model learning rates
+
+![](images/empiricalvalidation3.png)
+
+- Per model tuned learning rates
+- For $l_2$ loss, depth slightly hinders optimisation (only for regression problems, they have an example 2 point dataset to show this)
+- For $l_4$ loss it accelerates
+---
+
+### How does implicit acceleration compare to explicit schemes?
+
+![](images/explicitschemes.png)
+
+- Depth 3 converges faster than AdaGrad and AdaDelta, but not Adam (left)
+- Increasing depth helps convergence when used with Adam, suggesting implicit acceleration due to depth may be somewhat orthogonal to explicit acceleration.
+
+---
+
+### Is depth so good?
+
+Why not make it deeper?
+- vanishing gradients due to conditions of zero-init and preconditioning scheme in $(10)$
+
+![](images/depthsogood.png)
+
+---
+### Experiment: MNIST
+
+![](images/mnistconv.png)
+
+- Tensorflow default convnet mnist example (hardcoded hyperparams)
+- added 1 linear hidden layer to all dense layers (15% extra params) 
+---
+
+### Thanks
+
+### That's it, thank you
+---
+
+
+### Weigth update in single output Case (k=1)
+
+![](images/equations/eq12.png)
+
+- adaptive learning rate (gets more confident as W moves away from origin)
+- adaptive momentum (amplifies gradient along in the current position by a factor of N)
+
 
 
 
