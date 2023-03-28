@@ -186,6 +186,7 @@ Given an arbitrary $\epsilon > 0$, we set $\delta = \epsilon$ and find $K$ such 
 
 Let $f(x) =\pi \frac{x-a}{b-a}$ and $g(x) = tan(x)$. Then clearly $h(x)=gof(x)$ sends $(a,b)$ to $\mathbb{R}$ and is continuous since both $f$ and $g$ are. Also since $f^{-1}$ and $g^{-1}$ exist, so does $h^{-1}=f^{-1}og^{-1}$ and is continuous. Hence we have a homeomorphism.
 
+
 ### Q7. Pugh, Pg. 127, Q23
 ![](images/q7.png)
 
@@ -195,6 +196,7 @@ $S$ is an open set if for each $p \in S$, there exists an $r>0$ such that $d(p,q
 We know that $(0,1)$ is an open set of $\mathbb{R}$.  We want to show that it is not an open set in $\mathbb{R}^2$. It will be sufficient to show that for some $p \in (0,1) \subset \mathbb{R}^2$ and all $r>0$ there always exist $q$ such that $d(p,q)<r$ but $q \notin (0,1)$.
 
 Let $q=[0,0] \in \mathbb{R^2}$, and given any $r>0$, take $p=[\frac{r}{2},\frac{r}{2}]$ and $d(q,p) = \frac{r}{\sqrt{2}} < r$ but $p$ does not lie in $(0,1)$. Hence $(0,1) \in \mathbb{R}^2$ is not open.
+
 
 ### Q8. Pugh, Pg. 127, Q23
 ![](images/q8.png)
