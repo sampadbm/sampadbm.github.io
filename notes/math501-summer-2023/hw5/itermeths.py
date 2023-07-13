@@ -6,14 +6,16 @@ from tqdm import tqdm
 
 
 # For Jacobi, Q = diag(diag(A))
-def Jacobi(A, b, xtrue=[], maxiters=2000, x0=None, tol=1e-4):
-    if x0 == None:
+def Jacobi(A, b, xtrue=[], maxiters=2000, x0=[], tol=1e-4, showpbar=True):
+    if not len(x0):
         x0 = zeros(A.shape[1])
 
     Q = diag(diag(A))
     I = eye(*A.shape)
     x = x0
-    pbar = tqdm(range(maxiters))
+    if showpbar: pbar = tqdm(range(maxiters))
+    else: pbar = range(maxiters)
+    
     for i in pbar:
         lastx = copy(x)
         # uses inverse of diagonal which is alright
@@ -23,16 +25,16 @@ def Jacobi(A, b, xtrue=[], maxiters=2000, x0=None, tol=1e-4):
         rhs = (Q - A) @ x + b
         x, *_ = lstsq(Q, rhs, rcond=None)
 
-        pbar.set_postfix({"x": x})
+        if showpbar: pbar.set_postfix({"x": x})
 
         if len(xtrue):
             if all(abs(x - xtrue) < tol):
-                return i
+                return i,x
         else:
             if norm(x - lastx) < tol:
-                return i
+                return i,x
 
-    return inf
+    return inf,x
 
 
 # For Gauss-Seidel, Q  = D - Cl and Q - A = Cu
@@ -40,8 +42,8 @@ def Jacobi(A, b, xtrue=[], maxiters=2000, x0=None, tol=1e-4):
 # See Summary 8.4 on pg421 (Kincaid)
 
 
-def GaussSeidel(A, b, xtrue=[], maxiters=2000, x0=None, tol=1e-4):
-    if x0 == None:
+def GaussSeidel(A, b, xtrue=[], maxiters=2000, x0=[], tol=1e-4):
+    if not len(x0):
         x0 = zeros(A.shape[1])
 
     D = diag(diag(A))
@@ -65,18 +67,18 @@ def GaussSeidel(A, b, xtrue=[], maxiters=2000, x0=None, tol=1e-4):
 
         if len(xtrue):
             if all(abs(x - xtrue) < tol):
-                return i
+                return i,x
         else:
             if norm(x - lastx) < tol:
-                return i
+                return i,x
 
-    return inf
+    return inf,x
 
 
 def SuccessiveOverApproximation(
-    A, b, xtrue=[], maxiters=2000, w=0.9, x0=None, tol=1e-4
+    A, b, xtrue=[], maxiters=2000, w=0.9, x0=[], tol=1e-4
 ):
-    if x0 == None:
+    if not len(x0):
         x0 = zeros(A.shape[1])
 
     D = diag(diag(A))
@@ -98,22 +100,22 @@ def SuccessiveOverApproximation(
 
         if len(xtrue):
             if all(abs(x - xtrue) < tol):
-                return i
+                return i,x
         else:
             if norm(x - lastx) < tol:
-                return i
+                return i,x
 
-    return inf
+    return inf,x
 
 
 def compare(A, b, xtrue, tol=1e-4):
-    jaciters = Jacobi(A, b, xtrue, tol=tol)
+    jaciters = Jacobi(A, b, xtrue, tol=tol)[0]
     print("jacobi_iters:", jaciters)
 
-    gsiters = GaussSeidel(A, b, xtrue, tol=tol)
+    gsiters = GaussSeidel(A, b, xtrue, tol=tol)[0]
     print("Gauss-Seidel_iters:", gsiters)
 
-    soriters = SuccessiveOverApproximation(A, b, xtrue, tol=tol)
+    soriters = SuccessiveOverApproximation(A, b, xtrue, tol=tol)[0]
     print("SuccessiveOverApproximation_iters:", soriters)
 
 
@@ -141,3 +143,38 @@ if __name__ == "__main__":
     b = array([6, -4])
     xtrue = [-1, 1, -1, 1]
     compare(A, b, xtrue=[], tol=1e-7)
+
+
+    # Q11
+    print("\nRunning Q11")
+    print("---" * 4)
+    def get_A_and_b_and_xtrue(n):
+        assert n%2==1
+
+        A = zeros((n,n))
+        for i in range(n):
+            if i<n-1:
+                A[i+1,i] = -1.0 
+                A[i,i+1] = -1.0 
+            A[i,n-1-i] = 0.5
+            A[i,i] = 3.0
+        
+
+        b = zeros(n)
+        b[:] = 1.5
+        b[0] = b[-1] = 2.5
+        b[n//2] = 1.0
+
+        xtrue = ones(n)
+        
+        return A,b,xtrue
+
+    for n in range(3,15,2):
+        A, b, xtrue = get_A_and_b_and_xtrue(n)
+        # A = array([ [3.0,-1,0.5],[-1,3,-1],[0.5,-1,3] ])
+        # b = [2.5, 1, 2.5]
+        # print(A)
+        # print(b)
+        # exit()
+        iters, x = Jacobi(A,b,xtrue=xtrue, showpbar=False)
+        print(f"n:{n} \t x: {x} \t took {iters} iters\n")
