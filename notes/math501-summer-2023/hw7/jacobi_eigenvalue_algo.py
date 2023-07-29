@@ -77,16 +77,16 @@ if __name__ == "__main__":
     # The eigenvalues in the digonals of the D_hat might be in a different order.
     # A_hat = V_hat @ D_hat @ V_hat.T
     # A_hat = (V_hat @ P) @ (P.T @ D_hat @ P) @ (P.T @ V_hat.T)
-    # => A_hat = U_hat @ E_hat @ U_hat.T 
+    # => A_hat = U_hat @ E_hat @ U_hat.T
     # print(A_hat - A)
 
     order = argsort(diag(D_hat))
-    P = eye(A.shape[0])[:,order]
+    P = eye(A.shape[0])[:, order]
 
-    D_hat  = P.T @ D_hat @ P
+    D_hat = P.T @ D_hat @ P
     V_hat = V_hat @ P
 
-    # Or we could also have done the following - 
+    # Or we could also have done the following -
     # D_hat = (D_hat[:, order])[order,:]
     # V_hat = V_hat[:, order]
 
@@ -97,8 +97,7 @@ if __name__ == "__main__":
         "We decompose A = V @ D @ V.T using Jacobi iterations and get the estimates D_hat and V_hat",
         "\n",
         "We also find the correct permutation of the matrices D_hat and V_hat according to the input matrix A since Jacobi algorithm is not required to find the eigenvalues in the same order.",
-        "\n"
-        
+        "\n",
     )
     print("iters required:", iters)
 

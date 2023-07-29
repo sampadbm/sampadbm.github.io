@@ -1,0 +1,8 @@
+numpy
+jax
+tqdm
+scipy
+matplotlib
+seaborn
+
+print-color
