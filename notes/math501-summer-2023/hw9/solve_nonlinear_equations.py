@@ -50,10 +50,11 @@ def newtons_nonlinear_solver(f, jacf, x0, iters=100, tolerance=1e-7, debug=False
                 )
             return x
 
-        a, *_ = jnp.linalg.lstsq(J, fx0)
+        # a, *_ = jnp.linalg.lstsq(J, fx0)
+        a = jnp.linalg.inv(J) @ fx0
         x = x - a
 
-        if allclose(x, lastx, tolerance):
+        if allclose(x, lastx, atol=tolerance, rtol=0):
             if debug:
                 print(
                     f"[info] Converged within tolerance of {tolerance} in {it} iterations! Returning current estimate.",
@@ -89,36 +90,74 @@ if __name__ == "__main__":
     root = newtons_nonlinear_solver(f, jacf, x0, debug=True)
     print(f"x0 = {x0} | solution found = {root}")
 
+    # initial estimate
+    x0 = [-1, 2]
+    root = newtons_nonlinear_solver(f, jacf, x0, debug=True)
+    print(f"x0 = {x0} | solution found = {root}")
+
     print("\n################ Computer Exercise 3.2 | Q23 b ################")
-    f1 = lambda x: x[0]**3 - 2*x[0]*x[1] - x[1]**7 - 4*(x[0]**3)*x[1] - 5
-    f2 = lambda x: x[1]*jnp.sin(x[0]) + 3*(x[0]**2)*x[1] + jnp.tan(x[0]) - 4
+    f1 = lambda x: x[0] ** 3 - 2 * x[0] * x[1] + x[1] ** 7 - 4 * (x[0] ** 3) * x[1] - 5
+    f2 = lambda x: x[1] * jnp.sin(x[0]) + 3 * (x[0] ** 2) * x[1] + jnp.tan(x[0]) - 4
 
     f = lambda x: jnp.array([f1(x), f2(x)])
     jacf = get_jacobian(f)
 
-    x0 = [1,0]
+    x0 = [1, 1]
     root = newtons_nonlinear_solver(f, jacf, x0, debug=True)
-    print(f"x0 = {x0} | solution found = {root}")
+    print(f"A0 = {x0} | solution found A = {root}")
+
+    x0 = [1.7, 1.7]
+    root = newtons_nonlinear_solver(f, jacf, x0, debug=True)
+    print(f"B0 = {x0} | solution found B = {root}")
+
+    x0 = [1.5, -1]
+    root = newtons_nonlinear_solver(f, jacf, x0, debug=True)
+    print(f"C0 = {x0} | solution found C = {root}")
+
+    x0 = [2, 0]
+    root = newtons_nonlinear_solver(f, jacf, x0, debug=True)
+    print(f"D0 = {x0} | solution found D = {root}")
+
+    x0 = [4.75, 0.25]
+    root = newtons_nonlinear_solver(f, jacf, x0, debug=True)
+    print(f"E0 = {x0} | solution found E = {root}")
+
+    x0 = [1.5, -1.5]
+    root = newtons_nonlinear_solver(f, jacf, x0, debug=True)
+    print(f"F0 = {x0} | solution found F = {root}")
+
 
     print("\n################ Computer Exercise 3.2 | Q23 d ################")
     f1 = lambda x: jnp.sum(x)
     f2 = lambda x: jnp.sum(x**2) - 2
-    f3 = lambda x: x[0]*(x[1] + x[2]) + 1
+    f3 = lambda x: x[0] * (x[1] + x[2]) + 1
 
     f = lambda x: jnp.array([f1(x), f2(x), f3(x)])
     jacf = get_jacobian(f)
 
-
-    x0 = [3/4, 1/2, -1/2]
+    x0 = [1/2 , -1, 1/2]
     root = newtons_nonlinear_solver(f, jacf, x0, debug=True)
-    print(f"x0 = {x0} | solution found = {root}")
+    print(f"A0 = {x0} | solution found A = {root}")
+
+    x0 = [1/2 , 1, 1/2]
+    root = newtons_nonlinear_solver(f, jacf, x0, debug=True)
+    print(f"B0 = {x0} | solution found B = {root}")
+
+    x0 = [1/2 , 1/2, -1]
+    root = newtons_nonlinear_solver(f, jacf, x0, debug=True)
+    print(f"C0 = {x0} | solution found C = {root}")
+
+    x0 = [1/2 , 1/2, 1]
+    root = newtons_nonlinear_solver(f, jacf, x0, debug=True)
+    print(f"D0 = {x0} | solution found D = {root}")
+
 
     print("\n################ Computer Exercise 3.2 | Q23 e ################")
-    f1 = lambda x: 4*x[1]**2 + 4*x[1] + 52*x[0] - 19
-    f2 = lambda x: 169*x[0]**2 + 3*x[1]**2 + 111*x[0] - 10*x[1] - 10
+    f1 = lambda x: 4 * x[1] ** 2 + 4 * x[1] + 52 * x[0] - 19
+    f2 = lambda x: 169 * x[0] ** 2 + 3 * x[1] ** 2 + 111 * x[0] - 10 * x[1] - 10
 
     f = lambda x: jnp.array([f1(x), f2(x)])
-    jacf = get_jacobian(f) 
+    jacf = get_jacobian(f)
 
     x0 = [-0.01, -0.01]
 
@@ -126,15 +165,13 @@ if __name__ == "__main__":
     print(f"x0 = {x0} | solution found = {root}")
 
     print("\n################ Computer Exercise 3.2 | Q23 f ################")
-    f1 = lambda x: jnp.sin(x[0]+x[1]) - e**(x[0]-x[1])
-    f2 = lambda x: jnp.cos(x[0]+6) - (x[0]**2)*(x[1]**2)
+    f1 = lambda x: jnp.sin(x[0] + x[1]) - e ** (x[0] - x[1])
+    f2 = lambda x: jnp.cos(x[0] + 6) - (x[0] ** 2) * (x[1] ** 2)
 
     f = lambda x: jnp.array([f1(x), f2(x)])
     jacf = get_jacobian(f)
 
-    x0 = [1.0,1.0]
+    x0 = [1.0, 1.0]
 
     root = newtons_nonlinear_solver(f, jacf, x0, debug=True)
     print(f"x0 = {x0} | solution found = {root}")
-        
-    
