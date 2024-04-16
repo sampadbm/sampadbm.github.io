@@ -8,6 +8,7 @@ category: mathematics
 <p style="text-align:center; color:darkred"> 
 <b>19th December, 2021 - thoughts574</b><br> 
 <b>17th September, 2022 - free parameters</b> 
+<b>16th April, 2024 - SVD and trace</b>
 </p>
 
 <p style='text-align:center;color:green'><b> 
