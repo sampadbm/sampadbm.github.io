@@ -16,3 +16,4 @@ Interesting results in Linear Algebra
 
 1. [Thoughts from Math574](thoughts574)
 2. [Free parameters in matrix decompositions](paramsInDecomp)
+3. [SVD and trace](svd_and_trace)
