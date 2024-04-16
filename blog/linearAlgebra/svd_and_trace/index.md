@@ -12,12 +12,13 @@ category: mathematics
 ### Trace of covariance matrix is sum of square of singular values
 
 Let $X$ be a matrix whose SVD is $X = U \Sigma V^T$ where $U,V$ are orthonormal and $\Sigma$ is diagonal.
-Since diagonal, hence symmetric and hence $\Sigma^T = \Sigma$
-Since orthonormal, $U^TU = UU^T = I$ and $V^TV = VV^T = I$ and $U^{-1} = U^T$ and $V^{-1} = V^T$
+
+Since diagonal, hence symmetric and hence $\Sigma^T = \Sigma$.
+
+Since orthonormal, $U^TU = UU^T = I$ and $V^TV = VV^T = I$ and $U^{-1} = U^T$ and $V^{-1} = V^T$.
 
 $$
-	X^TX = (U \Sigma V^T)^T (U \Sigma V^T) = (V \Sigma^T U^T )(U \Sigma V^T) \\
-	= V \Sigma U^T U \Sigma V^T = V \Sigma I \Sigma V^T = V \Sigma^2 V^T
+	X^TX = (U \Sigma V^T)^T (U \Sigma V^T) = (V \Sigma^T U^T )(U \Sigma V^T) = V \Sigma U^T U \Sigma V^T = V \Sigma I \Sigma V^T = V \Sigma^2 V^T
 $$
 
 Now, we know that the trace of a matrix is sum of its eigenvalues. Since $X^TX$ is summetric, its SVD is also
