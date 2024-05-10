@@ -46,6 +46,6 @@ into designing the homeworks and the exams. He deeply cares about his students w
 to learning and is kind and accomodating towards them whenever possible.
 
 All the instruction materials for this class are/will be made available on the 
-course website [CSCI567 Spring2024](https://vatsalsharan.github.io/spring24.html)
+course website [CSCI567 Spring2024](https://vatsalsharan.github.io/spring24.html).
 
 
