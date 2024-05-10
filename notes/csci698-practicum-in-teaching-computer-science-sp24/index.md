@@ -14,5 +14,7 @@ Notes from CSCI698 Sp24: Practicum in Teaching CS (Prof. Andrew Goodney).</b></p
 
 ## List of assignemnts
 
-### 1. [Final Presentation](final_presentation)
+### 1. [Hw1 - Teaching Responsibilities](hw1)
+### 2. [Hw3](hw3)
+### 3. [Final Presentation](final_presentation)
 
