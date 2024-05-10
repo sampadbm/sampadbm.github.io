@@ -1,12 +1,12 @@
 COURSES:
-- math501-summer-2023
-- csci670-advanced-analysis-of-algorithms
-- csci675-convex-optimisation
-- csci699-computational-perspectives-on-ml
-- math574-applied-matrix-analysis
-- ee546-mathematics-of-high-dimensional-data
 - math425A-real-analysis
+- math574-applied-matrix-analysis
 - csci698-practicum-in-teaching-computer-science-sp24
+- csci675-convex-optimisation
+- ee546-mathematics-of-high-dimensional-data
+- math501-summer-2023
+- csci699-computational-perspectives-on-ml
+- csci670-advanced-analysis-of-algorithms
 GENERAL:
 - phy760-computational-methods-in-physics
 OPTIMISATION:
