@@ -12,4 +12,5 @@ Notes from TAing
 
 ---
 
-- [discussion_notes](discussion_notes)
+#### Discussion Notes
+- [Jacobians](discussion_notes/Linalg_Discussions_Jacobians.pdf)
