@@ -17,5 +17,6 @@ Notes from MATH425A: Real Analysis (Prof. Guillermo Rayes Suoto).</b></p>
 ### 2. [Homework2](hw2)
 ### 3. [Homework3](hw3)
 ### 4. [Homework4](hw4) 
-### 4. [Homework5](hw5) 
-
+### 5. [Homework5](hw5) 
+### 6. [Homework6](hw6/hw6.pdf)
+### 7. [Homework7](hw7/HW7Q.pdf)
