@@ -152,7 +152,6 @@ That's not your project, its the next generations'.
 
 You have had enough motivation now. 
 
-Are you going to get your PhD by just philosophizing?
 
 ---
 
@@ -163,3 +162,4 @@ class: center middle
 ---
 
 
+---
