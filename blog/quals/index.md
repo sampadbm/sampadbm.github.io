@@ -1,7 +1,7 @@
 
 ## Oral Qualification Exam
 
-<img src='res/logos/usc.png' height='100' width='100' />
+<img src='res/logos/usc.png' height='25%vh' width='25%vh' />
 </br>
 </br>
 **UNIVERSITY OF SOUTHERN CALIFORNIA**
@@ -14,13 +14,18 @@
 ###### 5th June, 2024
 ---
 ### Acknowledgement
-This work was possible in part due to the unwavering suppport of my mentors Prof. Bhaskar Krishnamachair and Dr. Fan Bai from General Motors
+
+Possible in part due to the unwavering suppport of my mentors 
+[Prof. Bhaskar Krishnamachair](https://viterbi.usc.edu/directory/faculty/Krishnamachari/Bhaskar) and [Dr. Fan Bai](https://scholar.google.com/citations?user=ZDRy6_EAAAAJ&hl=en) from General Motors.
+
+<img src="res/logos/viterbi.jpg" height='50%vh' width='45%vh'/>
+<img src="res/logos/gm.png" height='50%vh' width='45%vh'/>
 
 Also all my [teachers and mentors](https://sampadbm.github.io/#Teachers%20and%20Mentors)
 
 To the committee: 
 
-thank you so very much for your valuable time and guidance.
+Thank you so very much for your valuable time and guidance.
 
 ---
 # SATORIS
@@ -80,13 +85,19 @@ class: center middle
 
 ### What is the data? 
 
-- A bunch of data collected from traffic sensors deployed on roads in smart cities of China.
+Data from traffic sensors deployed on roads in smart cities of China over a month.
+
+<img src='res/paper_figures/rawdata.png' width='90%vw'>
+
+
+---
 
 ### And problem?
-- Noisy data and a lots of missing entries (due to inherent noise, sensor and wireless network failures)
+- Noisy data
+- Lots of missing entries 
 
 ### Task?
-Denoise and recover the missing entries. 
+Denoise and recover missing entries. 
 
 ---
 
@@ -95,5 +106,60 @@ class: center middle
 
 ---
 
+### ChatGPT-4o 
+Generate an image that captures the most pressing challenge faced by modern humans.
+
+<img src='res/images/challenges/chatgpt1.webp' height='25%vh' width='30%vw'>
+<img src='res/images/challenges/chatgpt2.webp' height='25%vh' width='30%vw'>
+<img src='res/images/challenges/chatgpt3.webp' height='25%vh' width='30%vw'>
+<img src='res/images/challenges/chatgpt4.webp' height='25%vh' width='60%vw'>
+<img src='res/images/challenges/chatgpt0.webp' height='25%vh' width='35%vw'>
+
+---
+
+### Making the systems smarter can help? 
+<img src='res/images/challenges/performgreen.png' height='325' width='325'>
+<img src='res/images/challenges/smartcities.png' height='300' width='300'>
+
+---
+### Show me solutions ChatGPT 
+<img src='res/images/solutions/chatgpt0.png' height='90%vh' width='90%vw'>
+
+---
+### More! More!
+<img src='res/images/solutions/chatgpt1.png' height='90%vh' width='90%vw'>
+
+---
+#### 
+*Today’s problems come from yesterday’s solutions*
+*- Peter Senge*
+
+<img src='res/images/past_solutions/chatgpt0.png' height='90%vh' width='90%vw'>
+
+---
+*Today’s problems come from yesterday’s solutions*
+*- Peter Senge*
+
+<img src='res/images/past_solutions/chatgpt1.png' height='90%vh' width='90%vw'>
+
+---
+##### Students -  
+What if future *nails* come from today's *hammers*?
+
+##### Academia -   
+
+That's not your project, its the next generations'. 
+
+You have had enough motivation now. 
+
+Are you going to get your PhD by just philosophizing?
+
+---
+
+class: center middle
+
+### 3. SIMILAR NAILS
+
+---
 
 
