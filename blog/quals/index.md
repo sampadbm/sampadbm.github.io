@@ -1,4 +1,7 @@
-# Title
+# Oral Qualification Exam
+### Sampad Bhusan Mohanty
+### Committee members
+
 
 ---
 
