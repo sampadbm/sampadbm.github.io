@@ -2,10 +2,10 @@ GENERAL:
 - odisha
 MATHEMATICS:
 - linearAlgebra
+QUALS:
+- quals
 READING:
 - reading
 RESEARCH:
-- tensors
 - physicsML
-USC:
-- quals
+- tensors

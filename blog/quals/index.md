@@ -1,4 +1,4 @@
-
+---
 ## Oral Qualification Exam
 
 <img src='res/logos/usc.png' height='25%vh' width='25%vh' />
@@ -28,6 +28,8 @@ To the committee:
 Thank you so very much for your valuable time and guidance.
 
 ---
+exclude: true
+
 # SATORIS
 
 #### reminds of any other English word?
@@ -39,6 +41,7 @@ Presentation may or may not adhere to conventions and may contain *SATIRES* abou
 
 ![satori](res/images/satori_def.png)
 ---
+exclude: true
 
 # SATORIS
  
@@ -55,6 +58,7 @@ Everyone else is doing it 🤷‍♂️
 Deferred to ChatGPT and its cousins so they can reflect and not make the same mistakes when they takeover.
 
 ---
+exclude: true
 
 ###  Journey of wandering students
 
@@ -87,14 +91,10 @@ class: center middle
 
 Data from traffic sensors deployed on roads in smart cities of China over a month.
 
-<img src='res/paper_figures/rawdata.png' width='90%vw'>
-
-
----
-
 ### And problem?
 - Noisy data
-- Lots of missing entries 
+- Lots of missing entries (sensor/network/power failures)
+- Cost restrictions - sparse deployment
 
 ### Task?
 Denoise and recover missing entries. 
@@ -106,7 +106,7 @@ class: center middle
 
 ---
 
-### ChatGPT-4o 
+### Pressing problems of modern times
 Generate an image that captures the most pressing challenge faced by modern humans.
 
 <img src='res/images/challenges/chatgpt1.webp' height='25%vh' width='30%vw'>
@@ -115,34 +115,60 @@ Generate an image that captures the most pressing challenge faced by modern huma
 <img src='res/images/challenges/chatgpt4.webp' height='25%vh' width='60%vw'>
 <img src='res/images/challenges/chatgpt0.webp' height='25%vh' width='35%vw'>
 
----
-
-### Making the systems smarter can help? 
-<img src='res/images/challenges/performgreen.png' height='325' width='325'>
-<img src='res/images/challenges/smartcities.png' height='300' width='300'>
 
 ---
-### Show me solutions ChatGPT 
+### Some solutions
 <img src='res/images/solutions/chatgpt0.png' height='90%vh' width='90%vw'>
 
 ---
+exclude: true
+
 ### More! More!
 <img src='res/images/solutions/chatgpt1.png' height='90%vh' width='90%vw'>
 
 ---
-#### 
-*Today’s problems come from yesterday’s solutions*
-*- Peter Senge*
+
+### Can smarter systems help? 
+<img src='res/images/challenges/performgreen.png' height='325' width='325'>
+<img src='res/images/challenges/smartcities.png' height='300' width='300'>
+
+---
+
+### Can smarter systems help? 
+<img src='res/images/challenges/performgreen.png' height='325' width='325'>
+<img src='res/images/challenges/smartcities.png' height='300' width='300'>
+
+
+<span style="color:teal"> **Today’s problems come from yesterday’s solutions** </span>
+
+*- Peter Senge (The Fifth Discipline)*
+
+---
+exclude: true 
+### Reflections: Solutions for 20th century problems
 
 <img src='res/images/past_solutions/chatgpt0.png' height='90%vh' width='90%vw'>
 
 ---
-*Today’s problems come from yesterday’s solutions*
+exclude: true
+<span style="color:teal"> **Today’s problems come from yesterday’s solutions** </span>
+
+*- Peter Senge*
+</hline>
+
+<img src='res/images/past_solutions/chatgpt0.png' height='90%vh' width='90%vw'>
+
+
+---
+exclude: true
+<span style="color:teal"> **Today’s problems come from yesterday’s solutions** </span>
 *- Peter Senge*
 
 <img src='res/images/past_solutions/chatgpt1.png' height='90%vh' width='90%vw'>
 
 ---
+exclude: true
+
 ##### Students -  
 What if future *nails* come from today's *hammers*?
 
@@ -152,14 +178,36 @@ That's not your project, its the next generations'.
 
 You have had enough motivation now. 
 
+---
+### How can imputing accurate traffic data help?
 
+1. Enhancing city efficiency
+	- faster commute times
+	- reduced freight costs 
+	- enhanced safety
+
+2. Addressing climate concerns
+	- efficient fuel use
+	- traffic shaping -> controlled air quality
+
+3. Effective urban planning
+	- traffic/commuter trends ->  effective urban planning for new cities 
+
+4. Enhancing downstream tasks
+	-  informative data visualization
+	-  easier for downstream tasks
+	 
 ---
 
 class: center middle
 
-### 3. SIMILAR NAILS
+### 3. DATA REPRESENTATIONS
+
+---
+### Raw
+
+<img src='res/paper_figures/rawdata.png' width='100%vw'>
 
 ---
 
-
----
+### Matrix
