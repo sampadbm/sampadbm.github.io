@@ -1,4 +1,4 @@
----
+
 ## Oral Qualification Exam
 
 <img src='res/logos/usc.png' height='25%vh' width='25%vh' />
@@ -87,18 +87,22 @@ class: center middle
 
 ---
 
-### What is the data? 
+### What is the (big) data? 
 
 Data from traffic sensors deployed on roads in smart cities of China over a month.
 
 ### And problem?
 - Noisy data
 - Lots of missing entries (sensor/network/power failures)
-- Cost restrictions - sparse deployment
+- Cost restrictions - sparse and non-uniform sensor deployment
+- Too large to store over longer periods (terrabytes/day)
 
 ### Task?
-Denoise and recover missing entries. 
+Address the challenges
+posed by mobility datasets.
 
+	- Denoise and recover missing entries. 
+	- Store data more efficiently, compression.
 ---
 
 class: center middle 
@@ -181,10 +185,11 @@ You have had enough motivation now.
 ---
 ### How can imputing accurate traffic data help?
 
-1. Enhancing city efficiency
+1. Enhancing city efficiency/safety
 	- faster commute times
 	- reduced freight costs 
-	- enhanced safety
+	- enhanced safety alerts and emergency dispatch
+	- Predictable commute times
 
 2. Addressing climate concerns
 	- efficient fuel use
@@ -192,11 +197,16 @@ You have had enough motivation now.
 
 3. Effective urban planning
 	- traffic/commuter trends ->  effective urban planning for new cities 
+	- Planning efficient locations for EV charging stations.
+ 
 
 4. Enhancing downstream tasks
 	-  informative data visualization
-	-  easier for downstream tasks
-	 
+	-  easier for downstream tasks 
+		- congestion detection
+		- incident detection
+		- City Functional Regions(Points of Interest) detection
+			- business districts, residential area, education hubs, etc.
 ---
 
 class: center middle
@@ -204,10 +214,45 @@ class: center middle
 ### 3. DATA REPRESENTATIONS
 
 ---
-### Raw
+### Raw data
 
-<img src='res/paper_figures/rawdata.png' width='100%vw'>
+<img src='res/images/gm_ppt_figures/datatable.png' width='100%vw'>
+
+>>> `GPS Logs from ~ 2500 Taxis over 1 month`
 
 ---
+### Grid view (Shanghai)
 
-### Matrix
+<img src='res/images/gm_ppt_figures/shanghai_grid.png' width='80%vw'>
+>>> >>> 30 x 30 grids
+
+---
+### Processed data matrix
+<img src='res/images/gm_ppt_figures/matrix.png' width='100%vw'>
+
+---
+### Processed traffic density (1 hour x 1km x 1km)
+
+<img src='res/paper_figures/rawdata.png' width='90%vw'>
+>>> >>> $X \times Y \times T$ tensors 
+
+---
+### Processed traffic density (1 hour x 1km x 1km)
+
+<img src='res/paper_figures/rawdata.png' width='50%vw' style="float:right">
+ 
+##### Spatial plot
+Contract time dim. using vector $\mathbf{1_T} \in \mathbb{R}^T$
+
+##### Temporal plot
+Contract spatial dims. using vectors $\mathbf{1_X} \in \mathbb{R}^X$ and $\mathbf{1_Y} \in \mathbb{R}^Y$
+
+Same as contraction with matrix dot/inner product on spatial dimensions using 
+matrix $\mathbf{1_X1_Y'} \in \mathbb{R}^{X \times Y}$
+---
+
+### Other Representations
+
+
+
+
