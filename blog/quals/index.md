@@ -285,4 +285,38 @@ class: center middle
 
 ---
 
+### Hypothesis and Assumptions
+
+
+##### Hypothesis
+There exist two kinds of latent factors that completely explain traffic patters
+- time invariant latent factors and 
+- time varying latent factors 
+
+
+##### Assumptions 
+
+1. Observed data of a particular day can be explained by linear combination (weighted by the time varying factors)
+ of the time invariant factors.
+
+2. Let the rank-1 matrix/tensor atoms obtained by decomposition of the data representation be time invariant.
+
+3. Let the decomposition weights on the rank one atoms be time variant
+
+We will empirically validate these assumptions on our dataset.
+
+
+---
+
+### Decomposition into rank-1 atoms
+<img src='res/images/gm_ppt_figures/matrix-decomp-view.png' width='100%vw'>
+
+$$\text{Matrix Decomposition}$$
+
+<img src='res/images/gm_ppt_figures/tensor-decomp-view.png' width='100%vw'>
+
+$$\text{Tensor Decomposition}$$
+
+---
+
 
