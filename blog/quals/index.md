@@ -119,25 +119,34 @@ Generate an image that captures the most pressing challenge faced by modern huma
 <img src='res/images/challenges/chatgpt4.webp' height='25%vh' width='60%vw'>
 <img src='res/images/challenges/chatgpt0.webp' height='25%vh' width='35%vw'>
 
+---
+### Some solutions
+<img src='res/images/solutions/chatgpt0.png' height='90%vh' width='70%vw'>
 
 ---
 ### Some solutions
-<img src='res/images/solutions/chatgpt0.png' height='90%vh' width='90%vw'>
+<img src='res/images/solutions/chatgpt0.png' height='90%vh' width='70%vw'>
+
+<span style="color:teal"> **Today’s problems come from yesterday’s solutions** </span>
+
+*- Peter Senge (The Fifth Discipline)*
 
 ---
 exclude: true
 
 ### More! More!
-<img src='res/images/solutions/chatgpt1.png' height='90%vh' width='90%vw'>
+<img src='res/images/solutions/chatgpt1.png' height='70%vh' width='70%vw'>
+
 
 ---
+exclude: true
 
 ### Can smarter systems help? 
 <img src='res/images/challenges/performgreen.png' height='325' width='325'>
 <img src='res/images/challenges/smartcities.png' height='300' width='300'>
 
 ---
-
+exclude: true
 ### Can smarter systems help? 
 <img src='res/images/challenges/performgreen.png' height='325' width='325'>
 <img src='res/images/challenges/smartcities.png' height='300' width='300'>
@@ -227,9 +236,15 @@ class: center middle
 >>> >>> 30 x 30 grids
 
 ---
-### Processed data matrix
-<img src='res/images/gm_ppt_figures/matrix.png' width='100%vw'>
 
+### Representations 
+
+<!-- ![tensors](res/images/gm_ppt_figures/scalar-vector-tensor.png) -->
+<!--  -->
+
+<img src="res/images/gm_ppt_figures/missing-tensor.png" width="45%vw"/>
+<img src="res/images/gm_ppt_figures/missing-matrix.png" width="45%vw"/>
+>>> Tensor   $\hspace{11em}$   Matrix
 ---
 ### Processed traffic density (1 hour x 1km x 1km)
 
@@ -237,7 +252,7 @@ class: center middle
 >>> >>> $X \times Y \times T$ tensors 
 
 ---
-### Processed traffic density (1 hour x 1km x 1km)
+### Processed traffic density visualizations
 
 <img src='res/paper_figures/rawdata.png' width='50%vw' style="float:right">
  
@@ -250,9 +265,24 @@ Contract spatial dims. using vectors $\mathbf{1_X} \in \mathbb{R}^X$ and $\mathb
 Same as contraction with matrix dot/inner product on spatial dimensions using 
 matrix $\mathbf{1_X1_Y'} \in \mathbb{R}^{X \times Y}$
 ---
+class: center middle
+# 4. SELECTED PRIOR WORK
+---
 
-### Other Representations
+### Prior work @ USC-ANRG + GM
+<img src='res/images/gm_ppt_figures/missing-matrix.png' width='45%vw'>
+<img src='res/images/gm_ppt_figures/pca-variance.png' width='45%vw'>
+<img src='res/images/gm_ppt_figures/pca-paper-time-pattern.png' width='100%vw'>
 
+---
 
+### Prior work @ USC-ANRG + GM
+<img src='res/images/gm_ppt_figures/pca-paper-imputation-performance.png' width='100%vw'>
+
+---
+class: center middle
+# 5. OUR WORK
+
+---
 
 
