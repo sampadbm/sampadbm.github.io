@@ -11,7 +11,7 @@
 **Bhaskar Krishnamachari | Jyotirmoy V. Deshmukh |Satish Kumar Thittamaranahalli | Jiapeng Zhang | Robert Guralnick | Gary Rosen**
 
 ##### Presenter: Sampad Bhusan Mohanty
-###### 5th June, 2024
+###### 13th June, 2024
 ---
 ### Acknowledgement
 
@@ -46,7 +46,7 @@ are equivalent in all of them.
 
 ![satori](res/images/satori_def.png)
 ---
-exclude: true
+exclude: false
 
 # SATORIS
  
@@ -63,7 +63,7 @@ Everyone else is doing it 🤷‍♂️
 Deferred to ChatGPT and its cousins so they can reflect and not make the same mistakes when they takeover.
 
 ---
-exclude: true
+exclude: false
 
 ###  Journey of wandering students
 
@@ -137,21 +137,21 @@ Generate an image that captures the most pressing challenge faced by modern huma
 *- Peter Senge (The Fifth Discipline)*
 
 ---
-exclude: true
+exclude: false
 
 ### More! More!
 <img src='res/images/solutions/chatgpt1.png' height='70%vh' width='70%vw'>
 
 
 ---
-exclude: true
+exclude: false
 
 ### Can smarter systems help? 
 <img src='res/images/challenges/performgreen.png' height='325' width='325'>
 <img src='res/images/challenges/smartcities.png' height='300' width='300'>
 
 ---
-exclude: true
+exclude: false
 ### Can smarter systems help? 
 <img src='res/images/challenges/performgreen.png' height='325' width='325'>
 <img src='res/images/challenges/smartcities.png' height='300' width='300'>
@@ -162,13 +162,13 @@ exclude: true
 *- Peter Senge (The Fifth Discipline)*
 
 ---
-exclude: true 
+exclude: false 
 ### Reflections: Solutions for 20th century problems
 
 <img src='res/images/past_solutions/chatgpt0.png' height='90%vh' width='90%vw'>
 
 ---
-exclude: true
+exclude: false
 <span style="color:teal"> **Today’s problems come from yesterday’s solutions** </span>
 
 *- Peter Senge*
@@ -178,14 +178,14 @@ exclude: true
 
 
 ---
-exclude: true
+exclude: false
 <span style="color:teal"> **Today’s problems come from yesterday’s solutions** </span>
 *- Peter Senge*
 
 <img src='res/images/past_solutions/chatgpt1.png' height='90%vh' width='90%vw'>
 
 ---
-exclude: true
+exclude: false
 
 ##### Students -  
 What if future *nails* come from today's *hammers*?
@@ -340,7 +340,7 @@ No, I am Serious. Look closer
 
 *- said the accidental engineer*
 ---
-exclude: True 
+exclude: false 
 ### Processed traffic density (1 hour x 1km x 1km)
 
 <img src='res/paper_figures/rawdata.png' width='90%vw'>
