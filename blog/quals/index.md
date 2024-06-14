@@ -743,8 +743,8 @@ class: middle center
 class: middle center
 # THANK YOU VERY MUCH
 
-More resutls in the paper. 
+More results in the <a href="SATORIS.pdf" target="_blank"> paper </a>. 
 
 Also about verification of our assumptions of time invariance of the matrix/tensor atoms.
 
-[link to paper](SATORIS.pdf)
+
