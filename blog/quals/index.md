@@ -359,7 +359,7 @@ Contract time dim. using vector $\mathbf{1_T} \in \mathbb{R}^T$
 Contract spatial dims. using vectors $\mathbf{1_X} \in \mathbb{R}^X$ and $\mathbf{1_Y} \in \mathbb{R}^Y$
 
 Same as contraction with matrix dot/inner product on spatial dimensions using 
-matrix $\mathbf{1_X1_Y'} \in \mathbb{R}^{X \times Y}$ because $\mathbf{v^TBv} = \langle \mathbf{B},\mathbf{vv^T} \rangle$
+matrix $\mathbf{1_X1_Y'} \in \mathbb{R}^{X \times Y}$ because $\mathbf{u^TBv} = \langle \mathbf{B},\mathbf{vu^T} \rangle$
 
 
 ---
