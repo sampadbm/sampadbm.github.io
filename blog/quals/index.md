@@ -542,7 +542,7 @@ time variant component: $\boldsymbol{\theta_2} \in \mathbf{R}^{p_2}$
 $p_1 + p_2 = p$
 
 $\phi$ may additionally depend on optional auxiliary information $\boldsymbol{\psi}(t_0)$
-where $|t_0 - t| \leq \epsilon$ for some $\epsilon geq 0$
+where $|t_0 - t| \leq \epsilon$ for some $\epsilon \geq 0$
 
 
 ---
