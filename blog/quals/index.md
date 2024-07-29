@@ -1,3 +1,7 @@
+---
+themes: ["colorful"]
+category: research
+---
 
 ## Oral Qualification Exam
 
