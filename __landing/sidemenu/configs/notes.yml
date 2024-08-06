@@ -1,16 +1,16 @@
 AOPS:
 - AoPS
 COURSES:
-- ee503-probability
-- csci567-machine-learning
-- math425A-real-analysis
 - csci699-computational-perspectives-on-ml
-- math574-applied-matrix-analysis
+- csci670-advanced-analysis-of-algorithms
+- math425A-real-analysis
 - math501-summer-2023
-- csci675-convex-optimisation
+- ee503-probability
 - csci698-practicum-in-teaching-computer-science-sp24
 - ee546-mathematics-of-high-dimensional-data
-- csci670-advanced-analysis-of-algorithms
+- math574-applied-matrix-analysis
+- csci675-convex-optimisation
+- csci567-machine-learning
 GENERAL:
 - phy760-computational-methods-in-physics
 OPTIMISATION:
