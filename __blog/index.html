@@ -15,9 +15,56 @@
   <!-- PyScript CSS -->
   <!-- <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css"> -->
 
-  <!-- This script tag bootstraps PyScript -->
-  <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+  <!-- <py-config src="./pyscript.toml"></py-config> -->
+
+
+
 </head>
+
+<script>
+		// CHECK if pyscript.toml exists in the directory, if yes, insert py-config tag and also load pyscript
+		
+		async function checkFileExists(url) {
+		    try {
+		        const response = await fetch(url, { method: 'HEAD' });
+		        return response.ok; // true if the file exists, false otherwise
+		    } catch (error) {
+		        console.error('Error fetching the file:', error);
+		        return false; // Indicates an error occurred (e.g., network issues)
+		    }
+		}
+
+		// Usage
+		fname = './pyscript.toml'
+		checkFileExists(fname)
+		    .then(exists => {
+		        // alert(exists ? `${fname} exists` : `${fname} does not exist`);
+		        if(exists){
+		        	pyconfigEl = document.createElement("py-config");
+		        	// pyconfigEl.src = fname; --> wuill not work because usually only a few elements of HTML support src attribute
+		        	pyconfigEl.setAttribute("src",fname); 
+		        	// alert(pyconfigEl.outerHTML);
+		        	document.head.appendChild(pyconfigEl);
+		        	// document.head.insertBefore(pyconfigEl, document.head.firstChild);
+
+		        	// INSERT pysript core only after inserting py-config
+		        	core = document.createElement("script");
+		        	core.type = "module";
+		        	core.src = "https://pyscript.net/releases/2024.10.1/core.js"
+		        	//alert(core.outerHTML)
+		        	document.head.appendChild(core);
+
+		        	console.log("===> PYSCRIPT: Found pyscript.toml, loading pyscript !");		        	
+		        }
+		        else{
+		        	console.log("===> PYSCRIPT: ./pyscript.toml not found in current directory, not loading pyscript !")
+		        }
+		    });
+	
+</script>
+<!-- This script tag bootstraps PyScript -->
+<!-- <script type="module" src=></script> -->
+
 
 
 <script> 
@@ -35,7 +82,8 @@
 <script src="/__resources/texme/texme.js"></script>
 
 
-<body>  
+<body>
+
   <div id="page" style="--d:grid; --gtc:2fr 7fr;">
 
       <div class="sidebar" style="--d:grid; --gtr:auto max-content; --p:1em; --pos:sticky; --top:0; --h:100vh; --ofy:scroll;" >
@@ -133,7 +181,7 @@
 
 
 
-<script defer src="http://localhost:9090/js/commento.js"></script> 
+<!-- <script defer src="http://localhost:9090/js/commento.js"></script>  -->
 
 <script>
   //console.log('<<--->> Make sure to git checkout -b externalrenderer on neveisa/texme')
