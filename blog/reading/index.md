@@ -7,7 +7,7 @@ category: reading
 
 ### Mathematics
 
-- [MATHEMATICAL VIRUSES*, David Hestenes, 1992](http://geocalc.clas.asu.edu/pdf/MathViruses.pdf)
+- [MATHEMATICAL VIRUSES*, David Hestenes, 1992](https://davidhestenes.net/geocalc/pdf/MathViruses.pdf)
 
 - [The Unreasonable Effectiveness of Mathematics in the Natural Sciences](https://en.wikipedia.org/wiki/The_Unreasonable_Effectiveness_of_Mathematics_in_the_Natural_Sciences)
   
