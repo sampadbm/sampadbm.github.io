@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog</title>
   
+  <!-- https://docs.pyscript.net/2024.10.1//user-guide/workers/ -->
+  <!-- https://github.com/WebReflection/mini-coi#readme -->
+  
   <!-- <link rel="stylesheet" href="/__resources/sampy/themes/base.css"/> -->
   <link id="themeloader" rel="stylesheet" :href="'/__resources/sampy/themes/' + current_theme + '.css'"> 
 
@@ -215,6 +218,15 @@
 }
 
 div:has(img) + div:has(em){
+	margin-top: 0.5em;
+    // font-family: cursive;
+    display: grid;
+    justify-content: center;
+    color: black;
+    text-decoration: underline;
+}
+
+img + div:has(em){
 	margin-top: 0.5em;
     // font-family: cursive;
     display: grid;

@@ -17,18 +17,26 @@ extracted the maximum red and green values from each of the mango images.
 
 Here are the plot of the maximum red and green values of the three species plotted along with the code snippet which list their values.
 
-<script type="py" src="./main.py" ></script>
-<script type="py">
-	from pyscript import current_target
-	from pyscript.web import page
-	target = page.find(f"#{current_target()}")
-	text = f"<pre style='height:30vh'><code class='python'>A = {A}\nB = {B}\nC = {C}</code></pre>"
-	target[0].innerHTML += text
-
-	from pyscript import window
-	window.hljs.highlightAll()
+<div id="mangoes"> <div class="loader"></div> </div>
+<script type="py" target="mangoes">
+	from pyscript import display,HTML
+	from matplotlib import pyplot as plt
+	import seaborn as sns
+	import numpy as np
+	############
+	np.random.seed(0)
+	N = 10
+	Amean, Bmean, Cmean = map(np.array, [(80,200),(100,50),(50,150)])
+	A,B,C = map(lambda x: 20*np.random.randn(N,2)+x, [Amean, Bmean, Cmean])
+	############
+	sns.set_style("whitegrid")
+	marker = "P"
+	sns.scatterplot(x=A[:,0],y=A[:,1], label='A', marker=marker, color='red')
+	sns.scatterplot(x=B[:,0],y=B[:,1], label='B', marker=marker, color='green')
+	sns.scatterplot(x=C[:,0],y=C[:,1], label='C', marker=marker, color='blue')
+	#############
+	display(plt, append=False)
 </script>
-
 
 Now, you are given five new mangoes whose maximum red and green values
 have been extracted as given below and shown in the plot
@@ -36,12 +44,14 @@ have been extracted as given below and shown in the plot
 <pre><code class="python">X = [[130,70],[70,70],[100,170],[30,100],[70,210]]
 </code></pre>
 
-<py-script>
-  from pyscript import HTML
+<div id="unknown_mangoes"> <div class="loader"></div> </div>
+<script type='py' target="unknown_mangoes">
   X = np.array([[130,70],[70,70],[100,170],[30,100],[70,210]])
+  display(X,append=0, target="unknown_mangoes")
   sns.scatterplot(x=X[:,0],y=X[:,1], color="black", marker='D')
-  display(plt,HTML("<em>5 unkown mangoes</em>"))
-</py-script>
+  display(plt,append=False)
+  display(HTML("<em>5 unkown mangoes</em>"))
+</script>
 
 
 >Your task is to classify the 5 mangoes into their species using a program (python/julia).
@@ -56,42 +66,76 @@ to the centroids of species A, B and C in the plot.
 >3. Assign the species to the above mango whose centroid is 
 closest to it in the plot
 
+
 Complete the code below to implement the above alogrithm
-<pre><code class="python">
-def centroid(points):
-	return ... # <- fill this
+<!-- SETUP NEW ENV FOR PY_EDITOR -->
+<!-- <script type="py-editor" env="sampy1" config="./editor.toml" setup> -->
+<!-- 	import numpy as np -->
+<!-- 	np.random.seed(0) -->
+<!-- 	N = 10 -->
+<!-- 	Amean, Bmean, Cmean = map(np.array, [(80,200),(100,50),(50,150)]) -->
+<!-- 	A,B,C = map(lambda x: 20*np.random.randn(N,2)+x, [Amean, Bmean, Cmean]) -->
+<!-- 	############ -->
+<!-- 	X = numpy.array([[130,70],[70,70],[100,170],[30,100],[70,210]]) -->
+<!-- </script> -->
 
-def distance(x,y):
-	return ... # <- fill this 
+<!-- <script type="py-editor" env="sampy1"> -->
+<!-- def centroid(points): -->
+<!-- 	return ... # <- fill this -->
+<!--  -->
+<!-- def distance(x,y): -->
+<!-- 	return ... # <- fill this  -->
+<!--  -->
+<!-- def classify(x): -->
+<!-- 	# x is the position of a single mango -->
+<!--  -->
+<!-- 	distA, distB, distC = [distance(x,c) for c in [cA,cB,cC]] -->
+<!--  -->
+<!-- 	if distA < distB and distA < distC: return 'A' -->
+<!-- 	elif distB < distA and distB < distC: return 'B' -->
+<!-- 	else: return 'C' -->
+<!-- 	 	 -->
+<!--  -->
+<!-- ### MAIN ALGORIGHTM ### -->
+<!--  -->
+<!-- # get centroids -->
+<!-- cA = centroid(A);cB = centroid(B);cC = centroid(C) -->
+<!--  -->
+<!-- # classify -->
+<!-- colors = {'A':'red', 'B':'green', 'C':'blue'} -->
+<!--  -->
+<!-- for mango in X: -->
+<!-- 	closest_species = classify(mango) -->
+<!-- 	print(mango, '--->', closest_species) -->
+<!-- </script> -->
 
-def classify(x):
-	# x is the position of a single mango
 
-	distA, distB, distC = [distance(x,c) for c in [cA,cB,cC]]
-
-	if distA < distB and distA < distC: return 'A'
-	elif distB < distA and distB < distC: return 'B'
-	else return 'C'
-	 	
-
-### MAIN ALGORIGHTM ###
-
-# get centroids
-cA = centroid(A);cB = centroid(B);cC = centroid(C)
-
-# classify
-colors = {'A':'red', 'B':'green', 'C':'blue'}
-
-for mango in X:
-	closest_species = classify(mango)
-	print(mango, '--->', closest_species)
-    sns.scatterplot(x=[mango[0]], y=[mango[1]], marker='d', color=colors[closest_species])
-</code></pre>
+>The solution is plotted below.
+<div id='sol'><div class="loader"></div></div>
+<script type='py' src="./sol.py" target="sol"></script>
 
 
-The solution is plotted below.
-<script type='py' src="./sol.py"></script>
+<style>
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: fit-content;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 30px;
+  background:linear-gradient(90deg,#000 50%,#0000 0) right/200% 100%;
+  animation: l21 2s infinite linear;
+}
+.loader::before {
+  content :"Loading...";
+  color: #0000;
+  padding: 0 5px;
+  background: inherit;
+  background-image: linear-gradient(90deg,#fff 50%,#000 0);
+  -webkit-background-clip:text;
+          background-clip:text;
+}
 
-<script type='py-editor' env='shared'>
-print(A)
-</script>
+@keyframes l21{
+  100%{background-position: left}
+}
+</style>

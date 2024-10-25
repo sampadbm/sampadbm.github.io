@@ -1,1 +1,1 @@
-packages = ["numpy", "matplotlib", "seaborn"]
+packages = ["numpy","seaborn"]
