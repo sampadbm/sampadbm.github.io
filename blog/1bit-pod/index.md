@@ -12,7 +12,7 @@ There are images of mangoes from three different different species and they are,
 ![sample_mango](images/Mango_Maya.jpg)
 *Sample Mango of type/species A*
 
-These are RGB images (values range from 0-255) and an image processing script has already 
+These are RGB images (pixel values range from 0-255) and an image processing script has already 
 extracted the maximum red and green values from each of the mango images.
 
 Here are the plot of the maximum red and green values of the three species plotted along with the code snippet which list their values.
@@ -30,7 +30,6 @@ Here are the plot of the maximum red and green values of the three species plott
 </script>
 
 
-
 Now, you are given five new mangoes whose maximum red and green values
 have been extracted as given below and shown in the plot
 
@@ -38,13 +37,14 @@ have been extracted as given below and shown in the plot
 </code></pre>
 
 <py-script>
+  from pyscript import HTML
   X = np.array([[130,70],[70,70],[100,170],[30,100],[70,210]])
   sns.scatterplot(x=X[:,0],y=X[:,1], color="black", marker='D')
-  display(plt, "*5 unkown mangoes*")
+  display(plt,HTML("<em>5 unkown mangoes</em>"))
 </py-script>
 
 
->Your task is to classify the 5 mangoes using a program (python/julia).
+>Your task is to classify the 5 mangoes into their species using a program (python/julia).
 The idea being that an unknown mango will be similar to its species
 and hence lie closer to its own species in the plot.
 
@@ -91,3 +91,7 @@ for mango in X:
 
 The solution is plotted below.
 <script type='py' src="./sol.py"></script>
+
+<script type='py-editor' env='shared'>
+print(A)
+</script>
