@@ -13,7 +13,7 @@ There are images of mangoes from three different species and they are, say speci
 These are RGB images (pixel values range from 0-255) and an image processing script has already 
 extracted the maximum red and green values from each of the mango images.
 
-Here is the plot of the maximum red and green values of the three species plotted along with the code snippet which list their values.
+Here is the plot of the maximum red and green values of the three species plotted.
 
 <script type="py">
 	from pyscript import display,HTML
@@ -27,6 +27,7 @@ Here is the plot of the maximum red and green values of the three species plotte
 	A,B,C = map(lambda x: 20*np.random.randn(N,2)+x, [Amean, Bmean, Cmean])
 </script>
 
+And here are those maximum red and green values in three numpy arrays (species A, B and C).
 <script id="mango_data" type="py" terminal> 
 	print(f"A = {A}")
 	print(f"\n\nB = {B}")
