@@ -3,8 +3,10 @@ themes: ["muted","colorful"]
 category: science
 ---
 
-# Mango Classification
-### Mango Classification
+## Mango Classification
+
+### 1. Problem Statement
+
 There are images of mangoes from three different species and they are, say species A,B and C.
 
 ![sample_mango](images/Mango_Maya.jpg)
@@ -51,7 +53,9 @@ And here are those maximum red and green values in three numpy arrays (species A
 	#window.alert("ok")
 </script>
 
+<hr><hr>
 
+### 2. Task
 Now, you are given five new mangoes whose maximum red and green values
 have been extracted as given below and shown in the plot
 
@@ -129,7 +133,9 @@ for mango in X:
 	print(mango, '--->', closest_species)
 </script>
 
+<hr><hr>
 
+### 3. Solution
 >The solution is plotted below.
 <div id='sol'><div class="loader"></div></div>
 <script type='py' src="./sol.py" target="sol"></script>

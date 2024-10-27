@@ -32,3 +32,4 @@ for mango in X:
     sns.scatterplot(x=[mango[0]], y=[mango[1]], marker='D', color=colors[closest_species])
 
 display(plt, append=False, target="sol")
+display(HTML("<em>5 classified mangoes</em>"), target='sol')
