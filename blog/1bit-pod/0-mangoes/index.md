@@ -13,7 +13,7 @@ There are images of mangoes from three different species and they are, say speci
 These are RGB images (pixel values range from 0-255) and an image processing script has already 
 extracted the maximum red and green values from each of the mango images.
 
-Here are the plot of the maximum red and green values of the three species plotted along with the code snippet which list their values.
+Here is the plot of the maximum red and green values of the three species plotted along with the code snippet which list their values.
 
 <script type="py">
 	from pyscript import display,HTML
