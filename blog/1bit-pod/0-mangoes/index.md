@@ -5,7 +5,7 @@ category: science
 
 # Mango Classification
 ### Mango Classification
-There are images of mangoes from three different different species and they are, say species A,B and C.
+There are images of mangoes from three different species and they are, say species A,B and C.
 
 ![sample_mango](images/Mango_Maya.jpg)
 *Sample Mango of type/species A*
