@@ -109,8 +109,7 @@
 				  <!-- </br> -->
 	              <a href="https://tscanlin.github.io/tocbot/" target="_blank">tocbot</a>, 
 	              <a href="https://highlightjs.org/" target="_blank"> highlightjs</a> 
-	              <a href="https://pyscript.net/" target="_blank">PyScript</a>,
-
+	              <a href="https://pyscript.net/" target="_blank">PyScript</a>
 	            </p> 
 
 	            <select @change="loadtheme" style="--bg: rgba(0,0,0,0.2)"> 
@@ -307,3 +306,40 @@ restorescroll = function() {
 
 setTimeout(restorescroll, 2000)*/
 </script>
+
+
+<style>
+/* LOADER ANIMATION */
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: fit-content;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 30px;
+  background:linear-gradient(90deg,#000 50%,#0000 0) right/200% 100%;
+  animation: l21 2s infinite linear;
+}
+.loader::before {
+  content :"Loading...";
+  color: #0000;
+  padding: 0 5px;
+  background: inherit;
+  background-image: linear-gradient(90deg,#fff 50%,#000 0);
+  -webkit-background-clip:text;
+          background-clip:text;
+}
+
+@keyframes l21{
+  100%{background-position: left}
+}
+</style>
+
+<style>
+/* FOR PYSCRIPT */
+py-terminal{
+	height: auto;
+	margin-top: 2.5em;
+	margin-bottom: 2.5em
+}
+</style>
+

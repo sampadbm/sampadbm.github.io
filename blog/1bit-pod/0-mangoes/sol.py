@@ -31,4 +31,4 @@ for mango in X:
     # display(mango, '--->', closest_species)
     sns.scatterplot(x=[mango[0]], y=[mango[1]], marker='D', color=colors[closest_species])
 
-display(plt, append=0)
+display(plt, append=False, target="sol")
