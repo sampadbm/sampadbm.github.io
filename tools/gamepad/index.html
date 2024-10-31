@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Gamepad</title>
+        <meta charset="utf-8" />
+
+        <link
+            href="https://unpkg.com/bonsai.css@latest/dist/bonsai.min.css"
+            rel="stylesheet"
+        />
+        <style></style>
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+              console.log(' ===> DOM Ready');
+              window.togglebtn = document.querySelector("#togglebtn")
+              window.txlog = document.querySelector("#txlog");
+              window.rxlog = document.querySelector("#rxlog");
+              window.urlinputel = document.querySelector("#targetURL");
+              urlinputel.value = "http://httpbin.org/get?key=";
+          });
+
+          function handle_keypress(event){
+                //console.log(`Key "${event.key}" pressed with code "${event.code}"`);
+                log(`got ${event.key}\n`);
+                url = TARGET_URL + event.key;
+
+                fetch(url).then(response => {
+                  if(!response.ok) {
+                    log(`ERROR: ${response.statusText}\n`,'tx');
+                    throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                  return response.json()
+                }).then(data => {
+                  log(JSON.stringify(data)+"\n",'rx')
+                }).catch(error =>{
+                  // Handle any errors
+                  console.error('There was a problem with the fetch operation:', error);
+                  log(error+"\n",'tx');
+                })
+          }
+          function startlistener(){
+            addEventListener('keydown',handle_keypress);
+            togglebtn.innerHTML = "stop";
+            window.TARGET_URL = urlinputel.value
+            log("TARGET_URL:\n"+TARGET_URL+"\n", 'tx');
+            console.log(TARGET_URL)
+          }
+
+          function stoplistener(){
+                removeEventListener('keydown', handle_keypress)
+                togglebtn.innerHTML = "start";
+          }
+
+          function togglelistener(){
+            if (togglebtn.innerHTML == "start") startlistener()
+              else stoplistener()
+          }
+
+          function log(msg, context='tx'){
+            d = new Date()
+            d = d.toLocaleTimeString()
+            msg = d + " | " + msg
+            if (context=='tx') txlog.innerHTML = msg + txlog.innerHTML;
+              else if (context=='rx') rxlog.innerHTML = msg + rxlog.innerHTML;
+          }
+        </script>
+    </head>
+    <body>
+            <div class="group" style="--w:100vw;--h:5vh;">
+                    <input onfocus="stoplistener()" id="targetURL" style="--p:1em;--ml:0.5em" type="text" placeholder="http(s)://rest.address:port"></input>
+                    <button class="green" id="togglebtn" style="--ml:0.5em; --mr:0.5em" onclick="togglelistener()">start</button>
+            </div>
+            <div style="--w:100vw; --d:grid; --gtc:50vw 50vw; --h:85vh; --bgc:black">
+                    <pre id="txlog" style=" --ofy:auto;--pl:1em; --br:1px solid white; --c: magenta; --weight: bold">
+                        TX Activity
+                    </pre>
+                    <pre id="rxlog" style="--ofy:auto;--pl:1em; --bl:1px solid white; --c: aqua; --weight: bold">
+                        RX Activity
+                    </pre>
+            </div>
+            <div style="--d:grid; --gtc:50vw 50vw;--h:10vh; --w:100vw; --bgc: black">
+                <button onclick="txlog.innerHTML=''" class="orange" style="">Clear TX Log</input>
+                <button onclick="rxlog.innerHTML=''" class="orange" style="">Clear RX Log</input>
+            </div>
+    </body>
+</html>

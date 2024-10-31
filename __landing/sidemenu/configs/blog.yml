@@ -2,12 +2,12 @@ GENERAL:
 - odisha
 MATHEMATICS:
 - linearAlgebra
+POD:
+- 1bit-pod
 READING:
 - reading
 RESEARCH:
-- tensors
 - research
 - physicsML
 - quals
-SCIENCE:
-- 1bit-pod
+- tensors

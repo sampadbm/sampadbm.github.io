@@ -1,12 +1,18 @@
 <table>
-	<tbody>
-	<tr v-for="(links,toolname) in sidemenudata">
-		<th style='color:indianred;'> <b>{{ toolname }}</b> </th>
-		
-		<td style='border-left: 1px dashed red; border-radius:3em'>
-			<li v-for="l in links"><a style='color:seagreen' target='_blank' :href=l>{{ l }}</a></li>	
-		</td>
-	</tr>
+    <tbody>
+        <tr v-for="(links,toolname) in sidemenudata">
+            <th style="color: indianred"><b>{{ toolname }}</b></th>
 
-	</tbody>
+            <td style="border-left: 1px dashed red; border-radius: 3em">
+                <li v-for="l in links">
+                    <a
+                        style="color: seagreen"
+                        target="_blank"
+                        :href="'/tools/'+l"
+                        >{{ l }}</a
+                    >
+                </li>
+            </td>
+        </tr>
+    </tbody>
 </table>
