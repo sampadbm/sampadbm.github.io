@@ -6,8 +6,6 @@ category: research
 
 
 
-
-
 # Physics and AI
 
 
