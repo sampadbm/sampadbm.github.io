@@ -21,8 +21,8 @@ def power(A,x)
 ``` 
 
 2. Efficient Method
-```python
 
+```python
 def power(A,x):
 	xbin = bin(x) # binary representation of x in ascii with an '0b' prepended
 	xbin = map(int,xbin[2:]) # get rid of '0b' and convert to integers
