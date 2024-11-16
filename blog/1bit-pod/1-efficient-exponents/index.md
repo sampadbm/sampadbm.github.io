@@ -12,6 +12,7 @@ Write an efficient algoriithm to raise an object A to the power x.
 
 ### SOLUTION
 1. Naive Method
+
 ```python
 def power(A,x)
 	accumulator = I # I is the multiplicative identity object such that I*B = B*I = B
