@@ -1,3 +1,5 @@
+EXPOSITIONS:
+- optimization
 GENERAL:
 - odisha
 MATHEMATICS:
@@ -8,6 +10,6 @@ READING:
 - reading
 RESEARCH:
 - research
-- physicsML
-- quals
 - tensors
+- quals
+- physicsML
