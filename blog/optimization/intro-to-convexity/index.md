@@ -80,7 +80,7 @@ By definition of $Q$, if $\vec x \in S \implies a(\vec x) \in Q$. Since $\vec x_
 >COROLLARY 3.3: The set of points obtained by dropping a fixed coordinate/component of points on a convex set yeilds a convex set. Proof: This is a linear projection on the the rest of the coordinates. Note: the coordinate system need not be orthogonal, it can be oblique (the projection is oblique but still linear). Example: Let $C \subset \mathbb R^{n+1}$ be a convex set whose members are the points $(\vec x,y)$ where $\vec x \in \mathbb R^n$ are the first $n$ coordinates/components and $y \in \mathbb R$ is the last one. The sets $C_{proj[:-1]} := {(\vec x, 0) \;|\; (\vec x, y) \in C }$ and  $\mathbb R^n \supset C_{[:-1]} := { \vec x \;|\; (\vec x, y) \in C}$ obtained by zeroing/dropping the last coordinate are convex.     
 >
 > COROLLARY 3.4: If $f:\mathbb R^n \rightarrow \mathbb R$ is a convex function, then the subset $\mathbb R^n \supset C := \{ \vec x \;|\; f(\vec x) \leq c \}$ (subset in domain of $f$) is a convex set.  
-Proof: Domain of $f$ is the fullspace $\mathbb R^n$ which is convex. Since $f$ is convex, $epi(f) := \{ (\vec x, y) \; | \; f(\vec x) \leq y \}$ is convex by observation(2).  Consider the halfspace $\mathbb R^{n+1} \supset H := \{(\vec x,y) \;|\: y \leq c\}$ which is convex. By observation(1), $E := H \cap epi(f) = \{ (\vec x, y) \;|\; f(\vec x) \leq y , y \leq c\} = \{ (\vec x, y)\;|\; f(\vec x) \leq c \}$ is convex. By dropping the last coordinate/component from the points in $E$, we obtain the set $C$
+Proof: Domain of $f$ is the fullspace $\mathbb R^n$ which is convex. Since $f$ is convex, $epi(f) := \{ (\vec x, y) \; | \; f(\vec x) \leq y \}$ is convex by observation(2).  Consider the halfspace $\mathbb R^{n+1} \supset H := \{(\vec x,y) \;|\: y \leq c\}$ which is convex. By observation(1), $E := H \cap epi(f) = \{ (\vec x, y) \;|\; f(\vec x) \leq y , y \leq c\} = \{ (\vec x, y)\;|\; f(\vec x) \leq c \}$ is convex. By dropping the last coordinate/component $y$ from the points $(\vec x, y)$ in $E$, we obtain the set $C = \{ \vec x \;|\; f(\vec x) \leq c  \}$ which is convex by corollary (3.3) $_\blacksquare$.
 
 
 > EXTREME POINTS  
@@ -97,5 +97,6 @@ $$
     \text{s.t }  g_i(\vec{x}) \leq c_i 
 $$
 where $f$ and $g_i$ are convex functions and $c_i$ are constants.
+Note: Each set $C_i := g_i(\vec x) \leq c_i$ defines a convex set and we are constrained to minimize $f$ on the set $C := \cap_i C_i$ which is convex as well by observation(1).  
 
 
