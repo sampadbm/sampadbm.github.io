@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Sampy's startpage'</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cindyjs.org/dist/v0.8.8/Cindy.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/umbrellajs"></script>
+    <script src="script.js"></script>
+  </head>
+  <body class='bg-black'>
+    <!-- page content -->
+    <main>
+    <div id="content" class="olive"></div>
+    <!--</br><hr></br>-->
+    <div id="CSCanvas"></div>
+    </main>
+    
+  </body>
+    <script id="csdraw" type="text/x-cindyscript">
+    f(v):=|v|^2;
+      t = seconds();
+      colorplot(
+          (0,0, f(#))
+          );
+      drawcircle([cos(t), sin(t/2)], 1);
+      javascript("console.log("+(seconds())+")");
+      pt = [random()*2 - 1, random()*2 - 1];
+      draw(pt, color->(0,0,0));
+    </script>
+    <script type="text/javascript">
+    	
+    	CindyJS({
+      scripts: "cs*",
+      autoplay: true,
+      ports: [{
+        id: "CSCanvas",
+        //width: 500,
+        //height: 500,
+        transform: [{
+          visibleRect: [0, 1, 1, 0]
+        }]
+      }]
+    });
+    </script>
+</html>
