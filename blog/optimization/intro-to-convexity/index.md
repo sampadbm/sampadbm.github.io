@@ -77,12 +77,12 @@ By definition of $Q$, if $\vec x \in S \implies a(\vec x) \in Q$. Since $\vec x_
 >
 >COROLLARY 3.2: Linear Projections preserve convexity. Proof: Projections are linear transforms  
 >
->**COROLLARY 3.3**: The set of points obtained by dropping a fixed coordinate/component of points on a convex set yeilds a convex set. Proof: This is a linear projection on the the rest of the coordinates. Note: the coordinate system need not be orthogonal, it can be oblique (the projection is oblique but still linear). Example: Let $C \subset \mathbb R^{n+1}$ be a convex set whose members are the points $(\vec x,y)$ where $\vec x \in \mathbb R^n$ are the first $n$ coordinates/components and $y \in \mathbb R$ is the last one. The sets $C_{proj[:-1]} := {(\vec x, 0) \;|\; (\vec x, y) \in C }$ and  $\mathbb R^n \supset C_{[:-1]} := { \vec x \;|\; (\vec x, y) \in C}$ obtained by zeroing/dropping the last coordinate are convex.     
+>**COROLLARY 3.3**: The set of points obtained by dropping a fixed coordinate/component of points on a convex set yeilds a convex set. Proof: This is a linear projection on the the rest of the coordinates. Note: the coordinate system need not be orthogonal, it can be oblique (the projection is oblique but still linear). Example: Let $C \subset \mathbb R^{n+1}$ be a convex set whose members are the points $(\vec x,y)$ where $\vec x \in \mathbb R^n$ are the first $n$ coordinates/components and $y \in \mathbb R$ is the last one. The sets $C_{proj[:-1]} := \{(\vec x, 0) \;|\; (\vec x, y) \in C \}$ and  $\mathbb R^n \supset C_{[:-1]} := \{ \vec x \;|\; (\vec x, y) \in C\}$ obtained by zeroing/dropping the last coordinate are convex.     
 >
 >**COROLLARY 3.4**: If $f:\mathbb R^n \rightarrow \mathbb R$ is a convex function, then the subset $\mathbb R^n \supset C := \{ \vec x \;|\; f(\vec x) \leq c \}$ (subset in domain of $f$) is a convex set.  
 Proof: Domain of $f$ is the fullspace $\mathbb R^n$ which is convex. Since $f$ is convex, $epi(f) := \{ (\vec x, y) \; | \; f(\vec x) \leq y \}$ is convex by observation(2).  Consider the halfspace $\mathbb R^{n+1} \supset H := \{(\vec x,y) \;|\: y \leq c\}$ which is convex. By observation(1), $E := H \cap epi(f) = \{ (\vec x, y) \;|\; f(\vec x) \leq y , y \leq c\} = \{ (\vec x, y)\;|\; f(\vec x) \leq c \}$ is convex. By dropping the last coordinate/component $y$ from the points $(\vec x, y)$ in $E$, we obtain the set $C = \{ \vec x \;|\; f(\vec x) \leq c  \}$ which is convex by corollary (3.3) $_\blacksquare$.
 >
->4. Sum of convex functions is convex.  
+>4. Sum of convex functions is convex.  Remark: (f+g)(x) = f(x) + g(x)  
 Proof: Let $f,g$ be convex functions. To show : $h := f + g$ is convex  
 $f(\alpha \vec x_1 + (1- \alpha) \vec x_2) \leq \alpha f(\vec x_1) + (1-\alpha) f(\vec x_2) $  
 $g(\alpha \vec x_1 + (1- \alpha) \vec x_2) \leq \alpha g(\vec x_1) + (1-\alpha)g(\vec x_2) $  
@@ -127,22 +127,24 @@ If we observe closely,we already have $g(\vec x_0) \leq z_0$ because of convexit
 >> - If $f: \mathbb R \rightarrow \mathbb R$ is convex and non-decreasing (at least on the range of $g$ or in the best case, globally) $$\\$$ 
 >> **Then the composition $h := f \circ g$ is convex.** 
 >6. For once differentiable funtions, convexity is equivalent to:  
-$\exists \epsilon > 0$ such that $f( \vec x \pm \epsilon \langle \vec \nabla f , \vec x \rangle) \leq f(\vec x)$. In words, it means that to 1st approximation using the tangent along the direction of maximum slope, the approximation lies beneath the graph  
+$\forall \epsilon > 0$,we have $f( \vec x \pm \epsilon \langle \vec \nabla f , \vec{\delta x} \rangle) \leq f(\vec x + \vec{\delta x}) $. In words, it means that to 1st approximation using the tangent along the direction of maximum slope, the approximation lies beneath the graph  
 >7. For twice differentiable functions, convexity $\iff \nabla^2 f \geq 0$
 
 
 > EXTREME POINTS  
 If $C$ is a convex set, $x$ is an extreme point of $C$ iff  
 $$
-    \nexists \; x_1,x_2 \in C,\alpha \in [0,1]  \text{ such that }  x = \alpha x_1 + (1 - \alpha)x_2  
+    \nexists \; x_1,x_2 \in C,\alpha \in (0,1)  \text{ such that }  x = \alpha x_1 + (1 - \alpha)x_2  
 $$
-In words, it means that for all line segments in $C$, $x$ is atleast one of the two endpoints of the segment. When it is both of the endpoints, the line segment is degenarate and is the single point $x$.  
+In words, it means that for all line segments containing $x$ in $C$, $x$ is atleast one of the two endpoints of the segment. When it is both of the endpoints, the line segment is degenarate and is the single point $x$.  
 OBSERVATIONS:
 (0) Extreme points can only lie on the boundary of a set and not on the interior.
 Proof: We will prove this by contradiction. Let there be an extreme point $\vec p$ on of a convex set $S$ that lies in the interior. By definition of an interior point, there exists $\epsilon > 0$ such that the ball $S \supset B(\vec p, \epsilon) := \{ \vec x \;|\; |\vec x - \vec p| < \epsilon \} $ for any vector norm $|.|$. Consider such an $\epsilon$. Consider a unit vector $\vec u$ and the two points $\vec p_1 := \vec p + \frac{\epsilon}{2} \vec u$ and $p_2 := \vec p - \frac{\epsilon}{2} \vec u$.  
 Now, $\vec p_1, \vec p_2 \in B(\vec p, \epsilon)$.  
 Proof: $|\vec p_1 - \vec p| = | \vec p  - \vec p  - \frac{\epsilon}{2} \vec u | = |\frac{\epsilon}{2} \vec u| = \frac{\epsilon}{2}\underbrace{|\vec u|}_{1} = \frac{\epsilon}{2} < \epsilon \;\;\; _\blacksquare$. Similarly for $\vec p_2$.   
-$\vec p_1, \vec p_2 \in S$ since $\vec p_1, \vec p_2 \in B(\vec p, \epsilon) \subset S $. Consider $\alpha = 0.5$ such that we have the convex combination $\alpha \vec p_1 + (1-\alpha) \vec p_2 = \vec p$. As point $\vec p \in S$ can be written as a convex combination of two points $\vec p_1, \vec p_2 \in S$, $\vec p$ is not an extreme point of $S$. Hence we arrive at a contradiction to our assumption that $\vec p$ is both an extreme point and an interior point. Hence it cannot be true that $\vec p$ is both an extreme point and an interior point at the same time. Hence an interior point can never be an extreme point.
+$\vec p_1, \vec p_2 \in S$ since $\vec p_1, \vec p_2 \in B(\vec p, \epsilon) \subset S $. Consider $\alpha = 0.5$ such that we have the convex combination $\alpha \vec p_1 + (1-\alpha) \vec p_2 = \vec p$. As point $\vec p \in S$ can be written as a convex combination of two points $\vec p_1, \vec p_2 \in S$ which are distinct from $\vec p$, $\vec p$ is not an extreme point of $S$.
+Hence we arrive at a contradiction to our assumption that $\vec p$ is both an extreme point and an interior point.
+Hence it cannot be true that $\vec p$ is both an extreme point and an interior point at the same time. Hence an interior point can never be an extreme point.
 
 > CONVEX PROBLEMS  
 Any optimization problem of the form 
@@ -153,4 +155,10 @@ $$
 where $f$ and $g_i$ are convex functions and $c_i$ are constants.
 Note: Each set $C_i := g_i(\vec x) \leq c_i$ defines a convex set and we are constrained to minimize $f$ on the set $C := \cap_i C_i$ which is convex as well by observation(1).  
 
+> CONVEX HULL
+Let $X \subset \mathbb{R^n}$ be a set. Then, the convex hull of $X$ is defined as the intersection of all the convex sets that contain $X$.
+Formally, if we let $Co$ denote the convex hull operator, 
+$$
+    Co(X) = \underset{Y \in C}{\cap} Y, \text{ where } C = \{ S \; | \; S \supseteq X \}
+$$
 
