@@ -86,13 +86,14 @@ Hence $P \in Co(W)$
 
 <u>Case 2:</u> 
 
-If $|P| < 1$, then the problem is we can no longer interpret the singular values $\sigma_i$ directly as the convex coefficients $\alpha_i$.  
+If $|P| < 1$, then the problem is we can no longer interpret the singular values $\sigma_i$ directly as the convex coefficients $\alpha_i$ which need to sum to 1.
+  
 If the matrix $0$ belonged to $W$, we could have put the rest of the weight into it to make up for the sum to reach 1, i.e we could have
 written $P = \sum_i \underbrace{\sigma_i}_{\alpha_i} W_i + \underbrace{(1 - \Sigma_i \sigma_i)}_{\beta} 0$ which would bring the 
-sum of convex coefficients $\alpha_i$ to 1. Unfortunately, $0 \notin W$.
+sum of convex coefficients $\alpha_i + \beta$ to 1. Unfortunately, $0 \notin W$.
 
 We have a different way to settle this though. We are less from 1 by $1- \Sigma_i \sigma_i := \beta > 0$.
-For any pair of vectors $u,v$ which are unit length, then so is the pair $-u,v$. Hence both $E := uv^T$ and $F := -uv^T$ belong to $W$.  
+For any pair of vectors $u,v$ which are unit length, so is the pair $-u,v$. Hence both $E := uv^T$ and $F := -uv^T$ belong to $W$.  
 We also note that $\frac{\beta}{2} E + \frac{\beta}{2} F = 0$.
 
 Hence $P = \sum_i \sigma_i W_i + \frac{\beta}{2} E + \frac{\beta}{2} F$. Now, have $W_i, E, F \in W$ and at the same time we have $P$ 
