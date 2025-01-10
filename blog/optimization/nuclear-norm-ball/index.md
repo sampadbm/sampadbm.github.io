@@ -23,7 +23,7 @@ The SVD of a rank-k matrix is one of many decomposition of a matrix into a linea
 $$
 	M = \sum_{i=1}^k \sigma_i u_i v_i^T = U \Sigma V^T \\
 $$
-where $\sigma_i \geq 0$, $u_i,v_i \in \mathbb{R^n}$.
+where $\sigma_i \geq 0$, $u_i,v_i \in \mathbb{R^n}$ with $\langle u_i,u_j \rangle = \langle v_i, v_j \rangle = \delta_{ij}$.
 
 
 ### Nuclear Norm and Balls
