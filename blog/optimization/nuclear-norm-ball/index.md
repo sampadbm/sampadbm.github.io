@@ -142,3 +142,5 @@ which implies $T \in B$.
 > Hence we have proved that the Co(W) := convex hull of 
 > (W := set of rank-1 matrices obtained from outer product of unit vectors) is the unit nuclear norm ball $B$.
 
+### $W$ is the set of extreme poitns of $B$
+Now, we want to show that each element of $W$ is an extreme point of the set $B$.
