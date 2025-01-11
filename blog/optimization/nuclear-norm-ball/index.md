@@ -112,6 +112,13 @@ $$
     \alpha_i \geq 0, \; \Sigma_i^k \alpha_i = 1, \; |u_i| = |v_i| = 1
 $$
 
+<u>Remark:</u> How do we know that we will not have an infinite number of terms/supports in the convex combination for $T$ instead of finite $k$? 
+Because of [Caretheodory theorem](https://en.wikipedia.org/wiki/Carath%C3%A9odory%27s_theorem_(convex_hull), we can say that $k \leq n^2 +1$
+as the matrices lie in $\mathbb{R^n}$.
+And even more than that, for our particular case, we can even say $k \leq n$, because the objects we are dealing with are not arbitrary
+$n^2$ objects but infact matrices and we always have an SVD of $T$ that guarantees that we have a representation of the above form with 
+at max $k=n$ factors (singular vectors, values triplets). 
+
 
 One's mind eagerly wants to do the reverse of what we did earlier, i.e to interpret the above as the SVD of T such that the 
 convex coefficients $\alpha_i$ become the singular values and since they already sum upto 1, we can say that $|T| = 1$ 
