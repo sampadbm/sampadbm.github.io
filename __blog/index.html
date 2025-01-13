@@ -186,7 +186,21 @@
 <!--load main function-->
 <script defer src="/__resources/sampy/js/main.js"></script>
 
+<script type="module">
+	import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.4.1/+esm'
+    // Now, render all mermaid diagrams
+		document.addEventListener('DOMContentLoaded', () => {
+      mermaid.initialize({ startOnLoad: false})
+			mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+			});
+</script>
 
+<style>
+  .language-mermaid svg {
+    /*width: 50% !important;*/
+    height: auto !important;
+  }
+</style>
 
 <!-- <script defer src="http://localhost:9090/js/commento.js"></script>  -->
 
