@@ -1,8 +1,8 @@
----
+q---
 themes: ["colorful"]
 category: courses
+
 ---
- 
 
 <p style="text-align:center; color:#7A306C"> <b>PSET 1 Solutions</b> </p>
 
@@ -30,8 +30,6 @@ Hence the conjugate is,
 
 $\bar z = \frac{1}{13} \cdot (8 + 12i)$
 
-
-
 and mod square is,
 
 $$
@@ -44,15 +42,11 @@ $$
 |z|^2 = \frac{4^2}{|2 + 3i|^2} = \frac{16}{4 + 9} = \frac{16}{13}
 $$
 
-
-
 Real and imaginary parts are, 
 
 $$
 Re(z) = \frac{8}{13} \;\;,\;\; Im(z) = -\frac{12i}{13}
 $$
-
-
 
 ### 2.
 
@@ -62,14 +56,9 @@ Let the isomorphism be defined as $f(z) = \begin{bmatrix} Re(z) \\ Im(z) \end{bm
 
 We want to show that the operation of multiplying $e^{i\theta}$ on $Z$ corresponds to the operation of multiplying the rotation matrix $R(\theta) = \begin{bmatrix} cos\theta & -sin\theta \\ sin\theta & cos\theta \end{bmatrix}$.
 
-
-
-
 Category theoritical  diagram
 
 ![diag](pset1.png)
-
-
 
 We want to show - 
 
@@ -103,34 +92,43 @@ f(Ae^{i\alpha})
 = LHS \;\;\; {\blacksquare}
 $$
 
-
-
 ### 3.
 
 We roll a six sided die. 
+
+Let $X_1, X_2$ be the random variables associated with the two rolls of the die respectively. We note that $X_1,X_2$ are indepentent random variables.
 
 #### 3a.
 
 The expected value ot the sum of two consecutive rolls.
 
-Let $X_1, X_2$ be the random variables associated with the two rolls of the die respectively.
-
-Let $X = X_1 + X_2$ be the random variable which sums the two. 
 
 
+Let $X = X_1 + X_2$ be the random variable of our interest. 
 
+$$
 
+E[X] = E[X_1 + X_2] = E[X_1] + E[X_2] = 2 E[X_1] \;\;\; \because X_1,X_2 \text{ are identically distributed} \\
 
+E[X_1] = (1 + 2 + 3 + 4 + 5 + 6)/6 = \frac{6 \cdot 7}{2 \cdot 6} = 3.5 \\
 
-
-
-
-
-
+\therefore E[X] = 2 * E[X_1] = 2 * 3.5 = 7
+$$
 
 
 
+#### 3.b
+
+Expected value of a single roll is $E[X_1] = 3.5$ as seen in part **a** above.
 
 
 
+#### 3.c
 
+We are looking for $E[X_1X_2]$ and since they are independent, 
+
+$E[X_1 X_2] = E[X_1]E[X_2] = \frac{7}{2} \cdot \frac{7}{2} = \frac{49}{4}$
+
+
+
+### 4.
