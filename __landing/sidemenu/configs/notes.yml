@@ -1,15 +1,16 @@
 AOPS:
 - AoPS
 COURSES:
-- csci698-practicum-in-teaching-computer-science-sp24
-- math501-summer-2023
-- math574-applied-matrix-analysis
-- ee546-mathematics-of-high-dimensional-data
-- math425A-real-analysis
-- csci670-advanced-analysis-of-algorithms
-- ee503-probability
 - csci699-computational-perspectives-on-ml
+- csci670-advanced-analysis-of-algorithms
+- math425A-real-analysis
+- math501-summer-2023
+- ee503-probability
+- csci698-practicum-in-teaching-computer-science-sp24
+- ee546-mathematics-of-high-dimensional-data
+- math574-applied-matrix-analysis
 - csci675-convex-optimisation
+- phys438a-quantum-mechanics
 - csci567-machine-learning
 GENERAL:
 - phy760-computational-methods-in-physics
