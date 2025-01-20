@@ -58,7 +58,7 @@ We want to show that the operation of multiplying $e^{i\theta}$ on $Z$ correspon
 
 Category theoritical  diagram
 
-![diag](pset1.png)
+![diag](category_diag.jpg)
 
 We want to show - 
 
@@ -102,12 +102,9 @@ Let $X_1, X_2$ be the random variables associated with the two rolls of the die 
 
 The expected value ot the sum of two consecutive rolls.
 
-
-
 Let $X = X_1 + X_2$ be the random variable of our interest. 
 
 $$
-
 E[X] = E[X_1 + X_2] = E[X_1] + E[X_2] = 2 E[X_1] \;\;\; \because X_1,X_2 \text{ are identically distributed} \\
 
 E[X_1] = (1 + 2 + 3 + 4 + 5 + 6)/6 = \frac{6 \cdot 7}{2 \cdot 6} = 3.5 \\
@@ -115,13 +112,9 @@ E[X_1] = (1 + 2 + 3 + 4 + 5 + 6)/6 = \frac{6 \cdot 7}{2 \cdot 6} = 3.5 \\
 \therefore E[X] = 2 * E[X_1] = 2 * 3.5 = 7
 $$
 
-
-
 #### 3.b
 
 Expected value of a single roll is $E[X_1] = 3.5$ as seen in part **a** above.
-
-
 
 #### 3.c
 
@@ -129,6 +122,54 @@ We are looking for $E[X_1X_2]$ and since they are independent,
 
 $E[X_1 X_2] = E[X_1]E[X_2] = \frac{7}{2} \cdot \frac{7}{2} = \frac{49}{4}$
 
-
-
 ### 4.
+
+![](q4.png)
+
+#### 4a.
+
+$|\psi|^2$ must equal $1$ at all times as it is a probability density function.
+
+$$
+\int_0^a A^2(x/a)^2dx + \int_a^b A^2(b-x)^2/(b-a)^2 = 1 \\
+\implies (A^2/3a^2) [x^3]_0^a - A^2/3(b-a)^2 [(b-x)^3]_a^b = 1\\
+\implies A^2[a/3 + (b-a)/3] = 1 \\
+\implies A^2 (b/3) = 1 \\
+\implies A = \sqrt{\frac{3}{b}}
+$$
+
+We discard the negative root $-\sqrt{\frac{3}{b}}$ as the probability density function is non-negative.
+
+#### #### 4b.
+
+![](q4b.jpg)
+
+#### 4c.
+
+Since the pdf $\psi(x,0)$ peaks at $x=a$, the particle is most likely to be at $x=a$.
+
+#### 4d.
+
+The probabiity of finding the particle left of $x=a$ is given by 
+
+$$
+\int_0^a |\psi(x,0)|^2 = \int_0^a (A^2/a^2) x^2 = (A^2/a^2) [x^3]_0^a 
+= \frac{3}{ba^2}(a^3/3) = \frac{a}{b} \\
+$$
+
+In the limiting case when $b=a$, we have $a/b = 1$ which make sense if we look at the graph of $\psi(x,0)$ above as the pdf is non-zero only in the interval $[0,a]$.
+
+In the other limiting case of $b = 2a$, we have $a/b = \frac{1}{2}$ which also makes sense as the graph of $\psi(x,0)$ will be symmetric about $x=a$ and hence half of the probability lies left of $x=a$.
+
+#### 4e.
+
+If  $f(x)$ be the pdf of $x$, then the expectation of $x$ is given by $E[x] = \langle x \rangle$
+
+$$
+E[x] = \int_{-\infty}^{\infty} x \cdot f(x)\;dx = \int_0^b x \cdot |\psi(x,0)|^2 \; dx \\\;\\
+= \int_0^a x \cdot \frac{A^2}{a^2}x^2 \; dx + \int_a^b x \cdot \frac{A^2}{(b-a)^2} (b-x)^2 \\\;\\
+= \frac{A^2}{a^2}\int_0^a x^3 \; dx + \frac{A^2}{(b-a)^2}\int_a^bx\cdot (b-x)^2 \; dx\\\;\\
+= \frac{3}{4ba^2}[x^4]_0^a + \frac{3}{b(b-a)^2}\int_a^b(x^3-2bx^2 + b^2x)\;dx \\\;\\
+= \frac{3a^2}{4b} + \frac{3}{b(b-a)^2}[x^4/4 - 2bx^3/3 + b^2x^2/2]_a^b \\\;\\
+= \frac{3a^2}{4b} + \frac{3}{b(b-a)^2}[\frac{b^4 - a^4}{4} - \frac{2b}{3}(b^3 - a^3) + \frac{b^2}{2}(b^2 - a^2)]
+$$
