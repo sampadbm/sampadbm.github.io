@@ -10,3 +10,4 @@ category: pod
 - [1-efficient-exponents](./1-efficient-exponents)
 - [2-independence](./2-independence)
 - [3-convex-programming](./3-convex-programming)
+- [4-complex-calculus](./4-complex-calculus)
