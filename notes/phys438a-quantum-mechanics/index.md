@@ -14,3 +14,8 @@ Prof. Eli Levenson-Falk | WPH 102 @ USC
 
 - [pset1](pset1)
 - [pset2](pset2)
+- [pset3](pset3)
+- [pset4](pset4)
+- [pset5](pset5)
+
+
