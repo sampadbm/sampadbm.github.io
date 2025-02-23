@@ -220,7 +220,7 @@ $ \tilde{a} B b = a^T B b = \begin{bmatrix} i & 2i & 2 \end{bmatrix} \begin{bmat
 
 #### d)
 
-$ab^{dagger} = \begin{bmatrix} i \\ 2i \\ 2 \end{bmatrix} \begin{bmatrix} 2 & 1 + i & 0 \end{bmatrix} 
+$ab^{\dagger} = \begin{bmatrix} i \\ 2i \\ 2 \end{bmatrix} \begin{bmatrix} 2 & 1 + i & 0 \end{bmatrix} 
 = \begin{bmatrix} 2i & -1 + i & 0   \\ 4i & -2 + 2i & 0 \\ 4 & 2 + 2i & 0 \end{bmatrix}$
 
 
@@ -228,4 +228,13 @@ $ab^{dagger} = \begin{bmatrix} i \\ 2i \\ 2 \end{bmatrix} \begin{bmatrix} 2 & 1 
 
 ![q3](pics/q3.png)
 
+Let us first show that if $S$ is unitary it carries an orthonormal basis to another.
+We recall that if $E$ anf $F$ are two basis(es), and let $a^{e}$ and $a^{f}$ be the coordinates
+of the same vectors $\vec{a}$ in the two basis(es) respectively. If $S_{f}^{e} = S$ is the matrix containing the
+coordinates of the basis elements of $E$ w.r.t the basis $F$, then we can have the following relation
 
+$$
+  a^f = S_{f}^{e} a^e
+$$
+
+Assume that the basis $E$ is orthonormal. Since we are also given $S_{}
