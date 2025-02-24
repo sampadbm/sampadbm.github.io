@@ -228,7 +228,7 @@ $ab^{\dagger} = \begin{bmatrix} i \\ 2i \\ 2 \end{bmatrix} \begin{bmatrix} 2 & 1
 
 ![q3](pics/q3.png)
 
-Let us first show that if $S$ is unitary it carries an orthonormal basis to another.
+Let us first show that if $S$ is unitary it carries an orthonormal basis $E$ to another (call it $F$).
 We recall that if $E$ anf $F$ are two basis(es), and let $a^{e}$ and $a^{f}$ be the coordinates
 of the same vectors $\vec{a}$ in the two basis(es) respectively. If $S_{f}^{e} = S$ is the matrix containing the
 coordinates of the basis elements of $E$ w.r.t the basis $F$, then we can have the following relation
@@ -237,4 +237,211 @@ $$
   a^f = S_{f}^{e} a^e
 $$
 
-Assume that the basis $E$ is orthonormal. Since we are also given $S_{}
+Assume that the basis $E$ is orthonormal and has $n$ elements, i.e we are operating in $\mathbb{R}^n$. Since we are also given $S_{f}^{e} = S$ is unitary, $S^{\dagger}S = I$.
+Consider the $a$th and $b$th column of the matrix $S$. These columns have the entries $S_{ia}$ and $S_{ib}$ for $i \in [1,n]$.
+Since $S^{\dagger}S = I$, the dot product $\langle S_{a} | S_{b} \rangle = \delta_{ab}$. The same goes for the rows of $S$.
+
+Let the basis $E$ be the sequence of vectors $[e_1,e_2,...,e_n]$ and similarly basis $F$ be the sequence $[f_1, f_2, ..., f_n]$.
+We have already assumed $E$ to be an orthonormal basis and hence the dot product $\langle e_i | e_j \rangle = \delta_{ij}$.
+ 
+Need to make this proof rigorous but I will skip here.
+
+Let us move to the next question. We want to show that similarity preserves matrix multiplicaiton.
+
+Let $(A^e,A^f), (B^e,B^f), C^e,C^f$ be pairs of similar matrices such that $A^eB^e = C^e$.
+Let $S_{e}^f = S$ be the change of basis matrix from bais $E$ to $F$.
+
+Hence $A^f = S_e^f A^e S_f^e = S A^e S^{-1}$. And similarly $B^f = SB^eS^{-1}$ and $C^f = SC^eS^{-1}$.
+
+Now, $A^f  B^f = S A^e S^{-1} S B^e S^{-1} = S A^e B^e S^{-1} = S C^e S^{-1} = C^f \;\;\; _\blacksquare$.
+
+Also the question wants us to show that similarity transform of a hermitian matrix $H^e$ (i.e H^{e \dagger} = H^e) by $S$ is preserved if $S$ is unitary.
+Since $S$ is unitary, $S^{\dagger}S = I \implies S^{-1} = S^{\dagger}$
+
+Hence, if $H^f = S H^e S^{-1}$, then
+$$
+  H^{f \dagger} = (S H^e S^{-1})^{\dagger} = (S H^e S^{\dagger})^{\dagger} = S^{\dagger \dagger} H^{e \dagger} S^{\dagger} \\
+  = S H^e S^{\dagger} = H^f \;\;\; _\blacksquare
+$$
+
+
+### 4.
+
+![q4](pics/q4.png)
+
+$$
+  det(T - xI) = 0 \implies (\cos(\theta) - x)^2 + \sin^2(\theta) = 0 \\
+  \implies \cos(\theta) -x = \pm i \sin(\theta) \\
+  \implies  x = \cos(\theta) \pm i \sin(\theta) = e^{\pm i\theta}
+$$
+
+As seen above, the eigenvalues are not real.
+
+Let us find the eigenvectors.
+
+For the eigenvalue $e^{+i \theta}$,
+$$
+  T \begin{bmatrix} a \\ b \end{bmatrix} = e^{i \theta} \begin{bmatrix} a \\  b \end{bmatrix} \\
+   \implies a \cos(\theta) - b \sin(\theta)  = a \cos(\theta) + i a \sin(\theta) \;\; \& \;\; a \sin(\theta) + b \cos(\theta) = b \cos(\theta) + i b \sin(\theta)
+  \implies -b = ia \;\; \& \;\; a = ib
+$$
+
+Take $a = 1$, then $b  = -ia = -i$. Hence $e_2 = \begin{bmatrix} 1 \\ -i \end{bmatrix}$ is an eigenvectors correspponding to the eigenvalue $e^{i\theta}$.
+
+Verification -
+
+$$
+  T \begin{bmatrix} 1 \\ -i \end{bmatrix} = \begin{bmatrix} \cos(\theta) + i \sin(\theta) \\\;\\
+   \sin(\theta) - i \cos(\theta) \end{bmatrix} \\\;\\
+  = \begin{bmatrix} e^{i \theta} \\ -i e^{i \theta} \end{bmatrix} = e^{i \theta} \begin{bmatrix} 1 \\ -i \end{bmatrix}
+$$
+
+Similarly for the eigenvalue $e^{-i \theta}$, we get the eigenvector $e_1 = \begin{bmatrix} 1 \\ i \end{bmatrix} $.
+
+Verification -
+
+$$
+  T \begin{bmatrix} 1 \\ i \end{bmatrix} = \begin{bmatrix} \cos(\theta) - i \sin(\theta) \\ \sin(\theta) + i \cos(\theta) \end{bmatrix} \\\;\\
+  = e^{-i \theta} \begin{bmatrix} 1 \\ i \end{bmatrix} 
+$$
+
+
+> Note: the eigenvectors are orthogonal to each other, i.e $\langle e_1 | \rangle = 0$.
+
+
+**Diagonalization**
+
+Let $E = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ i & -i \end{bmatrix}$ be the matrix containing the normalized eigenvectors as the columns.
+Then the diagonalization of $T$ is $T^e = E^{-1} T E$. Since the eivengvectors are orthogonal and normalized, $E^{-1} = E^{\dagger}$
+
+$$
+  T^e = E^{-1} T E = E^{\dagger} T E \\\;\\
+  = \frac{1}{2} \begin{bmatrix} 1 & -i \\ 1 & i \end{bmatrix}
+  \begin{bmatrix} \cos(\theta) & - \sin(\theta) \\ \sin(\theta) & \cos(\theta) \end{bmatrix}
+  \begin{bmatrix} 1 & 1 \\ i & -i \end{bmatrix} \\\;\\
+  = \begin{bmatrix} e^{-i \theta} & 0 \\ 0 & e^{i \theta} \end{bmatrix}
+$$
+
+### 4.
+
+![q5](pics/q5.png)
+
+ ![eq-A64](pics/eq-A64.png)
+*Equation A.64*
+
+$$
+  [T_1^f , T_2^f] = T_1^f T_2^f - T_2^f T_1^f \\\;\\
+  = S T_1^e S^{-1} S T_2^e S^{-1} - S T_2^e S^{-1} S T_1^e S^{-1} \\\;\\
+  = S T_1^e T_2^e S^{-1} - S T_2^e T_1^e S^{-1} \\\;\\
+  = S (T_1^e T_2^e - T_2^e T_1^e ) S^{-1} \\\;\\
+  = S [T_1^e, T_2^e] S^{-1} = S \; 0 \; S^{-1} = 0 \;\;\; _\blacksquare
+$$
+
+
+### 6.
+![q6](pics/q6.png)
+
+#### a)
+
+(i)
+$$
+  M^2 = \begin{bmatrix} 0 & 0 & 4\\ 0 & 0 & 0\\ 0 & 0 & 0\end{bmatrix}
+  M^3 = 0, M^4 = 0, ...
+  e^M = I + M + \frac{1}{2!}M^2 = \begin{bmatrix} 1 & 1 & 5 \\ 0 & 1 & 4 \\ 0 & 0 & 1 \end{bmatrix} 
+$$ 
+
+(ii)
+
+If we denote $J = \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}$, then $J^2 = -I$.
+
+$I$ and $J$ play the same role as $1$ and $i$ in complex numbers. We say that the algebra of $I,J$ under matrix multiplication is
+a homomorphism of the algebra of $1,i$ under complex multiplication. 
+
+$$
+  M = \theta \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix} = \theta J \\\;\\
+  M^2 = -\theta^2 \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} = -\theta^2 I \\\;\\
+  M^3 = M M^2 = \theta J -\theta^2 I = -\theta^3 J \\\;\\
+  M^4 = M^2 M^2 = \theta^4 I \\ \; \\
+$$
+
+$$
+  e^M = e^{\theta J} = \cos(\theta) + J \sin(\theta) \;\;\;
+$$
+This is similar to complex numbers. One can verify the above from the expansion of $e^M$ and collecting the
+even powers and odd powers of $\theta$ separately.
+
+
+
+#### b)
+
+We assume $Mi \in \mathbb{R}^{m \times m}$ is diagonalizable. This means $M = P D P^{-1}$ for some invertible matrix $P$
+and diagonal matrix $D$ whose diagonals are $\lambda_i$ for $i \in 1,2,3...m$.
+
+Let $E \in \mathbb{R}^{m \times m}$ be a diagonal matrix whose diagonals are $e^{\lambda_i}$. It is easy to see that $e^D = E$
+
+We also know that the trace operator has the invariance under cyclicity property i.e.
+$Tr(AB) = Tr(BA)$ which also gives us $Tr(ABC) = Tr(CAB) = Tr(BCA)$
+
+$$
+  \det(e^M) = \det( \sum_{n=0}^{\infty} \frac{1}{n!} M^n) = \det (\sum_n \frac{1}{n!} (PDP^{-1})^n ) \\\;\\
+  = \det(\sum_n \frac{1}{n!} PD^nP^{-1}) = \det(P \sum_n \frac{1}{n!} D^n P^{-1}) = \det(P e^D P^{-1}) \\\;\\
+  = \det(P) \det(e^D) \det(P^{-1} = \det(e^D) =  \det(E) = \prod_{i=1}^m e^{\lambda_i} = e^{\sum_{i=1}^m \lambda_i} \\\;\\
+  = e^{Tr(D)} = e^{Tr(DP^{-1}P)} = e^{Tr(P D P^{-1}} = e^{Tr(M)} \;\;\; _\blacksquare
+$$
+
+#### c)
+
+We assume $[M,N] = 0$, i.e $M,N$ commute, i.e $MN = NM$.
+
+$$
+LHS = e^{M+N} = \sum_{n=0}^{\infty} \frac{1}{n!} (M+N)^n = \sum_{n=0}^{i\infty} \frac{1}{n!} \binom{n}{k} M^kN^{n-k}
+$$
+
+$$
+  RHS = e^M e^N = \bigg( \sum_{a=0}^{\infty} \frac{1}{a!}M^a \bigg) \bigg( \sum_{b=0}^{\infty} \frac{1}{b!}N^b \bigg) \\\;\\
+  = \sum_a \sum_b \frac{1}{a!b!} M^aN^b
+$$
+
+>Note that the RHS can be expanded using binomial expansion **only** because $MN= NM$. This is the place where we used the
+information that $M$ and $N$ commute. This is cruciali and without commutativity we cannot use the binomail expansion
+and the following arguments cannot be made.
+
+If we stare at the two expressions obtained from the LHS and the RHS, it is clear that the only way the two can be the same is
+if the coefficient of $M^aN^a$ match in the the LHS and the RHS.
+
+Notice that each term in the sum of both the LHS and the RHS contain unique terms of the form $M^aN^b$, i.e there aren't
+mutliple terms that have the same powers of $M^aN^b$. Hence we can just match the terms on LHS and RHS by equating the powers.
+
+Let us look at the term $M^aN^b$ in the RHS. The corresponding term in the LHS must be $M^kN^{n-k}$ where $k = a$ and $n-k = b$.
+
+Now, the coefficient of $M^aN^b$ on LHS is $\frac{1}{n!} \binom{n}{k} = \frac{1}{n!} \frac{n!}{n! (n-k)!} = \frac{1}{n! (n-k)!} = \frac{1}{a!b!}$ which
+matches the coefficient on the RHS and hence we have proved the given statement that $[M,N]=0 \implies e^{M+N} = e^Me^N$.
+
+
+#### d)
+
+Let us assume $H$ to be hermitian, i.e $H^{\dagger} = H$.
+Then $H$ commutes with $H^{\dagger}$ because $H^{\dagger}H = HH = HH^{\dagger}$.
+
+If $H$ is hermitian, then $A = iH$ is anti-hermitian/skew-hermitian, i.e $A^{\datter} = (iH)^{\dagger} = - i H^{\dagger} = -iH = -A$.
+
+Note that any anti-hermitian matric $A$ commutes with $A^{\dagger}$ because $A^{\dagger}A = -AA = A (-A) = AA^{\dagger]}$
+
+Note that for any matrix $M$, $(M^n)^{\dagger} = (\underbrace{MMM....M}_{\text{n times}})^{\dagger}
+= (\underbrace{M^{\dagger}M^{\dagger}....M^{\dagger}}_{\text{n times}}) = (M^{\dagger})^n$
+
+
+Also note that for any matrix $M$,
+$$
+  (e^M)^{\dagger} = \bigg( \sum_{n=0}^{\infty} \frac{1}{n!}M^n \bigg)^{\dagger} =
+  \sum_{n=0}^{\infty} \big( \frac{1}{n!} M^n \big)^{\dagger} =
+  \sum_{n=0}^{\infty} \frac{1}{n!} (M^{\dagger})^n = e^{M^{\dagger}}
+$$
+
+>Claim: For any skew-hermitian/anti-hermitian matrix $A$, $B = e^A$ is unitary, i.e $B^{\dagger}B = I$  
+Proof:
+$$
+  B^{\dagger}B = (e^A)^{\dagger} e^A = e^{A^{\dagger}} e^A =  e^{A^{\dagger} + A} = e^{-A + A} = e^0 = I \;\;\; _\blacksquare
+$$
+
+Since $iH$ is anti-symmetric, by the above proof, $e^{iH}$ is unitary. 
