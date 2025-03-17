@@ -52,13 +52,13 @@ $$
 
 We are identifying  complex numbers $\mathbb{C}$ in the Argand plane with vectors in $\mathbb{R}^2$. More precisely this means that there exits an isomorphism between the two set of objects. 
 
-Let the isomorphism be defined as $f(z) = \begin{bmatrix} Re(z) \\ Im(z) \end{bmatrix}$
+Let the isomorphism be defined as $f(z) = \begin{bmatrix} Re(z) \\ Im(z) \end{bmatrix}$. Technically it is an homomorphism in group theory.
 
 We want to show that the operation of multiplying $e^{i\theta}$ on $Z$ corresponds to the operation of multiplying the rotation matrix $R(\theta) = \begin{bmatrix} cos\theta & -sin\theta \\ sin\theta & cos\theta \end{bmatrix}$.
 
 Category theoritical  diagram
 
-![diag](category_diag.jpg)
+![diagram](category_diag.jpg)
 
 We want to show - 
 
