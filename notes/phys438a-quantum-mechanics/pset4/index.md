@@ -30,3 +30,9 @@ $$
 $$
 
 
+Let us look at the fourier transform of $\delta(x)$
+
+$$
+  D(k) = \int_{-\infty}^{+\infty} \delta(x) e^{-ikx} dx \\
+  \;\;\; = \int
+$$
