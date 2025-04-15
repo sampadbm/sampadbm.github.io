@@ -14,3 +14,4 @@ Notes from TAing
 
 #### Discussion Notes
 - [Jacobians](discussion_notes/Linalg_Discussions_Jacobians.pdf)
+- [Kernel PCA](Question_on_Kernel_PCA__Sp24_567_VATSAL.pdf)
