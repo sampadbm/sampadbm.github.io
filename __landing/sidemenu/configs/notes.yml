@@ -3,17 +3,17 @@ AI,PROBABILITY:
 AOPS:
 - AoPS
 COURSES:
+- csci567-machine-learning
+- csci670-advanced-analysis-of-algorithms
+- csci675-convex-optimisation
 - csci698-practicum-in-teaching-computer-science-sp24
-- math501-summer-2023
-- math574-applied-matrix-analysis
+- csci699-computational-perspectives-on-ml
+- ee503-probability
 - ee546-mathematics-of-high-dimensional-data
 - math425A-real-analysis
+- math501-summer-2023
+- math574-applied-matrix-analysis
 - phys438a-quantum-mechanics
-- csci670-advanced-analysis-of-algorithms
-- ee503-probability
-- csci699-computational-perspectives-on-ml
-- csci675-convex-optimisation
-- csci567-machine-learning
 GENERAL:
 - phy760-computational-methods-in-physics
 OPTIMISATION:

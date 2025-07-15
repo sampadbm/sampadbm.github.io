@@ -30,6 +30,12 @@ class: center, middle
 
     </textarea>
     <script  src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+  
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+      window.mermaid = mermaid
+    </script>
 
     <!-- The loading of KaTeX is deferred to speed up page rendering -->
     <script  src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
@@ -48,7 +54,6 @@ class: center, middle
     		// var slideshow = remark.create();
 
     		// KATEX INTEGRATION START
-			var options = {};
 			      var renderMath = function() {
 			        
 			          renderMathInElement(document.body, {
@@ -62,9 +67,30 @@ class: center, middle
 			      }
 			   // KATEX INTEGRATION END
 
-			   var slideshow = remark.create(options, renderMath);
 
-    		
+
+			  var options = {};
+        var slideshow = remark.create(options, ()=>{renderMath(); });
+        
+            // 4) on each slide change, target only that slide
+            slideshow.on('afterShowSlide', async slide => {
+              const slideEl = document
+                .querySelectorAll('.remark-slide-container')[ slide.getSlideIndex() ];
+                
+                  const codes = slideEl.querySelectorAll('.mermaid');
+                  if(codes.length!==0){
+                    setTimeout(()=>{window.location.reload()},50)
+                  };
+
+ // hack to render mermaid on current slide
+            });
+
+            // 5) also handle the very first slide on load
+            document.addEventListener('DOMContentLoaded', () => {
+              //const first = document.querySelector('.remark-slide-container');
+              mermaid.run()
+            });
+
     	})
       	
     </script>
