@@ -37,6 +37,7 @@ To the committee:
 Thank you so very much for your valuable time and guidance.
 
 ---
+exclude: true
 class: center middle
 
 ### Timeline
@@ -49,24 +50,26 @@ class: center middle
 ---
 class: center middle
 
-### OUTLINE
-<pre class="mermaid">
-        graph LR
-        A["QUALS<br>Summer 2024"] --> B["PROPOSAL<br>Summer 2025"] --> C["DEFENSE<br>Summer 2026"]
-</pre>
+### PRESENTATION OUTLINE
+##### 1. Quick Recap of work upto Quals | Summer 2024
+##### 2. Updates since Quals | Summer 2024 - Summer 2025
+##### 3. Proposed Work | Summer 2025 - 2026
 ---
+class: center middle
 
-### What is the (big) data? 
+<h3 style="color:darkturquoise">QUALS RECAP</h3>
+---
+### Dataset 
 
 GPS logs from Taxi's operating in Beijing and Shanghai, China over a month.
 
-### And problem?
+### Problem
 - Noisy data
 - Lots of missing entries (sensor/network/power failures)
 - Cost restrictions - sparse and non-uniform sensor deployment
 - Too large to store over longer periods (terrabytes/day)
 
-### Task?
+### Task
 Address the challenges
 posed by mobility datasets.
 
@@ -74,124 +77,6 @@ posed by mobility datasets.
 	- Store data more efficiently, compression.
 ---
 
-class: center middle 
-### 2. THE MOTIVATION
-
----
-
-### Pressing problems of modern times
-Generate an image that captures the most pressing challenge faced by modern humans.
-
-<img src='res/images/challenges/chatgpt1.webp' height='25%vh' width='30%vw'>
-<img src='res/images/challenges/chatgpt2.webp' height='25%vh' width='30%vw'>
-<img src='res/images/challenges/chatgpt3.webp' height='25%vh' width='30%vw'>
-<img src='res/images/challenges/chatgpt4.webp' height='25%vh' width='60%vw'>
-<img src='res/images/challenges/chatgpt0.webp' height='25%vh' width='35%vw'>
-
----
-### Some solutions
-<img src='res/images/solutions/chatgpt0.png' height='90%vh' width='70%vw'>
-
----
-### Some solutions
-<img src='res/images/solutions/chatgpt0.png' height='90%vh' width='70%vw'>
-
-<span style="color:teal"> **Today’s problems come from yesterday’s solutions** </span>
-
-*- Peter Senge (The Fifth Discipline)*
-
----
-exclude: false
-
-### More! More!
-<img src='res/images/solutions/chatgpt1.png' height='70%vh' width='70%vw'>
-
-
----
-exclude: false
-
-### Can smarter systems help? 
-<img src='res/images/challenges/performgreen.png' height='325' width='325'>
-<img src='res/images/challenges/smartcities.png' height='300' width='300'>
-
----
-exclude: false
-### Can smarter systems help? 
-<img src='res/images/challenges/performgreen.png' height='325' width='325'>
-<img src='res/images/challenges/smartcities.png' height='300' width='300'>
-
-
-<span style="color:teal"> **Today’s problems come from yesterday’s solutions** </span>
-
-*- Peter Senge (The Fifth Discipline)*
-
----
-exclude: false 
-### Reflections: Solutions for 20th century problems
-
-<img src='res/images/past_solutions/chatgpt0.png' height='90%vh' width='90%vw'>
-
----
-exclude: false
-<span style="color:teal"> **Today’s problems come from yesterday’s solutions** </span>
-
-*- Peter Senge*
-</hline>
-
-<img src='res/images/past_solutions/chatgpt0.png' height='90%vh' width='90%vw'>
-
-
----
-exclude: false
-<span style="color:teal"> **Today’s problems come from yesterday’s solutions** </span>
-*- Peter Senge*
-
-<img src='res/images/past_solutions/chatgpt1.png' height='90%vh' width='90%vw'>
-
----
-exclude: false
-
-##### Students -  
-What if future *nails* come from today's *hammers*?
-
-##### Academia -   
-
-That's not your project, its the next generations'. 
-
-You have had enough motivation now. 
-
----
-### How can imputing accurate traffic data help?
-
-1. Enhancing city efficiency/safety
-	- faster commute times
-	- reduced freight costs 
-	- enhanced safety alerts and emergency dispatch
-	- Predictable commute times
-
-2. Addressing climate concerns
-	- efficient fuel use
-	- traffic shaping -> controlled air quality
-
-3. Effective urban planning
-	- traffic/commuter trends ->  effective urban planning for new cities 
-	- Planning efficient locations for EV charging stations.
- 
-
-4. Enhancing downstream tasks
-	-  informative data visualization
-	-  easier for downstream tasks 
-		- congestion detection
-		- incident detection
-		- City Functional Regions(Points of Interest) detection
-			- business districts, residential area, education hubs, etc.
----
-
-class: center middle
-
-### 3. DATA REPRESENTATIONS
-
----
 ### Raw data
 
 <img src='res/images/gm_ppt_figures/datatable.png' width='100%vw'>
@@ -202,7 +87,7 @@ class: center middle
 ### Grid view (Shanghai)
 
 <img src='res/images/gm_ppt_figures/shanghai_grid.png' width='80%vw'>
->>> >>> 30 x 30 grids
+>>>  30 x 30 grid of traffic density data
 
 ---
 
@@ -228,83 +113,6 @@ Preface, Tensors: Geometry and Applications,
 J. M. Landsberg 
 
 ---
-### Clash of cultures : What does "Matrix" mean to you?
-
-What does "A Matrix" mean to you?
-
-- linear transformation with $Ax$
-- system of linear equations with $Ax=b$
-- multilinear transformation with $x^TAy$
-- representation of algebraic structures/operations
-- First derivative - Gradient / Jacobian
-- Second derivative - Hessian
-- Graphs with (weighted) adjacency and incidence matrices
-- ...
-
-*- said the mathematician*
----
-### Clash of cultures : What does "Matrix" mean to you?
-
-- Reality, Hyperreality, Projections of reality onto senses, Simulation
-
- *- said the movie buff turned epistemologist*
- 
-<!-- <img src='res/images/matrix/simulacra-and-simulation.png' width='70%vw'> -->
-
-<img src='res/images/matrix/morpheus.gif' width='25%vw' style="float:top">
-<img src='res/images/matrix/architect.webp' width='35%vw' style="float:top">
-<img src='res/images/matrix/agent_smith1.png' width='30%vw' style="float:top">
-<img src='res/images/matrix/agent_smith2.jpg' width='30%vw' style="float:left">
-<img src='res/images/matrix/morpheus2.jpg' width='30%vw' style="float:left">
-<img src='res/images/matrix/machines.webp' width='30%vw' style="float:left">
-
----
-### Clash of cultures : What does "Matrix" mean to you?
-
-<img src='res/images/matrix/attention-matrix.jpeg' width='40%vw' style="float:right">
-
-<img src='res/images/matrix/regular-vs-bayes-nn.png' width='60%vw' style="float:left"> 
- 
-  
-&nbsp;
-
-&nbsp; 
-
-&nbsp;
-
-&nbsp;
-
-- Attention 
-- Parameters, weights and biases
-
-*- said the NLP and deeplearning guy*
-
----
-### Clash of cultures : What does "Matrix" mean to you?
-
->>> ChatGP T-800 Mainframe, 2053AD
-
-<img src='res/images/matrix/closedai_skynet.webp' width='70%vw'>
-
-
-*- said Sam Altminator*
-
----
-### Clash of cultures : What does "Matrix" mean to you?
-
-<img src='res/images/matrix/potato.webp' width='50%vw'>
-
-*- said the accidental engineer*
----
-### Clash of cultures : What does "Matrix" mean to you?
-
-No, I am Serious. Look closer
-
-<img src='res/images/matrix/rgbpotato.webp' width='50%vw'>
-
-*- said the accidental engineer*
----
-exclude: false 
 ### Processed traffic density (1 hour x 1km x 1km)
 
 <img src='res/paper_figures/rawdata.png' width='90%vw'>
@@ -323,18 +131,16 @@ Contract time dim. using vector $\mathbf{1_T} \in \mathbb{R}^T$
 Contract spatial dims. using vectors $\mathbf{1_X} \in \mathbb{R}^X$ and $\mathbf{1_Y} \in \mathbb{R}^Y$
 
 Same as contraction with matrix dot/inner product on spatial dimensions using 
-matrix $\mathbf{1_X1_Y'} \in \mathbb{R}^{X \times Y}$ because $\mathbf{u^TBv} = \langle \mathbf{B},\mathbf{vu^T} \rangle$
+matrix $\mathbf{1_X1_Y'} \in \mathbb{R}^{X \times Y}$ as $\mathbf{u^TBv} = \langle \mathbf{B},\mathbf{vu^T} \rangle$
 
 
----
-class: center middle
-# 4. SELECTED PRIOR WORK
 ---
 
 ### Prior work @ USC-ANRG + GM
 <img src='res/images/gm_ppt_figures/missing-matrix.png' width='45%vw'>
 <img src='res/images/gm_ppt_figures/pca-variance.png' width='45%vw'>
 <img src='res/images/gm_ppt_figures/pca-paper-time-pattern.png' width='100%vw'>
+<small><a href="https://anrg.usc.edu/www/papers/Revealing.pdf">F. Bai and B. Krishnamachari, “Revealing a Hidden, Stable Spectral Structure of Urban Vehicular Traffic,” in Proc. IEEE Vehicular Networking Conf. (VNC), 2021</a></small>
 
 ---
 
@@ -342,15 +148,11 @@ class: center middle
 <img src='res/images/gm_ppt_figures/pca-paper-imputation-performance.png' width='100%vw'>
 
 ---
-class: center middle
-# 5. MORE ABOUT TENSORS
-
----
 ### Atoms using (outer) products
 
 <img src='res/images/gm_ppt_figures/tensor-rank-1-approx.png' width='70%vw'>
 
->>> Atoms are also know as "Simple tensors"
+>>> >>> Atoms or "Simple tensors"
 
 ---
 
@@ -370,17 +172,17 @@ $$\text{Tensor Decomposition}$$
 $$\text{Tucker vs CP Decompositions}$$
 
 ---
-### Matrix vs Tensor(order > 2) decomposition
+### Matrix vs Tensor decomposition
 
 <img src='res/images/tensors/p-np.png' width='50%vw'>
 
 |Factorization | | Time complexity || Notes |
 |--------------|-|---------------|---------|
 |$\;$|$\;$|$\;$|$\;$|
-| Cholesky,QR | | $O(n^3)$ || |
+| Cholesky,QR | | $O(n^3), O(mn^2)$ || |
 | SVD | | $O(mn^2)$ || $m \geq n$|
-|EVD| | $O(n^3)$ || SVD($AA^T$) + SVD($A^TA$) = $2O(n^3)$|
-| Accurate CP | | NP Hard || $\because$ finding rank is NP Hard||
+|EVD| | $O(n^3)$ || none |
+| Exact CP | | NP Hard || $\because$ finding rank is NP Hard||
 
 ---
 ### Other peculiarities of Matrix vs Tensor decomposition
