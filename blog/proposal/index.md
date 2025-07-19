@@ -97,6 +97,7 @@ posed by mobility datasets.
 <img src="res/images/gm_ppt_figures/missing-matrix.png" width="45%vw"/>
 >>> Tensor   $\hspace{11em}$   Matrix
 ---
+exclude: true
 ### Tensor Terminology
 ![tensors](res/images/gm_ppt_figures/scalar-vector-tensor.png)
 
@@ -105,6 +106,7 @@ posed by mobility datasets.
 - For us, tensors mean a $3^{rd}$ or higher order tensor.
 
 ---
+exclude: true
 ### Clash of cultures
 <img src='res/images/tensors/clash-of-cultures.png' width='70%vw'>
 
@@ -136,7 +138,7 @@ matrix $\mathbf{1_X1_Y'} \in \mathbb{R}^{X \times Y}$ as $\mathbf{u^TBv} = \lang
 
 ---
 
-### Prior work @ USC-ANRG + GM
+### Prior work : Low Rank Structure in Traffic Density
 <img src='res/images/gm_ppt_figures/missing-matrix.png' width='45%vw'>
 <img src='res/images/gm_ppt_figures/pca-variance.png' width='45%vw'>
 <img src='res/images/gm_ppt_figures/pca-paper-time-pattern.png' width='100%vw'>
@@ -144,7 +146,7 @@ matrix $\mathbf{1_X1_Y'} \in \mathbb{R}^{X \times Y}$ as $\mathbf{u^TBv} = \lang
 
 ---
 
-### Prior work @ USC-ANRG + GM
+### Prior work @ USC-ANRG + GM : Unexplained variance
 <img src='res/images/gm_ppt_figures/pca-paper-imputation-performance.png' width='100%vw'>
 
 ---
@@ -176,28 +178,30 @@ $$\text{Tucker vs CP Decompositions}$$
 
 <img src='res/images/tensors/p-np.png' width='50%vw'>
 
-|Factorization | | Time complexity || Notes |
-|--------------|-|---------------|---------|
+|Factorization | | Time complexity | | Notes |
+|--------------|-|---------------|---|------|
 |$\;$|$\;$|$\;$|$\;$|
-| Cholesky,QR | | $O(n^3), O(mn^2)$ || |
-| SVD | | $O(mn^2)$ || $m \geq n$|
-|EVD| | $O(n^3)$ || none |
-| Exact CP | | NP Hard || $\because$ finding rank is NP Hard||
+| Cholesky,QR | | $O(n^3), O(mn^2)$ | | |
+| SVD | | $O(mn^2)$ | |  $\hspace{4em} m \geq n$|
+|EVD| | $O(n^3)$ | |  |
+| CP rank $\leq$ k | | NP Complete | | ||
+| Exact CP | | NP Hard | | $\because$ finding rank is NP Hard||
 
 ---
+exclude: true
 ### Other peculiarities of Matrix vs Tensor decomposition
 
 1. If A is a matrix of rank r over a field F then it has rank r over any extension field of F. 
 Matrices have same ranks under $\mathbb{R}$ and $\mathbb{C}$ as the later extends the former. $^{**}$
 
-2. If A is a matrix of rank r over a field K then its rank over any sub-field of K is at least r
-. But it can be more also.$^{**}$
+2. If A is a matrix of rank r over a field K then its rank over any sub-field of K is at least $r$ (could be more). $^{**}$
 
-3. The rank of a tensor(order > 2) could be different over $\mathbb{R}$ and $\mathbb{C}$.
+3. The rank of a tensor(order $\geq$ 3) could be different over $\mathbb{R}$ and $\mathbb{C}$; under $\mathbb{C}$, it can be smaller.
 
-** from [math.stackexchange](https://math.stackexchange.com/questions/2571197/a-problem-on-rank-of-a-matrix-over-two-fields)
+** see [math.stackexchange](https://math.stackexchange.com/questions/2571197/a-problem-on-rank-of-a-matrix-over-two-fields)
 
 ---
+exclude: true
 ### Other peculiarities of Matrix vs Tensor decomposition
 <img src='res/images/tensors/more-tensor-vs-matrix.png' width='80%vw'>
 
@@ -210,40 +214,12 @@ any scalar $\gamma \neq 0$.
 
 Unique upto rotation/reflection/permutation and scaling.
 ---
+exclude: true
 ### Other peculiarities of Matrix vs Tensor decomposition
 
 Krushkal Rank  (also called spark of a matrix) vs Rank
 ---
-class: center middle
-# 6. OUR WORK
-
----
-### Hypothesis and Assumptions
-
-
-##### Hypothesis
-There exist two kinds of latent factors that completely explain traffic patters
-- time invariant latent factors and 
-- time varying latent factors 
-
-
-##### Assumptions 
-
-1. Observed data of a particular day can be explained by linear combination (weighted by the time varying factors)
- of the time invariant factors.
-
-2. Let the rank-1 matrix/tensor atoms obtained by decomposition of the data representation be time invariant.
-
-3. Let the decomposition weights on the rank one atoms be time variant
-
-**We will empirically validate above assumptions on our dataset.**
-
----
-class: center middle
-# 7. Symbols, Definitions, Unified Framework
-
----
-### Ground Truth
+### Notations
 
 <img src="res/images/gm_ppt_figures/tensor.png" width="30%vw" style="margin-bottom:-3.5em">
 $\odot$
@@ -266,9 +242,8 @@ $\boldsymbol{\bar \Omega} = \boldsymbol{1 - \Omega}$, missing locations marked a
 
 $\mathbf{D} \in \mathbb{R}^{X \times Y \times Z}$
 
-
 ---
-### Reconstructor
+### Imputation
 
 <img src="res/images/gm_ppt_figures/missing-tensor.png" width="30%vw" style="margin-bottom:-3.5em">
 $\overset{\phi}{\longrightarrow}$
@@ -277,67 +252,98 @@ $\overset{\phi}{\longrightarrow}$
 $\hspace{3em}\underbrace{\mathbf{D}}_{\mathbf{T} \odot \boldsymbol{\Omega}} \hspace{5em} \overset{\phi}{\longrightarrow} \hspace{4em} \mathbf{\tilde T}$
 
 
-$$\phi_{\theta} : \mathbb{R}^{X \times Y \times Z} \times \mathbb{R}^{X \times Y \times Z} \rightarrow \mathbb{R}^{X \times Y \times Z}$$
+$$\phi_{\boldsymbol{\theta}} : \mathbb{R}^{X \times Y \times Z} \times \\{0,1\\}^{X \times Y \times Z} \rightarrow \mathbb{R}^{X \times Y \times Z}$$
 
-$$ \mathbf{\tilde T} = \phi(\mathbf{D},\boldsymbol{\Omega}; \boldsymbol{\theta})$$
+$$ \phi_{\boldsymbol{\theta}}(\mathbf{D},\boldsymbol{\Omega}) \rightarrow \mathbf{\tilde T}$$
 
-latent parameters: $\mathbf{R}^{p} \ni \boldsymbol{\theta} = [\boldsymbol{\theta_1}, \boldsymbol{\theta_2}]$
+$$\;$$
+
+<!---latent parameters: $\mathbf{R}^{p} \ni \boldsymbol{\theta} = [\boldsymbol{\theta_1}, \boldsymbol{\theta_2}]$--->
 
 <!-- time invariant component: $\boldsymbol{\theta_1} \in \mathbf{R}^{p_1}$ -->
 
 <!-- time variant component: $\boldsymbol{\theta_2} \in \mathbf{R}^{p_2}$ -->
 ---
-### Error metrics: Tensor Completion Score and Reconstruction error
+### Metrics: Completion Score and Reconstruction error
 
-<img src="res/paper_equations/maskednorm.png" width="50%vw">
+<!---img src="res/paper_equations/maskednorm.png" width="75%vw"--->
 
-<img src="res/paper_equations/error_metrics.png" width="75%vw" style="margin-left:-2.5em">
+<img src="res/paper_equations/error_metrics.png" width="95%vw" style="margin-left:-2.5em">
+
+- Others: RMSE, MAE
+---
+
+
+### Hypothesis and Assumptions
+
+
+##### Hypothesis 
+There exist two kinds of latent factors that completely explain traffic patters
+- time invariant latent factors and 
+- time varying latent factors
+
+
+##### Assumptions 
+
+1. Observed density of a particular day can be explained by linearly weighted combination of the time invariant factors where the weights are precisely the time varying factors. 
+
+2. The rank-1 matrix/tensor atoms obtained by decomposition of the data representation are time invariant.
+
+3. The decomposition weights on the rank one atoms are time variant
+
+**Assumptions are empirically validated on traffic density datasets.**
 
 ---
+exclude: true
 ### Latent Parameters
 
-$$\phi_{\theta} : \mathbb{R}^{X \times Y \times Z} \times \mathbb{R}^{X \times Y \times Z} \rightarrow \mathbb{R}^{X \times Y \times Z}$$
-$$ \mathbf{\tilde T}(t) = \phi(\mathbf{D}(t),\boldsymbol{\Omega}(t); \boldsymbol{\theta}(t), \boldsymbol{\psi}(t_0))$$
 
-latent parameters: $\mathbf{R}^{p} \ni \boldsymbol{\theta} = [\boldsymbol{\theta_1}, \boldsymbol{\theta_2}]$
+<!---$$ \mathbf{\tilde T}(t) = \phi(\mathbf{D}(t),\boldsymbol{\Omega}(t); \boldsymbol{\theta}(t), \boldsymbol{\psi}(t_0))$$--->
 
-time invariant component: $\boldsymbol{\theta_1} \in \mathbf{R}^{p_1}$
 
-time variant component: $\boldsymbol{\theta_2} \in \mathbf{R}^{p_2}$
 
-$p_1 + p_2 = p$
 
-$\phi$ may additionally depend on optional auxiliary information $\boldsymbol{\psi}(t_0)$
-where $|t_0 - t| \leq \epsilon$ for some $\epsilon \geq 0$
 
+<!--$\phi$ may additionally depend on optional auxiliary information $\boldsymbol{\psi}(t_0)$
+where $|t_0 - t| \leq \epsilon$ for some $\epsilon \geq 0$--->
 
 ---
-### Latent Parameter Estimators
+### Data Generative Model
 
-$$
-	\mathbf{R}^p \in \boldsymbol{\theta} = [\boldsymbol{\theta_1, \theta_2}] \leftarrow  E(\mathbf{D}, \boldsymbol{\Omega}, Null, Null)
-$$
+<img src=res/paper_equations/generator.png width=45%vw />
+<img src=res/paper_equations/data_plus_noise.png width=50%vw />
 
-$$
-	\mathbf{R}^p_2 \in \boldsymbol{\theta_2} =  \leftarrow  E(\mathbf{D}, \boldsymbol{\Omega}, \boldsymbol{\theta_1}, Null)
-$$
+$$\;$$
+time invariant : $\boldsymbol{\theta_s} \in \mathbf{R}^{p_s}$ (singular subspaces, tensor factor subspaces, atomic subspaces)
 
-<!-- $$ -->
-<!-- 	\mathbf{R}^p_1 \in \boldsymbol{\theta_1} = \leftarrow  E(\mathbf{D}, \boldsymbol{\Omega}, Null, \boldsymbol{\theta_2}) -->
-<!-- $$ -->
 
-$$p = p_1 + p_2$$
+time variant : $\boldsymbol{\theta_v} \in \mathbf{R}^{p_v}$ (singular values, tensor factor weights)
+
+latent parameters: $\mathbf{R}^{p} \ni \boldsymbol{\theta} = [\boldsymbol{\theta_s}; \boldsymbol{\theta_v}]$
+
+
+$p_s + p_v = p$
+
+---
+### Estimators
+
+<img src=res/paper_equations/data_plus_noise.png width=50%vw />
+
+<img src=res/paper_equations/estimator_full.png width=45%vw />
+<img src=res/paper_equations/estimator_v.png width=50%vw />
+
+
 
 <h5 style="color:orange"> Note A: </h5> 
 
+
 The estimation is not perfect and depends on the following -
 
-- missing data percentage or equivalently sparsity of $\boldsymbol{\Omega}$
-- Noise in the observed entries in the data
-- estimator efficiency as the estimators are approximate algorithms
+- missing data percentage / sparsity of $\boldsymbol{\Omega}$
+- Noise in the observed entries
+- estimator efficiency (qualitative, non CRLB, local optimia from ALS)
+- estimator robustness (qualitative, e.g Davis-Kahan type theorems)
 
-However, this may give a more stable/better quality  estimation of $\boldsymbol{\theta_1}$ due to the additional 
-observations. Ofcourse this should qualitatively relate to the coherency between the observed tensors.
 
 ---
 ### Vectorized Latent Parameter Estimators
@@ -371,13 +377,7 @@ $$ G(\boldsymbol{\theta_1, \theta_2}) \rightarrow \mathbf{D} $$
 **Intuition:**There is some physical process that generates the observed data $\mathbf{D}$ based on the 
 latent parameters \boldsymbol{\theta}. 
 
-**Question:** If $p << X  \times Y \times Z$, how can we have a bijection?
-Answer: We don't, the observed data is assumed to lie on a low dimensional manifold in a 
-high dimensional ambient space + noise. 
-
-**Can we remove noise?** The generating process $G$ will reconstruct without noise.
-
-**Is this manifold a convex set?** Not in our model and assumptions. This is because
+**Non-convex parameter set:** This is because
 the convex combination of two rank $k$ matrices $\mathbf{A,B}$ given by $\mathbf{C} = \alpha A + \beta B$ 
 isn't necesarilly a rank $k$ matrix when $\alpha + \beta = 1$ and $\alpha, \beta \geq 1$ 
 
