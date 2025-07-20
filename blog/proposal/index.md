@@ -325,13 +325,18 @@ latent parameters: $\mathbf{R}^{p} \ni \boldsymbol{\theta} = [\boldsymbol{\theta
 $p_s + p_v = p$
 
 ---
+### Parameters
+
+
+<img src=res/paper_equations/params_table.png width=90%vw />
+
+---
 ### Estimators
 
-<img src=res/paper_equations/data_plus_noise.png width=50%vw />
 
-<img src=res/paper_equations/estimator_full.png width=45%vw />
-<img src=res/paper_equations/estimator_v.png width=50%vw />
-
+<img src=res/paper_equations/estimator_full.png width=37%vw />
+<img src=res/paper_equations/estimator_v.png width=41.5%vw />
+<img src=res/paper_equations/estimator_c.png width=80%vw />
 
 
 <h5 style="color:orange"> Note A: </h5> 
@@ -346,54 +351,7 @@ The estimation is not perfect and depends on the following -
 
 
 ---
-### Vectorized Latent Parameter Estimators
-
-$$
-	 \boldsymbol{\vec \theta} = [\boldsymbol{\theta_1, \vec \theta_2}] \leftarrow  E(\mathbf{\vec D}, \boldsymbol{\vec \Omega}, Null, Null)
-$$
-
-$$
-	 \boldsymbol{\vec \theta_2} =  \leftarrow  E(\mathbf{\vec D}, \boldsymbol{\vec \Omega}, \boldsymbol{ \theta_1}, Null)
-$$
-
-<!-- $$ -->
-<!-- 	 \boldsymbol{\theta_1} = \leftarrow  E(\mathbf{\vec D}, \boldsymbol{\vec \Omega}, Null, \boldsymbol{\vec \theta_2}) -->
-<!-- $$ -->
-
-
-<h5 style="color:orange"> Note A: </h5> 
-
-The estimation is not perfect and depends on the following -
-
-- missing data percentage or equivalently sparsity of $\boldsymbol{\Omega}$
-- Noise in the observed entries in the data
-- estimator efficiency as the estimators are approximate algorithms
-
----
-### Data Generating Process
-
-$$ G(\boldsymbol{\theta_1, \theta_2}) \rightarrow \mathbf{D} $$
-
-**Intuition:**There is some physical process that generates the observed data $\mathbf{D}$ based on the 
-latent parameters \boldsymbol{\theta}. 
-
-**Non-convex parameter set:** This is because
-the convex combination of two rank $k$ matrices $\mathbf{A,B}$ given by $\mathbf{C} = \alpha A + \beta B$ 
-isn't necesarilly a rank $k$ matrix when $\alpha + \beta = 1$ and $\alpha, \beta \geq 1$ 
-
-e.g
-$\begin{bmatrix} 1 & 0 ,2 & 0\end{bmatrix}$ and $\begin{bmatrix} 0 & 7 ,0 & 11\end{bmatrix}$
-
----
-### SATORIS: Unified Framework
-
-- **Key Idea 1:**We can reconstruct the data on the low dimensional manifold rejecting the noise if we know  $\boldsymbol{\theta = [\theta_1, \theta_2]}$.
-
-- **Key Idea 2:** Estimating the invariant parameter $\boldsymbol{\theta_1}(t)$ from highly noisy and sparse observation $\mathbf{D}(t)$ 
-can be avoided and instead estimated from another better quality dataset from time $\mathbf{D}(t_0)$ where $t_0$ is close to $t$,
-i.e $|t - t_0| \leq \epsilon$ where $\epsilon \geq 0$ is a hyperparameter to our model along with the
-rank $r$ of the tensor.
----
+exclude: true
 ### Quality of reconstruction
 How good can the reconstruction be?
 
@@ -410,61 +368,35 @@ The estimation is not perfect and depends on the following -
 between times $t$ and $t_0$.
 
 ---
-### Two regimes 
+### Temporal Stability
 
-##### Unknown invariant paramters $\boldsymbol{\theta_1}(t)$
-$$
-	\color{green}\mathbf{\tilde T}(t)\color{black} = G(\color{orange}\boldsymbol{\theta_1}(t), \color{blue} \boldsymbol{\theta_2}(t)\color{black}) 
-$$
+<img src=res/paper_equations/temporal_stability.png width=70%vw />
 
-$$
-	\color{orange}\boldsymbol{\theta_1}(t),\color{blue}\boldsymbol{\theta_2}(t)\color{black} \leftarrow E(\mathbf{D}(t), \boldsymbol{\Omega}(t), Null, Null)
-$$
-
-
-##### Known invariant paramters $\boldsymbol{\theta_1}(t) = \boldsymbol{\theta_1}(t_0)$
-We  know $\mathbf{D}(t), \boldsymbol{\Omega}(t), \mathbf{D}(t_0),\boldsymbol{\Omega}(t_0), G, E$ and we want to find $\mathbf{\tilde T}(t)$
-
-$$
-	\color{green}\mathbf{\tilde T}(t)\color{black} = G(\color{orange}\boldsymbol{\theta_1}(t), \color{blue} \boldsymbol{\theta_2}(t)\color{black})  = G(\color{orange}\boldsymbol{\theta_1}(t_0), \color{blue} \boldsymbol{\theta_2}(t) \color{black}) 
-$$
-
-$$
-	\color{orange}\boldsymbol{\theta_1}(t_0)\color{black} \leftarrow E(\mathbf{D}(t_0), \boldsymbol{\Omega}(t_0), Null, Null)
-$$
-
-$$
-	\boldsymbol{\color{blue}\theta_2}(t) \leftarrow E(\mathbf{D}(t), \boldsymbol{\Omega}(t), \boldsymbol{\theta_1}(t_0), Null)
-$$
+$$\;$$
+under some suitable metric $|\;\cdot\;| : \mathbb{R^s} \times \mathbb{R^s} \rightarrow \mathbb{R}$
 
 ---
-### Two regimes (Vectorized) 
+### Estimator Quality
 
-##### Unknown invariant paramters $\boldsymbol{\theta_1}(t)$
-$$
-	\color{green}\mathbf{ \vec {\tilde T}}(t)\color{black} = G(\color{orange}\boldsymbol{\theta_1}(t), \color{blue} \boldsymbol{\vec \theta_2}(t)\color{black}) 
-$$
+- $D[t_1]$ and $D[t_2]$ are observations from two days where $t_1$,$t_2$ are close. $$\;$$ 
+- Noise and occlusion @$t_2$ is not as severe as @$t_1$ => quality of estimated parameters $\theta_2$ superior to $\theta_1$.
+---
+### Imputation (KSV/KTF) 
 
-$$
-	\color{orange}\boldsymbol{\theta_1}(t),\color{blue}\boldsymbol{\vec \theta_2}(t)\color{black} \leftarrow E(\mathbf{\vec D}(t), \boldsymbol{\vec \Omega}(t), Null, Null)
-$$
+<img src=res/paper_equations/ktf.png />
+
+---
+### Imputation (USV/UTF)
 
 
-##### Known invariant paramters $\boldsymbol{\theta_1}(t) = \boldsymbol{\theta_1}(t_0)$
-We  know $\mathbf{\vec D}(t), \boldsymbol{\Omega}(t), \mathbf{\vec D}(t_0),\boldsymbol{\Omega}(t_0), G, E$ and we want to find $\mathbf{\vec{\tilde T}}(t)$
+<img src=res/paper_equations/estimator_c.png />
+<img src=res/paper_equations/utf_gen.png />
 
-$$
-	\color{green}\mathbf{\vec{\tilde T}}(t)\color{black} = G(\color{orange}\boldsymbol{\theta_1}(t), \color{blue} \boldsymbol{\vec \theta_2}(t)\color{black})  = G(\color{orange}\boldsymbol{\theta_1}(t_0), \color{blue} \boldsymbol{\vec \theta_2}(t) \color{black}) 
-$$
+---
+### SATORIS: Unified Framework
+<img src=res/paper_equations/params_table_detailed.png />
 
-$$
-	\color{orange}\boldsymbol{\theta_1}(t_0)\color{black} \leftarrow E(\mathbf{\vec D}(t_0), \boldsymbol{\vec \Omega}(t_0), Null, Null)
-$$
-
-$$
-	\color{blue} \boldsymbol{\vec \theta_2}(t) \color{black} \leftarrow E(\mathbf{D}(t), \boldsymbol{\Omega}(t), \boldsymbol{\theta_1}(t_0), Null)
-$$
-
+---
 
 ---
 class: center middle
