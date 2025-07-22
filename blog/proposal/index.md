@@ -380,6 +380,13 @@ under some suitable metric $|\;\cdot\;| : \mathbb{R^s} \times \mathbb{R^s} \righ
 
 - $D[t_1]$ and $D[t_2]$ are observations from two days where $t_1$,$t_2$ are close. $$\;$$ 
 - Noise and occlusion @$t_2$ is not as severe as @$t_1$ => quality of estimated parameters $\theta_2$ superior to $\theta_1$.
+$$\;$$
+
+<img src=res/paper_equations/d2_estimate.png width=40% />
+
+<img src=res/paper_equations/d1_estimate.png width=42%/>
+
+<img src=res/paper_equations/d2_generate.png width=43% />
 ---
 ### Imputation (KSV/KTF) 
 
@@ -396,7 +403,6 @@ under some suitable metric $|\;\cdot\;| : \mathbb{R^s} \times \mathbb{R^s} \righ
 ### SATORIS: Unified Framework
 <img src=res/paper_equations/params_table_detailed.png />
 
----
 
 ---
 class: center middle
@@ -411,11 +417,7 @@ class: center middle
 
 
 ---
-class: middle center
-# EXPERIMENTAL SETUP
-
----
-### Setup
+### Experiment Setup
 
 <img src="res/paper_figures/exp-days.png" width="90%vw">
 
@@ -435,14 +437,71 @@ class: middle center
 
 ---
 ### 5 Days
-<img src="res/paper_figures/5days.png" width="65%vw">
+<img src="res/paper_figures/5days.png" width="70%vw" height=auto>
+
+---
+class: center middle
+
+<h3 style="color:darkturquoise">POST QUALS</h3>
+
+---
+### Stability of Parameters
+<img src=res/paperplots/bei-covariance-spectrum.png width=48%vw/>
+<img src=res/paperplots/shang-covariance-spectrum.png width=48%vw />
+
+- Complete observations per day are vectorized (shape = 900x24 = )
+- 7 Consecutive days
+- 7x7 Covariance matrix 
+- Spectrums of covariance matrices shown above
+---
+### Stability of Parameters
+
+$$\mathbf{x} \sim N(\boldsymbol{\mu, \Sigma}) $$
+
+===================================================================
+$$ \boldsymbol{\mu} \in \mathbb{R}^n $$
+$$\mathbf{\Sigma} := a\mathbf{I} + (1-a)\mathbf{vv^T} \in \mathbb{R}^{n \times n}$$
+$$\mathbf{v} \sim N(\mathbf{0, I}_{n \times n})$$
+$$a \in (0,1)$$
+
+- Sample 1000 vectors for $n=64$
+- Reshape into $8 \times 8$
+- Take SVD
+- Plot 1000 left/right singular vectors 
+
+---
+### stability of parameters (matrix)
+
+<img src=res/paperplots/stability/matrix-0.2a.png width=48%vw />
+<img src=res/paperplots/stability/matrix-0.8a.png width=48%vw />
+
+---
+### stability of parameters (tensor)
+
+<img src=res/paperplots/stability/tensor-0.2a.png width=48%vw />
+<img src=res/paperplots/stability/tensor-0.8a.png width=48%vw />
+
+$\hspace{7em} a=0.1 \hspace{11em} a=0.8$
+
+---
+### average subspace angles for 3 consecutive days (tensor vs matrix) 
+<img src=res/paper_equations/ssa.png width=100%vw/>
 
 ---
 class: middle center
+## Imputation via Subspace Aware Semidefinite Programming
+
+---
+### Rank and Nuclear Norm 
+- Nuclear Norm is the tightest convex relaxation of the rank 
+-  
+
+---
+class: middle center
+
 # THANK YOU VERY MUCH
 
 More results in the <a href="SATORIS.pdf" target="_blank"> paper </a>. 
 
-Also about verification of our assumptions of time invariance of the matrix/tensor atoms.
 
 
