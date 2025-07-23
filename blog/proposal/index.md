@@ -559,6 +559,13 @@ $\hspace{8em}$<img src=res/web_images/ellipse.png width=30%vw>
 
 <p style="color:brown"> Can we repurpose this PSD formulation to inject the singular subspace information via A and B where $X$ is partially observed and is the decision variable instead?</p>
 
+---
+###Segue 
+
+- Watch Adit's Talk again - lots of insights and can cite his paper for the poor Deepnetworks performance for lower number of observed entries in matrix completion.
+
+- Use Linear Deep NN as another baseline for the nuclear norm subspace injection.
+
 
 ---
 class: middle center
