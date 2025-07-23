@@ -493,8 +493,72 @@ class: middle center
 
 ---
 ### Rank and Nuclear Norm 
-- Nuclear Norm is the tightest convex relaxation of the rank 
--  
+- Rank is subadditive; Rank(A+B) $\leq$ Rank(A) + Rank(B)
+$$\;$$
+- Rank is not convex; 
+$$\;$$
+ Rank$\bigg( \frac{1}{2} \underbrace{\begin{bmatrix}1 &  0 \\\\ 0 & 0\end{bmatrix}}_{A} + \frac{1}{2}  \underbrace{ \begin{bmatrix} 0 & 0 \\\\ 0 & 1 \end{bmatrix}}_B \bigg)$ = 2 $\color{red} \boldsymbol{>}$ 1 =  $\frac{1}{2}$ Rank(A) +  $\frac{1}{2}$ Rank(B)
+$$\;$$
+- $L_0$ pseudo-norm of the singular values. 
+---
+### Rank and Nuclear Norm 
+- Convex surrogate of Rank (tightest relaxation)
+$$\;$$
+- $L_1$ norm of singular values
+$$\;$$
+- Yeilds low rank solutions if used as objective 
+$$\;$$
+- Analogous to use of $L_1$ as surrogate for $L_0$ in sparse regression.
+ 
+---
+### Formulations of Nuclear Norm
+
+Let $X$ be a $m \times n$ matrix and $X = U\Sigma V$ be its SVD. Let $\vec \sigma := diag(\Sigma)$
+
+The nuclear norm of $X$ is represented as $|X|_*$ and it equals
+
+- $|\vec \sigma|_1 \hspace{8.6em} \text{compared to rank}(X) = |\vec \sigma|_0 $
+
+- $Tr(\sqrt{X^TX}) \hspace{5em} \text{compared to } |X|_F^2 = Tr(X^TX)$
+
+-  $\underset{U,V}{\min}{\frac{1}{2} \bigg( |U|_F^2 + |V|_F^2} \bigg) \hspace{2em}$ s.t. $\;\;\;X = UV^T$ 
+
+- $\underset{|B|_2 \leq 1}{\sup} \; \langle X,B \rangle$
+
+- $\color{brown} \underset{A \in S^p ,B \in S^q}{\min} \; \frac{1}{2} \; \bigg( Tr(A) + Tr(B) \bigg)$ s.t $\color{brown}\begin{bmatrix} A & X \\\\ X^T & B \end{bmatrix} \succeq 0$
+
+$S^p,S^q$ are spaces of symmetric $p \times p$ and $q \times q$ matrices respectively. Due to PSD constraint on the block matrix $\implies$ leading principal submatrices need to PSD $\implies$ $A,B \succeq 0$
+
+---
+### Mean Width Interpretation (roughly)
+
+- Matrix $A$ transforms unit ball to an ellipsoid. $|A|_* = a + b$ 
+
+$\hspace{8em}$<img src=res/web_images/ellipse.png width=30%vw>
+
+- Let $X \in \mathbb{R}^{n+1}$ be any convex set. 
+
+- $S_{n}$ be the unit sphere in the same space.
+
+- $h(u) := \underset{x \in X}{\max} \; \langle x, u \rangle $ 
+
+- $\sigma_{max}(A)$ = $|A|_2$ = $\frac{1}{2} \; \underset{u \in S_n}{\max} \;\;\; h(u) - h(-u)$ 
+
+- $|A|_* = \frac{1}{|S_n|} \;\; \underset{S_n}{\int} h(u) - h(-u)$
+
+---
+### Another look at the SDP formulation  
+
+- $\underset{A,B \succeq 0}{\min} \; \frac{1}{2} \; \bigg( Tr(A) + Tr(B) \bigg)\;\;\;$ s.t $\;\;\;\begin{bmatrix} A & X \\\\ X^T & B \end{bmatrix} \succeq 0$
+
+- A = $U \Sigma U^T = \sqrt{XX^T}$ and $B = V \Sigma V^T = \sqrt{X^TX}$ are minimizers.
+
+- $U$ and $V$ are the singular vectors from SVD of $X = U\Sigma V^T$
+
+- A and B carry the left and right singular subspace information.
+
+<p style="color:brown"> Can we repurpose this PSD formulation to inject the singular subspace information via A and B where $X$ is partially observed and is the decision variable instead?</p>
+
 
 ---
 class: middle center
