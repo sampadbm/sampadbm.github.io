@@ -115,6 +115,7 @@ Preface, Tensors: Geometry and Applications,
 J. M. Landsberg 
 
 ---
+exclude: true
 ### Processed traffic density (1 hour x 1km x 1km)
 
 <img src='res/paper_figures/rawdata.png' width='90%vw'>
@@ -222,14 +223,14 @@ Krushkal Rank  (also called spark of a matrix) vs Rank
 ### Notations
 
 <img src="res/images/gm_ppt_figures/tensor.png" width="30%vw" style="margin-bottom:-3.5em">
-$\odot$
+$\circ$
 <img src="res/images/gm_ppt_figures/missing-tensor.png" width="30%vw" style="margin-bottom:-3.5em">
 $=$
 <img src="res/images/gm_ppt_figures/missing-tensor.png" width="30%vw" style="margin-bottom:-3.5em">
 
 <div style="margin-top:5em"></div>
 
-$\hspace{3em}\mathbf{T(t)} \hspace{4.5em}\odot\hspace{4em} \boldsymbol{\Omega(t)} \hspace{3em}=\hspace{4em}\mathbf{D(t)}$
+$\hspace{3em}\mathbf{T(t)} \hspace{4.5em}\circ\hspace{4em} \boldsymbol{\Omega(t)} \hspace{3em}=\hspace{4em}\mathbf{D(t)}$
 
 
 Where,
@@ -547,6 +548,11 @@ $\hspace{8em}$<img src=res/web_images/ellipse.png width=30%vw>
 - $|A|_* = \frac{1}{|S_n|} \;\; \underset{S_n}{\int} h(u) - h(-u)$
 
 ---
+### Low Nuclear Norm Imputation
+
+- $\underset{X}{\arg\min} |X|_*\;\;\;$ s.t. $\;\;\; \Omega \circ X = \Omega \odot Y$ 
+
+---
 ### Another look at the SDP formulation  
 
 - $\underset{A,B \succeq 0}{\min} \; \frac{1}{2} \; \bigg( Tr(A) + Tr(B) \bigg)\;\;\;$ s.t $\;\;\;\begin{bmatrix} A & X \\\\ X^T & B \end{bmatrix} \succeq 0$
@@ -559,8 +565,13 @@ $\hspace{8em}$<img src=res/web_images/ellipse.png width=30%vw>
 
 <p style="color:brown"> Can we repurpose this PSD formulation to inject the singular subspace information via A and B where $X$ is partially observed and is the decision variable instead?</p>
 
+
+
+
+
 ---
-###Segue 
+exclude: true
+### Segue 
 
 - Watch Adit's Talk again - lots of insights and can cite his paper for the poor Deepnetworks performance for lower number of observed entries in matrix completion.
 
