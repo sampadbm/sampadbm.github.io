@@ -566,6 +566,7 @@ $\hspace{8em}$<img src=res/web_images/ellipse.png width=30%vw>
 
 - Use Linear Deep NN as another baseline for the nuclear norm subspace injection.
 
+- Use RFM package from Adit's repo and see if it can be used as a baseline too. 
 
 ---
 class: middle center
