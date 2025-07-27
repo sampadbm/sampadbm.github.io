@@ -272,6 +272,9 @@ $$\;$$
 <img src="res/paper_equations/error_metrics.png" width="95%vw" style="margin-left:-2.5em">
 
 - Others: RMSE, MAE
+
+
+<small><a href=https://arxiv.org/pdf/1005.2197> Acar, E., Kolda, T. G., Dunlavy, D. M., & Mørup, M. (2010, May 12). Scalable tensor factorizations for incomplete data (arXiv:1005.2197). arXiv</a></small>
 ---
 
 
@@ -300,9 +303,6 @@ exclude: true
 
 
 <!---$$ \mathbf{\tilde T}(t) = \phi(\mathbf{D}(t),\boldsymbol{\Omega}(t); \boldsymbol{\theta}(t), \boldsymbol{\psi}(t_0))$$--->
-
-
-
 
 
 <!--$\phi$ may additionally depend on optional auxiliary information $\boldsymbol{\psi}(t_0)$
@@ -455,7 +455,7 @@ class: center middle
 - 7x7 Covariance matrix 
 - Spectrums of covariance matrices shown above
 ---
-### Stability of Parameters
+### Test with synthetic data 
 
 $$\mathbf{x} \sim N(\boldsymbol{\mu, \Sigma}) $$
 
@@ -473,16 +473,68 @@ $$a \in (0,1)$$
 ---
 ### stability of parameters (matrix)
 
-<img src=res/paperplots/stability/matrix-0.2a.png width=48%vw />
-<img src=res/paperplots/stability/matrix-0.8a.png width=48%vw />
+<img src=res/paperplots/stability/matrix-0.6a.png width=32%vw />
+<img src=res/paperplots/stability/matrix-0.7a.png width=32%vw />
+<img src=res/paperplots/stability/matrix-0.8a.png width=32%vw />
 
 ---
 ### stability of parameters (tensor)
 
-<img src=res/paperplots/stability/tensor-0.2a.png width=48%vw />
-<img src=res/paperplots/stability/tensor-0.8a.png width=48%vw />
+$\hspace{3.5em} a=0.6 \hspace{7em} a=0.7 \hspace{7em} a=0.8$
 
-$\hspace{7em} a=0.1 \hspace{11em} a=0.8$
+
+<div style="display: flex; gap: 1px;">
+
+<div style="
+    width: 33%;        /* final width you want to see */
+    overflow: hidden;    /* hide everything outside */
+    position: relative;
+">
+  <img src="res/paperplots/stability/tensor-0.6a.png" alt=""
+       style="
+         display: block;   /* remove inline gaps */
+         width: 150%;      /* 100/66 ≈ 1.5 → scales full image so 66% fits exactly */
+         height: auto;     /* keep aspect ratio */
+         /* object-fit/object-position are NOT needed here */
+       ">
+</div>
+ 
+
+<div style="
+    width: 33%;        /* final width you want to see */
+    overflow: hidden;    /* hide everything outside */
+    position: relative;
+">
+  <img src="res/paperplots/stability/tensor-0.7a.png" alt=""
+       style="
+         display: block;   /* remove inline gaps */
+         width: 150%;      /* 100/66 ≈ 1.5 → scales full image so 66% fits exactly */
+         height: auto;     /* keep aspect ratio */
+         /* object-fit/object-position are NOT needed here */
+       ">
+</div>
+
+
+
+<div style="
+    width: 33%;        /* final width you want to see */
+    overflow: hidden;    /* hide everything outside */
+    position: relative;
+">
+  <img src="res/paperplots/stability/tensor-0.8a.png" alt=""
+       style="
+         display: block;   /* remove inline gaps */
+         width: 150%;      /* 100/66 ≈ 1.5 → scales full image so 66% fits exactly */
+         height: auto;     /* keep aspect ratio */
+         /* object-fit/object-position are NOT needed here */
+       ">
+</div>
+
+
+</div>
+
+
+
 
 ---
 ### average subspace angles for 3 consecutive days (tensor vs matrix) 
@@ -548,12 +600,17 @@ $\hspace{8em}$<img src=res/web_images/ellipse.png width=30%vw>
 - $|A|_* = \frac{1}{|S_n|} \;\; \underset{S_n}{\int} h(u) - h(-u)$
 
 ---
-### Low Nuclear Norm Imputation
+### Minimum Nuclear Norm Imputation
 
-- $\underset{X}{\arg\min} |X|_*\;\;\;$ s.t. $\;\;\; \Omega \circ X = \Omega \odot Y$ 
+- $\underset{X}{\arg\min} |X|_*\;\;\;$ s.t. $\;\;\; \Omega \circ X = \Omega \circ Y$ 
+
+
+ - Since nuclear norm is a surrogate for the rank, it yields a low rank solution almost surely. 
+
+- Analogous to solutions of $L1$ minimization producing sparse (low $L_0$ pseudo-norm) solution
 
 ---
-### Another look at the SDP formulation  
+### Another look at the SDP formulation  (nnsdp)
 
 - $\underset{A,B \succeq 0}{\min} \; \frac{1}{2} \; \bigg( Tr(A) + Tr(B) \bigg)\;\;\;$ s.t $\;\;\;\begin{bmatrix} A & X \\\\ X^T & B \end{bmatrix} \succeq 0$
 
@@ -565,9 +622,69 @@ $\hspace{8em}$<img src=res/web_images/ellipse.png width=30%vw>
 
 <p style="color:brown"> Can we repurpose this PSD formulation to inject the singular subspace information via A and B where $X$ is partially observed and is the decision variable instead?</p>
 
+---
+### Imputation via inverse formulation (innsdp)
+
+- Assuming $Y$ is fully observed.
+
+- Obtain $A$ and $B$ as the solutions for the SDP formulation of the nuclear norm such that $c = \frac{1}{2} Tr(A) + \frac{1}{2} Tr(B)$ is $|Y|_*$, then
 
 
+$$\underset{X}{\arg\min} \;\;\;c \text{ (const.) }$$
 
+s.t.
+
+$$ \begin{bmatrix} A & X \\\\ X^T & B\end{bmatrix} \succeq 0 $$
+$$ X[i,j] = Y[i,j] \text{ if } \Omega[i,j] = 1$$
+
+
+$$\;$$
+- Could be multiple feasible X but almost surely all of them are low rank. 
+
+---
+### When $Y$ isn't fully observed
+
+-  We don't know $A$ and $B$ apriori
+
+- <p style=color:brown>Could we use $A$ and $B$ from a neighbor ? </p>
+
+#### Algorithm 
+
+1. Require: $Y_1, \Omega_1, Y_2$
+2. $A,B$ $\gets$ nnsdp($Y_2$)
+3. $X_1$ $\gets$ innsdp($Y_1, \Omega_1, A, B$)
+4. Return: $X_1$
+
+---
+### Soft reconstruction, Exact Injection
+
+$$ \underset{X}{\arg\min} || \Omega \circ (X - Y)||_F  $$
+
+s.t.
+
+$$ \begin{bmatrix} A & X \\\\ X^T & B \end{bmatrix} \succeq 0$$
+
+$$A = U\Sigma U^T$$ 
+
+$$B = V \Sigma V^T$$
+
+
+---
+### Soft reconstruciton, Soft Injection
+
+
+$$ \underset{X}{\arg\min} || \Omega \circ (X - Y)||_F + \alpha ||A - U\Sigma U^T|| + \beta ||B - V \Sigma V^T|| $$
+
+s.t.
+
+$$ \begin{bmatrix} A & X \\\\ X^T & B \end{bmatrix} \succeq 0$$
+
+$$A \succeq 0$$ 
+
+$$B \succeq 0$$
+
+---
+###  
 
 ---
 exclude: true
@@ -582,7 +699,7 @@ exclude: true
 ---
 class: middle center
 
-# THANK YOU VERY MUCH
+# THANK YOU
 
 More results in the <a href="SATORIS.pdf" target="_blank"> paper </a>. 
 
