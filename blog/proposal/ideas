@@ -1,0 +1,11 @@
+train NNet:R^2 -> R for matrix and NNet:R^3 -> R for tensor imputation.
+
+tensor factors are more stable because of no rotational and permutation ambiguity like matrix factors.
+
+
+--> Ther emust be some heirarchical yes/no type multilevel clustering when neural nets learn image classification (think of imagenet - are they animals? if so then the neurons that activate most must be a bundle that together when 
+the bundle is vizualized as a path in forward pass. And then later neurons deparate that path based on if that animal is a dog or a cat. For things like trees, there must be neurons (or subspaces) that capture that treeness and it must show up in 
+the earlier layers of the network and then later parts of the network focus on the details of which species the tree is 
+from. If the neural nets are found to already be doing this kind of heirarchical thing it is amazing. If they are not already doing that, can we test if we learn about the intrinsic dimension on the data (checkou intrinsic dimensionality of datasets) and/or apply unsupervised clustering and then train them in a curriculum, the NN learns faster. Or should we impose this kind of heirarchical learning structure as a regularizer into the neural net i.e the neuron bundle shoudl fire together for data in a particular class and shoudl only be distinguished later by later neurons - maybe this can be done by gradually unfreezing the later layers of the neural net or having a lower learning rate on the later layers as compared to the earlier layers. Use AGOP? use spectral graph theory to identify these paths/bundles in the neural net graph?
+
+--> Using AGOP on Kolmogorov Arnold Networks?
