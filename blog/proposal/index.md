@@ -15,10 +15,10 @@ category: research
 
 ### <u> Committee members </u>
 
-**Bhaskar Krishnamachari | Jyotirmoy V. Deshmukh |Satish Kumar Thittamaranahalli | Jiapeng Zhang | Robert Guralnick | Gary Rosen**
+**Bhaskar Krishnamachari | Aiichiro Nakano |Satish Kumar Thittamaranahalli | Jiapeng Zhang | Robert Guralnick**
 
 ##### Presenter: Sampad Bhusan Mohanty
-###### 25th July, 2025
+###### 31st July, 2025
 ---
 ### Acknowledgement
 
@@ -334,7 +334,6 @@ $p_s + p_v = p$
 ---
 ### Estimators
 
-
 <img src=res/paper_equations/estimator_full.png width=37%vw />
 <img src=res/paper_equations/estimator_v.png width=41.5%vw />
 <img src=res/paper_equations/estimator_c.png width=80%vw />
@@ -450,7 +449,7 @@ class: center middle
 <img src=res/paperplots/bei-covariance-spectrum.png width=48%vw/>
 <img src=res/paperplots/shang-covariance-spectrum.png width=48%vw />
 
-- Complete observations per day are vectorized (shape = 900x24 = )
+- Complete observations per day are vectorized (shape = 900x24)
 - 7 Consecutive days
 - 7x7 Covariance matrix 
 - Spectrums of covariance matrices shown above
@@ -670,7 +669,7 @@ $$B = V \Sigma V^T$$
 
 
 ---
-### Soft reconstruciton, Soft Injection
+### Soft reconstruciton, Nonexact (Soft) Injection
 
 
 $$ \underset{X}{\arg\min} || \Omega \circ (X - Y)||_F + \alpha ||A - U\Sigma U^T|| + \beta ||B - V \Sigma V^T|| $$
@@ -684,7 +683,13 @@ $$A \succeq 0$$
 $$B \succeq 0$$
 
 ---
-###  
+### Results
+
+---
+class: center middle
+
+Proposal
+
 
 ---
 exclude: true
