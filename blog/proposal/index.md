@@ -634,11 +634,17 @@ $$\underset{X}{\arg\min} \;\;\;c \text{ (const.) }$$
 s.t.
 
 $$ \begin{bmatrix} A & X \\\\ X^T & B\end{bmatrix} \succeq 0 $$
-$$ X[i,j] = Y[i,j] \text{ if } \Omega[i,j] = 1$$
+$$ X[i,j] = Y[i,j] \;\;\;\;\; \text{if} \;\;\;\;\; \Omega[i,j] = 1$$
 
 
 $$\;$$
 - Could be multiple feasible X but almost surely all of them are low rank. 
+
+---
+### Mathematical jugglery? POC on images
+
+<img src=res/sdp_paper/image_impute/flower_mp_90.0%.png />
+<img src=res/sdp_paper/image_impute/china_mp_90.0%.png />
 
 ---
 ### When $Y$ isn't fully observed
@@ -683,7 +689,19 @@ $$A \succeq 0$$
 $$B \succeq 0$$
 
 ---
+### Proposed Methods
+
+<img src=res/sdp_paper/methods.png width=100%vw />
+
+---
 ### Results
+
+
+<img src=res/sdp_paper/results/plots/shang_next.png width=100%vw />
+
+$$\;$$
+
+<img src=res/sdp_paper/results/plots/shang_prev.png width=100%vw />
 
 ---
 class: center middle
