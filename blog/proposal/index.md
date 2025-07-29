@@ -677,8 +677,7 @@ $$B = V \Sigma V^T$$
 ---
 ### Soft reconstruciton, Nonexact (Soft) Injection
 
-
-$$ \underset{X}{\arg\min} || \Omega \circ (X - Y)||_F + \alpha ||A - U\Sigma U^T|| + \beta ||B - V \Sigma V^T|| $$
+$$ \underset{X,A,B}{\arg\min} || \Omega \circ (X - Y)||_F + \alpha ||A - U\Sigma U^T|| + \beta ||B - V \Sigma V^T|| $$
 
 s.t.
 
@@ -687,6 +686,25 @@ $$ \begin{bmatrix} A & X \\\\ X^T & B \end{bmatrix} \succeq 0$$
 $$A \succeq 0$$ 
 
 $$B \succeq 0$$
+
+---
+### Even relax $\Sigma$ !!! 
+
+- Let $D = diag(\vec{d})$
+
+$$ \underset{X,\vec{d}}{\arg\min} || \Omega \circ (X - Y)||_F $$
+
+s.t.
+
+$$ \begin{bmatrix} A & X \\\\ X^T & B \end{bmatrix} \succeq 0$$
+
+$$A =  UDU^T$$ 
+
+$$B = VDV^T$$
+
+$$\vec{d} \succeq 0 $$
+
+
 
 ---
 ### Proposed Methods
