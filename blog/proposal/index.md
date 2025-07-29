@@ -724,7 +724,8 @@ $$\;$$
 ---
 class: center middle
 
-Proposal
+
+<h3 style="color:darkturquoise">PROPOSED WORK</h3>
 
 
 ---
