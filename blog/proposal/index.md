@@ -22,17 +22,17 @@ category: research
 ---
 ### Acknowledgement
 
-Possible in part due to the unwavering suppport from  
+Possible in part due to the unwavering suppport from
 [Prof. Bhaskar Krishnamachair](https://viterbi.usc.edu/directory/faculty/Krishnamachari/Bhaskar) and [Dr. Fan Bai](https://scholar.google.com/citations?user=ZDRy6_EAAAAJ&hl=en) from General Motors.
 
 <img src="res/logos/viterbi.jpg" height='50%vh' width='45%vh'/>
-<img src="res/logos/gm.png" height='50%vh' width='45%vh'/>  
+<img src="res/logos/gm.png" height='50%vh' width='45%vh'/>
 
 
-Also all my [teachers and mentors](https://sampadbm.github.io/#Teachers%20and%20Mentors)  
+Also all my [teachers and mentors](https://sampadbm.github.io/#Teachers%20and%20Mentors)
 
 
-To the committee: 
+To the committee:
 
 Thank you so very much for your valuable time and guidance.
 
@@ -59,7 +59,7 @@ class: center middle
 
 <h3 style="color:darkturquoise">QUALS RECAP</h3>
 ---
-### Dataset 
+### Dataset
 
 GPS logs from Taxi's operating in Beijing and Shanghai, China over a month.
 
@@ -73,7 +73,7 @@ GPS logs from Taxi's operating in Beijing and Shanghai, China over a month.
 Address the challenges
 posed by mobility datasets.
 
-	- Denoise and recover missing entries. 
+	- Denoise and recover missing entries.
 	- Store data more efficiently, compression.
 ---
 
@@ -110,16 +110,16 @@ exclude: true
 ### Clash of cultures
 <img src='res/images/tensors/clash-of-cultures.png' width='70%vw'>
 
-Preface, Tensors: Geometry and Applications, 
+Preface, Tensors: Geometry and Applications,
 
-J. M. Landsberg 
+J. M. Landsberg
 
 ---
 exclude: true
 ### Processed traffic density (1 hour x 1km x 1km)
 
 <img src='res/paper_figures/rawdata.png' width='90%vw'>
->>> >>> $X \times Y \times T$ tensors 
+>>> >>> $X \times Y \times T$ tensors
 
 ---
 ### Processed traffic density visualizations
@@ -133,7 +133,7 @@ Contract time dim. using vector $\mathbf{1_T} \in \mathbb{R}^T$
 **Temporal plot:**
 Contract spatial dims. using vectors $\mathbf{1_X} \in \mathbb{R}^X$ and $\mathbf{1_Y} \in \mathbb{R}^Y$
 
-Same as contraction with matrix dot/inner product on spatial dimensions using 
+Same as contraction with matrix dot/inner product on spatial dimensions using
 matrix $\mathbf{1_X1_Y'} \in \mathbb{R}^{X \times Y}$ as $\mathbf{u^TBv} = \langle \mathbf{B},\mathbf{vu^T} \rangle$
 
 
@@ -177,7 +177,7 @@ $$\text{Tucker vs CP Decompositions}$$
 ---
 ### Matrix vs Tensor decomposition
 
-<img src='res/images/tensors/p-np.png' width='50%vw'>
+<img src='res/images/tensors/p-np.png' width='40%vw'>
 
 |Factorization | | Time complexity | | Notes |
 |--------------|-|---------------|---|------|
@@ -185,14 +185,14 @@ $$\text{Tucker vs CP Decompositions}$$
 | Cholesky,QR | | $O(n^3), O(mn^2)$ | | |
 | SVD | | $O(mn^2)$ | |  $\hspace{4em} m \geq n$|
 |EVD| | $O(n^3)$ | |  |
-| CP rank $\leq$ k | | NP Complete | | ||
+| CP rank $\leq$ k? | | NP Complete | | ||
 | Exact CP | | NP Hard | | $\because$ finding rank is NP Hard||
 
 ---
 exclude: true
 ### Other peculiarities of Matrix vs Tensor decomposition
 
-1. If A is a matrix of rank r over a field F then it has rank r over any extension field of F. 
+1. If A is a matrix of rank r over a field F then it has rank r over any extension field of F.
 Matrices have same ranks under $\mathbb{R}$ and $\mathbb{C}$ as the later extends the former. $^{**}$
 
 2. If A is a matrix of rank r over a field K then its rank over any sub-field of K is at least $r$ (could be more). $^{**}$
@@ -208,9 +208,9 @@ exclude: true
 
 Chapter 1, Tensors: Geometry and Applications, J. M. Landsberg
 
-$\mathbf{M = AB} = \boldsymbol{\alpha \beta}$ 
+$\mathbf{M = AB} = \boldsymbol{\alpha \beta}$
 
-if $\boldsymbol{\alpha} = \frac{1}{\gamma} \mathbf{AU^*}$, $\boldsymbol{\beta} = \gamma \mathbf{UB}$ for any unitary matrix $\mathbf{U}$ and 
+if $\boldsymbol{\alpha} = \frac{1}{\gamma} \mathbf{AU^*}$, $\boldsymbol{\beta} = \gamma \mathbf{UB}$ for any unitary matrix $\mathbf{U}$ and
 any scalar $\gamma \neq 0$.
 
 Unique upto rotation/reflection/permutation and scaling.
@@ -281,15 +281,15 @@ $$\;$$
 ### Hypothesis and Assumptions
 
 
-##### Hypothesis 
+##### Hypothesis
 There exist two kinds of latent factors that completely explain traffic patters
-- time invariant latent factors and 
+- time invariant latent factors and
 - time varying latent factors
 
 
-##### Assumptions 
+##### Assumptions
 
-1. Observed density of a particular day can be explained by linearly weighted combination of the time invariant factors where the weights are precisely the time varying factors. 
+1. Observed density of a particular day can be explained by linearly weighted combination of the time invariant factors where the weights are precisely the time varying factors.
 
 2. The rank-1 matrix/tensor atoms obtained by decomposition of the data representation are time invariant.
 
@@ -339,7 +339,7 @@ $p_s + p_v = p$
 <img src=res/paper_equations/estimator_c.png width=80%vw />
 
 
-<h5 style="color:orange"> Note A: </h5> 
+<h5 style="color:orange"> Note A: </h5>
 
 
 The estimation is not perfect and depends on the following -
@@ -355,7 +355,7 @@ exclude: true
 ### Quality of reconstruction
 How good can the reconstruction be?
 
-<h5 style="color:orange"> Note A: </h5> 
+<h5 style="color:orange"> Note A: </h5>
 
 The estimation is not perfect and depends on the following -
 
@@ -364,7 +364,7 @@ The estimation is not perfect and depends on the following -
 - estimator efficiency as the estimators are approximate algorithms
 
 <h5 style="color:green"> Note B: </h5>
-- How good the assumption on time invariance of $\boldsymbol{\theta_1}(t)$ holds 
+- How good the assumption on time invariance of $\boldsymbol{\theta_1}(t)$ holds
 between times $t$ and $t_0$.
 
 ---
@@ -378,7 +378,7 @@ under some suitable metric $|\;\cdot\;| : \mathbb{R^s} \times \mathbb{R^s} \righ
 ---
 ### Estimator Quality
 
-- $D[t_1]$ and $D[t_2]$ are observations from two days where $t_1$,$t_2$ are close. $$\;$$ 
+- $D[t_1]$ and $D[t_2]$ are observations from two days where $t_1$,$t_2$ are close. $$\;$$
 - Noise and occlusion @$t_2$ is not as severe as @$t_1$ => quality of estimated parameters $\theta_2$ superior to $\theta_1$.
 $$\;$$
 
@@ -388,7 +388,7 @@ $$\;$$
 
 <img src=res/paper_equations/d2_generate.png width=43% />
 ---
-### Imputation (KSV/KTF) 
+### Imputation (KSV/KTF)
 
 <img src=res/paper_equations/ktf.png />
 
@@ -424,7 +424,7 @@ class: center middle
 
 ---
 class: middle center
-# RESULTS 
+# RESULTS
 
 ---
 ### 1 Day
@@ -451,10 +451,27 @@ class: center middle
 
 - Complete observations per day are vectorized (shape = 900x24)
 - 7 Consecutive days
-- 7x7 Covariance matrix 
+- 7x7 Covariance matrix
 - Spectrums of covariance matrices shown above
+
 ---
-### Test with synthetic data 
+### Inferred generative process: Low Rank Linear model with additive noise
+
+$$\mathbf{x} = \mathbf{V} \mathbf{r} + \boldsymbol{\epsilon}$$
+
+
+- $\mathbf{r} \sim N(0,(1-a) \; \mathbf{I})$ is latent and $\boldsymbol{\epsilon} \sim N(0,a \; \mathbf{I})$ is additive noise.
+
+- $E[\mathbf{x}] = \mathbf{V} \; \underbrace{E[\mathbf{r}]}_{\mathbf{0}} + \overbrace{E[\boldsymbol{\epsilon}]}^{\mathbf{0}} = \mathbf{0} + \mathbf{0} = \mathbf{0}$
+
+$\color{blue}\text{Cov}(\mathbf{x}) \color{black} = E[\big( \mathbf{x} - E[\mathbf{x}]\big)  \big( \mathbf{x} - E[\mathbf{x}]\big)^T] = E[\mathbf{xx^T}]  \\\\ = E[(\mathbf{Vr} + \boldsymbol{\epsilon})(\mathbf{r^TV^T} + \boldsymbol{\epsilon^T})] \\\\ = \mathbf{V}E[\mathbf{rr^T}]\mathbf{V^T} +\mathbf{V}E[\mathbf{r}]E[\boldsymbol{\epsilon^T}]+  E[\boldsymbol{\epsilon}]E[\mathbf{r^T}]\mathbf{V^T} + E[\boldsymbol{\epsilon \epsilon^T}]\\\\ = (1 - a) \mathbf{I\;\;VV^T} + \mathbf{0} + \mathbf{0} + a\mathbf{I}  = \;\; \color{blue} (1 - a) \mathbf{VV^T} + a\mathbf{I}$
+
+- For rank = 1, $\mathbf{V} = \mathbf{v}$, $\text{Cov}(\mathbf{x}) = (1-a) \mathbf{vv^T} + a \mathbf{I} $
+
+- In general (and in real world), $\mathbf{V}$ is low rank.
+
+---
+### Vizualizing stable subspaces with Synthetic data
 
 $$\mathbf{x} \sim N(\boldsymbol{\mu, \Sigma}) $$
 
@@ -467,7 +484,7 @@ $$a \in (0,1)$$
 - Sample 1000 vectors for $n=64$
 - Reshape into $8 \times 8$
 - Take SVD
-- Plot 1000 left/right singular vectors 
+- Plot 1000 left/right singular vectors
 
 ---
 ### stability of parameters (matrix)
@@ -497,7 +514,7 @@ $\hspace{3.5em} a=0.6 \hspace{7em} a=0.7 \hspace{7em} a=0.8$
          /* object-fit/object-position are NOT needed here */
        ">
 </div>
- 
+
 
 <div style="
     width: 33%;        /* final width you want to see */
@@ -536,7 +553,7 @@ $\hspace{3.5em} a=0.6 \hspace{7em} a=0.7 \hspace{7em} a=0.8$
 
 
 ---
-### average subspace angles for 3 consecutive days (tensor vs matrix) 
+### average subspace angles for 3 consecutive days (tensor vs matrix)
 <img src=res/paper_equations/ssa.png width=100%vw/>
 
 ---
@@ -544,24 +561,24 @@ class: middle center
 ## Imputation via Subspace Aware Semidefinite Programming
 
 ---
-### Rank and Nuclear Norm 
+### Rank and Nuclear Norm
 - Rank is subadditive; Rank(A+B) $\leq$ Rank(A) + Rank(B)
 $$\;$$
-- Rank is not convex; 
+- Rank is not convex;
 $$\;$$
  Rank$\bigg( \frac{1}{2} \underbrace{\begin{bmatrix}1 &  0 \\\\ 0 & 0\end{bmatrix}}_{A} + \frac{1}{2}  \underbrace{ \begin{bmatrix} 0 & 0 \\\\ 0 & 1 \end{bmatrix}}_B \bigg)$ = 2 $\color{red} \boldsymbol{>}$ 1 =  $\frac{1}{2}$ Rank(A) +  $\frac{1}{2}$ Rank(B)
 $$\;$$
-- $L_0$ pseudo-norm of the singular values. 
+- $L_0$ pseudo-norm of the singular values.
 ---
-### Rank and Nuclear Norm 
+### Rank and Nuclear Norm
 - Convex surrogate of Rank (tightest relaxation)
 $$\;$$
 - $L_1$ norm of singular values
 $$\;$$
-- Yeilds low rank solutions if used as objective 
+- Yeilds low rank solutions if used as objective
 $$\;$$
 - Analogous to use of $L_1$ as surrogate for $L_0$ in sparse regression.
- 
+
 ---
 ### Formulations of Nuclear Norm
 
@@ -573,7 +590,7 @@ The nuclear norm of $X$ is represented as $|X|_*$ and it equals
 
 - $Tr(\sqrt{X^TX}) \hspace{5em} \text{compared to } |X|_F^2 = Tr(X^TX)$
 
--  $\underset{U,V}{\min}{\frac{1}{2} \bigg( |U|_F^2 + |V|_F^2} \bigg) \hspace{2em}$ s.t. $\;\;\;X = UV^T$ 
+-  $\underset{U,V}{\min}{\frac{1}{2} \bigg( |U|_F^2 + |V|_F^2} \bigg) \hspace{2em}$ s.t. $\;\;\;X = UV^T$
 
 - $\underset{|B|_2 \leq 1}{\sup} \; \langle X,B \rangle$
 
@@ -584,27 +601,27 @@ $S^p,S^q$ are spaces of symmetric $p \times p$ and $q \times q$ matrices respect
 ---
 ### Mean Width Interpretation (roughly)
 
-- Matrix $A$ transforms unit ball to an ellipsoid. $|A|_* = a + b$ 
+- Matrix $A$ transforms unit ball to an ellipsoid. $|A|_* = a + b$
 
 $\hspace{8em}$<img src=res/web_images/ellipse.png width=30%vw>
 
-- Let $X \in \mathbb{R}^{n+1}$ be any convex set. 
+- Let $X \in \mathbb{R}^{n+1}$ be any convex set.
 
 - $S_{n}$ be the unit sphere in the same space.
 
-- $h(u) := \underset{x \in X}{\max} \; \langle x, u \rangle $ 
+- $h(u) := \underset{x \in X}{\max} \; \langle x, u \rangle $
 
-- $\sigma_{max}(A)$ = $|A|_2$ = $\frac{1}{2} \; \underset{u \in S_n}{\max} \;\;\; h(u) - h(-u)$ 
+- $\sigma_{max}(A)$ = $|A|_2$ = $\frac{1}{2} \; \underset{u \in S_n}{\max} \;\;\; h(u) - h(-u)$
 
 - $|A|_* = \frac{1}{|S_n|} \;\; \underset{S_n}{\int} h(u) - h(-u)$
 
 ---
 ### Minimum Nuclear Norm Imputation
 
-- $\underset{X}{\arg\min} |X|_*\;\;\;$ s.t. $\;\;\; \Omega \circ X = \Omega \circ Y$ 
+- $\underset{X}{\arg\min} |X|_*\;\;\;$ s.t. $\;\;\; \Omega \circ X = \Omega \circ Y$
 
 
- - Since nuclear norm is a surrogate for the rank, it yields a low rank solution almost surely. 
+ - Since nuclear norm is a surrogate for the rank, it yields a low rank solution almost surely.
 
 - Analogous to solutions of $L1$ minimization producing sparse (low $L_0$ pseudo-norm) solution
 
@@ -638,7 +655,7 @@ $$ X[i,j] = Y[i,j] \;\;\;\;\; \text{if} \;\;\;\;\; \Omega[i,j] = 1$$
 
 
 $$\;$$
-- Could be multiple feasible X but almost surely all of them are low rank. 
+- Could be multiple feasible X but almost surely all of them are low rank.
 
 ---
 ### Mathematical jugglery? POC on images
@@ -653,7 +670,7 @@ $$\;$$
 
 - <p style=color:brown>Could we use $A$ and $B$ from a neighbor ? </p>
 
-#### Algorithm 
+#### Algorithm
 
 1. Require: $Y_1, \Omega_1, Y_2$
 2. $A,B$ $\gets$ nnsdp($Y_2$)
@@ -669,7 +686,7 @@ s.t.
 
 $$ \begin{bmatrix} A & X \\\\ X^T & B \end{bmatrix} \succeq 0$$
 
-$$A = U\Sigma U^T$$ 
+$$A = U\Sigma U^T$$
 
 $$B = V \Sigma V^T$$
 
@@ -683,12 +700,12 @@ s.t.
 
 $$ \begin{bmatrix} A & X \\\\ X^T & B \end{bmatrix} \succeq 0$$
 
-$$A \succeq 0$$ 
+$$A \succeq 0$$
 
 $$B \succeq 0$$
 
 ---
-### Even relax $\Sigma$ !!! 
+### Even relax $\Sigma$ !!!
 
 - Let $D = diag(\vec{d})$
 
@@ -698,7 +715,7 @@ s.t.
 
 $$ \begin{bmatrix} A & X \\\\ X^T & B \end{bmatrix} \succeq 0$$
 
-$$A =  UDU^T$$ 
+$$A =  UDU^T$$
 
 $$B = VDV^T$$
 
@@ -729,21 +746,223 @@ class: center middle
 
 
 ---
+### Proposed possible extensions: Imputation Methods
+
+Short-term -
+1. Beyond CP: Tucker Decomposition
+
+2. Subspace injection via Tensor Nuclear Norm
+
+
+
+Medium-term -
+4. Online/streaming imputation with slowly evolving subspace.
+
+3. Imputing via KAN/Deep-learning with Subspace priors/regularization
+
+
+---
+### Possible extensions: Low Rank and Subspace similarity in LLMs
+
+Short-term -
+5. Low Rank structures and overlapping subspaces in LLM Safety
+
+Medium-term -
+6. Exploring Average Gradient Outer Product in Recursive Feature Machines.
+
+---
+### 1. Beyond CP: Tucker Decomposition
+
+<img src=res/proposed_future_work/tucker.png width=100%vw/>
+
+- Generalizes CP decomposition
+
+- Recovers Linear Model more efficiently at lower rank from higher moment tensors (3rd order moments/kurtosis) [Ruhui Jin, Joe Kileel, Tamara G. Kolda, and Rachel Ward. “Scalable symmetric Tucker tensor decomposition.”](https://arxiv.org/abs/2204.10824)
+
+- More expressive than CP: CP is a special case when core tensor $G$ is superdiagonal
+
+---
+### Tucker Decomposition Intuition
+
+- $\\{a_1,...,a_n\\}$, $\\{ b_1, ..., b_n\\}$ and $\\{ c_1, ..., c_n \\}$ be bases for the three spaces involved of the tensor (row, column and tube fiber spaces)
+
+- CP : $T \approx \sum_i \gamma_i \;\; a_i \otimes b_i \otimes c_i$
+
+- Tucker : $T \approx \gamma_1 \; a_1 \otimes b_1 \otimes c_1 + \gamma_2 \; a_1 \otimes b_4 \otimes c_5 + ...  $
+
+<img src=res/proposed_future_work/tucker_intuition.png width=63%vw >
+
+---
+### Proposed Method
+
+- Recover the (possibly invariant) factors from CP/Tucker decomposition of neighbors
+
+- Use Tucker format for fitting a full core tensor $G$ using the invariant factors and partial observation on the target.
+
+- In the prior method using CP, $G$ was implicitly restricted to be superdiagonal.
+
+- This model more expressive
+
+- Might need to impose additional structural constraints on the core tensor $G$ for bias-variance / sample complexity-occlusion tradeoff.
+
+
+---
+### 2. Subspace injection via Tensor Nuclear Norm
+
+- CP based nuclear norm is NP hard to compute.
+
+$$||X||_* = \inf \bigg\\{ \sum|\lambda_r| \; : \; X = \sum_r \lambda_r \; u_r^{(1)} \otimes u_r^{(2)} \otimes u_r^{(3)}: |u_k^{(i)}| = 1   \bigg\\} $$
+
+- Matricization Based Nuclear Norm $ \hspace{1em} = \hspace{1em} \overset{3}{\underset{k=1}{\sum}} |X^{(k)}|_* \hspace{2em}$
+where $X^{(k)}$ is the matricization along the $k^{th}$ mode.
+
+- Subspaces recovered from the matricization along different modes can be injected via the above norm.
+
+
+
+---
+### 2. Subspace injection via Tensor Nuclear Norm
+
+- $X$ is the tensor
+
+- $X^{(i)}$ are matricization of $X$ along the column, row and tube modes/fibers.
+
+- $U_i \Sigma_i V_i^T \gets X^{(i)}$ is SVD of the matricized tensor $X$ for $i = 1,2,3$, the three modes.
+
+$$ \underset{X}{\arg\min} || \Omega \circ (X - Y)||_F  $$
+
+
+s.t.
+
+$$ \begin{bmatrix} A_i & X^{(i)} \\\\ X^{(i)T} & B_i \end{bmatrix} \succeq 0$$
+
+$$A_i = U_i\Sigma_i U_i^T$$
+
+$$B = V_i \Sigma_i V_i^T$$
+
+- Note: There are more constraints than the matrix version. This checks out as the tensor format has more structure/high-bias.
+
+---
 exclude: true
-### Segue 
+### 2. Deep learning methods with subspace regularization
+
+- As already seen, deep learning methods struggle at high occlusion.
+
+- Can we use subspace regularization to improve these deep learning models at high occlusion?
+
+---
+exclude: true
+### 3. Streaming scenarios
+
+- Observations are obtained with various occlusion levels in a streaming fashion.
+
+- The stable subspace may evolve slowly
+
+- Learn subspace evoution over time?
+
+---
+### 3. Low Rank Structures and Stable Subspaces in LLMs
+
+<img src=res/proposed_future_work/safety-neurons.png width=100%vw>
+
+Key Idea -
+
+- There are neurons that are responsible for safety!
+
+- These neurons are sparse, only 3%  !!
+
+- There are subspaces in the pretrained weight space that correspond to safety.
+
+<small><a href=https://arxiv.org/pdf/2402.05162v1> Wei, B., Huang, K., Huang, Y., Xie, T., Qi, X., Xia, M., Mittal, P., Wang, M., & Henderson, P. (2024). Assessing the Brittleness of Safety Alignment via Pruning and Low‑Rank Modifications] </a></small>
+
+---
+### Key Idea: Neuron Saliency
+
+
+<img src=res/proposed_future_work/neuron-saliency.png width=100%vw>
+
+---
+### Key Idea: ActSVD
+
+
+<img src=res/proposed_future_work/actSVD-proof.png width=100%vw>
+
+---
+### Key Idea
+
+- Identify neurons/subspace $U$ responsible for utility via utility Dataset
+
+- Do the same for safety Dataset $S$
+
+- For neurons, take $ U - S$
+
+- For subspace, project weights
+
+$$
+\Pi \;\;\; = \underbrace{(I - UU^T)}_{\text{proj. onto subspace not important for utility}} \overbrace{SS^T}^{\text{proj. onto safety subspace}}
+$$
+
+$$\delta W  = \Pi \; W$$
+
+- Use LoRa adapter to introduce the $\Delta W$ as $AB$ where $A = I - UU^T$ and $B = SS^T W$
+
+---
+### Low Rank Safety Neurons and Subspaces
+
+<img src=res/proposed_future_work/ASR.png width=100%vw>
+
+
+---
+### Low Rank Safety Neurons and Subspaces
+
+<img src=res/proposed_future_work/subspace-similarity.png width=100%vw>
+
+- Subspace similarity in multiple matrices can be exploited using tensor decomposition methods and via subspace injections.
+
+---
+### Timeline
+
+|Month |Work|
+|:----|:------------------------------|
+| Now-Aug 25 | Submit work on NNorm Subspace Injection for Matrix version |
+|Sep-Oct 25 | Subspace injection via Tensor Nuclear Norm |
+|Oct-Nov 25| Subspace injection via Tucker Decomposition|
+|Nov-Jan 25 | LLM Safety with low rank/subspace similarity |
+|Feb-Mar 26 | DL/KAN/AGOP-RFM imputation |
+|Mar 26 | Defend |
+
+
+---
+exclude: true
+### Segue
 
 - Watch Adit's Talk again - lots of insights and can cite his paper for the poor Deepnetworks performance for lower number of observed entries in matrix completion.
 
 - Use Linear Deep NN as another baseline for the nuclear norm subspace injection.
 
-- Use RFM package from Adit's repo and see if it can be used as a baseline too. 
+- Use RFM package from Adit's repo and see if it can be used as a baseline too.
+
 
 ---
 class: middle center
 
 # THANK YOU
 
-More results in the <a href="SATORIS.pdf" target="_blank"> paper </a>. 
+<!---More results in the <a href="SATORIS.pdf" target="_blank"> paper </a>.--->
 
-
-
+<style>
+table{
+  border: 1px dotted blue;
+    width: 100%;
+}
+th{
+    border-bottom: 1px dotted blue;
+}
+td{
+    padding-bottom: 0.5em;
+}
+td,th:first-child{
+    padding-right: 1em;
+    border-right: 1px dotted blue;
+}
+</style
