@@ -19,22 +19,6 @@ category: research
 
 ##### Presenter: Sampad Bhusan Mohanty
 ###### 31st July, 2025
----
-### Acknowledgement
-
-Possible in part due to the unwavering suppport from
-[Prof. Bhaskar Krishnamachair](https://viterbi.usc.edu/directory/faculty/Krishnamachari/Bhaskar) and [Dr. Fan Bai](https://scholar.google.com/citations?user=ZDRy6_EAAAAJ&hl=en) from General Motors.
-
-<img src="res/logos/viterbi.jpg" height='50%vh' width='45%vh'/>
-<img src="res/logos/gm.png" height='50%vh' width='45%vh'/>
-
-
-Also all my [teachers and mentors](https://sampadbm.github.io/#Teachers%20and%20Mentors)
-
-
-To the committee:
-
-Thank you so very much for your valuable time and guidance.
 
 ---
 exclude: true
@@ -75,7 +59,9 @@ posed by mobility datasets.
 
 	- Denoise and recover missing entries.
 	- Store data more efficiently, compression.
+
 ---
+exclude: true
 
 ### Raw data
 
@@ -146,11 +132,12 @@ matrix $\mathbf{1_X1_Y'} \in \mathbb{R}^{X \times Y}$ as $\mathbf{u^TBv} = \lang
 <small><a href="https://anrg.usc.edu/www/papers/Revealing.pdf">F. Bai and B. Krishnamachari, “Revealing a Hidden, Stable Spectral Structure of Urban Vehicular Traffic,” in Proc. IEEE Vehicular Networking Conf. (VNC), 2021</a></small>
 
 ---
-
-### Prior work @ USC-ANRG + GM : Unexplained variance
+exclude: true
+### Prior work @ USC-ANRG + GM : Imputation method
 <img src='res/images/gm_ppt_figures/pca-paper-imputation-performance.png' width='100%vw'>
 
 ---
+exclude: true
 ### Atoms using (outer) products
 
 <img src='res/images/gm_ppt_figures/tensor-rank-1-approx.png' width='70%vw'>
@@ -169,6 +156,7 @@ $$\text{Matrix Decomposition}$$
 $$\text{Tensor Decomposition}$$
 
 ---
+exclude: true
 ### Some other decompositions
 <img src='res/images/gm_ppt_figures/tucker-decomp.png' width='100%vw'>
 
@@ -244,6 +232,7 @@ $\boldsymbol{\bar \Omega} = \boldsymbol{1 - \Omega}$, missing locations marked a
 $\mathbf{D} \in \mathbb{R}^{X \times Y \times Z}$
 
 ---
+exclude: true
 ### Imputation
 
 <img src="res/images/gm_ppt_figures/missing-tensor.png" width="30%vw" style="margin-bottom:-3.5em">
@@ -270,6 +259,9 @@ $$\;$$
 <!---img src="res/paper_equations/maskednorm.png" width="75%vw"--->
 
 <img src="res/paper_equations/error_metrics.png" width="95%vw" style="margin-left:-2.5em">
+
+- TRE  = Training Error 
+- TCS  = Test Error.
 
 - Others: RMSE, MAE
 
@@ -326,8 +318,8 @@ latent parameters: $\mathbf{R}^{p} \ni \boldsymbol{\theta} = [\boldsymbol{\theta
 $p_s + p_v = p$
 
 ---
+exclude: true
 ### Parameters
-
 
 <img src=res/paper_equations/params_table.png width=90%vw />
 
@@ -368,18 +360,21 @@ The estimation is not perfect and depends on the following -
 between times $t$ and $t_0$.
 
 ---
-### Temporal Stability
+### Temporal Stability/Continuity
 
 <img src=res/paper_equations/temporal_stability.png width=70%vw />
 
 $$\;$$
-under some suitable metric $|\;\cdot\;| : \mathbb{R^s} \times \mathbb{R^s} \rightarrow \mathbb{R}$
+Under some suitable metrics $d_1: \mathbb{R} \times \mathbb{R} \rightarrow \mathbb{R}$ and  $d_2 : \mathbb{R^s} \times \mathbb{R^s} \rightarrow \mathbb{R}$, this is close in spirit to continuity.
+
+$  \forall \epsilon > 0 \; \exists \delta > 0$ such that $d_1\big(t_1,t_2 \big) < \delta \implies d_2 \big(\boldsymbol{\hat \theta_s}[t_1],\; \boldsymbol{\hat \theta_s}[t_2]\big) < \epsilon$
+
 
 ---
 ### Estimator Quality
 
 - $D[t_1]$ and $D[t_2]$ are observations from two days where $t_1$,$t_2$ are close. $$\;$$
-- Noise and occlusion @$t_2$ is not as severe as @$t_1$ => quality of estimated parameters $\theta_2$ superior to $\theta_1$.
+- Noise and occlusion @$t_2$ is not as severe as @$t_1$ => quality of estimated parameters $\boldsymbol{\theta}[t_2]$ superior to $\boldsymbol{\theta}[t_1]$.
 $$\;$$
 
 <img src=res/paper_equations/d2_estimate.png width=40% />
@@ -445,7 +440,15 @@ class: center middle
 <h3 style="color:darkturquoise">POST QUALS</h3>
 
 ---
-### Stability of Parameters
+
+Explain why you are using synthetic data.
+
+The synthetic data has the same structure as the observed data - thats whay the math gymnastics. 
+
+
+---
+### Spectrum of data covariance
+
 <img src=res/paperplots/bei-covariance-spectrum.png width=48%vw/>
 <img src=res/paperplots/shang-covariance-spectrum.png width=48%vw />
 
@@ -930,6 +933,24 @@ $$\delta W  = \Pi \; W$$
 |Nov-Jan 25 | LLM Safety with low rank/subspace similarity |
 |Feb-Mar 26 | DL/KAN/AGOP-RFM imputation |
 |Mar 26 | Defend |
+
+---
+### Acknowledgement
+
+Possible in part due to the unwavering suppport from
+[Prof. Bhaskar Krishnamachair](https://viterbi.usc.edu/directory/faculty/Krishnamachari/Bhaskar) and [Dr. Fan Bai](https://scholar.google.com/citations?user=ZDRy6_EAAAAJ&hl=en) from General Motors.
+
+<img src="res/logos/viterbi.jpg" height='50%vh' width='45%vh'/>
+<img src="res/logos/gm.png" height='50%vh' width='45%vh'/>
+
+
+Also all my [teachers and mentors](https://sampadbm.github.io/#Teachers%20and%20Mentors)
+
+
+To the committee:
+
+Thank you so very much for your valuable time and guidance.
+
 
 
 ---
