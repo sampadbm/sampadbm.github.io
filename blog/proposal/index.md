@@ -108,6 +108,7 @@ exclude: true
 >>> >>> $X \times Y \times T$ tensors
 
 ---
+exclude: true
 ### Processed traffic density visualizations
 <img src='res/images/gm_ppt_figures/tensor.png' width='50%vw' style="float:right">
 <img src='res/paper_figures/rawdata.png' width='50%vw' style="float:right">
@@ -143,17 +144,6 @@ exclude: true
 <img src='res/images/gm_ppt_figures/tensor-rank-1-approx.png' width='70%vw'>
 
 >>> >>> Atoms or "Simple tensors"
-
----
-
-### Decomposition into sum of rank-1 atoms
-<img src='res/images/gm_ppt_figures/matrix-decomp-view.png' width='100%vw'>
-
-$$\text{Matrix Decomposition}$$
-
-<img src='res/images/gm_ppt_figures/tensor-decomp-view.png' width='100%vw'>
-
-$$\text{Tensor Decomposition}$$
 
 ---
 exclude: true
@@ -274,20 +264,37 @@ $$\;$$
 
 
 ##### Hypothesis
-There exist two kinds of latent factors that completely explain traffic patters
-- time invariant latent factors and
+Partition of latent factors explain traffic patterns
+- time invariant (stable) latent factors
 - time varying latent factors
 
 
 ##### Assumptions
 
-1. Observed density of a particular day can be explained by linearly weighted combination of the time invariant factors where the weights are precisely the time varying factors.
+1. Observed density =  linearly combination of the time invariant factors
 
-2. The rank-1 matrix/tensor atoms obtained by decomposition of the data representation are time invariant.
+2. Weights of linear combination = time varying factors.
 
-3. The decomposition weights on the rank one atoms are time variant
+2. The rank-1 matrix/tensor atoms =  time invariant.
+
+3. The decomposition weights =  time variant
 
 **Assumptions are empirically validated on traffic density datasets.**
+
+---
+### Decomposition into sum of rank-1 atoms
+<img src='res/images/gm_ppt_figures/matrix-decomp-view.png' width='100%vw'>
+
+$$\text{Matrix Decomposition}$$
+
+<img src='res/images/gm_ppt_figures/tensor-decomp-view.png' width='100%vw'>
+
+$$\text{Tensor Decomposition}$$
+
+---
+### Average atomic subspace angles, 3 consecutive days (tensor vs matrix)
+<img src=res/paper_equations/ssa.png width=100%vw/>
+
 
 ---
 exclude: true
@@ -299,6 +306,14 @@ exclude: true
 
 <!--$\phi$ may additionally depend on optional auxiliary information $\boldsymbol{\psi}(t_0)$
 where $|t_0 - t| \leq \epsilon$ for some $\epsilon \geq 0$--->
+
+---
+### Singular Value and Tensor Weight Regression
+<img src="res/images/gm_ppt_figures/svr-twr-theta1-estimation.png" width="75%vw">
+
+
+<img src="res/images/gm_ppt_figures/svr-twr-theta2-estimation.png" width="75%vw">
+
 
 ---
 ### Data Generative Model
@@ -317,6 +332,8 @@ latent parameters: $\mathbf{R}^{p} \ni \boldsymbol{\theta} = [\boldsymbol{\theta
 
 $p_s + p_v = p$
 
+Typically, $p_s >> p_v$
+
 ---
 exclude: true
 ### Parameters
@@ -331,7 +348,7 @@ exclude: true
 <img src=res/paper_equations/estimator_c.png width=80%vw />
 
 
-<h5 style="color:orange"> Note A: </h5>
+<h5 style="color:orange"> Note: </h5>
 
 
 The estimation is not perfect and depends on the following -
@@ -360,7 +377,7 @@ The estimation is not perfect and depends on the following -
 between times $t$ and $t_0$.
 
 ---
-### Temporal Stability/Continuity
+### Temporal Stability/Continuity of paramters
 
 <img src=res/paper_equations/temporal_stability.png width=70%vw />
 
@@ -371,21 +388,23 @@ $  \forall \epsilon > 0 \; \exists \delta > 0$ such that $d_1\big(t_1,t_2 \big) 
 
 
 ---
+exclude: true
 ### Estimator Quality
 
 - $D[t_1]$ and $D[t_2]$ are observations from two days where $t_1$,$t_2$ are close. $$\;$$
 - Noise and occlusion @$t_2$ is not as severe as @$t_1$ => quality of estimated parameters $\boldsymbol{\theta}[t_2]$ superior to $\boldsymbol{\theta}[t_1]$.
 $$\;$$
 
+---
+### Imputation (KSV/KTF)
+
 <img src=res/paper_equations/d2_estimate.png width=40% />
 
 <img src=res/paper_equations/d1_estimate.png width=42%/>
 
 <img src=res/paper_equations/d2_generate.png width=43% />
----
-### Imputation (KSV/KTF)
 
-<img src=res/paper_equations/ktf.png />
+<!---<img src=res/paper_equations/ktf.png />-->
 
 ---
 ### Imputation (USV/UTF)
@@ -394,21 +413,13 @@ $$\;$$
 <img src=res/paper_equations/estimator_c.png />
 <img src=res/paper_equations/utf_gen.png />
 
+- $ \boldsymbol{\theta_s} \in \mathbb{R}^{p_s}\;\;\;$ and $\;\;\; \boldsymbol{\theta_v} \in \mathbb{R}^{p_v}$
+
+- $p_s =(30+30+24)r $ and $p_v = r$
+
 ---
 ### SATORIS: Unified Framework
 <img src=res/paper_equations/params_table_detailed.png />
-
-
----
-class: center middle
-# PROPOSED METHODS
-
----
-### Singular Value and Tensor Weight Regression
-<img src="res/images/gm_ppt_figures/svr-twr-theta1-estimation.png" width="75%vw">
-
-
-<img src="res/images/gm_ppt_figures/svr-twr-theta2-estimation.png" width="75%vw">
 
 
 ---
@@ -417,22 +428,19 @@ class: center middle
 <img src="res/paper_figures/exp-days.png" width="90%vw">
 
 
----
-class: middle center
-# RESULTS
 
 ---
-### 1 Day
+### Results: 1 Day
 <img src="res/paper_figures/1day.png" width="90%vw">
 
 
 ---
-### 3 Day
+### Results: 3 Day (Explicit injection is better @ high mp)
 <img src="res/paper_figures/3days.png" width="90%vw">
 
 ---
-### 5 Days
-<img src="res/paper_figures/5days.png" width="70%vw" height=auto>
+### Results: 5 Days (MAE, RMSE)
+<img src="res/paper_figures/5days.png" width="73%vw" height=auto>
 
 ---
 class: center middle
@@ -440,14 +448,16 @@ class: center middle
 <h3 style="color:darkturquoise">POST QUALS</h3>
 
 ---
+### PART 1: Closer look at Temporal Stability
 
-Explain why you are using synthetic data.
-
-The synthetic data has the same structure as the observed data - thats whay the math gymnastics. 
-
+1. The generating process discussed prior seemed too specific to traffic density data. 
+>>> - Are there other datasets/phenomena that also display the same behavior?
+>>>
+>>> -  If so, is there a general model can simultaneously capture the phenomena while also displaying tempora stability?
+2. Can we better vizualize the stability of parameters?
 
 ---
-### Spectrum of data covariance
+### Revisit: Spectrum of covariance of density data
 
 <img src=res/paperplots/bei-covariance-spectrum.png width=48%vw/>
 <img src=res/paperplots/shang-covariance-spectrum.png width=48%vw />
@@ -458,16 +468,18 @@ The synthetic data has the same structure as the observed data - thats whay the 
 - Spectrums of covariance matrices shown above
 
 ---
-### Inferred generative process: Low Rank Linear model with additive noise
+### A General Model: Shifted, Low Rank Linear, additive noise
 
-$$\mathbf{x} = \mathbf{V} \mathbf{r} + \boldsymbol{\epsilon}$$
+$$\mathbf{x} = \mathbf{V} \mathbf{r} + \boldsymbol \mu +  \boldsymbol{\epsilon}$$
 
 
-- $\mathbf{r} \sim N(0,(1-a) \; \mathbf{I})$ is latent and $\boldsymbol{\epsilon} \sim N(0,a \; \mathbf{I})$ is additive noise.
+- $\mathbf{r} \sim N(0,(1-a) \; \mathbf{I})$ is latent, $\boldsymbol \mu$ is a latent constant,$\;\boldsymbol{\epsilon} \sim N(0,a \; \mathbf{I})$ is additive noise.
 
-- $E[\mathbf{x}] = \mathbf{V} \; \underbrace{E[\mathbf{r}]}_{\mathbf{0}} + \overbrace{E[\boldsymbol{\epsilon}]}^{\mathbf{0}} = \mathbf{0} + \mathbf{0} = \mathbf{0}$
+- $\mathbf x\;$ is shifted sum of two Gaussians ($\mathbf{Vr}$ and $\boldsymbol \epsilon$), hence itself Gaussian.
 
-$\color{blue}\text{Cov}(\mathbf{x}) \color{black} = E[\big( \mathbf{x} - E[\mathbf{x}]\big)  \big( \mathbf{x} - E[\mathbf{x}]\big)^T] = E[\mathbf{xx^T}]  \\\\ = E[(\mathbf{Vr} + \boldsymbol{\epsilon})(\mathbf{r^TV^T} + \boldsymbol{\epsilon^T})] \\\\ = \mathbf{V}E[\mathbf{rr^T}]\mathbf{V^T} +\mathbf{V}E[\mathbf{r}]E[\boldsymbol{\epsilon^T}]+  E[\boldsymbol{\epsilon}]E[\mathbf{r^T}]\mathbf{V^T} + E[\boldsymbol{\epsilon \epsilon^T}]\\\\ = (1 - a) \mathbf{I\;\;VV^T} + \mathbf{0} + \mathbf{0} + a\mathbf{I}  = \;\; \color{blue} (1 - a) \mathbf{VV^T} + a\mathbf{I}$
+- $E[\mathbf{x}] = \mathbf{V} \; \underbrace{E[\mathbf{r}]}_{\mathbf{0}} + E[\boldsymbol \mu]+ \overbrace{E[\boldsymbol{\epsilon}]}^{\mathbf{0}} = \mathbf{0} + \boldsymbol \mu + \mathbf{0} = \boldsymbol \mu$
+
+$\color{blue}\text{Cov}(\mathbf{x}) \color{black} = E[\big( \mathbf{x} - E[\mathbf{x}]\big)  \big( \mathbf{x} - E[\mathbf{x}]\big)^T]  \\\\ = E[(\mathbf{Vr} + \boldsymbol{\epsilon})(\mathbf{r^TV^T} + \boldsymbol{\epsilon^T})] \\\\ = \mathbf{V}E[\mathbf{rr^T}]\mathbf{V^T} +\mathbf{V}E[\mathbf{r}]E[\boldsymbol{\epsilon^T}]+  E[\boldsymbol{\epsilon}]E[\mathbf{r^T}]\mathbf{V^T} + E[\boldsymbol{\epsilon \epsilon^T}]\\\\ = (1 - a) \mathbf{I\;\;VV^T} + \mathbf{0} + \mathbf{0} + a\mathbf{I}  = \;\; \color{blue} (1 - a) \mathbf{VV^T} + a\mathbf{I}$
 
 - For rank = 1, $\mathbf{V} = \mathbf{v}$, $\text{Cov}(\mathbf{x}) = (1-a) \mathbf{vv^T} + a \mathbf{I} $
 
@@ -479,15 +491,15 @@ $\color{blue}\text{Cov}(\mathbf{x}) \color{black} = E[\big( \mathbf{x} - E[\math
 $$\mathbf{x} \sim N(\boldsymbol{\mu, \Sigma}) $$
 
 ===================================================================
-$$ \boldsymbol{\mu} \in \mathbb{R}^n $$
+$$ \boldsymbol{\mu} \in \mathbb{R}^n , \text{ const. }$$
 $$\mathbf{\Sigma} := a\mathbf{I} + (1-a)\mathbf{vv^T} \in \mathbb{R}^{n \times n}$$
 $$\mathbf{v} \sim N(\mathbf{0, I}_{n \times n})$$
 $$a \in (0,1)$$
 
-- Sample 1000 vectors for $n=64$
-- Reshape into $8 \times 8$
-- Take SVD
-- Plot 1000 left/right singular vectors
+- Sample 1000 vectors
+- Reshape into matrix/tensor
+- Take SVD/CP
+- Plot 1000 singular vectors / tensor factors
 
 ---
 ### stability of parameters (matrix)
@@ -552,19 +564,25 @@ $\hspace{3.5em} a=0.6 \hspace{7em} a=0.7 \hspace{7em} a=0.8$
 
 </div>
 
-
-
-
 ---
-### average subspace angles for 3 consecutive days (tensor vs matrix)
-<img src=res/paper_equations/ssa.png width=100%vw/>
+### Justifications from Matrix Perturbation Theory
 
+- Under certain qualifications, eigenvectors are continuous with respect to matrix entries. Davis-Kahan theorem bounds angle between corresponding eigenspaces before and after perturbation to matrix.
+
+- Similar result holds for singularspace via Wedin's theorem.
+
+- Not as many results in tensor domain
+
+
+<small> <a href="https://users.math.msu.edu/users/iwenmark/Teaching/MTH995/Papers/SVD_Stewart.pdf"> G. W. Stewart, Perturbation Theory for the Singular Value Decomposition, UMIACS-TR-90-124 / CS-TR 2539, University of Maryland, September 1990. </a>
+
+<small> <a href="https://arxiv.org/pdf/2008.02437">Anru R. Zhang, “A Sharp Blockwise Tensor Perturbation Bound for Orthogonal Iteration” (and related perturbation analysis for HOOI), Annals / preprint 2021</a></small>
 ---
 class: middle center
-## Imputation via Subspace Aware Semidefinite Programming
+## PART 2: Imputation via Subspace Aware Semidefinite Programming
 
 ---
-### Rank and Nuclear Norm
+### Rank
 - Rank is subadditive; Rank(A+B) $\leq$ Rank(A) + Rank(B)
 $$\;$$
 - Rank is not convex;
@@ -573,7 +591,7 @@ $$\;$$
 $$\;$$
 - $L_0$ pseudo-norm of the singular values.
 ---
-### Rank and Nuclear Norm
+### Nuclear Norm
 - Convex surrogate of Rank (tightest relaxation)
 $$\;$$
 - $L_1$ norm of singular values
@@ -619,7 +637,25 @@ $\hspace{8em}$<img src=res/web_images/ellipse.png width=30%vw>
 - $|A|_* = \frac{1}{|S_n|} \;\; \underset{S_n}{\int} h(u) - h(-u)$
 
 ---
-### Minimum Nuclear Norm Imputation
+### Imputation via Low Rank: Formulation
+
+#### Original, Hard Reconstruction
+$\hspace{5em}\underset{X \in \mathbb{R}^{m \times n}}{\arg \min} \;\;\; \text{ rank}(X) \;\;\; $
+s.t.
+$
+   \;\;\; X \circ \Omega = Y \circ \Omega
+$
+
+#### Soft reconstruction, Explicit Regularization 
+
+$\hspace{5em}\underset{X}{\arg \min} \;\;\; \text{ rank}(X) + \lambda || \Omega \circ (X - Y) ||_F$
+
+#### Soft reconstruction, explicit rank by construction, bruteforce search over rank 
+$\hspace{5em}\underset{U\in \mathbb{R}^{m \times k},V \in \mathbb{R}^{n \times k}}{\arg \min} \;\;\;|| \Omega \circ (X - Y) ||_F\;\;\;$ s.t $\;\;\;X = UV^T$
+
+
+---
+### Imputation via Minimum Nuclear Norm
 
 - $\underset{X}{\arg\min} |X|_*\;\;\;$ s.t. $\;\;\; \Omega \circ X = \Omega \circ Y$
 
@@ -627,6 +663,18 @@ $\hspace{8em}$<img src=res/web_images/ellipse.png width=30%vw>
  - Since nuclear norm is a surrogate for the rank, it yields a low rank solution almost surely.
 
 - Analogous to solutions of $L1$ minimization producing sparse (low $L_0$ pseudo-norm) solution
+
+---
+### Geometry : L1 Ball
+
+<img src=res/proposed_future_work/l1_regression.gif>
+
+---
+### Geometry : Nuclear Norm Ball
+
+<img src=res/proposed_future_work/nnorm_geometry.png  width=100%vw />
+
+<small><a href="https://people.eecs.berkeley.edu/~brecht/cs294docs/week8/crpw_focm.pdf" >  Chandrasekaran, V., Recht, B., Parrilo, P. A., & Willsky, A. S., The convex geometry of linear inverse problems, Foundations of Computational Mathematics, 12(6):805–849, 2012. DOI: 10.1007/s10208-012-9135-7.  </a>
 
 ---
 ### Another look at the SDP formulation  (nnsdp)
@@ -642,7 +690,7 @@ $\hspace{8em}$<img src=res/web_images/ellipse.png width=30%vw>
 <p style="color:brown"> Can we repurpose this PSD formulation to inject the singular subspace information via A and B where $X$ is partially observed and is the decision variable instead?</p>
 
 ---
-### Imputation via inverse formulation (innsdp)
+### Imputation with prior via inverse formulation (innsdp)
 
 - Assuming $Y$ is fully observed.
 
@@ -708,11 +756,30 @@ $$A \succeq 0$$
 $$B \succeq 0$$
 
 ---
-### Even relax $\Sigma$ !!!
+### Even relax $\Sigma$ !
 
 - Let $D = diag(\vec{d})$
 
 $$ \underset{X,\vec{d}}{\arg\min} || \Omega \circ (X - Y)||_F $$
+
+s.t.
+
+$$ \begin{bmatrix} A & X \\\\ X^T & B \end{bmatrix} \succeq 0$$
+
+$$A =  UDU^T$$
+
+$$B = VDV^T$$
+
+$$\vec{d} \succeq 0 $$
+
+
+---
+### Relax $\Sigma$ and stay close to prior variant params !!!
+
+- Let $D = diag(\vec{d})$
+- Let $\vec \sigma$ be the vector of singular values.
+
+$$ \underset{X,\vec{d}}{\arg\min} || \Omega \circ (X - Y)||_F + \gamma \; |\vec d - \vec \sigma|_2$$
 
 s.t.
 
@@ -749,7 +816,7 @@ class: center middle
 
 
 ---
-### Proposed possible extensions: Imputation Methods
+### Proposed extensions 1: Imputation Methods
 
 Short-term -
 1. Beyond CP: Tucker Decomposition
@@ -765,7 +832,7 @@ Medium-term -
 
 
 ---
-### Possible extensions: Low Rank and Subspace similarity in LLMs
+### Possible extension 2: Low Rank and Subspace similarity in LLMs
 
 Short-term -
 5. Low Rank structures and overlapping subspaces in LLM Safety
@@ -796,7 +863,8 @@ Medium-term -
 <img src=res/proposed_future_work/tucker_intuition.png width=63%vw >
 
 ---
-### Proposed Method
+exclude: true
+### Tucker Decomposition: Proposed Method
 
 - Recover the (possibly invariant) factors from CP/Tucker decomposition of neighbors
 
@@ -884,8 +952,27 @@ Key Idea -
 
 <img src=res/proposed_future_work/neuron-saliency.png width=100%vw>
 
+$$L(w + \Delta w) = L(w) + \nabla_w L \odot \Delta w $$
+
+Setting $\Delta w = - w$,
+
+$$L(0) = L(w) - \nabla_w L \odot w $$
+
+$$\underbrace{| L(0) - L(w) |}_{change\;if\;suppressed} = | w \odot \nabla_w L| $$
+
 ---
-### Key Idea: ActSVD
+### ActSVD : Key Idea
+
+$$\hat W = \underset{rank \; \hat W < r}{\arg \min} || WX - \hat W X||_F^2 $$
+
+Solution: 
+
+$$\hat W = UU^T W$$
+
+where $$U\Sigma V^T \gets WX$$
+
+---
+### ActSVD: Proof
 
 
 <img src=res/proposed_future_work/actSVD-proof.png width=100%vw>
