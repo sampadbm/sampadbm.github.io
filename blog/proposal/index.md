@@ -992,7 +992,7 @@ $$
 \Pi \;\;\; = \underbrace{(I - UU^T)}_{\text{proj. onto subspace not important for utility}} \overbrace{SS^T}^{\text{proj. onto safety subspace}}
 $$
 
-$$\delta W  = \Pi \; W$$
+$$\Delta W  = \Pi \; W$$
 
 - Use LoRa adapter to introduce the $\Delta W$ as $AB$ where $A = I - UU^T$ and $B = SS^T W$
 
