@@ -584,6 +584,7 @@ class: middle center
 ---
 ### Rank
 - Rank is subadditive; Rank(A+B) $\leq$ Rank(A) + Rank(B)
+- Rank(AB) $\leq$ min(Rank(A), Rank(B))
 $$\;$$
 - Rank is not convex;
 $$\;$$
