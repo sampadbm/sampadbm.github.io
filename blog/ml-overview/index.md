@@ -7,7 +7,7 @@ class: center middle
 ## Machine Learning: A Historical Overview (by Decade)
 #### Discussion Session 1
 
-##### Instructor: Victor Adamchik
+##### Instructor: Prof. Victor Adamchik
 ##### TA: Sampad Mohanty
 
 
@@ -62,7 +62,7 @@ class: center middle
 
 ---
 
-## Curve Fitting (PhET)
+## Supervised: Curve Fitting (PhET)
 
 <iframe
   src="https://phet.colorado.edu/sims/html/curve-fitting/latest/curve-fitting_all.html"
@@ -87,16 +87,38 @@ class: center middle
   loading="lazy"
 ></iframe>
 
-
 ---
+## Supervised: Decision Trees
 <iframe
-  src="https://grantcuster.github.io/umap-explorer/"
+  src="https://cs.stanford.edu/~karpathy/svmjs/demo/demoforest.html"
   style="width: 100%; height: 80vh; border: 0;"
   title="PhET: Curve Fitting"
   loading="lazy"
 ></iframe>
+---
+
+## Supervised: Perceptron Playground
+<iframe
+  src="https://jasonhand.github.io/perceptron/"
+  style="width: 100%; height: 80vh; border: 0;"
+  title="Perceptron Playground"
+  loading="lazy"
+></iframe>
+
 
 ---
+## LaTeX Symbol Helper
+
+<iframe
+  src="https://detexify.kirelabs.org/classify.html"
+  style="width: 100%; height: 80vh; border: 0;"
+  title="Detexify – Handwritten LaTeX Symbol Classifier"
+  loading="lazy"
+></iframe>
+
+---
+## Unsupervised : Clustering
+
 <iframe
   src="https://www.naftaliharris.com/blog/visualizing-k-means-clustering/"
   style="width: 100%; height: 80vh; border: 0;"
@@ -104,16 +126,12 @@ class: center middle
   loading="lazy"
 ></iframe>
 
-
 ---
- 
-
-## LaTeX Symbol Helper
-
+## Unsupervised: Dimensionality Reduction
 <iframe
-  src="https://detexify.kirelabs.org/classify.html"
+  src="https://grantcuster.github.io/umap-explorer/"
   style="width: 100%; height: 80vh; border: 0;"
-  title="Detexify – Handwritten LaTeX Symbol Classifier"
+  title="PhET: Curve Fitting"
   loading="lazy"
 ></iframe>
 
@@ -153,14 +171,15 @@ class: center middle
 
 ---
 
-## Perceptron Playground
+## NN Playground
 
 <iframe
-  src="https://jasonhand.github.io/perceptron/"
+  src="https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.82561&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false"
   style="width: 100%; height: 80vh; border: 0;"
   title="Perceptron Playground"
   loading="lazy"
 ></iframe>
+
 
 ---
 
@@ -452,31 +471,28 @@ class: center middle
 
 1. **Algorithmic Bias & Discrimination**  
    AI systems can amplify biases embedded in their training data, leading to discriminatory outcomes in areas like hiring, criminal justice, and healthcare.  
-   :contentReference[oaicite:1]{index=1}
 
 2. **Job Displacement & Economic Disruption**  
    Automation driven by AI can disproportionately replace entry-level and routine jobs, worsening inequality and shutting out younger or less experienced workers.  
-   :contentReference[oaicite:2]{index=2}
 
 3. **Surveillance, Data Privacy & Deepfakes**  
    AI’s capability to collect, analyze, and synthesize personal data raises serious threats to privacy, enabling mass surveillance, identity manipulation, and realistic yet deceptive deepfake content.  
-   :contentReference[oaicite:3]{index=3}
 
 4. **Weaponization & AI Arms Race**  
    AI is increasingly being leveraged for military purposes, from autonomous weapons to cyber-attacks. This accelerates a high-stakes arms race and weakens global stability.  
-   :contentReference[oaicite:4]{index=4}
 
-5. **Misinformation & Social Manipulation**  
+---
+# Top 7 Dangers of Artificial Intelligence
+
+**5. Misinformation & Social Manipulation**  
    AI-generated content—such as deepfake videos, fabricated news, or propaganda—is becoming harder to detect, posing serious threats to public trust, democratic institutions, and social cohesion.  
-   :contentReference[oaicite:5]{index=5}
 
-6. **Security Risks: Adversarial Attacks & Cyber Misuse**  
+
+**6. Security Risks: Adversarial Attacks & Cyber Misuse**  
    AI systems can be targeted via data poisoning, adversarial inputs, or taken over to generate phishing, malware, or fraudulent communications—enabling sophisticated cyber exploitation.  
-   :contentReference[oaicite:6]{index=6}
 
-7. **Existential & Catastrophic Risks (Power-Seeking AI)**  
+**7. Existential & Catastrophic Risks (Power-Seeking AI)**  
    At advanced levels, AI might pursue unintended power-seeking behaviors or gain superhuman capabilities rapidly—potentially leading to uncontrollable or catastrophic outcomes.  
-   :contentReference[oaicite:7]{index=7}
 
 ---
 
