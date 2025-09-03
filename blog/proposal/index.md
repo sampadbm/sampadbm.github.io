@@ -712,8 +712,8 @@ $$\;$$
 ---
 ### Mathematical jugglery? POC on images
 
-<img src=res/sdp_paper/image_impute/flower_mp_90.0%.png />
-<img src=res/sdp_paper/image_impute/china_mp_90.0%.png />
+<img src=res/sdp_paper/image_impute/flower_mp_90.0%25.png />
+<img src=res/sdp_paper/image_impute/china_mp_90.0%25.png />
 
 ---
 ### When $Y$ isn't fully observed
