@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Minimal HTML5</title>
+</head>
+
+
+<body>
+
+
+
+<div>
+<marimo-iframe>
+```python
+import marimo as mo
+```
+```python
+slider = mo.ui.slider(1, 10)
+slider
+```
+
+```python
+slider.value * "🍃"
+```
+</marimo-iframe>
+</div>
+
+
+</body>
+<!-- Optionally configure how buttons and iframes are rendered. -->
+<!-- Configuration must come _before_ the main extractor script is loaded. -->
+<script type="text/x-marimo-snippets-config">
+configureMarimoButtons({title: "Open in a marimo notebook"});
+configureMarimoIframes({height: "100vh"});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@marimo-team/marimo-snippets@1"></script>
+
+
+
+</html>
