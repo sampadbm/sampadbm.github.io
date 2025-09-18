@@ -14,7 +14,7 @@ Notes from TAing
 
 #### Discussion Notes
 - [Linear Algebra Review](discussion_notes/Linalg_Review.pdf)
-- [Linear Algebra Review Slides (2022)(discussion_notes/linalg_review_slides.pdf)
+- [Linear Algebra Review Slides (2022)](discussion_notes/linalg_review_slides.pdf)
 - [Jacobians](discussion_notes/Linalg_Discussions_Jacobians.pdf)
 - [Kernel PCA](Question_on_Kernel_PCA__Sp24_567_VATSAL.pdf)
   
