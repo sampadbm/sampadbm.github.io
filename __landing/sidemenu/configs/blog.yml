@@ -2,6 +2,7 @@ EXPOSITIONS:
 - optimization
 GENERAL:
 - odisha
+- ml-overview
 MATHEMATICS:
 - linearAlgebra
 POD:
@@ -10,9 +11,9 @@ READING:
 - reading
 RESEARCH:
 - research
-- physicsML
-- quals
 - proposal
 - tensors
-TEACHING:
-- ml-overview
+- quals
+- physicsML
+TALKS:
+- talks
