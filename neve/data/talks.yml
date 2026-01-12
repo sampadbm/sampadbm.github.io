@@ -1,0 +1,17 @@
+talks:
+  - title: "Matrix and Tensor Factorization and Approximations for Understanding Spatiotemporal Data"
+    venue: STEM Bytes Seminar, Women In Science and Engineering (WiSE), University of Southern California
+    date: 2025-09-24
+  - title: "Industrial IoT and Digital Twin"
+    venue: Professional Development Programme on IoT and Machine Intelligence for Industry 4.0, National Institute of Technology Rourkela
+    date: 2022-06-06
+  - title: "Hands on IoT Application Machine Learning"
+    venue: ISEA Project-II Sponsored Short Term Training Program, Graduate School of Engineering and Technology, Gujarat Technological University
+    date: 2021-12-29
+    prefix: Invited Expert
+  - title: "Industrial Internet of Things Tutorial"
+    venue: Robert Bosch Center for Cyber Physical Systems, IISc Bengaluru
+    date: 2019-06-25
+  - title: "Low Power Camera based Intrusion Monitoring for early warning system for forest safety"
+    venue: IOT Workshop, National Institute of Technology Rourkela
+    date: 2017-08-19

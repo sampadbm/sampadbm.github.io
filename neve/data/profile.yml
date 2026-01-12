@@ -1,0 +1,20 @@
+profile:
+  name: Sampad Bhusan Mohanty
+  title: PhD Candidate in Computer Science
+  affiliation: University of Southern California
+  hook: Convex optimization and low-rank approximations for missing data, imputation, reliable inference, and LLM safety; advancing pedagogy with computers and AI.
+  keywords:
+    - convex optimization
+    - low-rank approximations
+    - missing data
+    - imputation
+    - LLM safety
+    - teaching and pedagogy
+  photo: assets/profile/pic.jpg
+  links:
+    - label: Email
+      url: mailto:sbmohant@usc.edu
+    - label: GitHub
+      url: https://github.com/neveisa
+    - label: LinkedIn
+      url: https://www.linkedin.com/in/sampad-mohanty-946a82264/

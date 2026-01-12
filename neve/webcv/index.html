@@ -12,26 +12,83 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
         <link
-            href="https://fonts.googleapis.com/css2?family=Questrial&family=Lato:wght@300;400;700&display=swap"
-            rel="stylesheet"
-        />
-
-        <link
-            href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=EB+Garamond:wght@400;500;600;700&display=swap"
             rel="stylesheet"
         />
 
         <style>
             body {
-                font-family:
-                    EB Garamond,
-                    serif;
+                font-family: 'EB Garamond', serif;
+                background:
+                    linear-gradient(180deg, rgba(246, 242, 236, 0.98), rgba(239, 233, 224, 0.98)),
+                    repeating-linear-gradient(
+                        90deg,
+                        rgba(30, 27, 22, 0.04) 0px,
+                        rgba(30, 27, 22, 0.04) 1px,
+                        transparent 1px,
+                        transparent 28px
+                    );
+                width: 95vw;
+                max-width: 9.5in;
+                margin: 0 auto;
+                padding: 3vw 0;
+            }
+
+            /* Fading brackets effect */
+            div[style*="border-top-left-radius"] {
+                position: relative;
+                padding-top: 0.8rem;
+                padding-bottom: 0.8rem;
+                border-left: none !important; /* Hide the original continuous border */
+            }
+
+            /* Top-Left Corner */
+            div[style*="border-top-left-radius"]::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 1.2in;
+                height: 0.8in;
+                border-top: 0.01in dotted Indigo;
+                border-left: 0.01in dotted Indigo;
+                border-top-left-radius: 0.05in;
+                /* Fades out as it moves away from the top-left corner */
+                mask-image: radial-gradient(circle at top left, black 0%, transparent 50%);
+                -webkit-mask-image: radial-gradient(circle at top left, black 0%, transparent 50%);
+                pointer-events: none;
+            }
+
+            /* Bottom-Right Corner */
+            div[style*="border-top-left-radius"]::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 1.2in;
+                height: 0.8in;
+                border-bottom: 0.01in dotted Indigo;
+                border-right: 0.01in dotted Indigo;
+                border-bottom-right-radius: 0.05in;
+                /* Fades out as it moves away from the bottom-right corner */
+                mask-image: radial-gradient(circle at bottom right, black 0%, transparent 50%);
+                -webkit-mask-image: radial-gradient(circle at bottom right, black 0%, transparent 50%);
+                pointer-events: none;
+            }
+
+            /* Utilities to hide specific corners */
+            .no-tl::before { display: none !important; }
+            .no-br::after { display: none !important; }
+
+            /* Ensure publication name emphasis is visible */
+            #publications-list strong {
+                font-weight: 700;
             }
         </style>
     </head>
-    <body style="--m: 5vw;">
+    <body>
         <!-- 3 rows using BonsaiCSS utilities -->
-        <div style="--col: 1; --gap: 1rem; --ff: Lato, sans-serif">
+        <div style="--col: 1; --gap: 1rem; --ff: 'EB Garamond', serif">
             <div
                 style="
                     --p: 1rem;
@@ -39,8 +96,10 @@
                     --weight: bold;
                     --ta: center;
                     --bb: 4px double black;
-                    font-family: Questrial, sans-serif;
-                    font-weight: 700;
+                    font-family: 'Cormorant Garamond', serif;
+                    font-weight: 500;
+                    font-size: 1.8rem;
+                    letter-spacing: 1px;
                 "
             >
                 SAMPAD BHUSAN MOHANTY &nbsp; | &nbsp; sbmohant@usc.edu &nbsp; |
@@ -55,7 +114,7 @@
                 </h5>
                 <div style="--d: grid; --gtc: 1fr 1fr; --gg: 1rem">
                     <!-- Left column - USC -->
-                    <div style="--pl: 1rem; --bl: 1px dotted Indigo">
+                    <div style="--pl: 1rem; border-left: 0.01in dotted Indigo; border-radius: 0.1in 0 0 0;">
                         <h6 style="--weight: bold; --m: 0">
                             University of Southern California, Los Angeles
                             &nbsp; | &nbsp; Aug 2019 - Dec 2026 (expected)
@@ -68,7 +127,7 @@
                     </div>
 
                     <!-- Right column - NIT -->
-                    <div style="--pl: 1rem; --bl: 1px dotted Indigo">
+                    <div style="--pl: 1rem; border-left: 0.01in dotted Indigo; border-radius: 0.1in 0 0 0;">
                         <h6 style="--weight: bold; --m: 0">
                             National Institute of Technology Rourkela &nbsp; |
                             &nbsp; Aug 2012 - May 2016
@@ -95,7 +154,7 @@
                     </h5>
 
                     <!-- GENERAL MOTORS -->
-                    <div style="--pl: 1rem; --bl: 1px dotted Indigo; --mb:1rem">
+                    <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
                         <h6 style="--weight: bold">
                             Machine Learning Research Intern &nbsp; | &nbsp; General
                             Motors &nbsp; | &nbsp; June - August 2021
@@ -115,7 +174,7 @@
 
 
                 <!-- PHEONIX ROBOTIX | DATUM + AURRASURE -->
-                <div style="--pl: 1rem; --bl: 1px dotted Indigo; --mt:1rem">
+                <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mt:1rem">
                     <h6 style="--weight: bold">
                         Founding Member and Lead Systems and Network Developer &nbsp; | &nbsp;
                         DATOMS and AURASSURE &nbsp; | &nbsp; 2015-2016
@@ -148,7 +207,7 @@
                     </h5>
 
                     <!-- LEAP - Live Experiments for Active Pedagogy -->
-                    <div style="--pl: 1rem; --bl: 1px dotted Indigo; --mb:1rem">
+                    <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
                         <h6 style="--weight: bold">
                             LEAP - Live Experiments for Active Pedagogy &nbsp; | &nbsp; 2025
                         </h6>
@@ -164,7 +223,7 @@
                     </div>
 
                     <!-- Tensor Methods for Traffic Data Analysis and Imputation -->
-                    <div style="--pl: 1rem; --bl: 1px dotted Indigo; --mb:1rem">
+                    <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
                         <h6 style="--weight: bold">
                             Tensor Methods for Traffic Data Analysis and Imputation &nbsp; | &nbsp;  2022 - Present
                         </h6>
@@ -183,7 +242,7 @@
                     </div>
 
                     <!-- Heuristic Algorithms for Task Allocation (2020 - 2021) -->
-                    <div style="--pl: 1rem; --bl: 1px dotted Indigo; --mb:1rem">
+                    <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
                         <h6 style="--weight: bold">
                             Heuristic Algorithms for Task Allocation &nbsp; | &nbsp; 2020 - 2021
                         </h6>
@@ -195,7 +254,7 @@
                     </div>
 
                     <!-- RBCCPS -->
-                    <div style="--pl: 1rem; --bl: 1px dotted Indigo; --mb:1rem">
+                    <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
                         <h6 style="--weight: bold">
                             Project Associate &nbsp; | &nbsp; Robert Bosch Center for Cyber Physical Systems <br>
                             Indian Institute of Science Bangalore, India &nbsp; | &nbsp; Jul 2017 - Jul 2019 <br>
@@ -225,7 +284,7 @@
                     </div>
 
                     <!-- CSDLAB | ECE IISc -->
-                    <div style="--pl: 1rem; --bl: 1px dotted Indigo; --mb:1rem">
+                    <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
                         <h6 style="--weight: bold">
                             Project Associate &nbsp; | &nbsp; Codes & Signal Design Lab <br>
                             Indian Institute of Science Bangalore, India &nbsp; | &nbsp; Jul 2016 - Jun 2017 <br>
@@ -250,7 +309,7 @@
 
 
                     <!-- ECE NITRKL -->
-                    <div style="--pl: 1rem; --bl: 1px dotted Indigo; --mb:1rem">
+                    <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
                         <h6 style="--weight: bold">
                             Project Assistant &nbsp; | &nbsp; Electronics and Communication Engineering <br>
                             National Institute of Technology Rourkela, India &nbsp; | &nbsp; Jun - Jul 2016 <br>
@@ -267,7 +326,7 @@
                     </div>
 
                     <!-- ECE NITRKL -->
-                    <div style="--pl: 1rem; --bl: 1px dotted Indigo; --mb:1rem">
+                    <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
                         <h6 style="--weight: bold">
                             Undergraduate Summer Research Project &nbsp; | &nbsp; Satellite Lab <br>
                             National Institute of Technology Rourkela, India &nbsp; | &nbsp; May 2014 - June 2015 <br>
@@ -294,7 +353,7 @@
                         TEACHING
                     </h5>
                         <!-- CS567 Teaching Assistant -->
-                        <div style="--pl: 1rem; --bl: 1px dotted Indigo; --mb:1rem">
+                        <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
                             <h6 style="--weight: bold">
                                 Teaching Assistant &nbsp; | &nbsp; CS567 - Machine Learning <br>
                                 University of Southern California &nbsp; | &nbsp; Fall 2022, Summer 2023, Spring 2024, Summer 2024, Summer 2025, Fall 2025 <br>
@@ -311,7 +370,7 @@
                         </div>
 
                         <!-- CS570 Teaching Assistant -->
-                        <div style="--pl: 1rem; --bl: 1px dotted Indigo; --mb:1rem">
+                        <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
                             <h6 style="--weight: bold">
                                 Teaching Assistant &nbsp; | &nbsp; CS570 - Analysis of Algorithms <br>
                                 University of Southern California &nbsp; | &nbsp; Summer 2022, Spring 2023, Fall 2024 <br>
@@ -327,7 +386,7 @@
                         </div>
 
                         <!-- CS360 Teaching Assistant -->
-                        <div style="--pl: 1rem; --bl: 1px dotted Indigo; --mb:1rem">
+                        <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
                             <h6 style="--weight: bold">
                                 Teaching Assistant &nbsp; | &nbsp; CS360 - Introduction to Artificial Intelligence <br>
                                 University of Southern California &nbsp; | &nbsp; Spring 2025 <br>
@@ -341,7 +400,7 @@
                         </div>
 
                         <!-- EE250 Teaching Assistant -->
-                        <div style="--pl: 1rem; --bl: 1px dotted Indigo; --mb:1rem">
+                        <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
                             <h6 style="--weight: bold">
                                 Teaching Assistant &nbsp; | &nbsp; EE250 - Distributed Systems and Internet of Things <br>
                                 University of Southern California &nbsp; | &nbsp; Fall 2020, Spring 2021, Fall 2021, Spring 2022 <br>
@@ -358,7 +417,7 @@
                         </div>
 
                         <!-- MATH499 Teaching Assistant -->
-                        <div style="--pl: 1rem; --bl: 1px dotted Indigo; --mb:1rem">
+                        <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
                             <h6 style="--weight: bold">
                                 Volunteer Teaching Assistant &nbsp; | &nbsp; MATH499 - Special Topics (Consulting with Data through Python) <br>
                                 University of Southern California &nbsp; | &nbsp; Fall 2020 <br>
@@ -379,7 +438,7 @@
                         MENTORING
                     </h5>
                     <!-- CAMS Mentor -->
-                        <div style="--pl: 1rem; --bl: 1px dotted Indigo; --mb:1rem">
+                        <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
                             <h6 style="--weight: bold">
                                 Technical Mentor and Judge &nbsp; | &nbsp; Engineering Design & Development Class Projects <br>
                                 California Academy of Math & Science &nbsp; | &nbsp; January 2025 - Present <br>
@@ -394,7 +453,7 @@
                         </div>
 
                         <!-- SHINE Mentor -->
-                        <div style="--pl: 1rem; --bl: 1px dotted Indigo; --mb:1rem">
+                        <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
                             <h6 style="--weight: bold">
                                 USC Summer High School Intensive in Next Generation Engineering (SHINE) Mentor <br>
                                 University of Southern California &nbsp; | &nbsp; Summer 2022 <br>
@@ -407,7 +466,7 @@
                         </div>
 
                         <!-- Viterbi Summer Institute Mentor -->
-                        <div style="--pl: 1rem; --bl: 1px dotted Indigo; --mb:1rem">
+                        <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
                             <h6 style="--weight: bold">
                                 Viterbi Summer Institute Mentor <br>
                                 University of Southern California &nbsp; | &nbsp; Summer 2022 <br>
@@ -424,7 +483,7 @@
                     <h5 style="--td: underline; --c: Indigo; --weight: bold">
                         PATENTS
                     </h5>
-                        <div style="--pl: 1rem; --bl: 1px dotted Indigo; --mb:1rem; --weight: bold">
+                        <div style="--pl: 1rem; border-top-left-radius: 0.05in; --mb:1rem; --weight: bold">
                             Indian Patent Application Number: 202241033679 (pending)</b>
                         </div>
 
@@ -433,8 +492,10 @@
                         PUBLICATIONS
                     </h5>
                     <div>
-                        <ul style="--m:0; --pl:1.5rem;">
+                        <ul id="publications-list" style="--m:0; --pl:1.5rem;">
                                 <li style="--mb:0.5rem;"><strong>S. Mohanty</strong>*, S. Krajagi*, and B. Krishnamachari, "LEAP – Live Experiments for Active Pedagogy," to appear in ACM SIGCSE TS 2026 &nbsp; *Equal contribution</li>
+
+                                <li style="--mb:0.5rem;">Y. Liu, <strong>S. Mohanty</strong>, E. Ondula, and B. Krishnamachari, "DISPATCH -- Decentralized Informed Spatial Planning and Assignment of Tasks for Cooperative Heterogeneous Agents," arXiv preprint arXiv:2511.17915, 2025.</li>
 
                                 <li style="--mb:0.5rem;"><strong>S. Mohanty</strong> and B. Krishnamachari, "SATORIS-N: Spectral Analysis based Traffic Observation Recovery via Informed Subspaces and Nuclear-norm minimization," under review IEEE Intelligent Vehicles Symposium, 2025.</li>
 
@@ -465,17 +526,7 @@
                         TALKS/PRESENTATIONS/DEMOS
                     </h5>
                     <div>
-                        <ul style="--m:0; --pl:1.5rem;">
-                                <li style="--mb:0.5rem;">"Matrix and Tensor Factorization and Approximations for Understanding Spatiotemporal Data", STEM Bytes Seminar, Women In Science and Engineering (WiSE), University of Southern California, September 24, 2025</li>
-
-                                <li style="--mb:0.5rem;">"Industrial IoT and Digital Twin", Professional Development Programme on IoT and Machine Intelligence for Industry 4.0, National Institute of Technology Rourkela, June 6th, 2022</li>
-
-                                <li style="--mb:0.5rem;">Invited Expert, "Hands on IoT Application Machine Learning," ISEA Project-II Sponsored Short Term Training Program, Graduate School of Engineering and Technology, Gujarat Technological University, December 29, 2021.</li>
-
-                                <li style="--mb:0.5rem;">"Industrial Internet of Things Tutorial", Robert Bosch Center for Cyber Physical Systems, IISc Bengaluru, June 25th, 2019</li>
-
-                                <li>"Low Power Camera based Intrusion Monitoring for early warning system for forest safety", IOT Workshop, National Institute of Technology Rourkela, August 19th, 2017</li>
-                            </ul>
+                        <ul id="talks-list" style="--m:0; --pl:1.5rem;"></ul>
                     </div>
 
                         <!--PROFESSIONAL SERVICE-->
@@ -483,13 +534,7 @@
                             PROFESSIONAL SERVICE
                         </h5>
                         <div>
-                            <ul style="--m:0; --pl:1.5rem;">
-
-                                <li>Reviewer, Machine Learning for Data Science (ML4DS) Workshop, NeurIPS &nbsp; | &nbsp; 2025</li>
-
-                                <li style="--mb:0.5rem;">Reviewer for IEEE Transactions on Vehicular Technology &nbsp; | &nbsp; 2022</li>
-                            </ul>
-
+                            <ul id="service-list" style="--m:0; --pl:1.5rem;"></ul>
                         </div>
 
                         <!--PROFESSIONAL SERVICEHONORS & AWARDS-->
@@ -539,34 +584,173 @@
                     <h5 style="--td: underline; --c: Indigo; --weight: bold">
                         LEADERSHIP AND COMMUNITY
                     </h5>
-                    <!-- USC Makers -->
-                    <div style="--pl: 1rem; --bl: 1px dotted Indigo; --mb:1rem">
-                        <h6 style="--weight: bold">
-                            USC Makers &nbsp; | &nbsp; Mentor and Member <br>
-                            University of Southern California &nbsp; | &nbsp; 2019-2022 <br>
-                        </h6>
-                        <p style="--m: 0">
-                            <ul>
-                                <li>Conducted signal processing tutorials for maker community</li>
-                                <li>Organized workshops on embedded systems and IoT</li>
-                            </ul>
-                        </p>
-                    </div>
+                    <div style="--d: grid; --gtc: 1fr 1fr; --gg: 1rem">
+                        <!-- USC Makers -->
+                        <div class="no-br" style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
+                            <h6 style="--weight: bold">
+                                USC Makers &nbsp; | &nbsp; Mentor and Member <br>
+                                University of Southern California &nbsp; | &nbsp; 2019-2022 <br>
+                            </h6>
+                            <p style="--m: 0">
+                                <ul>
+                                    <li>Conducted signal processing tutorials for maker community</li>
+                                    <li>Organized workshops on embedded systems and IoT</li>
+                                </ul>
+                            </p>
+                        </div>
 
-                    <!-- ImprovSC -->
-                    <div style="--pl: 1rem; --bl: 1px dotted Indigo; --mb:1rem">
-                        <h6 style="--weight: bold">
-                            ImprovSC &nbsp; | &nbsp; Member <br>
-                            University of Southern California &nbsp; | &nbsp; 2024 - Present <br>
-                        </h6>
-                        <p style="--m: 0">
-                            <ul>
-                                <li>Help in coordinating weekly improv sessions</li>
-                            </ul>
-                        </p>
+                        <!-- ImprovSC -->
+                        <div class="no-tl" style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
+                            <h6 style="--weight: bold">
+                                ImprovSC &nbsp; | &nbsp; Member <br>
+                                University of Southern California &nbsp; | &nbsp; 2024 - Present <br>
+                            </h6>
+                            <p style="--m: 0">
+                                <ul>
+                                    <li>Help in coordinating weekly improv sessions</li>
+                                </ul>
+                            </p>
+                        </div>
                     </div>
 
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", async () => {
+                if (!window.jsyaml) return;
+
+                const formatDate = (value) => {
+                    if (!value) return "";
+                    if (value instanceof Date && !Number.isNaN(value.valueOf())) {
+                        return value.toLocaleDateString("en-US", {
+                            month: "short",
+                            year: "numeric",
+                        });
+                    }
+                    if (typeof value === "string") {
+                        const match = value.match(/^(\\d{4})-(\\d{2})(?:-(\\d{2}))?$/);
+                        if (match) {
+                            const year = Number(match[1]);
+                            const monthIndex = Number(match[2]) - 1;
+                            const monthNames = [
+                                "Jan",
+                                "Feb",
+                                "Mar",
+                                "Apr",
+                                "May",
+                                "Jun",
+                                "Jul",
+                                "Aug",
+                                "Sep",
+                                "Oct",
+                                "Nov",
+                                "Dec",
+                            ];
+                            const month = monthNames[monthIndex];
+                            if (month) return `${month} ${year}`;
+                        }
+                        return value;
+                    }
+                    return String(value);
+                };
+
+                const renderList = (items, emphasizeFirstClause = false, emphasizeQuotedTitle = false) =>
+                    items
+                        .map((item) => {
+                            const value = String(item);
+                            let emphasized = emphasizeFirstClause
+                                ? value.replace(/^[^,]+/, (match) => `**${match}**`)
+                                : value;
+                            if (emphasizeQuotedTitle) {
+                                emphasized = emphasized.replace(/\"([^\"]+)\"/, '**"$1"**');
+                            }
+                            const html = window.marked
+                                ? window.marked.parseInline(emphasized)
+                                : emphasized.replace(/[&<>]/g, (ch) => {
+                                      const map = { "&": "&amp;", "<": "&lt;", ">": "&gt;" };
+                                      return map[ch] || ch;
+                                  });
+                            return `<li style="--mb:0.5rem;">${html}</li>`;
+                        })
+                        .join("");
+
+                const basePath = window.location.pathname.replace(/\/webcv(\/.*)?$/, "");
+                const baseUrl = new URL(`${basePath}/`, window.location.origin);
+
+                const list = document.getElementById("publications-list");
+                if (list) {
+                    try {
+                        const response = await fetch(new URL("data/publications.yml", baseUrl), { cache: "no-store" });
+                        const text = await response.text();
+                        const data = window.jsyaml.load(text) || {};
+                        const pubs = data.publications || [];
+                        const pubItems = pubs.map((pub) =>
+                            String(pub).replace(/,\s*(\d{4})\.?$/, (_m, year) => ` &nbsp;|&nbsp; ${year}.`)
+                        );
+                        list.innerHTML = renderList(pubItems, false, true);
+                    } catch (error) {
+                        // Keep the static list if loading fails.
+                    }
+                }
+
+                const talksList = document.getElementById("talks-list");
+                if (talksList) {
+                    try {
+                        const response = await fetch(new URL("data/talks.yml", baseUrl), { cache: "no-store" });
+                        const text = await response.text();
+                        const data = window.jsyaml.load(text) || {};
+                        const talks = data.talks || [];
+                        const items = talks.map((talk) => {
+                            const prefix = talk.prefix ? `${talk.prefix}, ` : "";
+                            const title = talk.title || "";
+                            const venue = talk.venue || "";
+                            const date = formatDate(talk.date);
+                            const tail = date ? ` &nbsp;|&nbsp; ${date}` : "";
+                            return `${prefix}${title}, ${venue}${tail}`;
+                        });
+                        talksList.innerHTML = renderList(items, true);
+                    } catch (error) {
+                        // Keep the static list if loading fails.
+                    }
+                }
+
+                const serviceList = document.getElementById("service-list");
+                if (serviceList) {
+                    try {
+                        const response = await fetch(new URL("data/services.yml", baseUrl), { cache: "no-store" });
+                        const text = await response.text();
+                        const data = window.jsyaml.load(text) || {};
+                        const raw = data.services || data.service || [];
+                        const service = Array.isArray(raw) ? raw : [];
+                        serviceList.innerHTML = service
+                            .map((entry) => {
+                                if (typeof entry === "string") {
+                                    return `<li style="--mb:0.5rem;">${entry}</li>`;
+                                }
+                                const role = entry.role || "";
+                                const venue = entry.venue || "";
+                                const year = entry.year || "";
+                                const tail = year ? ` &nbsp;|&nbsp; ${year}` : "";
+                                const safeRole = role.replace(/[&<>]/g, (ch) => ({
+                                    "&": "&amp;",
+                                    "<": "&lt;",
+                                    ">": "&gt;",
+                                }[ch] || ch));
+                                const safeVenue = venue.replace(/[&<>]/g, (ch) => ({
+                                    "&": "&amp;",
+                                    "<": "&lt;",
+                                    ">": "&gt;",
+                                }[ch] || ch));
+                                return `<li style="--mb:0.5rem;">${safeRole}, <strong>${safeVenue}</strong>${tail}</li>`;
+                            })
+                            .join("");
+                    } catch (error) {
+                        // Keep the static list if loading fails.
+                    }
+                }
+            });
+        </script>
     </body>
 </html>

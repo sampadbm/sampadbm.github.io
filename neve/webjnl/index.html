@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sampy's logs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Sampy's jnl</h1>
+        <p class="header-subtitle">A curated collection of readings and reflections</p>
+    </header>
+
+    <div class="filter-toggle-container">
+        <button id="filter-toggle-btn" class="filter-toggle-btn">
+            <span class="filter-toggle-icon">▼</span>
+            <span class="filter-toggle-text">Show Filters</span>
+        </button>
+    </div>
+
+    <div id="filter-container" class="hidden">
+        <!-- Filter bar will be populated here -->
+    </div>
+
+    <main id="readings-container">
+        <!-- Readings will be populated here -->
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+    <script src="assets/filter.js"></script>
+    <script src="assets/app.js"></script>
+</body>
+</html>

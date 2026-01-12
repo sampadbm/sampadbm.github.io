@@ -1,0 +1,34 @@
+selected_research:
+- title: SATORIS-N
+  year: 2025
+  description: Subspace-informed recovery for spatiotemporal traffic data.
+  links:
+  - label: Paper
+    url: https://example.com
+  - label: Slides
+    url: /blog/proposal
+- title: DISPATCH
+  year: 2025
+  description: Decentralized planning and task assignment for heterogeneous agents.
+  links:
+  - label: Paper
+    url: https://arxiv.org/abs/2511.17915
+- title: LEAP
+  year: 2025
+  description: 'Live Experiments for Active Pedagogy.
+
+    Computational experiments for collaborative classrooms.
+
+    '
+  links:
+  - label: Paper
+    url: https://doi.org/10.1145/3770761.3777313
+  - label: Website
+    url: https://github.com/neveisa/leap
+- title: SATORIS
+  year: 2025
+  description: Novel tensor methods for traffic imputation via tempral invariance
+    of tensor factor subspace.
+  links:
+  - label: Slides
+    url: /blog/quals

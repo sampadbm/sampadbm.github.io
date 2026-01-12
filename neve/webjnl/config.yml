@@ -1,0 +1,3 @@
+databases:
+  - db/articles.yml
+  - db/papers.yml

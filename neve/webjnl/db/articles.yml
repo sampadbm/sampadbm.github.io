@@ -1,0 +1,12 @@
+readings:
+  - date: 2026-01-11
+    category: [Education, Philosophy, Science]
+    author: Abraham Flexner
+    title: The Usefulness of Useless Knowledge
+    url: https://www.ias.edu/sites/default/files/library/UsefulnessHarpers.pdf
+    year: 1939
+    tags: [curiosity,ideas,academic-freedom,philosophy-of-science]
+    notes: |
+      "From a practical point of view, intellectual and spiritual life is, on the surface, a useless form of activity. In this paper I shall concern myself with the question of the extent to which the pursuit of these useless satisfactions proves unexpectedly the source from which undreamed-of utility is derived. Curiosity, which may or may not eventuate in something useful, is probably the outstanding characteristic of modern thinking. The great advances in science have come from people who were driven not by the desire to be useful but merely to satisfy their curiosity. Hertz and Maxwell had no concern about the utility of their work; no such thought ever entered their minds. History shows that the effective applications of knowledge have almost invariably been made long after the discoveries themselves."
+
+      
