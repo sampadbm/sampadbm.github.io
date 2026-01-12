@@ -7,8 +7,8 @@
 body {
     font-family: Georgia, 'Times New Roman', serif;
     line-height: 1.6;
-    color: #222;
-    background-color: #fefefe;
+    color: #1e1b16;
+    background-color: #f6f2ec;
     max-width: 90vw;
     margin: 0 auto;
     padding: 2vw;
@@ -17,7 +17,7 @@ body {
 header {
     margin-bottom: 2.5rem;
     padding-bottom: 1.5rem;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid #d8cfc3;
     text-align: center;
 }
 
@@ -27,14 +27,14 @@ h1 {
     font-weight: 300;
     letter-spacing: 2px;
     margin-bottom: 0.5rem;
-    color: #1a1a1a;
+    color: #1e1b16;
     text-transform: lowercase;
     font-style: italic;
 }
 
 .header-subtitle {
     font-size: 0.95rem;
-    color: #888;
+    color: #6c645c;
     font-style: italic;
     letter-spacing: 0.3px;
     margin: 0;
@@ -50,9 +50,9 @@ h1 {
 .filter-toggle-btn {
     font-family: Georgia, 'Times New Roman', serif;
     font-size: 0.9rem;
-    color: #888;
+    color: #6c645c;
     background-color: transparent;
-    border: 1px solid #ddd;
+    border: 1px solid #d8cfc3;
     border-radius: 3px;
     padding: 0.5rem 1.2rem;
     cursor: pointer;
@@ -63,8 +63,8 @@ h1 {
 }
 
 .filter-toggle-btn:hover {
-    color: #555;
-    border-color: #bbb;
+    color: #2d4a3e;
+    border-color: #d8cfc3;
 }
 
 .filter-toggle-icon {
@@ -80,7 +80,7 @@ h1 {
 #filter-container {
     margin-bottom: 2rem;
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #d8cfc3;
     overflow: hidden;
     transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease, padding 0.3s ease;
     max-height: 1000px;
@@ -92,7 +92,7 @@ h1 {
     opacity: 0;
     margin-bottom: 1rem;
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #d8cfc3;
 }
 
 .filter-bar {
@@ -130,7 +130,7 @@ h1 {
 
 .filter-label {
     font-size: 0.9rem;
-    color: #888;
+    color: #6c645c;
     font-variant: small-caps;
     letter-spacing: 0.3px;
     font-weight: 500;
@@ -139,7 +139,7 @@ h1 {
 .filter-toggle {
     background: none;
     border: none;
-    color: #aaa;
+    color: #6c645c;
     cursor: pointer;
     font-size: 0.7rem;
     padding: 0;
@@ -152,7 +152,7 @@ h1 {
 }
 
 .filter-toggle:hover {
-    color: #666;
+    color: #2d4a3e;
 }
 
 .filter-options {
@@ -177,17 +177,17 @@ h1 {
 }
 
 .filter-options::-webkit-scrollbar-track {
-    background: #f5f5f5;
+    background: #efe9e0;
     border-radius: 3px;
 }
 
 .filter-options::-webkit-scrollbar-thumb {
-    background: #ddd;
+    background: #d8cfc3;
     border-radius: 3px;
 }
 
 .filter-options::-webkit-scrollbar-thumb:hover {
-    background: #ccc;
+    background: #6c645c;
 }
 
 .filter-options.collapsed {
@@ -207,18 +207,18 @@ h1 {
     gap: 0.5rem;
     cursor: pointer;
     font-size: 0.9rem;
-    color: #555;
+    color: #6c645c;
     transition: color 0.2s;
     user-select: none;
 }
 
 .filter-checkbox-label:hover {
-    color: #222;
+    color: #1e1b16;
 }
 
 .filter-checkbox {
     cursor: pointer;
-    accent-color: #888;
+    accent-color: #2d4a3e;
     width: 0.9rem;
     height: 0.9rem;
 }
@@ -226,9 +226,9 @@ h1 {
 .filter-clear-btn {
     font-family: Georgia, 'Times New Roman', serif;
     font-size: 0.9rem;
-    color: #888;
+    color: #6c645c;
     background-color: transparent;
-    border: 1px solid #ddd;
+    border: 1px solid #d8cfc3;
     border-radius: 3px;
     padding: 0.4rem 1rem;
     cursor: pointer;
@@ -239,19 +239,19 @@ h1 {
 }
 
 .filter-clear-btn:hover {
-    color: #555;
-    border-color: #bbb;
+    color: #2d4a3e;
+    border-color: #d8cfc3;
 }
 
 .filter-clear-btn:active {
-    background-color: #f5f5f5;
+    background-color: #efe9e0;
 }
 
 .reading-entry {
     display: flex;
     margin-bottom: 2.5rem;
     padding-bottom: 2.5rem;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #d8cfc3;
 }
 
 .reading-entry:last-child {
@@ -262,7 +262,7 @@ h1 {
     width: 30%;
     padding-right: 2vw;
     font-size: 0.9rem;
-    color: #555;
+    color: #6c645c;
 }
 
 .metadata-item {
@@ -272,7 +272,7 @@ h1 {
 .metadata-label {
     font-variant: small-caps;
     font-size: 0.85rem;
-    color: #888;
+    color: #6c645c;
     display: inline-block;
     margin-right: 0.5rem;
 }
@@ -282,14 +282,14 @@ h1 {
 }
 
 .metadata-value {
-    color: #888;
+    color: #6c645c;
     display: inline-block;
 }
 
 .content {
     width: 70%;
     padding-left: 2vw;
-    border-left: 1px solid #eee;
+    border-left: 1px solid #d8cfc3;
 }
 
 .reading-title {
@@ -299,19 +299,19 @@ h1 {
 }
 
 .reading-title a {
-    color: #222;
+    color: #1e1b16;
     text-decoration: none;
     border-bottom: 1px solid transparent;
     transition: border-bottom-color 0.2s;
 }
 
 .reading-title a:hover {
-    border-bottom-color: #222;
+    border-bottom-color: #2d4a3e;
 }
 
 .reading-notes {
     font-size: 0.95rem;
-    color: #555;
+    color: #6c645c;
     margin-top: 0.75rem;
     font-style: italic;
 }
@@ -330,26 +330,26 @@ h1 {
 }
 
 .reading-notes a {
-    color: #444;
+    color: #2d4a3e;
     text-decoration: underline;
-    text-decoration-color: #ccc;
+    text-decoration-color: #d8cfc3;
 }
 
 .reading-notes a:hover {
-    text-decoration-color: #444;
+    text-decoration-color: #2d4a3e;
 }
 
 .reading-notes code {
     font-family: 'Courier New', monospace;
     font-size: 0.9em;
-    background-color: #f5f5f5;
+    background-color: #efe9e0;
     padding: 0.1rem 0.3rem;
     border-radius: 3px;
     font-style: normal;
 }
 
 .reading-notes pre {
-    background-color: #f5f5f5;
+    background-color: #efe9e0;
     padding: 0.75rem;
     border-radius: 3px;
     overflow-x: auto;
@@ -373,15 +373,15 @@ h1 {
 }
 
 .reading-notes blockquote {
-    border-left: 3px solid #ddd;
+    border-left: 3px solid #d8cfc3;
     padding-left: 1rem;
     margin: 0.5rem 0;
-    color: #666;
+    color: #6c645c;
 }
 
 .reading-notes strong {
     font-weight: 600;
-    color: #444;
+    color: #1e1b16;
 }
 
 .reading-notes em {
@@ -407,14 +407,14 @@ h1 {
 .reading-notes figure img {
     max-width: 100%;
     height: auto;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #d8cfc3;
     border-radius: 3px;
     display: block;
 }
 
 .reading-notes figcaption {
     font-size: 0.85rem;
-    color: #777;
+    color: #6c645c;
     font-style: italic;
     margin-top: 0.4rem;
     text-align: center;
@@ -424,7 +424,7 @@ h1 {
     max-width: 50vw;
     height: auto;
     margin: 1rem 0;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #d8cfc3;
     border-radius: 3px;
 }
 
@@ -435,7 +435,7 @@ h1 {
 .tag {
     display: inline;
     font-size: 0.9rem;
-    color: #888;
+    color: #6c645c;
     font-family: Georgia, 'Times New Roman', serif;
 }
 

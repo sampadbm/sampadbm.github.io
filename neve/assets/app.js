@@ -75,6 +75,10 @@
                 '<path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H13l2 3H9l2-3H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm7 4 5 3-5 3V8z"></path>',
             paper:
                 '<path d="M6 2h8l4 4v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm7 1.5V7h3.5L13 3.5zM8 11h8v1.5H8V11zm0 3.5h8V16H8v-1.5zm0 3.5h5v1.5H8V18z"></path>',
+            journal:
+                '<path d="M6 2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm1 2v16h10V4H7zm2 3h6v1.5H9V7zm0 3h6v1.5H9v-1.5zm0 3h4v1.5H9V13z"></path>',
+            "reading journal":
+                '<path d="M6 2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm1 2v16h10V4H7zm2 3h6v1.5H9V7zm0 3h6v1.5H9v-1.5zm0 3h4v1.5H9V13z"></path>',
         };
         const path = icons[normalized];
         if (!path) return "";
