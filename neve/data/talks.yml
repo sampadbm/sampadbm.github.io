@@ -1,4 +1,7 @@
 talks:
+  - title: "SATORIS-N : Spectral Analysis based Traffic Observation Recovery via Informed Subspaces and Nuclear-norm minimization"
+    venue: Poster presented at ECE 15th Annual Research Festival, University of Southern California
+    date: 2025-10-31
   - title: "Matrix and Tensor Factorization and Approximations for Understanding Spatiotemporal Data"
     venue: STEM Bytes Seminar, Women In Science and Engineering (WiSE), University of Southern California
     date: 2025-09-24
