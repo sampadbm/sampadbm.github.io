@@ -3,7 +3,16 @@
     const contentEl = document.getElementById("content");
 
     if (window.marked) {
-        window.marked.setOptions({ breaks: true });
+        const renderer = new window.marked.Renderer();
+        const originalImage = renderer.image.bind(renderer);
+        renderer.image = function(href, title, text) {
+            const html = originalImage(href, title, text);
+            return html.replace('<img', '<img loading="lazy"');
+        };
+        window.marked.setOptions({
+            breaks: true,
+            renderer: renderer
+        });
     }
 
     function escapeHtml(text) {
@@ -49,9 +58,8 @@
         return escapeHtml(dateValue);
     }
 
-    function getLinkIcon(label) {
-        if (!label) return "";
-        const normalized = label.toLowerCase();
+    function getLinkIcon(iconName, label) {
+        // Icon library - centralized icon definitions
         const icons = {
             email:
                 '<path d="M2 5.75C2 4.78 2.78 4 3.75 4h16.5C21.22 4 22 4.78 22 5.75v12.5c0 .97-.78 1.75-1.75 1.75H3.75C2.78 20 2 19.22 2 18.25V5.75zm1.75-.25 7.94 5.1a1.25 1.25 0 0 0 1.62 0l7.94-5.1H3.75z"></path>',
@@ -77,10 +85,21 @@
                 '<path d="M6 2h8l4 4v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm7 1.5V7h3.5L13 3.5zM8 11h8v1.5H8V11zm0 3.5h8V16H8v-1.5zm0 3.5h5v1.5H8V18z"></path>',
             journal:
                 '<path d="M6 2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm1 2v16h10V4H7zm2 3h6v1.5H9V7zm0 3h6v1.5H9v-1.5zm0 3h4v1.5H9V13z"></path>',
-            "reading journal":
-                '<path d="M6 2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm1 2v16h10V4H7zm2 3h6v1.5H9V7zm0 3h6v1.5H9v-1.5zm0 3h4v1.5H9V13z"></path>',
+            // Default fallback icon for unknown links
+            link:
+                '<path d="M10.5 17a1.5 1.5 0 0 1-1.5-1.5v-8A1.5 1.5 0 0 1 10.5 6H14a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5h-3.5zm-3-5a1.5 1.5 0 0 0 1.5 1.5h8A1.5 1.5 0 0 0 18.5 12v-1.5A1.5 1.5 0 0 0 17 9H9a1.5 1.5 0 0 0-1.5 1.5V12z"></path>',
         };
-        const path = icons[normalized];
+
+        // Priority: explicit iconName > label-based lookup > default
+        let path;
+        if (iconName && icons[iconName.toLowerCase()]) {
+            path = icons[iconName.toLowerCase()];
+        } else if (label && icons[label.toLowerCase()]) {
+            path = icons[label.toLowerCase()];
+        } else {
+            path = icons.link; // Default fallback
+        }
+
         if (!path) return "";
         return `
             <span class="link-icon" aria-hidden="true">
@@ -97,8 +116,9 @@
             .map((link) => {
                 const label = escapeHtml(link.label);
                 const url = escapeHtml(link.url);
-                const icon = getLinkIcon(link.label);
-                return `<a href="${url}" target="_blank" rel="noopener">${icon}${label}</a>`;
+                const icon = getLinkIcon(link.icon, link.label);
+                const external = url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : '';
+                return `<a href="${url}" ${external}>${icon}${label}</a>`;
             })
             .join("");
     }
@@ -109,9 +129,10 @@
             .map((link) => {
                 const label = escapeHtml(link.label);
                 const url = escapeHtml(link.url);
-                const icon = getLinkIcon(link.label);
+                const icon = getLinkIcon(link.icon, link.label);
                 const iconMarkup = icon || `<span class="link-icon">${label[0] || "•"}</span>`;
-                return `<a href="${url}" target="_blank" rel="noopener" aria-label="${label}">${iconMarkup}</a>`;
+                const external = url.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : '';
+                return `<a href="${url}" ${external} aria-label="${label}">${iconMarkup}</a>`;
             })
             .join("");
     }
@@ -197,10 +218,10 @@
             .map((item) => {
                 const role = escapeHtml(item.role || "");
                 const venue = escapeHtml(item.venue || "");
-                const year = escapeHtml(item.year || "");
+                const year = formatNewsDate(item.year);
                 const text = [role, venue].filter(Boolean).join(", ");
-                const tail = year ? ` | ${year}` : "";
-                return `<li>${text}${tail}</li>`;
+                const datePrefix = year ? `<span class="news-date">${year}</span>` : "";
+                return `<li>${datePrefix}<span class="news-sep">—</span><span class="news-text">${text}</span></li>`;
             })
             .join("");
         return `<ul class="list">${listItems}</ul>`;
@@ -210,10 +231,25 @@
         if (!items || !items.length) return "";
         const listItems = items
             .map((item) => {
+                // Handle both string format and object format { text, link }
+                const text = typeof item === 'string' ? item : (item.text || '');
+                const link = typeof item === 'object' ? item.link : null;
+
+                let textHtml;
                 if (window.marked) {
-                    return `<li>${window.marked.parseInline(String(item))}</li>`;
+                    textHtml = window.marked.parseInline(String(text));
+                } else {
+                    textHtml = escapeHtml(String(text));
                 }
-                return `<li>${escapeHtml(String(item))}</li>`;
+
+                // Add link icon if link exists
+                if (link) {
+                    const linkIcon = getLinkIcon('paper', null);
+                    const external = link.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : '';
+                    return `<li><a href="${escapeHtml(link)}" ${external} class="paper-link" aria-label="View paper">${linkIcon}</a>${textHtml}</li>`;
+                }
+
+                return `<li>${textHtml}</li>`;
             })
             .join("");
         return `<ul class="list">${listItems}</ul>`;
@@ -269,27 +305,62 @@
     function renderContent(data) {
         const profile = data.profile || {};
         const keywords = (profile.keywords || []).map(escapeHtml).join(", ");
+        const photo = profile.photo
+            ? `<img class="profile-photo" src="${escapeHtml(profile.photo)}" alt="${escapeHtml(profile.name || "Profile photo")}" loading="lazy" />`
+            : "";
+        const links = renderLinks(profile.links || []);
+        const education = renderEducation(profile.education || []);
+        const experience = renderEducation(profile.experience || []);
+        const news = renderNews(data.news || []);
+        const service = renderService(data.services || data.service || []);
 
         contentEl.innerHTML = `
-            <section class="section">
-                <div class="hero">
+            <section id="main-content" class="section profile-header">
+                ${photo}
+                <div class="profile-info">
                     <h1>${escapeHtml(profile.name || "")}</h1>
-                    <p class="hook">${escapeHtml(profile.hook || "")}</p>
-                    <p class="keywords">${keywords ? `Keywords: ${keywords}` : ""}</p>
+                    <div class="meta-label">${escapeHtml(profile.title || "")}</div>
+                    <div class="affiliation">${escapeHtml(profile.affiliation || "")}</div>
+                    <div class="link-row" role="navigation" aria-label="Contact links">${links}</div>
                 </div>
             </section>
-            <section class="section">
-                <h2>Selected Research</h2>
+            <section class="section" aria-labelledby="research-interests-heading">
+                <div class="hero">
+                    <h2 id="research-interests-heading">Research Interests</h2>
+                    <p class="keywords">${keywords ? `${keywords}` : ""}</p>
+                </div>
+            </section>
+            <section class="section" aria-labelledby="education-heading">
+                <h2 id="education-heading">Education</h2>
+                ${education}
+            </section>
+            <section class="section" aria-labelledby="experience-heading">
+                <h2 id="experience-heading">Research Experience</h2>
+                ${experience}
+            </section>
+            <section class="section" aria-labelledby="updates-heading">
+                <h2 id="updates-heading">Updates</h2>
+                ${news}
+            </section>
+            <section class="section" aria-labelledby="services-heading">
+                <h2 id="services-heading">Professional Services</h2>
+                ${service}
+            </section>
+            <section class="section" aria-labelledby="selected-research-heading">
+                <h2 id="selected-research-heading">Selected Research</h2>
                 ${renderSelectedResearch(data.selected_research || [])}
             </section>
-            <section class="section">
-                <h2>Talks</h2>
+            <section class="section" aria-labelledby="talks-heading">
+                <h2 id="talks-heading">Talks</h2>
                 ${renderTalks(data.talks || [])}
             </section>
-            <section class="section">
-                <h2>Publications</h2>
+            <section class="section" aria-labelledby="publications-heading">
+                <h2 id="publications-heading">Publications</h2>
                 ${renderPublications(data.publications || [])}
             </section>
+            <footer class="site-footer">
+                <p>Last updated: ${profile.last_updated ? formatNewsDate(profile.last_updated) : new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</p>
+            </footer>
         `;
     }
 
@@ -300,7 +371,6 @@
                 "data/news.yml",
                 "data/research.yml",
                 "data/publications.yml",
-                "data/education.yml",
                 "data/talks.yml",
                 "data/services.yml",
             ];
@@ -312,7 +382,6 @@
                 })
             );
             const data = Object.assign({}, ...parts);
-            renderSidebar(data || {});
             renderContent(data || {});
         } catch (error) {
             contentEl.innerHTML = "<p>Failed to load data.</p>";
