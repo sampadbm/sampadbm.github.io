@@ -1,0 +1,58 @@
+coursework:
+  - code: MATH547
+    title: Mathematical Foundations of Statistical Learning Theory
+    department: Mathematics
+  - code: MATH541A
+    title: Mathematical Statistics
+    department: Mathematics
+  - code: MATH501
+    title: Numerical Analysis
+    department: Mathematics
+  - code: MATH532
+    title: Combinatorial Analysis
+    department: Mathematics
+  - code: MATH574
+    title: Applied Matrix Analysis
+    department: Mathematics
+  - code: MATH505A
+    title: Applied Probability A
+    department: Mathematics
+  - code: MATH505B
+    title: Applied Probability B
+    department: Mathematics
+  - code: MATH425A
+    title: Real Analysis
+    department: Mathematics
+  - code: MATH395
+    title: Seminar in Problem Solving
+    department: Mathematics
+  - code: EE588
+    title: Optimization for Information and Data Science
+    department: Electrical Engineering
+  - code: EE660
+    title: "Machine Learning II: Mathematical Foundations and Methods"
+    department: Electrical Engineering
+  - code: EE546
+    title: Mathematics of High Dimensional Data
+    department: Electrical Engineering
+  - code: EE510
+    title: Linear Algebra for Engineering
+    department: Electrical Engineering
+  - code: CSCI675
+    title: Convex Optimization
+    department: Computer Science
+  - code: CSCI670
+    title: Advanced Analysis of Algorithms
+    department: Computer Science
+  - code: CSCI567
+    title: Machine Learning
+    department: Computer Science
+  - code: ISE632
+    title: Network Flows and Combinatorial Optimization
+    department: Industrial & Systems Engineering
+  - code: PHYS438
+    title: Introduction to Quantum Mechanics and Applications
+    department: Physics
+  - code: PHY-760
+    title: Selected Topics in Computational Physics
+    department: Physics

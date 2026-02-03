@@ -141,6 +141,14 @@
                 </div>
             </div>
 
+            <!-- COURSEWORK -->
+            <div style="--p: 1rem">
+                <h5 style="--td: underline; --c: Indigo; --weight: bold">
+                    SELECTED COURSEWORK
+                </h5>
+                <div id="coursework-container" style="--pl: 1rem"></div>
+            </div>
+
             <!-- EXPERIENCE -->
             <div style="--p: 1rem;">
                 <h5 style="--td: underline; --c: Indigo; --weight: bold">
@@ -218,7 +226,7 @@
                             ML, and algorithms with example labs including gradient descent visualization, Monte Carlo integration, genetic algorithms
                             with leaderboards, and graph traversal. Features security controls, analytics dashboards, and standardized lab format for
                             community sharing.
-                            Status: Poster sccepted at ACM SIGCSE 2026.
+                            Status: Poster accepted at ACM SIGCSE 2026.
                         </p>
                     </div>
 
@@ -237,7 +245,7 @@
                             Beijing (56×56 grid) and Shanghai (40×40 grid) GPS datasets demonstrate significant outperformance over traditional
                             baselines (mean/median imputation, k-NN) and competitive methods (SoftImpute, GAIN, Miracle), particularly at high
                             occlusion levels (>70% missing data).
-                            Status: SATORIS paper submitted to IEEE Access (under review); SATORIS-N manuscript in preparation (2025).
+                            Status: SATORIS paper submitted to IEEE Access (under review); SATORIS-N accepted at IEEE Intelligent Vehicles Symposium (IV), 2026.
                         </p>
                     </div>
 
@@ -497,7 +505,7 @@
 
                                 <li style="--mb:0.5rem;">Y. Liu, <strong>S. Mohanty</strong>, E. Ondula, and B. Krishnamachari, "DISPATCH -- Decentralized Informed Spatial Planning and Assignment of Tasks for Cooperative Heterogeneous Agents," arXiv preprint arXiv:2511.17915, 2025.</li>
 
-                                <li style="--mb:0.5rem;"><strong>S. Mohanty</strong> and B. Krishnamachari, "SATORIS-N: Spectral Analysis based Traffic Observation Recovery via Informed Subspaces and Nuclear-norm minimization," under review IEEE Intelligent Vehicles Symposium, 2025.</li>
+                                <li style="--mb:0.5rem;"><strong>S. Mohanty</strong> and B. Krishnamachari, "SATORIS-N: Spectral Analysis based Traffic Observation Recovery via Informed Subspaces and Nuclear-norm minimization," IEEE Intelligent Vehicles Symposium (IV), 2026.</li>
 
                                 <li style="--mb:0.5rem;"><strong>S. Mohanty</strong>, M. Kiamari, F. Bai, and B. Krishnamachari, "SATORIS: A Unified Framework for Singular vAlue and TensOR weIght regresSion to Perform Imputation on Spatio-Temporal Traffic Data," submitted to IEEE Access, under review, 2025.</li>
 
@@ -749,6 +757,69 @@
                             .join("");
                     } catch (error) {
                         // Keep the static list if loading fails.
+                    }
+                }
+
+                const courseworkContainer = document.getElementById("coursework-container");
+                if (courseworkContainer) {
+                    try {
+                        const response = await fetch(new URL("data/coursework.yml", baseUrl), { cache: "no-store" });
+                        const text = await response.text();
+                        const data = window.jsyaml.load(text) || {};
+                        const courses = data.coursework || [];
+
+                        // Group courses by department
+                        const byDept = {};
+                        courses.forEach(course => {
+                            const dept = course.department || "Other";
+                            if (!byDept[dept]) byDept[dept] = [];
+                            byDept[dept].push(course);
+                        });
+
+                        // Render by department in two columns
+                        const leftDepts = ["Mathematics", "Computer Science"];
+                        const rightDepts = ["Electrical Engineering", "Industrial & Systems Engineering", "Physics", "Other"];
+
+                        let html = '<div style="--d: grid; --gtc: 1fr 1fr; --gg: 1rem">';
+
+                        // Left column
+                        html += '<div>';
+                        leftDepts.forEach(dept => {
+                            if (byDept[dept] && byDept[dept].length > 0) {
+                                html += `<div style="--mb: 0.5rem">`;
+                                html += `<h6 style="--weight: bold; --c: SteelBlue; --m: 0.5rem 0">${dept}</h6>`;
+                                html += `<ul style="--m:0; --pl:1.5rem;">`;
+                                byDept[dept].forEach(course => {
+                                    const code = course.code || "";
+                                    const title = course.title || "";
+                                    html += `<li style="--mb:0.25rem;"><strong>${code}</strong> - ${title}</li>`;
+                                });
+                                html += `</ul></div>`;
+                            }
+                        });
+                        html += '</div>';
+
+                        // Right column
+                        html += '<div>';
+                        rightDepts.forEach(dept => {
+                            if (byDept[dept] && byDept[dept].length > 0) {
+                                html += `<div style="--mb: 0.5rem">`;
+                                html += `<h6 style="--weight: bold; --c: SteelBlue; --m: 0.5rem 0">${dept}</h6>`;
+                                html += `<ul style="--m:0; --pl:1.5rem;">`;
+                                byDept[dept].forEach(course => {
+                                    const code = course.code || "";
+                                    const title = course.title || "";
+                                    html += `<li style="--mb:0.25rem;"><strong>${code}</strong> - ${title}</li>`;
+                                });
+                                html += `</ul></div>`;
+                            }
+                        });
+                        html += '</div>';
+
+                        html += '</div>';
+                        courseworkContainer.innerHTML = html;
+                    } catch (error) {
+                        // Keep empty if loading fails.
                     }
                 }
             });
