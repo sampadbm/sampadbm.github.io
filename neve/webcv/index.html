@@ -360,85 +360,7 @@
                     <h5 style="--weight: bold; --td: underline; --c: SteelBlue">
                         TEACHING
                     </h5>
-                        <!-- CS567 Teaching Assistant -->
-                        <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
-                            <h6 style="--weight: bold">
-                                Teaching Assistant &nbsp; | &nbsp; CS567 - Machine Learning <br>
-                                University of Southern California &nbsp; | &nbsp; Fall 2022, Summer 2023, Spring 2024, Summer 2024, Summer 2025, Fall 2025 <br>
-                                Instructors: Prof. Vatsal Sharan (Fall 2022, Spring 2024) &nbsp; | &nbsp; Prof. Victor Adamchik (Summer 2023, 2024, 2025, Fall 2025) <br>
-                            </h6>
-                            <p style="--m: 0">
-                                <ul>
-                                    <li>Designed homework assignments and practice exams covering supervised/unsupervised learning, neural networks, and optimization</li>
-                                    <li>Conducted weekly discussion sessions and office hours for 150+ students per semester</li>
-                                    <li>Graded assignments and exams, providing detailed feedback on machine learning implementations</li>
-                                    <li>Led tutorials/projects on Python/PyTorch for ML model development and evaluation</li>
-                                </ul>
-                            </p>
-                        </div>
-
-                        <!-- CS570 Teaching Assistant -->
-                        <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
-                            <h6 style="--weight: bold">
-                                Teaching Assistant &nbsp; | &nbsp; CS570 - Analysis of Algorithms <br>
-                                University of Southern California &nbsp; | &nbsp; Summer 2022, Spring 2023, Fall 2024 <br>
-                                Instructors: Prof. Shahriar Shamsian (Summer 2022) &nbsp; | &nbsp; Prof. Victor Adamchik (Spring 2023, Fall 2024) <br>
-                            </h6>
-                            <p style="--m: 0">
-                                <ul>
-                                    <li>Created problem sets on algorithm design, complexity analysis, and optimization techniques</li>
-                                    <li>Held discussion sessions covering dynamic programming, graph algorithms, and NP-completeness</li>
-                                    <li>Designed and graded practice exams preparing students for rigorous theoretical assessments</li>
-                                </ul>
-                            </p>
-                        </div>
-
-                        <!-- CS360 Teaching Assistant -->
-                        <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
-                            <h6 style="--weight: bold">
-                                Teaching Assistant &nbsp; | &nbsp; CS360 - Introduction to Artificial Intelligence <br>
-                                University of Southern California &nbsp; | &nbsp; Spring 2025 <br>
-                                Instructor: Prof. Ruishan Liu<br>
-                            </h6>
-                            <p style="--m: 0">
-                                <ul>
-                                    <li>Designed homework problems on search algorithms, constraint satisfaction, Logic-based AI systems, probabilistic reasoning and machine learning fundamentals</li>
-                                </ul>
-                            </p>
-                        </div>
-
-                        <!-- EE250 Teaching Assistant -->
-                        <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
-                            <h6 style="--weight: bold">
-                                Teaching Assistant &nbsp; | &nbsp; EE250 - Distributed Systems and Internet of Things <br>
-                                University of Southern California &nbsp; | &nbsp; Fall 2020, Spring 2021, Fall 2021, Spring 2022 <br>
-                                Instructors: Prof. Bhaskar Krishnamachari, Prof. Mark Redekkop, Prof. Shahin Nazarian <br>
-                            </h6>
-                            <p style="--m: 0">
-                                <ul>
-                                    <li>Designed and developed new machine learning lab module integrating ML concepts into IoT curriculum</li>
-                                    <li>Created hands-on lab tutorials on embedded systems, networking protocols, and distributed computing</li>
-                                    <li>Graded lab reports and projects on Raspberry Pi-based IoT implementations</li>
-                                    <li>Held discussion sessions on system design, MQTT protocols, and edge computing architectures</li>
-                                </ul>
-                            </p>
-                        </div>
-
-                        <!-- MATH499 Teaching Assistant -->
-                        <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
-                            <h6 style="--weight: bold">
-                                Volunteer Teaching Assistant &nbsp; | &nbsp; MATH499 - Special Topics (Consulting with Data through Python) <br>
-                                University of Southern California &nbsp; | &nbsp; Fall 2020 <br>
-                                Instructor: Prof. Neelesh Tiruviluamala<br>
-                            </h6>
-                            <p style="--m: 0">
-                                <ul>
-                                    <li>Provided tutoring support for inaugural undergraduate course in python (later MATH446: Datascience with Python)</li>
-                                    <li>Conducted tutorials on Jupyter notebooks, HPC access, PyTorch</li>
-                                    <li>Mentored student projects and held office hours on demand</li>
-                                </ul>
-                            </p>
-                        </div>
+                    <div id="teaching-container"></div>
 
 
                 <!--MENTORING -->
@@ -818,6 +740,52 @@
 
                         html += '</div>';
                         courseworkContainer.innerHTML = html;
+                    } catch (error) {
+                        // Keep empty if loading fails.
+                    }
+                }
+
+                const teachingContainer = document.getElementById("teaching-container");
+                if (teachingContainer) {
+                    try {
+                        const response = await fetch(new URL("data/teaching.yml", baseUrl), { cache: "no-store" });
+                        const text = await response.text();
+                        const data = window.jsyaml.load(text) || {};
+                        const teaching = data.teaching || [];
+
+                        let html = '';
+                        teaching.forEach(course => {
+                            const role = course.role || "";
+                            const courseCode = course.course_code || "";
+                            const courseTitle = course.course_title || "";
+                            const institution = course.institution || "";
+                            const semesters = course.semesters || "";
+                            const instructors = course.instructors || "";
+                            const responsibilities = course.responsibilities || [];
+
+                            html += `<div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">`;
+                            html += `<h6 style="--weight: bold">`;
+                            html += `${role} &nbsp; | &nbsp; ${courseCode} - ${courseTitle} <br>`;
+                            html += `${institution} &nbsp; | &nbsp; ${semesters} <br>`;
+                            if (instructors.includes('|')) {
+                                html += `Instructors: ${instructors} <br>`;
+                            } else {
+                                html += `Instructor: ${instructors}<br>`;
+                            }
+                            html += `</h6>`;
+                            html += `<p style="--m: 0">`;
+                            if (responsibilities.length > 0) {
+                                html += `<ul>`;
+                                responsibilities.forEach(resp => {
+                                    html += `<li>${resp}</li>`;
+                                });
+                                html += `</ul>`;
+                            }
+                            html += `</p>`;
+                            html += `</div>`;
+                        });
+
+                        teachingContainer.innerHTML = html;
                     } catch (error) {
                         // Keep empty if loading fails.
                     }

@@ -1,0 +1,78 @@
+teaching:
+  - course_code: CS567
+    course_title: Machine Learning
+    role: Teaching Assistant
+    institution: University of Southern California
+    semesters: Fall 2022, Summer 2023, Spring 2024, Summer 2024, Summer 2025, Fall 2025
+    instructors: "Prof. Vatsal Sharan (Fall 2022, Spring 2024) | Prof. Victor Adamchik (Summer 2023, 2024, 2025, Fall 2025)"
+    responsibilities:
+      - Designed homework assignments and practice exams covering supervised/unsupervised learning, neural networks, and optimization
+      - Conducted weekly discussion sessions and office hours for 150+ students per semester
+      - Graded assignments and exams, providing detailed feedback on machine learning implementations
+      - Led tutorials/projects on Python/PyTorch for ML model development and evaluation
+
+  - course_code: CS467
+    course_title: Foundations of Machine Learning
+    role: Head Teaching Assistant
+    institution: University of Southern California
+    semesters: Fall 2025
+    instructors: Prof. Victor Adamchik
+    responsibilities:
+      - Sole TA responsible for all course operations and student support
+      - Designed homework assignments and practice exams covering foundational ML concepts
+      - Led weekly discussion sessions and held office hours
+      - Managed course logistics including grading, assignment distribution, and student communications
+
+  - course_code: CS570
+    course_title: Analysis of Algorithms
+    role: Head Teaching Assistant
+    institution: University of Southern California
+    semesters: Fall 2024
+    instructors: Prof. Victor Adamchik
+    responsibilities:
+      - Created problem sets on algorithm design, complexity analysis, and optimization techniques
+      - Held discussion sessions covering dynamic programming, graph algorithms, and NP-completeness
+      - Designed and graded practice exams preparing students for rigorous theoretical assessments
+
+  - course_code: CS570
+    course_title: Analysis of Algorithms
+    role: Teaching Assistant
+    institution: University of Southern California
+    semesters: Summer 2022, Spring 2023
+    instructors: "Prof. Shahriar Shamsian (Summer 2022) | Prof. Victor Adamchik (Spring 2023)"
+    responsibilities:
+      - Created problem sets on algorithm design, complexity analysis, and optimization techniques
+      - Held discussion sessions covering dynamic programming, graph algorithms, and NP-completeness
+      - Designed and graded practice exams preparing students for rigorous theoretical assessments
+
+  - course_code: CS360
+    course_title: Introduction to Artificial Intelligence
+    role: Teaching Assistant
+    institution: University of Southern California
+    semesters: Spring 2025
+    instructors: Prof. Ruishan Liu
+    responsibilities:
+      - Designed homework problems on search algorithms, constraint satisfaction, Logic-based AI systems, probabilistic reasoning and machine learning fundamentals
+
+  - course_code: EE250
+    course_title: Distributed Systems and Internet of Things
+    role: Head Teaching Assistant
+    institution: University of Southern California
+    semesters: Fall 2020, Spring 2021, Fall 2021, Spring 2022
+    instructors: Prof. Bhaskar Krishnamachari, Prof. Mark Redekkop, Prof. Shahin Nazarian
+    responsibilities:
+      - Designed and developed new machine learning lab module integrating ML concepts into IoT curriculum
+      - Created hands-on lab tutorials on embedded systems, networking protocols, and distributed computing
+      - Graded lab reports and projects on Raspberry Pi-based IoT implementations
+      - Held discussion sessions on system design, MQTT protocols, and edge computing architectures
+
+  - course_code: MATH499
+    course_title: "Special Topics (Consulting with Data through Python)"
+    role: Volunteer Teaching Assistant
+    institution: University of Southern California
+    semesters: Fall 2020
+    instructors: Prof. Neelesh Tiruviluamala
+    responsibilities:
+      - Provided tutoring support for inaugural undergraduate course in python (later MATH446 - Datascience with Python)
+      - Conducted tutorials on Jupyter notebooks, HPC access, PyTorch
+      - Mentored student projects and held office hours on demand
