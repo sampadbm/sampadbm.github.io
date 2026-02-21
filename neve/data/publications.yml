@@ -1,10 +1,12 @@
 publications:
-  - text: "S. Mohanty*, S. Krajagi*, and B. Krishnamachari, \"LEAP – Live Experiments for Active Pedagogy,\" to appear in ACM SIGCSE TS 2026. *Equal contribution."
-    link: "https://sigcse2026.sigcse.org/details/sigcse-ts-2026-posters/147/LEAP-Live-Experiments-for-Active-Pedagogy"
+  - text: "S. Mohanty*, S. Krajagi*, and B. Krishnamachari, \"LEAP – Live Experiments for Active Pedagogy,\" ACM SIGCSE TS 2026. *Equal contribution."
+    link: "https://arxiv.org/abs/2601.22534"
   - text: '*S. Mohanty* and B. Krishnamachari, "SATORIS-N: Spectral Analysis based Traffic Observation Recovery via Informed Subspaces and Nuclear-norm minimization," IEEE Intelligent Vehicles Symposium (IV), 2026.'
   - text: "Y. Liu, *S. Mohanty*, E. Ondula, and B. Krishnamachari, \"DISPATCH—Decentralized Informed Spatial Planning and Assignment of Tasks for Cooperative Heterogeneous Agents,\" arXiv preprint arXiv:2511.17915, 2025."
     link: "https://arxiv.org/pdf/2511.17915"
   - text: '*S. Mohanty*, M. Kiamari, F. Bai, and B. Krishnamachari, "SATORIS: A Unified Framework for Singular vAlue and TensOR weIght regresSion to Perform Imputation on Spatio-Temporal Traffic Data," submitted to IEEE Access, under review, 2025.'
+  - text: 'G. Bhandari, D. Raghunath, P. M. Hiremath, A. V. Joglekar, D. M. Kulkarni, *S. Mohanty*, V. Prabhu, R. Shorey, R. Sundaresan, and J. D. Tew, "Method and system for synchronizing plurality of events in an assembly line," US Patent 12,468,292, Nov. 2025.'
+    link: "https://patents.google.com/patent/US12468292B2"
   - text: 'L. Clark, *S. Mohanty*, and B. Krishnamachari, "SMILE: Robust Network Localization via Sparse and Low-Rank Matrix Decomposition," ACM/IEEE International Conference on Information Processing in Sensor Networks (IPSN), 2023.'
     link: "https://arxiv.org/pdf/2301.11450"
   - text: 'G. Bhandari, A. Joglekar, A. Kulkarni, D. Kulkarni, C. Mahadeva, *S. Mohanty*, D. Raghunath, M. B. Raju, R. Shorey, and R. Sundaresan, "An Implementation of an Industrial Internet of Things on an SMT Assembly Line," COMSNETS, 2020.'
