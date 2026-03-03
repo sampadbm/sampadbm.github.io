@@ -423,7 +423,7 @@ matches the coefficient on the RHS and hence we have proved the given statement 
 Let us assume $H$ to be hermitian, i.e $H^{\dagger} = H$.
 Then $H$ commutes with $H^{\dagger}$ because $H^{\dagger}H = HH = HH^{\dagger}$.
 
-If $H$ is hermitian, then $A = iH$ is anti-hermitian/skew-hermitian, i.e $A^{\datter} = (iH)^{\dagger} = - i H^{\dagger} = -iH = -A$.
+If $H$ is hermitian, then $A = iH$ is anti-hermitian/skew-hermitian, i.e $A^{\dagger} = (iH)^{\dagger} = - i H^{\dagger} = -iH = -A$.
 
 Note that any anti-hermitian matric $A$ commutes with $A^{\dagger}$ because $A^{\dagger}A = -AA = A (-A) = AA^{\dagger]}$
 
