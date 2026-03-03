@@ -425,7 +425,7 @@ Then $H$ commutes with $H^{\dagger}$ because $H^{\dagger}H = HH = HH^{\dagger}$.
 
 If $H$ is hermitian, then $A = iH$ is anti-hermitian/skew-hermitian, i.e $A^{\dagger} = (iH)^{\dagger} = - i H^{\dagger} = -iH = -A$.
 
-Note that any anti-hermitian matrix $A$ commutes with $A^{\dagger}$ because $A^{\dagger}A = -AA = A (-A) = AA^{\dagger]}$
+Note that any anti-hermitian matrix $A$ commutes with $A^{\dagger}$ because $A^{\dagger}A = -AA = A (-A) = AA^{\dagger}$
 
 Note that for any matrix $M$, $(M^n)^{\dagger} = (\underbrace{MMM....M}_{\text{n times}})^{\dagger}
 = (\underbrace{M^{\dagger}M^{\dagger}....M^{\dagger}}_{\text{n times}}) = (M^{\dagger})^n$
