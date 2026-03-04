@@ -407,7 +407,7 @@ information that $M$ and $N$ commute. This is crucial and without commutativity 
 and the following arguments cannot be made.
 
 
-Note that we can always bubble up terms when $M$ and $N$ commute analogue to shown here : $MMM\color{red}N\color{black}MMN = MMMM\color{red}N\color{black}MN = MMMMM\color{red}N\color{black}N$.
+Note that we can always bubble up terms when $M$ and $N$ commute analogue to shown here : $MMM\color{red}N\color{black}MMN = MMMM\color{red}N\color{black}MN = MMMMM\color{red}N\color{black}N$. This commutivity precisely what allows the binomial expansion on the LHS from $\underbrace{(M+N)(M+N)...(M+N)}_{n \; times}$.
 
 If we stare at the two expressions obtained from the LHS and the RHS, it is clear that the only way the two can be the same is
 if the coefficient of $M^aN^a$ match in the the LHS and the RHS.
