@@ -402,9 +402,12 @@ $$
   = \sum_a \sum_b \frac{1}{a!b!} M^aN^b
 $$
 
->Note that the RHS can be expanded using binomial expansion **only** because $MN= NM$. This is the place where we used the
-information that $M$ and $N$ commute. This is cruciali and without commutativity we cannot use the binomail expansion
+>Note that the LHS can be expanded using binomial expansion **only** because $MN= NM$. This is the place where we used the
+information that $M$ and $N$ commute. This is crucial and without commutativity we cannot use the binomial expansion
 and the following arguments cannot be made.
+
+
+Note that we can always bubble up terms when $M$ and $N$ commute analogue to shown here : $MMM\color{red}N\color{black}MMN = MMMM\color{red}N\color{black}MN = MMMMM\color{red}N\color{black}N$.
 
 If we stare at the two expressions obtained from the LHS and the RHS, it is clear that the only way the two can be the same is
 if the coefficient of $M^aN^a$ match in the the LHS and the RHS.
@@ -414,7 +417,7 @@ mutliple terms that have the same powers of $M^aN^b$. Hence we can just match th
 
 Let us look at the term $M^aN^b$ in the RHS. The corresponding term in the LHS must be $M^kN^{n-k}$ where $k = a$ and $n-k = b$.
 
-Now, the coefficient of $M^aN^b$ on LHS is $\frac{1}{n!} \binom{n}{k} = \frac{1}{n!} \frac{n!}{n! (n-k)!} = \frac{1}{n! (n-k)!} = \frac{1}{a!b!}$ which
+Now, the coefficient of $M^aN^b$ on LHS is $\frac{1}{n!} \binom{n}{k} = \frac{1}{n!} \frac{n!}{k! (n-k)!} = \frac{1}{k! (n-k)!} = \frac{1}{a!b!}$ which
 matches the coefficient on the RHS and hence we have proved the given statement that $[M,N]=0 \implies e^{M+N} = e^Me^N$.
 
 
