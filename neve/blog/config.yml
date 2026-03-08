@@ -7,10 +7,6 @@ tree:
       - name: linear-algebra
         posts:
           - posts/math/linear-algebra/matrix-multiplications.md
-  - name: ml
-    posts:
-      - posts/ml/2026-01-20-intro-neural-nets.md
-  - post: posts/2026-03-01-welcome.md
 
 posts:
   - file: posts/math/linear-algebra/matrix-multiplications.md
@@ -18,13 +14,3 @@ posts:
     title: Understanding Matrix Multiplications
     tags: [math, linear-algebra, tutorial]
     summary: Some views on matrix multiplications.
-  - file: posts/2026-03-01-welcome.md
-    date: 2026-03-01
-    title: Welcome to My Blog
-    tags: [meta]
-    preview: This is a root-level post to test the blog's folder structure. Posts can live at the root level or be organized into folders.
-  - file: posts/ml/2026-01-20-intro-neural-nets.md
-    date: 2026-01-20
-    title: Introduction to Neural Networks
-    tags: [ml, neural-networks, deep-learning]
-    summary: Basic concepts of neural networks from a mathematical perspective.

@@ -65,6 +65,11 @@ $$
 	XAY = XA \\; IY = \sum_{i=1}^n x^i a_i \sum_{j=1}^{p} e^j y_j = \sum_{ij} x^i (a_i e^j) y_j = \sum_{i,j=1}^{n,p} x^i a_i^j y_j = \sum_{i,j=1}^{n,p} a_i^j \cdot x^i y_j
 $$
 
+#### Special case:
+When $A$ is diagonal (as in the case of eigenvalue or singular value decoposition)
+$$
+	XAY = \sum_{i=j} a_i^j \cdot x^i y_j = \sum_i a_i^i \cdot x^i y_i
+$$
 
 ### Matrix Matrix Matrix Matrix $XABY$
 
