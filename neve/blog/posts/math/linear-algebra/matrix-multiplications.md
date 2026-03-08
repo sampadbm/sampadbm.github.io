@@ -2,7 +2,7 @@
 date: 2026-03-07
 title: Understanding Matrix Multiplications
 tags: [math, linear-algebra, tutorial]
-summary: Some interesting views on matrix multiplications.
+summary: Some views on matrix multiplications.
 ---
 
 ### Notations

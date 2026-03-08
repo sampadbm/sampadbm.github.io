@@ -17,7 +17,7 @@ posts:
     date: 2026-03-07
     title: Understanding Matrix Multiplications
     tags: [math, linear-algebra, tutorial]
-    summary: Some interesting views on matrix multiplications.
+    summary: Some views on matrix multiplications.
   - file: posts/2026-03-01-welcome.md
     date: 2026-03-01
     title: Welcome to My Blog

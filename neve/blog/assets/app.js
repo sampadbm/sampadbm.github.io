@@ -3,9 +3,6 @@ let allPostsData = [];
 let treeData = [];
 let filterManager = null;
 
-// Cache for loaded post content
-const contentCache = {};
-
 /**
  * Render LaTeX in an element using KaTeX auto-render
  */
@@ -35,58 +32,6 @@ function getPostFolder(postPath) {
 }
 
 /**
- * Count total posts in a tree node (recursively)
- */
-function countPostsInNode(node) {
-    let count = 0;
-    if (node.posts) count += node.posts.length;
-    if (node.children) {
-        for (const child of node.children) {
-            count += countPostsInNode(child);
-        }
-    }
-    return count;
-}
-
-/**
- * Build tree HTML from tree structure
- */
-function buildTreeHTML(nodes, level = 0) {
-    if (!nodes || nodes.length === 0) return '';
-
-    return nodes.map(node => {
-        if (node.post) {
-            const post = allPostsData.find(p => p.file === node.post);
-            const title = post?.title || node.post.split('/').pop().replace('.md', '');
-            const postId = post ? generatePostId(post) : '';
-            return `<div class="tree-post" data-file="${escapeHtml(node.post)}" data-post-id="${postId}">
-                <span class="tree-post-icon">📄</span>
-                <span class="tree-post-title">${escapeHtml(title)}</span>
-            </div>`;
-        } else if (node.name) {
-            const postCount = countPostsInNode(node);
-            let childNodes = [];
-            if (node.children) childNodes = childNodes.concat(node.children);
-            if (node.posts) childNodes = childNodes.concat(node.posts.map(p => ({ post: p })));
-            const childrenHTML = buildTreeHTML(childNodes, level + 1);
-
-            return `
-                <div class="tree-folder collapsed" data-folder="${escapeHtml(node.name)}">
-                    <div class="tree-folder-header">
-                        <span class="tree-toggle">▶</span>
-                        <span class="tree-folder-icon">📁</span>
-                        <span class="tree-folder-name">${escapeHtml(node.name)}</span>
-                        <span class="tree-count">(${postCount})</span>
-                    </div>
-                    <div class="tree-children hidden">${childrenHTML}</div>
-                </div>
-            `;
-        }
-        return '';
-    }).join('');
-}
-
-/**
  * Generate a unique post ID from post data
  */
 function generatePostId(post) {
@@ -94,7 +39,35 @@ function generatePostId(post) {
 }
 
 /**
- * Render the folder tree
+ * Build simple HTML tree from tree structure
+ */
+function buildSimpleTree(nodes) {
+    if (!nodes || nodes.length === 0) return '';
+
+    return nodes.map(node => {
+        if (node.post) {
+            const post = allPostsData.find(p => p.file === node.post);
+            const title = post?.title || node.post.split('/').pop().replace('.md', '');
+            return `<li class="tree-item tree-post" data-file="${escapeHtml(node.post)}">${escapeHtml(title)}</li>`;
+        } else if (node.name) {
+            let children = [];
+            if (node.children) children = children.concat(node.children);
+            if (node.posts) children = children.concat(node.posts.map(p => ({ post: p })));
+            const childrenHTML = buildSimpleTree(children);
+            return `
+                <li class="tree-item tree-folder">
+                    <span class="tree-folder-toggle">+</span>
+                    <span class="tree-folder-name">${escapeHtml(node.name)}</span>
+                    <ul class="tree-children hidden">${childrenHTML}</ul>
+                </li>
+            `;
+        }
+        return '';
+    }).join('');
+}
+
+/**
+ * Render the folder tree as simple text
  */
 function renderTree() {
     const container = document.getElementById('tree-container');
@@ -103,49 +76,31 @@ function renderTree() {
         return;
     }
 
-    const treeHTML = buildTreeHTML(treeData);
-    container.innerHTML = `
-        <div class="tree-header">
-            <span class="tree-title">Browse by Folder</span>
-        </div>
-        <div class="tree-content">${treeHTML}</div>
-    `;
+    const treeHTML = buildSimpleTree(treeData);
+    container.innerHTML = `<ul class="tree-root">${treeHTML}</ul>`;
 
-    attachTreeHandlers();
-}
-
-/**
- * Attach event handlers to tree elements
- */
-function attachTreeHandlers() {
-    document.querySelectorAll('.tree-folder-header').forEach(header => {
-        header.addEventListener('click', () => {
-            const folder = header.closest('.tree-folder');
+    // Attach click handlers for folders
+    container.querySelectorAll('.tree-folder-toggle, .tree-folder-name').forEach(el => {
+        el.addEventListener('click', (e) => {
+            const folder = e.target.closest('.tree-folder');
             const children = folder.querySelector('.tree-children');
-            const toggle = header.querySelector('.tree-toggle');
-
-            if (folder.classList.contains('collapsed')) {
-                folder.classList.remove('collapsed');
+            const toggle = folder.querySelector('.tree-folder-toggle');
+            if (children.classList.contains('hidden')) {
                 children.classList.remove('hidden');
-                toggle.textContent = '▼';
+                toggle.textContent = '−';
             } else {
-                folder.classList.add('collapsed');
                 children.classList.add('hidden');
-                toggle.textContent = '▶';
+                toggle.textContent = '+';
             }
         });
     });
 
-    document.querySelectorAll('.tree-post').forEach(postEl => {
-        postEl.addEventListener('click', () => {
-            const postId = postEl.dataset.postId;
-            if (postId) {
-                const target = document.getElementById(postId);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    target.classList.add('highlighted');
-                    setTimeout(() => target.classList.remove('highlighted'), 2000);
-                }
+    // Attach click handlers for posts
+    container.querySelectorAll('.tree-post').forEach(el => {
+        el.addEventListener('click', () => {
+            const file = el.dataset.file;
+            if (file) {
+                window.location.href = `post.html?file=${file}`;
             }
         });
     });
@@ -156,7 +111,7 @@ function attachTreeHandlers() {
  */
 async function loadPosts() {
     try {
-        const configResponse = await fetch('config.yml');
+        const configResponse = await fetch('config.yml', { cache: 'no-cache' });
         if (!configResponse.ok) {
             throw new Error(`Config not found: ${configResponse.status}`);
         }
@@ -220,9 +175,9 @@ function initializeFilters() {
         onFilterChange: () => displayFilteredPosts()
     });
 
-    const fieldMap = { year: 'year', tags: 'tags', folder: 'folder' };
+    const fieldMap = { year: 'year', tags: 'tags' };
     const filterOptions = filterManager.extractFilterOptions(allPostsData, fieldMap);
-    const filterLabels = { year: 'Year', tags: 'Tags', folder: 'Folder' };
+    const filterLabels = { year: 'Year', tags: 'Tags' };
     const filterBarHTML = filterManager.buildFilterBar(filterOptions, filterLabels);
 
     const filterContainer = document.getElementById('filter-container');
@@ -252,13 +207,20 @@ function showFilters() {
  * Apply filters and display posts
  */
 function displayFilteredPosts() {
-    const fieldMap = { year: 'year', tags: 'tags', folder: 'folder' };
+    const fieldMap = { year: 'year', tags: 'tags' };
     const filteredPosts = filterManager.applyFilters(allPostsData, fieldMap);
     displayPosts(filteredPosts);
 }
 
 /**
- * Display posts in the DOM (using metadata only - no content fetched yet)
+ * Generate post URL for linking to individual post page
+ */
+function getPostUrl(post) {
+    return `post.html?file=${post.file}`;
+}
+
+/**
+ * Display posts in the DOM (using metadata only)
  */
 function displayPosts(posts) {
     const container = document.getElementById('posts-container');
@@ -273,7 +235,7 @@ function displayPosts(posts) {
 
     container.innerHTML = posts.map(post => {
         const postId = generatePostId(post);
-        const permalink = `#${postId}`;
+        const postUrl = getPostUrl(post);
         const previewText = post.summary || post.preview || '';
 
         return `
@@ -298,19 +260,13 @@ function displayPosts(posts) {
             </div>
             <div class="content">
                 <div class="post-header">
-                    <h2 class="post-title">${escapeHtml(post.title)}</h2>
-                    <a href="${permalink}" class="permalink" aria-label="Permalink to this post" title="Link to this post">🔗</a>
+                    <a href="${postUrl}" class="post-title-link">
+                        <h2 class="post-title">${escapeHtml(post.title)}</h2>
+                    </a>
                 </div>
                 ${previewText ? `
                 <div class="post-preview"><p>${escapeHtml(previewText)}</p></div>
                 ` : ''}
-                <button class="toggle-content-btn" aria-expanded="false" aria-label="Expand post content">
-                    <span class="toggle-icon">▼</span>
-                    <span class="toggle-text">Read more</span>
-                </button>
-                <div class="post-content collapsed">
-                    <div class="loading-indicator">Loading...</div>
-                </div>
             </div>
         </article>
         `;
@@ -330,82 +286,6 @@ function displayPosts(posts) {
             }
         }, 100);
     }
-
-    attachContentToggleHandlers();
-}
-
-/**
- * Fetch and render full post content (lazy loading)
- */
-async function loadPostContent(article) {
-    const file = article.dataset.file;
-    const contentDiv = article.querySelector('.post-content');
-
-    // Check cache first
-    if (contentCache[file]) {
-        contentDiv.innerHTML = contentCache[file];
-        renderMath(contentDiv);
-        return;
-    }
-
-    try {
-        const response = await fetch(file);
-        const markdownText = await response.text();
-
-        // Extract content (after frontmatter)
-        const match = markdownText.match(/^---\s*\n[\s\S]*?\n---\s*\n([\s\S]*)$/);
-        const content = match ? match[1] : markdownText;
-
-        // Render markdown
-        const html = processImages(marked.parse(content));
-
-        // Cache and display
-        contentCache[file] = html;
-        contentDiv.innerHTML = html;
-        renderMath(contentDiv);
-
-    } catch (error) {
-        console.error(`Error loading ${file}:`, error);
-        contentDiv.innerHTML = '<p style="color: #cc0000;">Error loading content.</p>';
-    }
-}
-
-/**
- * Attach event handlers to content toggle buttons
- */
-function attachContentToggleHandlers() {
-    document.querySelectorAll('.toggle-content-btn').forEach(btn => {
-        btn.addEventListener('click', async function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            const button = this;
-            const article = button.closest('article');
-            if (!article) return;
-
-            const content = article.querySelector('.post-content');
-            if (!content) return;
-
-            const isExpanded = button.getAttribute('aria-expanded') === 'true';
-
-            if (isExpanded) {
-                content.classList.add('collapsed');
-                button.setAttribute('aria-expanded', 'false');
-                button.querySelector('.toggle-text').textContent = 'Read more';
-                button.querySelector('.toggle-icon').textContent = '▼';
-            } else {
-                // Load content if not already loaded
-                if (content.querySelector('.loading-indicator')) {
-                    await loadPostContent(article);
-                }
-
-                content.classList.remove('collapsed');
-                button.setAttribute('aria-expanded', 'true');
-                button.querySelector('.toggle-text').textContent = 'Hide';
-                button.querySelector('.toggle-icon').textContent = '▲';
-            }
-        });
-    });
 }
 
 /**
@@ -484,8 +364,66 @@ function initializeFilterToggle() {
     }
 }
 
+/**
+ * Tree overlay toggle functionality
+ */
+function initializeTreeOverlay() {
+    const overlay = document.getElementById('tree-overlay');
+    const backdrop = overlay?.querySelector('.tree-overlay-backdrop');
+
+    if (!overlay) return;
+
+    function showOverlay() {
+        overlay.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function hideOverlay() {
+        overlay.classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+
+    function toggleOverlay() {
+        if (overlay.classList.contains('hidden')) {
+            showOverlay();
+        } else {
+            hideOverlay();
+        }
+    }
+
+    // Keyboard: 'f' to toggle, Escape to close
+    document.addEventListener('keyup', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+        if (e.key === 'f' || e.key === 'F') {
+            toggleOverlay();
+        } else if (e.key === 'Escape') {
+            hideOverlay();
+        }
+    });
+
+    // Click backdrop to close
+    if (backdrop) {
+        backdrop.addEventListener('click', hideOverlay);
+    }
+
+    // Close overlay when clicking a post link
+    overlay.addEventListener('click', (e) => {
+        if (e.target.closest('.tree-post')) {
+            hideOverlay();
+        }
+    });
+
+    // Click hint to open overlay
+    const hint = document.getElementById('folder-hint');
+    if (hint) {
+        hint.addEventListener('click', showOverlay);
+    }
+}
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     loadPosts();
     initializeFilterToggle();
+    initializeTreeOverlay();
 });

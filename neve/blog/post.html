@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sampad's Blog</title>
+    <title>Loading... - Sampad's Blog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
@@ -12,34 +12,35 @@
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-    <header>
-        <h1>Sampad's Blog</h1>
-        <p class="header-subtitle">Notes on math, machine learning, and other curiosities</p>
-        <div class="shortcut-hint" id="folder-hint">Press <kbd>f</kbd> to browse folders</div>
-    </header>
-
-    <!-- Folder tree overlay (toggle with 'f' key) -->
-    <div id="tree-overlay" class="tree-overlay hidden">
-        <div class="tree-overlay-backdrop"></div>
-        <div id="tree-container" class="tree-container">
-            <!-- Folder tree will be populated here -->
-        </div>
-    </div>
-
-    <div class="filter-toggle-container">
-        <button id="filter-toggle-btn" class="filter-toggle-btn">
-            <span class="filter-toggle-icon">▼</span>
-            <span class="filter-toggle-text">Show Filters</span>
-        </button>
-    </div>
-
-    <div id="filter-container" class="hidden">
-        <!-- Filter bar will be populated here -->
-    </div>
-
-    <main id="posts-container">
-        <!-- Blog posts will be populated here -->
+    <main>
+        <aside class="post-sidebar" id="post-sidebar">
+            <nav class="sidebar-toc" id="sidebar-toc">
+                <div class="toc-title">Contents</div>
+                <ul class="toc-list" id="toc-list">
+                    <!-- Generated from headings -->
+                </ul>
+            </nav>
+        </aside>
+        <article class="blog-post single-post centered-article">
+            <h1 class="post-title" id="post-title">Loading...</h1>
+            <div class="post-summary" id="post-summary">
+                <!-- Populated by JS if summary exists -->
+            </div>
+            <div class="post-meta-line" id="post-metadata">
+                <!-- Populated by JS: "March 7, 2026 · math, linear-algebra" -->
+            </div>
+            <div class="post-content" id="post-content">
+                <div class="loading-indicator">Loading post...</div>
+            </div>
+        </article>
     </main>
+
+    <footer class="post-footer">
+        <a href="index.html" class="back-link">← Back to all posts</a>
+        <div class="shortcuts-hint">
+            Shortcuts: <kbd>a</kbd> alignment · <kbd>l</kbd> layout · <kbd>t</kbd> theme
+        </div>
+    </footer>
 
     <!-- js-yaml for YAML parsing -->
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
@@ -49,7 +50,6 @@
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
     <!-- KaTeX auto-render for $...$ and $$...$$ delimiters -->
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
-    <script src="assets/filter.js"></script>
-    <script src="assets/app.js"></script>
+    <script src="assets/post.js"></script>
 </body>
 </html>
