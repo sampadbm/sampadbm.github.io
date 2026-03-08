@@ -12,15 +12,16 @@ Matrix Differentiation
 </b></p>
 
 
-People studying optimization must already be very familiar withe notion of gradients which are derivatives of scalar valued functions with respect to vectors. Although the matrix space is also a vector space, there is additional structure in this matrix vector space that is not present in just a "vector"vector space. In this blog, we focus on differentiations of matrices and their properties with respect to matrices and their properties. The properties are eigenvals, eigenvecs, trace, det, etc. Although, in principle, we could vectorize the matrix (via any consistent vectorization/serialization) and then take the gradient with respect to the vectorized matrix, we will actively try to aviod doing that and alwasy represent the gradients wrt a matrix in the same shape as the matrix. This will preserve important interesting properties of the matrix gradient, if there are any.
+People studying optimization must already be very familiar with the notion of gradients which are derivatives of scalar valued functions with respect to vectors. Although the matrix space is also a vector space, there is additional structure in this matrix vector space that is not present in just a "vector"vector space. In this blog, we focus on differentiations of matrices and their properties with respect to matrices and their properties. The properties are eigenvals, eigenvecs, trace, det, etc. Although, in principle, we could vectorize the matrix (via any consistent vectorization/serialization) and then take the gradient with respect to the vectorized matrix, we will actively try to avoid doing that and always represent the gradients wrt a matrix in the same shape as the matrix. This will preserve important interesting properties of the matrix gradient, if there are any.
 
 ### 1. Derivative of the quadratic form
 
-Let $f(X) = u^T X v$. Then what is the derivative $\frac{\parfial f}{\partial X}$ ?
+Let $f(X) = u^T X v$. Then what is the derivative $\frac{\partial f}{\partial X}$ ?
 
+We know that $ u^T X v = \langle X, uv^T \rangle$.
+Hence, $\frac{\partial f}{\partial X} = uv^T$.
 
-We know that $ u^T X v = \langle X, uvT \rangle$.
-Hence, $\frac{\parfial f}{\partial X} = uv^T$.
+### 2. Derivative of $f(X) = UXV$
 
-
+If you recall from the post on matrix multiplications()
 

@@ -20,6 +20,6 @@ Interesting results in Linear Algebra
 2. [Free parameters in matrix decompositions](paramsInDecomp)
 3. [SVD and trace](svd_and_trace)
 4. [Orthogonality in left and right eigenvectors](left_and_right_eigenvectors/orthogonality_in_left_and_right_eigenvectors.pdf)
-5. [matrix_differentiation](matrix_differentiation)
+5. [matrix_differentiation](matrix-differentiation)
    
    
