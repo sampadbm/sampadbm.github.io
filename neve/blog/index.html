@@ -15,31 +15,33 @@
     <header>
         <h1>Sampy's Blog</h1>
         <p class="header-subtitle">Notes on math, machine learning, and other curiosities</p>
-        <div class="shortcut-hint" id="folder-hint">Press <kbd>f</kbd> to browse folders · <kbd>t</kbd> to change theme</div>
+        <div class="shortcut-hint" id="folder-hint"><kbd>t</kbd> theme</div>
     </header>
 
-    <!-- Folder tree overlay (toggle with 'f' key) -->
-    <div id="tree-overlay" class="tree-overlay hidden">
-        <div class="tree-overlay-backdrop"></div>
-        <div id="tree-container" class="tree-container">
-            <!-- Folder tree will be populated here -->
+    <div class="landing-split">
+        <div class="landing-browser">
+            <div class="browser-title">Browse</div>
+            <div id="tree-container" class="tree-container">
+                <!-- Folder tree will be populated here -->
+            </div>
+        </div>
+        <div class="landing-posts">
+            <div class="filter-toggle-container">
+                <button id="filter-toggle-btn" class="filter-toggle-btn">
+                    <span class="filter-toggle-icon">▼</span>
+                    <span class="filter-toggle-text">Show Filters</span>
+                </button>
+            </div>
+
+            <div id="filter-container" class="hidden">
+                <!-- Filter bar will be populated here -->
+            </div>
+
+            <main id="posts-container">
+                <!-- Blog posts will be populated here -->
+            </main>
         </div>
     </div>
-
-    <div class="filter-toggle-container">
-        <button id="filter-toggle-btn" class="filter-toggle-btn">
-            <span class="filter-toggle-icon">▼</span>
-            <span class="filter-toggle-text">Show Filters</span>
-        </button>
-    </div>
-
-    <div id="filter-container" class="hidden">
-        <!-- Filter bar will be populated here -->
-    </div>
-
-    <main id="posts-container">
-        <!-- Blog posts will be populated here -->
-    </main>
 
     <!-- js-yaml for YAML parsing -->
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>

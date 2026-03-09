@@ -192,13 +192,6 @@ function displayFilteredPosts() {
 }
 
 /**
- * Generate post URL for linking to individual post page
- */
-function getPostUrl(post) {
-    return buildBlogUrl('post.html', post.file);
-}
-
-/**
  * Display posts in the DOM (using metadata only)
  */
 function displayPosts(posts) {
@@ -214,7 +207,6 @@ function displayPosts(posts) {
 
     container.innerHTML = posts.map(post => {
         const postId = generatePostId(post);
-        const postUrl = getPostUrl(post);
         const previewText = post.summary || post.preview || '';
 
         return `
@@ -238,7 +230,7 @@ function displayPosts(posts) {
                 ` : ''}
             </div>
             <div class="content">
-                <a href="${postUrl}" class="post-title-link">
+                <a href="${buildBlogUrl('post.html', post.file)}" class="post-title-link" data-post-file="${escapeHtml(post.file)}">
                     <h2 class="post-title">${escapeHtml(post.title)}</h2>
                 </a>
                 ${previewText ? `
@@ -248,6 +240,14 @@ function displayPosts(posts) {
         </article>
         `;
     }).join('');
+
+    // Left-click builds URL at click time (preserves current theme)
+    container.querySelectorAll('.post-title-link[data-post-file]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = buildBlogUrl('post.html', link.dataset.postFile);
+        });
+    });
 
     // Render LaTeX in previews
     document.querySelectorAll('.post-preview').forEach(el => renderMath(el));
@@ -289,67 +289,16 @@ function initializeFilterToggle() {
     }
 }
 
-/**
- * Tree overlay toggle functionality
- */
-function initializeTreeOverlay() {
-    const overlay = document.getElementById('tree-overlay');
-    const backdrop = overlay?.querySelector('.tree-overlay-backdrop');
-
-    if (!overlay) return;
-
-    function showOverlay() {
-        overlay.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function hideOverlay() {
-        overlay.classList.add('hidden');
-        document.body.style.overflow = '';
-    }
-
-    function toggleOverlay() {
-        if (overlay.classList.contains('hidden')) {
-            showOverlay();
-        } else {
-            hideOverlay();
-        }
-    }
-
-    // Keyboard: 'f' to toggle, Escape to close
-    document.addEventListener('keyup', (e) => {
-        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-
-        if (e.key === 'f' || e.key === 'F') {
-            toggleOverlay();
-        } else if (e.key === 'Escape') {
-            hideOverlay();
-        }
-    });
-
-    // Click backdrop to close
-    if (backdrop) {
-        backdrop.addEventListener('click', hideOverlay);
-    }
-
-    // Close overlay when clicking a post link
-    overlay.addEventListener('click', (e) => {
-        if (e.target.closest('.tree-post')) {
-            hideOverlay();
-        }
-    });
-
-    // Click hint to open overlay
-    const hint = document.getElementById('folder-hint');
-    if (hint) {
-        hint.addEventListener('click', showOverlay);
-    }
-}
-
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     initStyleSwitcher(['theme']);
     loadPosts();
     initializeFilterToggle();
-    initializeTreeOverlay();
+
+    // Refresh post link hrefs when style changes (for middle-click/right-click)
+    onStyleChangeCallbacks.push(() => {
+        document.querySelectorAll('.post-title-link[data-post-file]').forEach(link => {
+            link.href = buildBlogUrl('post.html', link.dataset.postFile);
+        });
+    });
 });

@@ -172,9 +172,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update back link to preserve style params
     const backLink = document.querySelector('.back-link');
     if (backLink) {
+        backLink.href = buildBlogUrl('index.html');
         backLink.addEventListener('click', (e) => {
             e.preventDefault();
             window.location.href = buildBlogUrl('index.html');
         });
+        onStyleChangeCallbacks.push(() => {
+            backLink.href = buildBlogUrl('index.html');
+        });
     }
+
+    // 'b' key to go back to blog listing
+    document.addEventListener('keyup', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (e.ctrlKey || e.altKey || e.metaKey) return;
+        if (e.key.toLowerCase() === 'b') {
+            window.location.href = buildBlogUrl('index.html');
+        }
+    });
 });

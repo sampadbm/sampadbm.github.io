@@ -78,11 +78,66 @@ h1 {
     border-radius: 3px;
 }
 
+/* Landing page split layout */
+.landing-split {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.landing-browser {
+    flex-shrink: 0;
+    width: fit-content;
+    min-width: 150px;
+    max-width: 35%;
+    position: sticky;
+    top: 2vw;
+}
+
+.browser-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-variant: small-caps;
+    letter-spacing: 1px;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.landing-browser .tree-container {
+    padding: 0;
+}
+
+.landing-posts {
+    flex: 1;
+    min-width: 0;
+    border-left: 1px solid var(--color-border);
+    padding-left: 2rem;
+}
+
+@media (max-width: 768px) {
+    .landing-split {
+        flex-direction: column;
+    }
+
+    .landing-browser {
+        width: 100%;
+        position: static;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--color-border);
+        margin-bottom: 1.5rem;
+    }
+
+    .landing-posts {
+        border-left: none;
+        padding-left: 0;
+    }
+}
+
 /* Filter Toggle */
 .filter-toggle-container {
     margin-bottom: 1rem;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .filter-toggle-btn {
@@ -308,7 +363,6 @@ h1 {
 .content {
     width: 75%;
     padding-left: 2vw;
-    border-left: 1px solid var(--color-border);
 }
 
 .post-title {
@@ -668,59 +722,8 @@ h1 {
 }
 
 /* =====================================================
-   FOLDER TREE OVERLAY
+   FOLDER TREE
    ===================================================== */
-
-.tree-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.tree-overlay.hidden {
-    display: none;
-}
-
-.tree-overlay-backdrop {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(30, 27, 22, 0.4);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-}
-
-.tree-overlay .tree-container {
-    position: relative;
-    z-index: 1;
-    padding: 2rem;
-    background: rgba(246, 242, 236, 0.6);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-radius: 12px;
-    border: 1px solid rgba(216, 207, 195, 0.4);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    width: 70vw;
-    max-width: 500px;
-    min-width: 280px;
-    max-height: 70vh;
-    overflow: auto;
-}
-
-@media (max-width: 600px) {
-    .tree-overlay .tree-container {
-        width: 90vw;
-        padding: 1.5rem;
-    }
-}
 
 /* Simple text tree styles */
 .tree-root {
@@ -788,20 +791,6 @@ h1 {
 
 .tree-children.hidden {
     display: none;
-}
-
-/* Tree title */
-.tree-overlay .tree-container::before {
-    content: 'Browse Folders';
-    display: block;
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    font-variant: small-caps;
-    letter-spacing: 1px;
-    color: var(--color-text-secondary);
-    margin-bottom: 1rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--color-border);
 }
 
 /* Folder path in metadata */
@@ -1178,15 +1167,6 @@ body.theme-dim .shortcuts-hint kbd {
     border-color: var(--color-border);
 }
 
-body.theme-dim .tree-overlay-backdrop {
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-body.theme-dim .tree-overlay .tree-container {
-    background: rgba(45, 45, 45, 0.85);
-    border-color: rgba(74, 74, 74, 0.5);
-}
-
 /* Dark Theme */
 body.theme-dark {
     --color-text-primary: #e0e0e0;
@@ -1267,15 +1247,6 @@ body.theme-dark .toc-item a:hover {
     color: var(--color-accent);
 }
 
-body.theme-dark .tree-overlay-backdrop {
-    background-color: rgba(0, 0, 0, 0.6);
-}
-
-body.theme-dark .tree-overlay .tree-container {
-    background: rgba(26, 26, 26, 0.9);
-    border-color: rgba(58, 58, 58, 0.5);
-}
-
 /* Sepia Theme */
 body.theme-sepia {
     --color-text-primary: #5c4b37;
@@ -1334,14 +1305,6 @@ body.theme-sepia .shortcuts-hint kbd {
     border-color: var(--color-border);
 }
 
-body.theme-sepia .tree-overlay-backdrop {
-    background-color: rgba(92, 75, 55, 0.4);
-}
-
-body.theme-sepia .tree-overlay .tree-container {
-    background: rgba(244, 236, 216, 0.85);
-    border-color: rgba(212, 196, 168, 0.5);
-}
 
 /* =====================================================
    PRINT STYLES

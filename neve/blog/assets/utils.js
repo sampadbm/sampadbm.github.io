@@ -130,6 +130,9 @@ let currentStyles = { ...STYLE_DEFAULTS };
 // Which style types are enabled for this page
 let enabledStyleTypes = [];
 
+// Callbacks to run after a style change (e.g. to refresh hrefs)
+let onStyleChangeCallbacks = [];
+
 /**
  * Initialize style switcher with specified style types
  * @param {string[]} types - Array of style types to enable (e.g., ['theme'] or ['align', 'layout', 'theme'])
@@ -169,6 +172,7 @@ function cycleStyle(type) {
     currentStyles[type] = options[next];
     applyStyles();
     updateStyleURL();
+    onStyleChangeCallbacks.forEach(cb => cb());
     console.log(`${type}: ${options[current]} → ${options[next]}`);
 }
 
