@@ -59,7 +59,7 @@ $$
 		[XAY] = \sum_{i,j=1}^{n,p} a_i^j \cdot x^i y_j
 $$
 
-##### Proof: 
+#### Proof: 
 
 $$
 	XAY = XA \\; IY = \sum_{i=1}^n x^i a_i \sum_{j=1}^{p} e^j y_j = \sum_{ij} x^i (a_i e^j) y_j = \sum_{i,j=1}^{n,p} x^i a_i^j y_j = \sum_{i,j=1}^{n,p} a_i^j \cdot x^i y_j

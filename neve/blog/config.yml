@@ -7,8 +7,16 @@ tree:
       - name: linear-algebra
         posts:
           - posts/math/linear-algebra/matrix-multiplications.md
+  - name: terminal
+    posts:
+      - posts/terminal/favourite-tui-tools.md
 
 posts:
+  - file: posts/terminal/favourite-tui-tools.md
+    date: 2026-03-09
+    title: My Favourite TUI Tools
+    tags: [terminal, tools, tui]
+    summary: A curated list of terminal-based tools I use or find interesting.
   - file: posts/math/linear-algebra/matrix-multiplications.md
     date: 2026-03-07
     title: Understanding Matrix Multiplications

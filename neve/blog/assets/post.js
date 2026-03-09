@@ -1,5 +1,6 @@
 /**
  * Post page - loads and renders a single blog post
+ * Requires: utils.js
  */
 
 /**
@@ -8,74 +9,6 @@
 function getPostFile() {
     const params = new URLSearchParams(window.location.search);
     return params.get('file');
-}
-
-/**
- * Render LaTeX in an element using KaTeX auto-render
- */
-function renderMath(element) {
-    if (typeof renderMathInElement !== 'undefined') {
-        renderMathInElement(element, {
-            delimiters: [
-                {left: '$$', right: '$$', display: true},
-                {left: '$', right: '$', display: false}
-            ],
-            throwOnError: false,
-            errorColor: '#cc0000'
-        });
-    }
-}
-
-/**
- * Format date for display
- */
-function formatDate(dateString) {
-    const [year, month, day] = dateString.split('-').map(num => parseInt(num, 10));
-    const date = new Date(year, month - 1, day);
-    return date.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
-}
-
-/**
- * Escape HTML to prevent XSS
- */
-function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
-
-/**
- * Format tags for display
- */
-function formatTags(tags) {
-    if (!tags) return '';
-    const tagArray = Array.isArray(tags) ? tags : [tags];
-    return tagArray.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('');
-}
-
-/**
- * Process images to add figure/figcaption wrappers
- */
-function processImages(html) {
-    return html.replace(/<img([^>]*)alt="([^"]*)"([^>]*)>/gi, (match, before, altText, after) => {
-        const posMatch = altText.match(/^(left|right):\s*(.*)$/i);
-
-        if (posMatch) {
-            const position = posMatch[1].toLowerCase();
-            const caption = posMatch[2];
-            const imgTag = `<img${before}alt="${caption}"${after}>`;
-            return `<figure class="float-${position}">${imgTag}<figcaption>${caption}</figcaption></figure>`;
-        } else if (altText) {
-            const imgTag = `<img${before}alt="${altText}"${after}>`;
-            return `<figure>${imgTag}<figcaption>${altText}</figcaption></figure>`;
-        }
-
-        return match;
-    });
 }
 
 /**
@@ -91,6 +24,15 @@ function generateTOC() {
         return;
     }
 
+    // Find the minimum heading level used
+    let minLevel = 6;
+    headings.forEach(heading => {
+        const level = parseInt(heading.tagName.charAt(1));
+        if (level < minLevel) minLevel = level;
+    });
+
+    // Track counters at each depth level
+    const counters = [0, 0, 0, 0, 0, 0];
     tocList.innerHTML = '';
 
     headings.forEach((heading, index) => {
@@ -99,20 +41,40 @@ function generateTOC() {
             heading.id = `heading-${index}`;
         }
 
+        const level = parseInt(heading.tagName.charAt(1));
+        const depth = level - minLevel;
+
+        // Update counters
+        counters[depth]++;
+        // Reset deeper counters when going to a shallower level
+        for (let i = depth + 1; i < counters.length; i++) {
+            counters[i] = 0;
+        }
+
+        // Build hierarchical number string
+        const numberParts = counters.slice(0, depth + 1);
+        const numberStr = numberParts.join('.');
+
         const li = document.createElement('li');
-        li.className = `toc-item toc-${heading.tagName.toLowerCase()}`;
+        li.className = 'toc-item';
+        li.dataset.depth = depth;
+
+        const numberSpan = document.createElement('span');
+        numberSpan.className = 'toc-number';
+        numberSpan.textContent = numberStr + '.';
 
         const link = document.createElement('a');
         link.href = `#${heading.id}`;
-        // Keep original text with LaTeX delimiters
         link.textContent = heading.textContent;
         link.addEventListener('click', (e) => {
             e.preventDefault();
             heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
 
+        li.appendChild(numberSpan);
         li.appendChild(link);
         tocList.appendChild(li);
+
     });
 
     // Render LaTeX in TOC
@@ -156,18 +118,10 @@ async function loadPost() {
         const { meta, content } = parseFrontmatter(markdownText);
 
         // Handle date (could be Date object or string from YAML)
-        let dateStr = meta.date;
-        if (meta.date instanceof Date) {
-            const y = meta.date.getUTCFullYear();
-            const m = String(meta.date.getUTCMonth() + 1).padStart(2, '0');
-            const d = String(meta.date.getUTCDate()).padStart(2, '0');
-            dateStr = `${y}-${m}-${d}`;
-        } else {
-            dateStr = String(meta.date || '');
-        }
+        const dateStr = normalizeDateFromYAML(meta.date);
 
         // Update page title
-        document.title = `${meta.title || 'Untitled'} - Sampad's Blog`;
+        document.title = `${meta.title || 'Untitled'} - Sampy's Blog`;
 
         // Update post title
         document.getElementById('post-title').textContent = meta.title || 'Untitled';
@@ -210,111 +164,17 @@ async function loadPost() {
     }
 }
 
-/* =====================================================
-   STYLE SWITCHER - Keyboard shortcuts to toggle styles
-   ===================================================== */
-
-const STYLES = {
-    align: ['left', 'center', 'justify'],
-    layout: ['no-sidebar', 'sidebar-left', 'sidebar-right'],
-    theme: ['light', 'dim', 'dark', 'sepia']
-};
-
-let currentStyles = {
-    align: 'left',
-    layout: 'sidebar-right',
-    theme: 'light'
-};
-
-/**
- * Load style preferences from URL parameters
- */
-function loadStylesFromURL() {
-    const params = new URLSearchParams(window.location.search);
-
-    const align = params.get('align');
-    const layout = params.get('layout');
-    const theme = params.get('theme');
-
-    if (align && STYLES.align.includes(align)) currentStyles.align = align;
-    if (layout && STYLES.layout.includes(layout)) currentStyles.layout = layout;
-    if (theme && STYLES.theme.includes(theme)) currentStyles.theme = theme;
-
-    applyStyles();
-}
-
-/**
- * Cycle through style options
- */
-function cycleStyle(type) {
-    const options = STYLES[type];
-    let current = options.indexOf(currentStyles[type]);
-    // If current value not found, start from beginning
-    if (current === -1) current = 0;
-    const next = (current + 1) % options.length;
-    currentStyles[type] = options[next];
-    applyStyles();
-    updateURL();
-    console.log(`${type}: ${options[current]} → ${options[next]}`);
-}
-
-/**
- * Apply current styles to the page
- */
-function applyStyles() {
-    const body = document.body;
-
-    // Collect classes to remove first (can't modify while iterating)
-    const toRemove = [];
-    body.classList.forEach(cls => {
-        if (cls.startsWith('align-') || cls.startsWith('layout-') || cls.startsWith('theme-')) {
-            toRemove.push(cls);
-        }
-    });
-
-    // Remove old classes
-    toRemove.forEach(cls => body.classList.remove(cls));
-
-    // Add new style classes
-    body.classList.add(`align-${currentStyles.align}`);
-    body.classList.add(`layout-${currentStyles.layout}`);
-    body.classList.add(`theme-${currentStyles.theme}`);
-}
-
-/**
- * Update URL with current style parameters
- */
-function updateURL() {
-    const params = new URLSearchParams(window.location.search);
-    params.set('align', currentStyles.align);
-    params.set('layout', currentStyles.layout);
-    params.set('theme', currentStyles.theme);
-    history.replaceState(null, '', `?${params}`);
-}
-
-/**
- * Keyboard shortcuts for style switching
- */
-document.addEventListener('keyup', (e) => {
-    // Ignore if typing in input/textarea
-    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-
-    // Ignore if modifier keys are pressed (browser shortcuts)
-    if (e.ctrlKey || e.altKey || e.metaKey) return;
-
-    const key = e.key.toLowerCase();
-
-    if (key === 'a') {
-        cycleStyle('align');
-    } else if (key === 'l') {
-        cycleStyle('layout');
-    } else if (key === 't') {
-        cycleStyle('theme');
-    }
-});
-
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
-    loadStylesFromURL();
+    initStyleSwitcher(['align', 'layout', 'theme']);
     loadPost();
+
+    // Update back link to preserve style params
+    const backLink = document.querySelector('.back-link');
+    if (backLink) {
+        backLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = buildBlogUrl('index.html');
+        });
+    }
 });

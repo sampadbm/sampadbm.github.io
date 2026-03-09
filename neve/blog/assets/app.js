@@ -1,23 +1,12 @@
+/**
+ * Blog listing page - displays all posts with filtering
+ * Requires: utils.js, filter.js
+ */
+
 // Store all posts globally for filtering
 let allPostsData = [];
 let treeData = [];
 let filterManager = null;
-
-/**
- * Render LaTeX in an element using KaTeX auto-render
- */
-function renderMath(element) {
-    if (typeof renderMathInElement !== 'undefined') {
-        renderMathInElement(element, {
-            delimiters: [
-                {left: '$$', right: '$$', display: true},
-                {left: '$', right: '$', display: false}
-            ],
-            throwOnError: false,
-            errorColor: '#cc0000'
-        });
-    }
-}
 
 /**
  * Extract folder path from post file path
@@ -100,7 +89,7 @@ function renderTree() {
         el.addEventListener('click', () => {
             const file = el.dataset.file;
             if (file) {
-                window.location.href = `post.html?file=${file}`;
+                window.location.href = buildBlogUrl('post.html', file);
             }
         });
     });
@@ -130,17 +119,7 @@ async function loadPosts() {
         allPostsData = postsConfig
             .filter(post => !post.draft || showDrafts)
             .map(post => {
-                // Handle date as Date object or string
-                let dateStr = post.date;
-                if (post.date instanceof Date) {
-                    const y = post.date.getUTCFullYear();
-                    const m = String(post.date.getUTCMonth() + 1).padStart(2, '0');
-                    const d = String(post.date.getUTCDate()).padStart(2, '0');
-                    dateStr = `${y}-${m}-${d}`;
-                } else {
-                    dateStr = String(post.date);
-                }
-
+                const dateStr = normalizeDateFromYAML(post.date);
                 return {
                     ...post,
                     date: dateStr,
@@ -216,7 +195,7 @@ function displayFilteredPosts() {
  * Generate post URL for linking to individual post page
  */
 function getPostUrl(post) {
-    return `post.html?file=${post.file}`;
+    return buildBlogUrl('post.html', post.file);
 }
 
 /**
@@ -259,11 +238,9 @@ function displayPosts(posts) {
                 ` : ''}
             </div>
             <div class="content">
-                <div class="post-header">
-                    <a href="${postUrl}" class="post-title-link">
-                        <h2 class="post-title">${escapeHtml(post.title)}</h2>
-                    </a>
-                </div>
+                <a href="${postUrl}" class="post-title-link">
+                    <h2 class="post-title">${escapeHtml(post.title)}</h2>
+                </a>
                 ${previewText ? `
                 <div class="post-preview"><p>${escapeHtml(previewText)}</p></div>
                 ` : ''}
@@ -286,58 +263,6 @@ function displayPosts(posts) {
             }
         }, 100);
     }
-}
-
-/**
- * Process images to add figure/figcaption wrappers
- */
-function processImages(html) {
-    return html.replace(/<img([^>]*)alt="([^"]*)"([^>]*)>/gi, (match, before, altText, after) => {
-        const posMatch = altText.match(/^(left|right):\s*(.*)$/i);
-
-        if (posMatch) {
-            const position = posMatch[1].toLowerCase();
-            const caption = posMatch[2];
-            const imgTag = `<img${before}alt="${caption}"${after}>`;
-            return `<figure class="float-${position}">${imgTag}<figcaption>${caption}</figcaption></figure>`;
-        } else if (altText) {
-            const imgTag = `<img${before}alt="${altText}"${after}>`;
-            return `<figure>${imgTag}<figcaption>${altText}</figcaption></figure>`;
-        }
-
-        return match;
-    });
-}
-
-/**
- * Format tags for display
- */
-function formatTags(tags) {
-    if (!tags) return '';
-    const tagArray = Array.isArray(tags) ? tags : [tags];
-    return tagArray.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('');
-}
-
-/**
- * Format date for display
- */
-function formatDate(dateString) {
-    const [year, month, day] = dateString.split('-').map(num => parseInt(num, 10));
-    const date = new Date(year, month - 1, day);
-    return date.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
-}
-
-/**
- * Escape HTML to prevent XSS
- */
-function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
 }
 
 /**
@@ -423,6 +348,7 @@ function initializeTreeOverlay() {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
+    initStyleSwitcher(['theme']);
     loadPosts();
     initializeFilterToggle();
     initializeTreeOverlay();
