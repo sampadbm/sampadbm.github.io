@@ -9,13 +9,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
     <!-- KaTeX CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="../siteutils/modal-filter.css">
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
     <header>
         <h1>Sampy's Blog</h1>
         <p class="header-subtitle">Notes on math, machine learning, and other curiosities</p>
-        <div class="shortcut-hint" id="folder-hint"><kbd>t</kbd> theme</div>
+        <div class="shortcuts-container">
+            <div class="shortcut-hint" id="folder-hint"><kbd>t</kbd> theme</div>
+            <div class="shortcut-hint" id="modal-filter-open-btn" role="button" tabindex="0"><kbd>f</kbd> filter</div>
+        </div>
     </header>
 
     <div class="landing-split">
@@ -26,16 +30,7 @@
             </div>
         </div>
         <div class="landing-posts">
-            <div class="filter-toggle-container">
-                <button id="filter-toggle-btn" class="filter-toggle-btn">
-                    <span class="filter-toggle-icon">▼</span>
-                    <span class="filter-toggle-text">Show Filters</span>
-                </button>
-            </div>
-
-            <div id="filter-container" class="hidden">
-                <!-- Filter bar will be populated here -->
-            </div>
+            <!-- Removed old ugly filter button -->
 
             <main id="posts-container">
                 <!-- Blog posts will be populated here -->
@@ -52,7 +47,7 @@
     <!-- KaTeX auto-render for $...$ and $$...$$ delimiters -->
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
     <script src="assets/utils.js"></script>
-    <script src="assets/filter.js"></script>
+    <script src="../siteutils/modal-filter.js"></script>
     <script src="assets/app.js"></script>
 </body>
 </html>

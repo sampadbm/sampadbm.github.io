@@ -1,0 +1,302 @@
+/* neve/siteutils/modal-filter.css */
+
+/* Global Shortcut Hint Styles for Header */
+.shortcuts-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+.shortcut-hint {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary, #6c645c);
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    user-select: none;
+}
+
+.shortcut-hint:hover {
+    opacity: 1;
+}
+
+.shortcut-hint kbd {
+    display: inline-block;
+    padding: 0.15rem 0.4rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    background-color: var(--color-bg-secondary, #efe9e0);
+    border: 1px solid var(--color-border, #d8cfc3);
+    border-radius: 3px;
+    margin-right: 0.2rem;
+}
+
+/* Keyboard Shortcut Hint for Toggle Button */
+.filter-shortcut {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.65rem;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    padding: 0.1rem 0.35rem;
+    margin-left: 0.2rem;
+    opacity: 0.4;
+    transition: opacity 0.2s;
+    font-style: normal;
+    text-transform: uppercase;
+    background: transparent;
+}
+.filter-toggle-btn:hover .filter-shortcut {
+    opacity: 0.8;
+}
+
+/* Full screen backdrop for the modal */
+.modal-filter-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(30, 27, 22, 0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-filter-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Modal Content Box */
+.modal-filter-content {
+    background: rgba(246, 242, 236, 0.5);
+    background: color-mix(in srgb, var(--color-bg-primary, #f6f2ec) 60%, transparent);
+    backdrop-filter: blur(24px) saturate(1.5);
+    -webkit-backdrop-filter: blur(24px) saturate(1.5);
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column;
+    transform: translateY(20px) scale(0.98);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease;
+    overflow: hidden;
+    position: relative;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+.modal-filter-overlay.active .modal-filter-content {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.modal-filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid rgba(216, 207, 195, 0.4);
+    background-color: transparent;
+}
+
+.modal-filter-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: #1e1b16;
+    margin: 0;
+    font-weight: 400;
+}
+
+.modal-filter-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #6c645c;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.modal-filter-close:hover {
+    color: #1e1b16;
+}
+
+.modal-filter-body {
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+/* Base styles adopted from old filter.js */
+.modal-filter-bar {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.modal-filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 140px;
+    flex: 1;
+}
+
+.modal-filter-group[data-filter-type="category"],
+.modal-filter-group[data-filter-type="tags"] {
+    min-width: 200px;
+    flex: 2;
+}
+
+.modal-filter-group-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.modal-filter-label {
+    font-size: 0.9rem;
+    color: #6c645c;
+    font-variant: small-caps;
+    letter-spacing: 0.3px;
+    font-weight: 500;
+}
+
+.modal-filter-toggle-btn {
+    background: none;
+    border: none;
+    color: #6c645c;
+    cursor: pointer;
+    font-size: 0.7rem;
+    padding: 0;
+    width: 1rem;
+    height: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.modal-filter-toggle-btn:hover {
+    color: #2d4a3e;
+}
+
+.modal-filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.modal-filter-options::-webkit-scrollbar {
+    width: 6px;
+}
+.modal-filter-options::-webkit-scrollbar-track {
+    background: #efe9e0;
+    border-radius: 3px;
+}
+.modal-filter-options::-webkit-scrollbar-thumb {
+    background: #d8cfc3;
+    border-radius: 3px;
+}
+.modal-filter-options::-webkit-scrollbar-thumb:hover {
+    background: #6c645c;
+}
+
+.modal-filter-options.collapsed {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding-right: 0;
+    margin-bottom: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.modal-filter-options:not(.collapsed) {
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.modal-filter-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #6c645c;
+    transition: color 0.2s;
+    user-select: none;
+}
+
+.modal-filter-checkbox-label:hover {
+    color: #1e1b16;
+}
+
+.modal-filter-checkbox {
+    cursor: pointer;
+    accent-color: #2d4a3e;
+    width: 0.9rem;
+    height: 0.9rem;
+    margin: 0;
+}
+
+.modal-filter-footer {
+    padding: 1rem 2rem;
+    border-top: 1px solid rgba(216, 207, 195, 0.4);
+    display: flex;
+    justify-content: flex-end;
+    background-color: transparent;
+}
+
+.modal-filter-clear-btn {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 0.9rem;
+    color: #6c645c;
+    background-color: transparent;
+    border: 1px solid #d8cfc3;
+    border-radius: 3px;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.modal-filter-clear-btn:hover {
+    color: #2d4a3e;
+    border-color: #d8cfc3;
+    background-color: #fff;
+}
+
+@media (max-width: 768px) {
+    .modal-filter-bar {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .modal-filter-group,
+    .modal-filter-group[data-filter-type="category"],
+    .modal-filter-group[data-filter-type="tags"] {
+        flex: none;
+        width: 100%;
+    }
+}

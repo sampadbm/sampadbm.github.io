@@ -2,6 +2,10 @@
 # Run scripts/generate-config.sh to regenerate
 
 entries:
+  - entries/2026-03-20-hangout-with-angel.md
+  - entries/2026-03-19-timeleft-dinner.md
+  - entries/2026-03-18-timeleft-dinner.md
+  - entries/2026-03-13-angel-biltmore-underground.md
   - entries/2026-01-16-zongjian-li-calitandoor.md
   - entries/2026-01-15-paper-flowers.md
   - entries/2026-01-09-jess-karaoke.md

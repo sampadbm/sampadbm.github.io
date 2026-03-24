@@ -7,12 +7,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../siteutils/modal-filter.css">
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
     <header>
         <h1>Sampy's Diary</h1>
         <p class="header-subtitle">Personal reflections and daily musings</p>
+        <div class="shortcuts-container">
+            <div class="shortcut-hint" id="modal-filter-open-btn" role="button" tabindex="0"><kbd>f</kbd> filter</div>
+        </div>
     </header>
 
     <div id="stats-container" class="stats-container hidden">
@@ -23,16 +27,7 @@
         <!-- Year statistics bar will be populated here -->
     </div>
 
-    <div class="filter-toggle-container">
-        <button id="filter-toggle-btn" class="filter-toggle-btn">
-            <span class="filter-toggle-icon">▼</span>
-            <span class="filter-toggle-text">Show Filters</span>
-        </button>
-    </div>
-
-    <div id="filter-container" class="hidden">
-        <!-- Filter bar will be populated here -->
-    </div>
+    <!-- Removed old ugly filter button -->
 
     <main id="entries-container">
         <!-- Diary entries will be populated here -->
@@ -41,7 +36,7 @@
     <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
     <script src="assets/config.js"></script>
-    <script src="assets/filter.js"></script>
+    <script src="../siteutils/modal-filter.js"></script>
     <script src="assets/app.js"></script>
 </body>
 </html>

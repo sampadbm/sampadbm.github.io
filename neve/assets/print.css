@@ -5,10 +5,16 @@
     size: letter;
 }
 
-/* Preserve colors and backgrounds */
+/* Remove backgrounds in print and fix Firefox grid page-breaks */
 * {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+.page {
+    /* Critical: Firefox ignores break-inside on children of CSS Grid elements */
+    display: block !important;
 }
 
 /* Hide interactive/non-essential elements */
@@ -17,30 +23,32 @@
 }
 
 .site-footer {
-    display: none;
-}
-
-/* Page break control */
-.section {
+    display: block;
+    margin-top: 2rem;
     page-break-inside: avoid;
 }
 
+/* Page break control */
 h2 {
-    page-break-after: avoid;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    display: block !important;
 }
 
 .profile-header {
     page-break-after: avoid;
+    break-after: avoid;
     flex-direction: row !important;
     text-align: left !important;
 }
 
-.list li {
-    page-break-inside: avoid;
-}
-
+.list li,
 .research-item {
-    page-break-inside: avoid;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    display: block !important;
 }
 
 /* Remove hover effects */

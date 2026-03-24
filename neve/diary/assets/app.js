@@ -139,58 +139,24 @@ async function loadEntries() {
  * Initialize filter system
  */
 function initializeFilters() {
-    filterManager = new FilterManager({
+    filterManager = new ModalFilterManager({
         urlPrefix: 'filter_',
         onFilterChange: () => {
             displayFilteredEntries();
-        }
+        },
+        title: 'Filter Diary Entries'
     });
 
-    // Define field mapping for filters
-    const fieldMap = {
-        year: 'year',
-        month: 'month',
-        tags: 'tags',
-        mood: 'mood'
-    };
-
-    // Extract filter options from data
+    const fieldMap = { year: 'year', month: 'month', tags: 'tags', mood: 'mood' };
     const filterOptions = filterManager.extractFilterOptions(allEntriesData, fieldMap);
+    const filterLabels = { year: 'Year', month: 'Month', tags: 'Tags', mood: 'Mood' };
 
-    // Build filter bar HTML
-    const filterLabels = {
-        year: 'Year',
-        month: 'Month',
-        tags: 'Tags',
-        mood: 'Mood'
-    };
-
-    const filterBarHTML = filterManager.buildFilterBar(filterOptions, filterLabels);
-
-    // Inject filter bar into the page
-    const filterContainer = document.getElementById('filter-container');
-    filterContainer.innerHTML = filterBarHTML;
-
-    // Attach event listeners
+    filterManager.buildFilterBar(filterOptions, filterLabels);
     filterManager.attachEventListeners();
 
-    // If there are active filters from URL, show the filter bar
-    if (Object.keys(filterManager.getActiveFilters()).length > 0) {
-        showFilters();
-    }
-}
-
-/**
- * Show filter interface
- */
-function showFilters() {
-    const filterContainer = document.getElementById('filter-container');
-    const toggleBtn = document.getElementById('filter-toggle-btn');
-
-    if (filterContainer && toggleBtn) {
-        filterContainer.classList.remove('hidden');
-        toggleBtn.classList.add('active');
-        toggleBtn.querySelector('.filter-toggle-text').textContent = 'Hide Filters';
+    const openBtn = document.getElementById('modal-filter-open-btn');
+    if (openBtn) {
+        openBtn.addEventListener('click', () => filterManager.open());
     }
 }
 
@@ -396,9 +362,6 @@ function attachYearBarHandlers() {
                 filterManager.setFilters({ month: [monthName] });
                 filterManager.updateURL();
                 displayFilteredEntries();
-
-                // Show filters if hidden
-                showFilters();
             }
         });
     });
@@ -711,32 +674,7 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
-/**
- * Filter toggle functionality
- */
-function initializeFilterToggle() {
-    const toggleBtn = document.getElementById('filter-toggle-btn');
-    const filterContainer = document.getElementById('filter-container');
-
-    if (toggleBtn && filterContainer) {
-        toggleBtn.addEventListener('click', () => {
-            const isHidden = filterContainer.classList.contains('hidden');
-
-            if (isHidden) {
-                filterContainer.classList.remove('hidden');
-                toggleBtn.classList.add('active');
-                toggleBtn.querySelector('.filter-toggle-text').textContent = 'Hide Filters';
-            } else {
-                filterContainer.classList.add('hidden');
-                toggleBtn.classList.remove('active');
-                toggleBtn.querySelector('.filter-toggle-text').textContent = 'Show Filters';
-            }
-        });
-    }
-}
-
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     loadEntries();
-    initializeFilterToggle();
 });

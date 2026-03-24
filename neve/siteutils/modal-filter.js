@@ -1,23 +1,25 @@
 /**
- * Modular Filtering System
- * Provides reusable filtering functionality with URL parameter support
+ * Universal Modal Filtering System
+ * 
+ * Injects a modal UI automatically and provides filtering tools based on URL parameters.
  */
 
-class FilterManager {
+class ModalFilterManager {
     constructor(config = {}) {
         this.config = {
             urlPrefix: config.urlPrefix || 'filter_',
             onFilterChange: config.onFilterChange || (() => {}),
+            title: config.title || 'Filters',
             ...config
         };
 
         this.filters = {};
         this.activeFilters = this.loadFiltersFromURL();
+        
+        this.injectModalUI();
+        this.modal = document.getElementById('universal-modal-filter');
     }
 
-    /**
-     * Load filter values from URL parameters
-     */
     loadFiltersFromURL() {
         const urlParams = new URLSearchParams(window.location.search);
         const filters = {};
@@ -25,22 +27,16 @@ class FilterManager {
         for (const [key, value] of urlParams.entries()) {
             if (key.startsWith(this.config.urlPrefix)) {
                 const filterName = key.replace(this.config.urlPrefix, '');
-                // Support comma-separated values for multiple selections
                 filters[filterName] = value.includes(',') ? value.split(',') : [value];
             }
         }
-
         return filters;
     }
 
-    /**
-     * Update URL with current filter state
-     */
     updateURL() {
         const urlParams = new URLSearchParams(window.location.search);
-
-        // Remove old filter parameters
         const keysToDelete = [];
+        
         for (const key of urlParams.keys()) {
             if (key.startsWith(this.config.urlPrefix)) {
                 keysToDelete.push(key);
@@ -48,15 +44,12 @@ class FilterManager {
         }
         keysToDelete.forEach(key => urlParams.delete(key));
 
-        // Add current filters
         Object.entries(this.activeFilters).forEach(([key, value]) => {
             if (value && Array.isArray(value) && value.length > 0) {
-                // Convert array to comma-separated string
                 urlParams.set(this.config.urlPrefix + key, value.join(','));
             }
         });
 
-        // Update URL without page reload
         const newURL = urlParams.toString()
             ? `${window.location.pathname}?${urlParams.toString()}`
             : window.location.pathname;
@@ -64,21 +57,12 @@ class FilterManager {
         window.history.pushState({}, '', newURL);
     }
 
-    /**
-     * Extract unique filter options from data
-     * @param {Array} data - Array of items to extract options from
-     * @param {Object} fieldMap - Map of filter names to field paths
-     * @returns {Object} - Object containing arrays of unique options for each filter
-     */
     extractFilterOptions(data, fieldMap) {
         const options = {};
-
         Object.entries(fieldMap).forEach(([filterName, fieldPath]) => {
             const uniqueValues = new Set();
-
             data.forEach(item => {
                 const value = this.getNestedValue(item, fieldPath);
-
                 if (value !== null && value !== undefined) {
                     if (Array.isArray(value)) {
                         value.forEach(v => uniqueValues.add(v));
@@ -87,49 +71,101 @@ class FilterManager {
                     }
                 }
             });
-
             options[filterName] = Array.from(uniqueValues).sort();
         });
-
         return options;
     }
 
-    /**
-     * Get nested value from object using dot notation
-     */
     getNestedValue(obj, path) {
-        return path.split('.').reduce((current, key) =>
-            current?.[key], obj);
+        return path.split('.').reduce((current, key) => current?.[key], obj);
     }
 
-    /**
-     * Build filter checkbox group HTML
-     * @param {string} filterName - Name of the filter
-     * @param {Array} options - Array of option values
-     * @param {string} label - Display label for the filter
-     * @returns {string} - HTML string for the filter checkbox group
-     */
+    injectModalUI() {
+        if (document.getElementById('universal-modal-filter')) return;
+
+        const overlay = document.createElement('div');
+        overlay.id = 'universal-modal-filter';
+        overlay.className = 'modal-filter-overlay';
+        
+        overlay.innerHTML = `
+            <div class="modal-filter-content" role="dialog" aria-modal="true" aria-labelledby="modal-filter-title">
+                <div class="modal-filter-header">
+                    <h2 id="modal-filter-title" class="modal-filter-title">${this.config.title}</h2>
+                    <button class="modal-filter-close" aria-label="Close filters">&times;</button>
+                </div>
+                <div class="modal-filter-body" id="modal-filter-body-container">
+                    <!-- Filters injected here -->
+                </div>
+                <div class="modal-filter-footer">
+                    <button id="modal-filter-clear" class="modal-filter-clear-btn">Clear All Filters</button>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(overlay);
+
+        overlay.querySelector('.modal-filter-close').addEventListener('click', () => this.close());
+        
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) this.close();
+        });
+        // Global keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Ignore if typing in an input/textarea
+            if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
+                return;
+            }
+
+            const isOpen = this.modal && this.modal.classList.contains('active');
+
+            // Escape to close
+            if (e.key === 'Escape' && isOpen) {
+                this.close();
+                return;
+            }
+
+            // 'f', '/', or 'Ctrl+K' / 'Cmd+K' to open
+            if (!isOpen) {
+                if ((e.key === 'f' || e.key === '/') && !e.ctrlKey && !e.metaKey) {
+                    e.preventDefault();
+                    this.open();
+                } else if (e.key === 'k' && (e.ctrlKey || e.metaKey)) {
+                    e.preventDefault();
+                    this.open();
+                }
+            }
+        });
+    }
+
+    open() {
+        this.modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    close() {
+        this.modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
     buildFilterCheckboxGroup(filterName, options, label) {
         const currentValues = this.activeFilters[filterName] || [];
-        const limitDisplay = options.length > 5; // Show expand button if more than 5 options
-        const visibleCount = 5;
+        const limitDisplay = options.length > 5;
 
         return `
-            <div class="filter-group" data-filter-type="${filterName}">
-                <div class="filter-header">
-                    <span class="filter-label">${label}</span>
-                    ${limitDisplay ? `<button type="button" class="filter-toggle" data-filter="${filterName}">▼</button>` : ''}
+            <div class="modal-filter-group" data-filter-type="${filterName}">
+                <div class="modal-filter-group-header">
+                    <span class="modal-filter-label">${label}</span>
+                    ${limitDisplay ? `<button type="button" class="modal-filter-toggle-btn" data-filter="${filterName}">▼</button>` : ''}
                 </div>
-                <div class="filter-options" data-filter-options="${filterName}">
-                    ${options.map((opt, index) => {
+                <div class="modal-filter-options ${limitDisplay ? 'collapsed' : ''}" data-filter-options="${filterName}">
+                    ${options.map(opt => {
                         const isChecked = currentValues.includes(String(opt));
-                        const optId = `filter-${filterName}-${this.escapeHtml(opt).replace(/\s+/g, '-')}`;
-                        const isHidden = limitDisplay && index >= visibleCount ? 'hidden' : '';
+                        const optId = `filter-${filterName}-${this.escapeHtml(opt).replace(/\\s+/g, '-')}`;
                         return `
-                            <label class="filter-checkbox-label ${isHidden}" data-filter-item="${filterName}">
+                            <label class="modal-filter-checkbox-label">
                                 <input
                                     type="checkbox"
-                                    class="filter-checkbox"
+                                    class="modal-filter-checkbox"
                                     data-filter="${filterName}"
                                     value="${this.escapeHtml(opt)}"
                                     id="${optId}"
@@ -144,12 +180,6 @@ class FilterManager {
         `;
     }
 
-    /**
-     * Build complete filter bar HTML
-     * @param {Object} filterOptions - Object with filter names as keys and option arrays as values
-     * @param {Object} labels - Display labels for each filter
-     * @returns {string} - Complete filter bar HTML
-     */
     buildFilterBar(filterOptions, labels) {
         const checkboxGroups = Object.entries(filterOptions)
             .map(([filterName, options]) =>
@@ -157,25 +187,20 @@ class FilterManager {
             )
             .join('');
 
-        return `
-            <div class="filter-bar">
-                ${checkboxGroups}
-                <button id="clear-filters" class="filter-clear-btn">Clear All</button>
-            </div>
-        `;
+        const container = document.getElementById('modal-filter-body-container');
+        if (container) {
+            container.innerHTML = `<div class="modal-filter-bar">${checkboxGroups}</div>`;
+        }
+        
+        return container ? container.innerHTML : '';
     }
 
-    /**
-     * Attach event listeners to filter UI elements
-     * @param {string} containerSelector - CSS selector for the filter container
-     */
-    attachEventListeners(containerSelector = '.filter-bar') {
-        const container = document.querySelector(containerSelector);
+    attachEventListeners() {
+        const container = this.modal;
         if (!container) return;
 
-        // Handle filter checkbox changes
-        container.querySelectorAll('.filter-checkbox').forEach(checkbox => {
-            checkbox.addEventListener('change', (e) => {
+        container.addEventListener('change', (e) => {
+            if (e.target.classList.contains('modal-filter-checkbox')) {
                 const filterName = e.target.dataset.filter;
                 const value = e.target.value;
                 const isChecked = e.target.checked;
@@ -185,15 +210,11 @@ class FilterManager {
                 }
 
                 if (isChecked) {
-                    // Add value to filter array
                     if (!this.activeFilters[filterName].includes(value)) {
                         this.activeFilters[filterName].push(value);
                     }
                 } else {
-                    // Remove value from filter array
                     this.activeFilters[filterName] = this.activeFilters[filterName].filter(v => v !== value);
-
-                    // Remove filter if empty
                     if (this.activeFilters[filterName].length === 0) {
                         delete this.activeFilters[filterName];
                     }
@@ -201,113 +222,77 @@ class FilterManager {
 
                 this.updateURL();
                 this.config.onFilterChange(this.activeFilters);
-            });
+            }
         });
 
-        // Handle toggle buttons for collapsible groups
-        container.querySelectorAll('.filter-toggle').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const filterName = e.target.dataset.filter;
-                const hiddenItems = container.querySelectorAll(`[data-filter-item="${filterName}"].hidden`);
-                const isExpanded = e.target.textContent === '▲';
-
-                if (isExpanded) {
-                    // Collapse: hide items again
-                    hiddenItems.forEach(item => item.classList.add('hidden'));
-                    e.target.textContent = '▼';
-                } else {
-                    // Expand: show all hidden items
-                    hiddenItems.forEach(item => item.classList.remove('hidden'));
-                    e.target.textContent = '▲';
+        container.addEventListener('click', (e) => {
+            const toggleBtn = e.target.closest('.modal-filter-toggle-btn');
+            if (toggleBtn) {
+                const filterName = toggleBtn.dataset.filter;
+                const optionsContainer = container.querySelector(`[data-filter-options="${filterName}"]`);
+                if (optionsContainer) {
+                    optionsContainer.classList.toggle('collapsed');
+                    toggleBtn.textContent = optionsContainer.classList.contains('collapsed') ? '▼' : '▲';
                 }
-            });
-        });
-
-        // Handle clear button
-        const clearButton = container.querySelector('#clear-filters');
-        if (clearButton) {
-            clearButton.addEventListener('click', () => {
+            }
+            
+            const clearBtn = e.target.closest('#modal-filter-clear');
+            if (clearBtn) {
                 this.clearFilters();
                 this.updateURL();
                 this.config.onFilterChange(this.activeFilters);
-            });
-        }
+            }
+        });
     }
 
-    /**
-     * Apply filters to data array
-     * @param {Array} data - Array of items to filter
-     * @param {Object} fieldMap - Map of filter names to field paths
-     * @returns {Array} - Filtered data array
-     */
     applyFilters(data, fieldMap) {
         if (Object.keys(this.activeFilters).length === 0) {
             return data;
         }
 
         return data.filter(item => {
-            // AND logic between different filters
             return Object.entries(this.activeFilters).every(([filterName, filterValues]) => {
                 const fieldPath = fieldMap[filterName];
                 if (!fieldPath) return true;
 
                 const itemValue = this.getNestedValue(item, fieldPath);
-
                 if (itemValue === null || itemValue === undefined) {
                     return false;
                 }
 
-                // OR logic within the same filter (match any of the selected values)
                 return filterValues.some(filterValue => {
-                    // Handle array values (like categories or tags)
                     if (Array.isArray(itemValue)) {
                         return itemValue.some(v => String(v) === filterValue);
                     }
-
                     return String(itemValue) === filterValue;
                 });
             });
         });
     }
 
-    /**
-     * Clear all active filters
-     */
     clearFilters() {
         this.activeFilters = {};
-
-        // Uncheck all checkboxes
-        document.querySelectorAll('.filter-checkbox').forEach(checkbox => {
+        this.modal.querySelectorAll('.modal-filter-checkbox').forEach(checkbox => {
             checkbox.checked = false;
         });
     }
 
-    /**
-     * Get current active filters
-     */
     getActiveFilters() {
         return { ...this.activeFilters };
     }
 
-    /**
-     * Set filters programmatically
-     */
     setFilters(filters) {
         this.activeFilters = { ...filters };
         this.updateURL();
-
-        // Update UI checkboxes
+        
         Object.entries(filters).forEach(([filterName, values]) => {
-            const checkboxes = document.querySelectorAll(`[data-filter="${filterName}"]`);
+            const checkboxes = this.modal.querySelectorAll(`[data-filter="${filterName}"]`);
             checkboxes.forEach(checkbox => {
                 checkbox.checked = values.includes(checkbox.value);
             });
         });
     }
 
-    /**
-     * Escape HTML to prevent XSS
-     */
     escapeHtml(text) {
         const div = document.createElement('div');
         div.textContent = text;
@@ -315,5 +300,4 @@ class FilterManager {
     }
 }
 
-// Export for use in other modules
-window.FilterManager = FilterManager;
+window.ModalFilterManager = ModalFilterManager;

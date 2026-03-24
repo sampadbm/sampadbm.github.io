@@ -149,36 +149,22 @@ async function loadPosts() {
  * Initialize filter system
  */
 function initializeFilters() {
-    filterManager = new FilterManager({
+    filterManager = new ModalFilterManager({
         urlPrefix: 'filter_',
-        onFilterChange: () => displayFilteredPosts()
+        onFilterChange: () => displayFilteredPosts(),
+        title: 'Filter Blog Posts'
     });
 
     const fieldMap = { year: 'year', tags: 'tags' };
     const filterOptions = filterManager.extractFilterOptions(allPostsData, fieldMap);
     const filterLabels = { year: 'Year', tags: 'Tags' };
-    const filterBarHTML = filterManager.buildFilterBar(filterOptions, filterLabels);
-
-    const filterContainer = document.getElementById('filter-container');
-    filterContainer.innerHTML = filterBarHTML;
+    
+    filterManager.buildFilterBar(filterOptions, filterLabels);
     filterManager.attachEventListeners();
 
-    if (Object.keys(filterManager.getActiveFilters()).length > 0) {
-        showFilters();
-    }
-}
-
-/**
- * Show filter interface
- */
-function showFilters() {
-    const filterContainer = document.getElementById('filter-container');
-    const toggleBtn = document.getElementById('filter-toggle-btn');
-
-    if (filterContainer && toggleBtn) {
-        filterContainer.classList.remove('hidden');
-        toggleBtn.classList.add('active');
-        toggleBtn.querySelector('.filter-toggle-text').textContent = 'Hide Filters';
+    const openBtn = document.getElementById('modal-filter-open-btn');
+    if (openBtn) {
+        openBtn.addEventListener('click', () => filterManager.open());
     }
 }
 
@@ -265,35 +251,10 @@ function displayPosts(posts) {
     }
 }
 
-/**
- * Filter toggle functionality
- */
-function initializeFilterToggle() {
-    const toggleBtn = document.getElementById('filter-toggle-btn');
-    const filterContainer = document.getElementById('filter-container');
-
-    if (toggleBtn && filterContainer) {
-        toggleBtn.addEventListener('click', () => {
-            const isHidden = filterContainer.classList.contains('hidden');
-
-            if (isHidden) {
-                filterContainer.classList.remove('hidden');
-                toggleBtn.classList.add('active');
-                toggleBtn.querySelector('.filter-toggle-text').textContent = 'Hide Filters';
-            } else {
-                filterContainer.classList.add('hidden');
-                toggleBtn.classList.remove('active');
-                toggleBtn.querySelector('.filter-toggle-text').textContent = 'Show Filters';
-            }
-        });
-    }
-}
-
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     initStyleSwitcher(['theme']);
     loadPosts();
-    initializeFilterToggle();
 
     // Refresh post link hrefs when style changes (for middle-click/right-click)
     onStyleChangeCallbacks.push(() => {

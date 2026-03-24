@@ -66,13 +66,26 @@ button:focus-visible {
     border-radius: 2px;
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .page {
     display: grid;
     grid-template-columns: 1fr;
     gap: 0;
+    width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    padding: 2rem 2rem 3rem;
+    padding: clamp(1.5rem, 4vw, 3rem) clamp(1.5rem, 5vw, 2.5rem);
+    animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 .sidebar {
@@ -84,7 +97,6 @@ button:focus-visible {
     position: relative;
 }
 
-
 h1,
 h2,
 h3 {
@@ -92,7 +104,7 @@ h3 {
     font-weight: 600;
     margin: 0 0 0.6rem;
     letter-spacing: 0.02em;
-    color: inherit;
+    color: var(--ink);
 }
 
 h1 {
@@ -113,8 +125,8 @@ h2 {
 }
 
 p {
-    margin: 0 0 0.9rem;
-    line-height: 1.5;
+    margin: 0 0 1rem;
+    line-height: 1.65;
 }
 
 .small {
@@ -128,17 +140,24 @@ p {
     margin-bottom: 0.6rem;
 }
 
-.section:last-child {
+.section:last-of-type {
     border-bottom: none;
 }
 
 .profile-photo {
-    width: 110px;
-    height: 110px;
+    width: 115px;
+    height: 115px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--rule);
+    border: 2px solid rgba(216, 207, 195, 0.6);
+    box-shadow: 0 4px 14px rgba(30, 27, 22, 0.06);
     flex-shrink: 0;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.profile-photo:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(30, 27, 22, 0.1);
 }
 
 .profile-header {
@@ -215,18 +234,20 @@ p {
 }
 
 .list li {
-    padding: 0.5rem 0.6rem;
-    margin: 0.2rem 0;
-    border-radius: 4px;
-    transition: background-color 0.2s ease;
+    padding: 0.6rem 0.8rem;
+    margin: 0.3rem 0;
+    border-radius: 6px;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+    line-height: 1.55;
 }
 
 .list li:nth-child(even) {
-    background-color: rgba(216, 207, 195, 0.08);
+    background-color: rgba(216, 207, 195, 0.06);
 }
 
 .list li:hover {
     background-color: rgba(216, 207, 195, 0.15);
+    transform: translateX(3px);
 }
 
 .list strong {
@@ -279,12 +300,13 @@ p {
 }
 
 .research-item {
-    padding: 0.9rem 0;
-    border-top: 1px solid var(--rule);
+    padding: 1.3rem 0;
+    border-top: 1px solid rgba(216, 207, 195, 0.4);
 }
 
 .research-item:first-of-type {
     border-top: none;
+    padding-top: 0.5rem;
 }
 
 .research-title {
@@ -390,11 +412,6 @@ p {
 }
 
 @media (max-width: 768px) {
-    .page {
-        padding: 1.5rem 1.5rem 2rem;
-        max-width: 100%;
-    }
-
     .profile-header {
         flex-direction: column;
         text-align: center;

@@ -61,11 +61,12 @@ async function loadReadings() {
 
 function initializeFilters() {
     // Initialize filter manager
-    filterManager = new FilterManager({
+    filterManager = new ModalFilterManager({
         urlPrefix: 'filter_',
         onFilterChange: () => {
             displayFilteredReadings();
-        }
+        },
+        title: 'Filter Readings'
     });
 
     // Define field mapping for filters
@@ -87,29 +88,15 @@ function initializeFilters() {
         tags: 'Tags'
     };
 
-    const filterBarHTML = filterManager.buildFilterBar(filterOptions, filterLabels);
-
-    // Inject filter bar into the page
-    const filterContainer = document.getElementById('filter-container');
-    filterContainer.innerHTML = filterBarHTML;
+    filterManager.buildFilterBar(filterOptions, filterLabels);
 
     // Attach event listeners
     filterManager.attachEventListeners();
 
-    // If there are active filters from URL, show the filter bar
-    if (Object.keys(filterManager.getActiveFilters()).length > 0) {
-        showFilters();
-    }
-}
-
-function showFilters() {
-    const filterContainer = document.getElementById('filter-container');
-    const toggleBtn = document.getElementById('filter-toggle-btn');
-
-    if (filterContainer && toggleBtn) {
-        filterContainer.classList.remove('hidden');
-        toggleBtn.classList.add('active');
-        toggleBtn.querySelector('.filter-toggle-text').textContent = 'Hide Filters';
+    // Hook up open button
+    const openBtn = document.getElementById('modal-filter-open-btn');
+    if (openBtn) {
+        openBtn.addEventListener('click', () => filterManager.open());
     }
 }
 
@@ -144,8 +131,8 @@ function displayReadings(readings) {
         return dateB - dateA;
     });
 
-    container.innerHTML = readings.map(reading => `
-        <article class="reading-entry">
+    container.innerHTML = readings.map((reading, index) => `
+        <article class="reading-entry animate-in" style="animation-delay: ${index * 0.04}s">
             <div class="metadata">
                 <div class="metadata-item">
                     <span class="metadata-label">Date</span>
@@ -218,29 +205,8 @@ function formatDate(dateString) {
     });
 }
 
-// Filter toggle functionality
-function initializeFilterToggle() {
-    const toggleBtn = document.getElementById('filter-toggle-btn');
-    const filterContainer = document.getElementById('filter-container');
-
-    if (toggleBtn && filterContainer) {
-        toggleBtn.addEventListener('click', () => {
-            const isHidden = filterContainer.classList.contains('hidden');
-
-            if (isHidden) {
-                filterContainer.classList.remove('hidden');
-                toggleBtn.classList.add('active');
-                toggleBtn.querySelector('.filter-toggle-text').textContent = 'Hide Filters';
-            } else {
-                filterContainer.classList.add('hidden');
-                toggleBtn.classList.remove('active');
-                toggleBtn.querySelector('.filter-toggle-text').textContent = 'Show Filters';
-            }
-        });
-    }
-}
+// Filter logic is handled by ModalFilterManager
 
 document.addEventListener('DOMContentLoaded', () => {
     loadReadings();
-    initializeFilterToggle();
 });
