@@ -1,3 +1,5 @@
 databases:
   - db/articles.yml
   - db/papers.yml
+  - db/videos.yml
+  - db/music.yml

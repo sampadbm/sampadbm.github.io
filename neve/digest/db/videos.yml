@@ -1,0 +1,17 @@
+readings:
+  - date: 2026-03-21
+    category: [Game Design, Storytelling]
+    author: Jacob O'Neal
+    title: Stories That Can't Be Told Linearly
+    url: https://www.youtube.com/watch?v=N8QkFFe4zMA
+    tags: [nonlinear-narrative, branching, looping, meta-narrative, combinatorial, video-games, interactive-media]
+    notes: |
+      Explores five types of nonlinear narrative techniques and why interactive media (especially games) are uniquely suited to them:
+
+      1. **Branching narratives** — exponential growth problem, pruned via fake choices and early endings. Even "meaningless" dialogue options let players tune tone and give writers multiple shots at landing jokes (Tom Francis / Tactical Breach Wizards talk).
+      2. **Looping narratives** — replaying the same story with new context. Scenes gain hidden meaning on repeat (Attack on Titan rewatches, Fire Emblem: Three Houses routes). Games naturally loop via failure states.
+      3. **Meta narratives** — a story about discovering a story. Fabula (chronological events) vs. syuzhet (presentation order). Games can gate reveals behind puzzle progress, so the author controls pacing without dictating order.
+      4. **Recursive meta narratives** — stacking layers: a story within a story-about-discovering-a-story (Petscop, Inscryption, The Beginner's Guide). Each layer primes the audience to engage more critically with the one below it.
+      5. **Combinatorial narratives** — pre-written story chunks shuffled into unique sequences each playthrough. Grows combinatorially rather than exponentially. Shows up in tabletop RPGs and roguelikes.
+
+      Culminates in *Slay the Princess* as a game that uses all five techniques: branching choices, looping with memory, meta-narrative discovery, recursive self-reflection on your own decisions, and combinatorial uniqueness (custom Spotify playlist of your playthrough order). Recommends Jorge Luis Borges' short stories as a literary analog.
