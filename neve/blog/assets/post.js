@@ -82,6 +82,28 @@ function generateTOC() {
 }
 
 /**
+ * Protect math blocks from markdown parsing.
+ * Replaces $$...$$ and $...$ with placeholders so marked.js
+ * won't insert <p> tags inside multi-line math.
+ */
+function protectMath(text) {
+    const mathBlocks = [];
+    text = text.replace(/\$\$([\s\S]*?)\$\$/g, (match) => {
+        mathBlocks.push(match);
+        return `%%MATH_BLOCK_${mathBlocks.length - 1}%%`;
+    });
+    text = text.replace(/\$([^\n$]+?)\$/g, (match) => {
+        mathBlocks.push(match);
+        return `%%MATH_BLOCK_${mathBlocks.length - 1}%%`;
+    });
+    return { text, mathBlocks };
+}
+
+function restoreMath(html, mathBlocks) {
+    return html.replace(/%%MATH_BLOCK_(\d+)%%/g, (_, i) => mathBlocks[parseInt(i)]);
+}
+
+/**
  * Parse frontmatter from markdown text
  */
 function parseFrontmatter(markdownText) {
@@ -146,7 +168,8 @@ async function loadPost() {
         }
 
         // Render markdown
-        const html = processImages(marked.parse(content));
+        const { text: safeContent, mathBlocks } = protectMath(content);
+        const html = restoreMath(processImages(marked.parse(safeContent)), mathBlocks);
         document.getElementById('post-content').innerHTML = html;
 
         // Generate TOC BEFORE KaTeX renders (to get clean text)

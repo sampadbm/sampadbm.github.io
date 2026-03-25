@@ -7,11 +7,19 @@ tree:
       - name: linear-algebra
         posts:
           - posts/math/linear-algebra/matrix-multiplications.md
+      - name: optimization
+        posts:
+          - posts/math/optimization/lagrangian-duality.md
   - name: terminal
     posts:
       - posts/terminal/favourite-tui-tools.md
 
 posts:
+  - file: posts/math/optimization/lagrangian-duality.md
+    date: 2026-03-24
+    title: Lagrange duality
+    tags: [math, linear-algebra, tutorial]
+    summary: Intuitive Lagrange duality
   - file: posts/terminal/favourite-tui-tools.md
     date: 2026-03-09
     title: My Favourite TUI Tools

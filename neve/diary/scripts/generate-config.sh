@@ -3,7 +3,7 @@
 # Auto-generate diary configuration with validation
 # Lists all markdown files in entries/ directory and validates frontmatter
 
-DIARY_DIR="/home/sampad/Desktop/sampadbm.github.io/neve/diary"
+DIARY_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$DIARY_DIR"
 
 echo "Validating diary entries..."

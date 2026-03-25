@@ -3,7 +3,7 @@
 # Auto-generate blog configuration with tree structure and metadata
 # Extracts frontmatter metadata so landing page doesn't need to fetch each file
 
-BLOG_DIR="/home/sampad/Desktop/sampadbm.github.io/neve/blog"
+BLOG_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$BLOG_DIR"
 
 echo "Validating blog posts..."
