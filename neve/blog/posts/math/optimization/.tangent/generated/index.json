@@ -1,0 +1,115 @@
+{
+	"version": 1,
+	"date": "2026-03-25T11:56:24.037Z",
+	"items": {
+		"FILES/lagrangian-duality.md": {
+			"uuid": "1f1282a8-74fa-6fc0-b18a-07c9bbe578e5",
+			"modified": "2026-03-25T11:55:55.724Z",
+			"structure": [
+				{
+					"type": 3,
+					"start": 0,
+					"end": 138,
+					"data": {
+						"date": "2026-03-24",
+						"title": "Lagrange duality",
+						"tags": [
+							"math",
+							"linear-algebra",
+							"tutorial"
+						],
+						"summary": "Intuitive Lagrange duality",
+						"author": "sampad"
+					}
+				},
+				{
+					"type": 5,
+					"form": "front-matter",
+					"start": 0,
+					"end": 0,
+					"href": "math",
+					"to": "#/MATH"
+				},
+				{
+					"type": 5,
+					"form": "front-matter",
+					"start": 0,
+					"end": 0,
+					"href": "linear-algebra",
+					"to": "#/LINEAR-ALGEBRA"
+				},
+				{
+					"type": 5,
+					"form": "front-matter",
+					"start": 0,
+					"end": 0,
+					"href": "tutorial",
+					"to": "#/TUTORIAL"
+				},
+				{
+					"type": 2,
+					"level": 3,
+					"text": "Motivation",
+					"start": 140,
+					"end": 154
+				},
+				{
+					"type": 2,
+					"level": 3,
+					"text": "Preliminaries",
+					"start": 295,
+					"end": 312
+				},
+				{
+					"type": 2,
+					"level": 4,
+					"text": "Constrained optimization",
+					"start": 314,
+					"end": 343
+				},
+				{
+					"type": 2,
+					"level": 4,
+					"text": "Indicator functions",
+					"start": 463,
+					"end": 487
+				},
+				{
+					"type": 2,
+					"level": 4,
+					"text": "Maxmin Inequality Weak Duality",
+					"start": 807,
+					"end": 845
+				},
+				{
+					"type": 2,
+					"level": 5,
+					"text": "Visual Grid Proof Max-Min Inequality",
+					"start": 1123,
+					"end": 1166
+				},
+				{
+					"type": 2,
+					"level": 5,
+					"text": "1 The Symbolic Grid",
+					"start": 1584,
+					"end": 1610
+				},
+				{
+					"type": 2,
+					"level": 5,
+					"text": "2 The Visual Chain Proof",
+					"start": 2334,
+					"end": 2365
+				},
+				{
+					"type": 2,
+					"level": 3,
+					"text": "Absorbing constraints into the objective",
+					"start": 3328,
+					"end": 3372
+				}
+			]
+		}
+	}
+}

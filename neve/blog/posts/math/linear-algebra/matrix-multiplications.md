@@ -1,8 +1,9 @@
 ---
-date: 2026-03-07
+date: 2026-03-24T21:12:24Z
 title: Understanding Matrix Multiplications
 tags: [math, linear-algebra, tutorial]
 summary: Some views on matrix multiplications.
+author: sampad
 ---
 
 ### Notations
