@@ -1,5 +1,5 @@
 ---
-date: 2026-03-24T21:12:24Z
+date: 2026-03-24
 title: Understanding Matrix Multiplications
 tags: [math, linear-algebra, tutorial]
 summary: Some views on matrix multiplications.

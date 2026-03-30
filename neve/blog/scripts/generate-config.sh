@@ -58,7 +58,7 @@ while IFS= read -r file; do
 
     VALID_FILES+=("$file")
     ((VALID_COUNT++))
-done < <(find posts/ -type f -name "*.md" 2>/dev/null | sort)
+done < <(find posts/ -type f -name "*.md" -not -path "*/node_modules/*" 2>/dev/null | sort)
 
 # Print validation results
 echo ""

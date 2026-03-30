@@ -9,4 +9,54 @@ readings:
     notes: |
       "From a practical point of view, intellectual and spiritual life is, on the surface, a useless form of activity. In this paper I shall concern myself with the question of the extent to which the pursuit of these useless satisfactions proves unexpectedly the source from which undreamed-of utility is derived. Curiosity, which may or may not eventuate in something useful, is probably the outstanding characteristic of modern thinking. The great advances in science have come from people who were driven not by the desire to be useful but merely to satisfy their curiosity. Hertz and Maxwell had no concern about the utility of their work; no such thought ever entered their minds. History shows that the effective applications of knowledge have almost invariably been made long after the discoveries themselves."
 
-      
+  - date: 2026-03-29
+    category: [Computer Science]
+    author: Jeff Huang
+    title: Best Paper Awards in Computer Science
+    url: https://jeffhuang.com/best_paper_awards/conferences.html
+    tags: [wishlist, computer-science, awards, reference]
+
+  - date: 2026-03-29
+    category: [Mathematics, Machine Learning]
+    author: "Antonio \u00C1lvarez L\u00F3pez"
+    title: Breaking the Curse of Dimensionality with Barron Spaces
+    url: https://dcn.nat.fau.eu/breaking-the-curse-of-dimensionality-with-barron-spaces/
+    year: 2022
+    tags: [wishlist, approximation-theory, neural-networks, curse-of-dimensionality, barron-spaces]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Tools]
+    title: "AIScientist.Tools / ToolUniverse"
+    url: https://aiscientist.tools/
+    tags: [wishlist, ai-tools, scientific-computing, agents, reference]
+
+  - date: 2026-03-29
+    category: [Mathematics, Optimization]
+    author: Mykel J. Kochenderfer, Tim A. Wheeler
+    title: Algorithms for Optimization
+    url: https://algorithmsbook.com/optimization/
+    year: 2019
+    tags: [wishlist, optimization, textbook, reference]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Decision Making]
+    author: Mykel J. Kochenderfer, Tim A. Wheeler, Kyle H. Wray
+    title: Algorithms for Decision Making
+    url: https://algorithmsbook.com/decisionmaking/
+    year: 2022
+    tags: [wishlist, decision-making, textbook, reference]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Validation]
+    author: Mykel J. Kochenderfer, Sydney M. Katz, Anthony L. Corso, Robert J. Moss
+    title: Algorithms for Validation
+    url: https://algorithmsbook.com/validation/
+    tags: [wishlist, validation, textbook, reference]
+
+  - date: 2026-03-29
+    category: [Education, Philosophy]
+    author: Gundula Bosch
+    title: Train PhD Students to Be Thinkers Not Just Specialists
+    url: https://www.nature.com/articles/d41586-018-01853-1
+    year: 2018
+    tags: [wishlist, phd, education, critical-thinking, academia]
