@@ -1,5 +1,9 @@
 databases:
   - db/articles.yml
   - db/papers.yml
+  - db/books.yml
+  - db/thesis.yml
   - db/videos.yml
   - db/music.yml
+  - db/wishlist.yml
+  - db/ee592.yml

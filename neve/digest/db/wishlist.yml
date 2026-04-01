@@ -1,0 +1,454 @@
+readings:
+  # Papers
+  - date: 2026-03-29
+    category: [Machine Learning, Mathematics]
+    author: Atilim Gunes Baydin, Barak A. Pearlmutter, Alexey Andreyevich Radul, Jeffrey Mark Siskind
+    title: "Automatic Differentiation in Machine Learning: A Survey"
+    url: https://arxiv.org/pdf/1502.05767
+    year: 2018
+    tags: [wishlist, paper, automatic-differentiation, machine-learning, gradients]
+
+  - date: 2026-03-29
+    category: [Mathematics, Machine Learning]
+    author: Steven L. Brunton, Joshua L. Proctor, J. Nathan Kutz
+    title: Discovering Governing Equations from Data by Sparse Identification of Nonlinear Dynamical Systems
+    url: https://www.pnas.org/doi/pdf/10.1073/pnas.1517384113
+    year: 2016
+    tags: [wishlist, paper, dynamical-systems, sparse-regression, data-driven]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Mathematics]
+    author: Dhruva Karkada, Daniel J. Korchinski, Andres Nava, Matthieu Wyart, Yasaman Bahri
+    title: Symmetry in Language Statistics Shapes the Geometry of Model Representations
+    url: https://arxiv.org/pdf/2602.15029
+    year: 2026
+    tags: [wishlist, paper, language-models, geometry, symmetry, embeddings]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Interpretability]
+    author: Adly Templeton, Tom Conerly, Jonathan Marcus, Jack Lindsey, Trenton Bricken, Brian Chen, Adam Pearce, Craig Citro, Emmanuel Ameisen, Andy Jones, Hoagy Cunningham, Nicholas L Turner, Callum McDougall, Monte MacDiarmid, C. Daniel Freeman, Theodore R. Sumers, Edward Rees, Joshua Batson, Adam Jermyn, Shan Carter, Chris Olah, Tom Henighan
+    title: "Scaling Monosemanticity: Extracting Interpretable Features from Claude 3 Sonnet"
+    url: https://transformer-circuits.pub/2024/scaling-monosemanticity/index.html
+    year: 2024
+    tags: [wishlist, paper, interpretability, sparse-autoencoders, mechanistic-interpretability]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Computer Vision]
+    author: Mingqi Jiang, Saeed Khorram, Li Fuxin
+    title: Comparing the Decision-Making Mechanisms by Transformers and CNNs via Explanation Methods
+    url: https://arxiv.org/pdf/2212.06872
+    year: 2022
+    tags: [wishlist, paper, transformers, cnns, explainability]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Reinforcement Learning]
+    author: Chris Nota, Philip S. Thomas
+    title: Is the Policy Gradient a Gradient?
+    url: https://arxiv.org/pdf/1906.07073
+    year: 2019
+    tags: [wishlist, paper, reinforcement-learning, policy-gradient]
+
+  - date: 2026-03-29
+    category: [Education, Philosophy]
+    author: Jan Armstrong
+    title: Political Economy of Academic Writing Practices
+    url: https://www.jstor.org/stable/jthought.45.1-2.55
+    year: 2010
+    tags: [wishlist, paper, academic-writing, education]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Reinforcement Learning]
+    author: Tianzhe Chu, Yuexiang Zhai, Jihan Yang, Shengbang Tong, Saining Xie, Dale Schuurmans, Quoc V. Le, Sergey Levine, Yi Ma
+    title: "SFT Memorizes, RL Generalizes: A Comparative Study of Foundation Model Post-training"
+    url: https://arxiv.org/pdf/2501.17161
+    year: 2025
+    tags: [wishlist, paper, reinforcement-learning, fine-tuning, generalization]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Computer Vision, Cognitive Science]
+    author: Quentin Garrido, Nicolas Ballas, Mahmoud Assran, Adrien Bardes, Laurent Najman, Michael Rabbat, Emmanuel Dupoux, Yann LeCun
+    title: Intuitive Physics Understanding Emerges from Self-Supervised Pretraining on Natural Videos
+    url: https://arxiv.org/pdf/2502.11831
+    year: 2025
+    tags: [wishlist, paper, self-supervised-learning, intuitive-physics, video, representation-learning]
+
+  - date: 2026-03-29
+    category: [Machine Learning]
+    author: Komal Kumar, Tajamul Ashraf, Omkar Thawakar, Rao Muhammad Anwer, Hisham Cholakkal, Mubarak Shah, Ming-Hsuan Yang, Phillip H.S. Torr, Fahad Shahbaz Khan, Salman Khan
+    title: "LLM Post-Training: A Deep Dive into Reasoning Large Language Models"
+    url: https://arxiv.org/pdf/2502.21321
+    year: 2025
+    tags: [wishlist, paper, post-training, reinforcement-learning, fine-tuning, reasoning, survey]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Information Theory]
+    author: Shaden Alshammari, John Hershey, Axel Feldmann, William T. Freeman, Mark Hamilton
+    title: "I-Con: A Unifying Framework for Representation Learning"
+    url: https://openreview.net/pdf?id=WfaQrKCr4X
+    year: 2025
+    tags: [wishlist, paper, representation-learning, contrastive-learning, information-theory, unification]
+
+  - date: 2026-03-29
+    category: [Science, Communication]
+    author: Anne E Blackwell, David L Moutard, Jake A Miller
+    title: "The Rizzeta Stone: Adopting Gen-\u03B1 Colloquial Language to Improve Scientific Paper Rizz and Aura from a Skibidi Perspective"
+    url: https://arxiv.org/pdf/2504.00073
+    year: 2025
+    tags: [wishlist, paper, scientific-communication, humor, academia]
+
+  - date: 2026-03-29
+    category: [Machine Learning, NLP]
+    author: Rishi Jha, Collin Zhang, Vitaly Shmatikov, John X. Morris
+    title: Harnessing the Universal Geometry of Embeddings
+    url: https://arxiv.org/pdf/2505.12540
+    year: 2025
+    tags: [wishlist, paper, embeddings, geometry, representation-learning, security]
+
+  - date: 2026-03-29
+    category: [Machine Learning]
+    author: John X. Morris, Chawin Sitawarin, Chuan Guo, Narine Kokhlikyan, G. Edward Suh, Alexander M. Rush, Kamalika Chaudhuri, Saeed Mahloujifar
+    title: How Much Do Language Models Memorize?
+    url: https://arxiv.org/pdf/2505.24832
+    year: 2025
+    tags: [wishlist, paper, memorization, generalization, scaling-laws, grokking]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Optimization]
+    author: Kevin Frans, Sergey Levine, Pieter Abbeel
+    title: A Stable Whitening Optimizer for Efficient Neural Network Training
+    url: https://arxiv.org/pdf/2506.07254
+    year: 2025
+    tags: [wishlist, paper, optimization, shampoo, training, second-order]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Theory]
+    author: Gail Weiss, Yoav Goldberg, Eran Yahav
+    title: Thinking Like Transformers
+    url: https://arxiv.org/pdf/2106.06981
+    year: 2021
+    tags: [wishlist, paper, transformers, computational-theory, programming-languages, RASP]
+
+  - date: 2026-03-29
+    category: [Robotics, Optimization]
+    author: Yulin Li, Haoyu Han, Shucheng Kang, Jun Ma, Heng Yang
+    title: On the Surprising Robustness of Sequential Convex Optimization for Contact-Implicit Motion Planning
+    url: https://www.roboticsproceedings.org/rss21/p047.pdf
+    year: 2025
+    tags: [wishlist, paper, motion-planning, convex-optimization, contact-dynamics, robotics]
+
+  - date: 2026-03-29
+    category: [Machine Learning]
+    author: Mingjie Sun, Zhuang Liu, Anna Bair, J. Zico Kolter
+    title: A Simple and Effective Pruning Approach for Large Language Models
+    url: https://arxiv.org/pdf/2306.11695
+    year: 2023
+    tags: [wishlist, paper, pruning, llm, efficiency, sparsity]
+
+  - date: 2026-03-29
+    category: [Machine Learning]
+    author: Namhoon Lee, Thalaiyasingam Ajanthan, Philip H. S. Torr
+    title: "SNIP: Single-shot Network Pruning based on Connection Sensitivity"
+    url: https://arxiv.org/pdf/1810.02340
+    year: 2019
+    tags: [wishlist, paper, pruning, sparsity, initialization, saliency]
+
+  - date: 2026-03-29
+    category: [Computer Science, Algorithms]
+    author: Ran Duan, Jiayi Mao, Xiao Mao, Xinkai Shu, Longhui Yin
+    title: Breaking the Sorting Barrier for Directed Single-Source Shortest Paths
+    url: https://arxiv.org/pdf/2504.17033
+    year: 2025
+    tags: [wishlist, paper, shortest-paths, dijkstra, graph-algorithms, complexity]
+
+  - date: 2026-03-29
+    category: [Machine Learning, History]
+    author: Juergen Schmidhuber
+    title: Annotated History of Modern AI and Deep Learning
+    url: https://arxiv.org/pdf/2212.11279
+    year: 2022
+    tags: [wishlist, paper, deep-learning, history, survey, neural-networks]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Theory]
+    author: Samet Oymak, Zalan Fabian, Mingchen Li, Mahdi Soltanolkotabi
+    title: Generalization Guarantees for Neural Networks via Harnessing the Low-rank Structure of the Jacobian
+    url: https://arxiv.org/pdf/1906.05392
+    year: 2019
+    tags: [wishlist, paper, generalization, jacobian, low-rank, theory]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Mathematics]
+    author: Nimrod Berman, Assaf Hallak, Assaf Shocher
+    title: Who Said Neural Networks Aren't Linear?
+    url: https://arxiv.org/pdf/2510.08570
+    year: 2025
+    tags: [wishlist, paper, linearity, neural-networks, linear-algebra, diffusion-models]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Logic]
+    author: Pedro Domingos
+    title: "Tensor Logic: The Language of AI"
+    url: https://arxiv.org/pdf/2510.12269
+    year: 2025
+    tags: [wishlist, paper, tensor-logic, neuro-symbolic, programming-languages, reasoning]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Optimization]
+    author: Bidipta Sarkar, Mattie Fellows, Juan Agustin Duque et al.
+    title: Evolution Strategies at the Hyperscale
+    url: https://eshyperscale.github.io/
+    year: 2025
+    tags: [wishlist, paper, evolution-strategies, low-rank, training, integer-networks]
+
+  - date: 2026-03-29
+    category: [Machine Learning]
+    author: Geoffrey Hinton
+    title: "The Forward-Forward Algorithm: Some Preliminary Investigations"
+    url: https://arxiv.org/pdf/2212.13345
+    year: 2022
+    tags: [wishlist, paper, forward-forward, backpropagation, learning-algorithms]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Mathematics]
+    author: Naman Agarwal, Siddhartha R. Dalal, Vishal Misra
+    title: The Bayesian Geometry of Transformer Attention
+    url: https://arxiv.org/pdf/2512.22471
+    year: 2025
+    tags: [wishlist, paper, transformers, bayesian-inference, attention, geometry]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Science]
+    author: Sathya Edamadaka, Soojung Yang, Ju Li, Rafael Gómez-Bombarelli
+    title: Universally Converging Representations of Matter Across Scientific Foundation Models
+    url: https://arxiv.org/pdf/2512.03750
+    year: 2025
+    tags: [wishlist, paper, foundation-models, representation-learning, scientific-ml, alignment]
+
+  - date: 2026-03-29
+    category: [Accessibility, Science]
+    author: "Alba Feranández-Barral"
+    title: Best Practices for Colour Blind Friendly Publications & Descriptions
+    url: https://pos.sissa.it/guidelines.pdf
+    year: 2023
+    tags: [wishlist, paper, colour-blindness, accessibility, visualization, publications]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Mathematics]
+    author: Zhang Chong
+    title: Attention Is Not What You Need
+    url: https://arxiv.org/pdf/2512.19428
+    year: 2025
+    tags: [wishlist, paper, attention, grassmann-manifold, sequence-modeling, geometry]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Theory]
+    author: Brian Richard Olsen, Sam Fatehmanesh, Frank Xiao, Adarsh Kumarappan, Anirudh Gajula
+    title: "From SGD to Spectra: A Theory of Neural Network Weight Dynamics"
+    url: https://arxiv.org/pdf/2507.12709
+    year: 2025
+    tags: [wishlist, paper, sgd, spectral-theory, random-matrix-theory, training-dynamics]
+
+  - date: 2026-03-29
+    category: [Machine Learning]
+    author: Chunming Ye, Songzhou Li, Xu Xu
+    title: Exploring and Reshaping the Weight Distribution in LLM
+    url: https://arxiv.org/pdf/2509.00046
+    year: 2025
+    tags: [wishlist, paper, weight-distribution, lora, svd, power-law]
+
+  - date: 2026-03-29
+    category: [Mathematics, Machine Learning]
+    author: Iolo Jones, David Lanners
+    title: Computing Diffusion Geometry
+    url: https://arxiv.org/pdf/2602.06006
+    year: 2026
+    tags: [wishlist, paper, diffusion-geometry, differential-geometry, data-driven, topology]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Mathematics]
+    author: "Michael M. Bronstein, Joan Bruna, Taco Cohen, Petar Veličković"
+    title: "Geometric Deep Learning: Grids, Groups, Graphs, Geodesics, and Gauges"
+    url: https://arxiv.org/pdf/2104.13478
+    year: 2021
+    tags: [wishlist, paper, geometric-deep-learning, symmetry, equivariance, survey]
+
+  - date: 2026-03-29
+    category: [Machine Learning]
+    author: John X. Morris, Niloofar Mireshghallah, Mark Ibrahim, Saeed Mahloujifar
+    title: Learning to Reason in 13 Parameters
+    url: https://arxiv.org/pdf/2602.04118
+    year: 2026
+    tags: [wishlist, paper, lora, reasoning, parameter-efficiency, reinforcement-learning]
+
+  - date: 2026-03-29
+    category: [Cognitive Science, Biology]
+    author: Amalia P M Bastos, Christopher Krupenye
+    title: "Evidence for Representation of Pretend Objects by Kanzi, a Language-Trained Bonobo"
+    url: https://doi.org/10.1126/science.adz0743
+    year: 2026
+    tags: [wishlist, paper, cognition, pretense, primates, secondary-representations]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Computer Vision]
+    author: Emilien Dupont, Adam Golinski, Milad Alizadeh, Yee Whye Teh, Arnaud Doucet
+    title: "COIN: COmpression with Implicit Neural Representations"
+    url: https://arxiv.org/pdf/2103.03123
+    year: 2021
+    tags: [wishlist, paper, implicit-neural-representations, compression, neural-networks]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Mathematics]
+    author: Matthew Tancik, Pratul Srinivasan, Ben Mildenhall, Sara Fridovich-Keil, Nithin Raghavan, Utkarsh Singhal, Ravi Ramamoorthi, Jonathan T. Barron, Ren Ng
+    title: Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains
+    url: https://arxiv.org/pdf/2006.10739
+    year: 2020
+    tags: [wishlist, paper, fourier-features, implicit-neural-representations, positional-encoding, spectral-bias]
+
+  - date: 2026-03-29
+    category: [Machine Learning]
+    author: Yulu Gan, Phillip Isola
+    title: "Neural Thickets: Diverse Task Experts Are Dense Around Pretrained Weights"
+    url: https://arxiv.org/pdf/2603.12228
+    year: 2026
+    tags: [wishlist, paper, pretrained-models, post-training, ensembling, weight-space]
+
+  - date: 2026-03-29
+    category: [Machine Learning]
+    author: Matt Gorbett, Suman Jana
+    title: Characterizing Linear Alignment Across Language Models
+    url: https://arxiv.org/pdf/2603.18908
+    year: 2026
+    tags: [wishlist, paper, representation-alignment, linear-maps, language-models, privacy]
+
+  - date: 2026-03-29
+    category: [Mathematics, Statistics]
+    author: Nozer D. Singpurwalla, Boya Lai
+    title: What Does the "Mean" Really Mean?
+    url: https://arxiv.org/pdf/2003.01973
+    year: 2020
+    tags: [wishlist, paper, arithmetic-mean, kolmogorov-nagumo, statistics, foundations]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Verification]
+    author: Haitham Khedr, Yasser Shoukry
+    title: "DeepBern-Nets: Taming the Complexity of Certifying Neural Networks Using Bernstein Polynomial Activations and Precise Bound Propagation"
+    url: https://ojs.aaai.org/index.php/AAAI/article/view/30117
+    year: 2024
+    tags: [wishlist, paper, neural-network-verification, bernstein-polynomials, certification, robustness]
+
+  - date: 2026-03-30
+    category: [Mathematics, Numerical Linear Algebra]
+    author: Elias Jarlebring
+    title: Eigenvalue Nonlinearities and Eigenvector Nonlinearities
+    url: https://ilas2023.es/wp-content/uploads/2023/06/jarlebring.pdf
+    year: 2023
+    tags: [wishlist, paper, nonlinear-eigenproblems, numerical-linear-algebra, eigenvectors]
+
+  - date: 2026-03-30
+    category: [Signal Processing, Remote Sensing]
+    author: Nirmal Keshava
+    title: A Survey of Spectral Unmixing Algorithms
+    url: https://archive.ll.mit.edu/publications/journal/pdf/vol14_no1/14_1survey.pdf
+    year: 2003
+    tags: [wishlist, paper, spectral-unmixing, hyperspectral, remote-sensing, survey]
+
+  - date: 2026-03-30
+    category: [Mathematics, Machine Learning]
+    author: Vitaly Aksenov, Eve Bodnia, Michael H. Freedman, Michael Mulligan
+    title: "Compression is All You Need: Modeling Mathematics"
+    url: https://arxiv.org/pdf/2603.20396
+    year: 2026
+    tags: [wishlist, paper, compression, formal-mathematics, monoid-theory, automated-reasoning]
+    notes: |
+      Video: https://www.youtube.com/watch?v=RhA6hnh-peM
+
+  - date: 2026-03-29
+    category: [Machine Learning, Safety]
+    author: Yavuz Bakman, Duygu Nur Yaldiz, Salman Avestimehr, Sai Praneeth Karimireddy
+    title: "Hair-Trigger Alignment: Black-Box Evaluation Cannot Guarantee Post-Update Alignment"
+    url: https://arxiv.org/pdf/2601.22313
+    year: 2026
+    tags: [wishlist, paper, alignment, safety, evaluation, adversarial]
+
+  # Articles
+  - date: 2026-03-29
+    category: [Computer Science]
+    author: Jeff Huang
+    title: Best Paper Awards in Computer Science
+    url: https://jeffhuang.com/best_paper_awards/conferences.html
+    tags: [wishlist, article, computer-science, awards, reference]
+
+  - date: 2026-03-29
+    category: [Mathematics, Machine Learning]
+    author: "Antonio Álvarez López"
+    title: Breaking the Curse of Dimensionality with Barron Spaces
+    url: https://dcn.nat.fau.eu/breaking-the-curse-of-dimensionality-with-barron-spaces/
+    year: 2022
+    tags: [wishlist, article, approximation-theory, neural-networks, curse-of-dimensionality, barron-spaces]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Tools]
+    title: "AIScientist.Tools / ToolUniverse"
+    url: https://aiscientist.tools/
+    tags: [wishlist, article, ai-tools, scientific-computing, agents, reference]
+
+  - date: 2026-03-29
+    category: [Mathematics, Optimization]
+    author: Mykel J. Kochenderfer, Tim A. Wheeler
+    title: Algorithms for Optimization
+    url: https://algorithmsbook.com/optimization/
+    year: 2019
+    tags: [wishlist, article, optimization, textbook, reference]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Decision Making]
+    author: Mykel J. Kochenderfer, Tim A. Wheeler, Kyle H. Wray
+    title: Algorithms for Decision Making
+    url: https://algorithmsbook.com/decisionmaking/
+    year: 2022
+    tags: [wishlist, article, decision-making, textbook, reference]
+
+  - date: 2026-03-29
+    category: [Machine Learning, Validation]
+    author: Mykel J. Kochenderfer, Sydney M. Katz, Anthony L. Corso, Robert J. Moss
+    title: Algorithms for Validation
+    url: https://algorithmsbook.com/validation/
+    tags: [wishlist, article, validation, textbook, reference]
+
+  - date: 2026-03-29
+    category: [Education, Philosophy]
+    author: Gundula Bosch
+    title: Train PhD Students to Be Thinkers Not Just Specialists
+    url: https://www.nature.com/articles/d41586-018-01853-1
+    year: 2018
+    tags: [wishlist, article, phd, education, critical-thinking, academia]
+
+  # Books
+  - date: 2026-03-30
+    category: [Mathematics, Psychology]
+    author: Jacques Hadamard
+    title: The Psychology of Invention in the Mathematical Field
+    url: https://worrydream.com/refs/Hadamard_1945_-_The_psychology_of_invention_in_the_mathematical_field.pdf
+    year: 1945
+    tags: [wishlist, book, mathematical-thinking, creativity, psychology]
+    notes: |
+      Video: https://www.youtube.com/watch?v=KE2sybQCalA
+
+  - date: 2026-03-30
+    category: [Mathematics, Philosophy]
+    author: Henri Poincaré
+    title: Science and Method
+    url: https://henripoincarepapers.univ-nantes.fr/chp/hp-pdf/hp1914sm.pdf
+    year: 1914
+    tags: [wishlist, book, scientific-method, philosophy-of-science, mathematics]
+    notes: |
+      Video: https://www.youtube.com/watch?v=KE2sybQCalA
+
+  # Thesis
+  - date: 2026-03-30
+    category: [Mathematics]
+    author: Alan Edelman
+    title: Eigenvalues and Condition Numbers of Random Matrices
+    url: https://math.mit.edu/~edelman/publications/eigenvalues_and_condition_numbers.pdf
+    year: 1989
+    tags: [wishlist, thesis, random-matrix-theory, eigenvalues, condition-numbers]

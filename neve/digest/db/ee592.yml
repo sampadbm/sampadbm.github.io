@@ -1,0 +1,202 @@
+readings:
+  # EE 592 - Inverse Problems (Spring 2026) project references
+
+  - date: 2026-03-30
+    category: [Machine Learning, Computer Vision]
+    author: Jianchao Yang, John Wright, Thomas Huang, Yi Ma
+    title: Image Super-Resolution via Sparse Representation
+    url: https://www.columbia.edu/~jw2966/papers/YWHM10-TIP.pdf
+    year: 2010
+    tags: [wishlist, paper, ee592, super-resolution, sparse-representation, dictionary-learning, image-processing]
+
+  - date: 2026-03-30
+    category: [Signal Processing]
+    author: Zhou Wang, Alan C. Bovik
+    title: "Mean Squared Error: Love It or Leave It?"
+    url: https://ece.uwaterloo.ca/~z70wang/publications/SPM09.pdf
+    year: 2009
+    tags: [wishlist, paper, ee592, mse, signal-quality, image-quality, metrics]
+
+  - date: 2026-03-30
+    category: [Signal Processing, Machine Learning]
+    author: Michal Aharon, Michael Elad, Alfred Bruckstein
+    title: "K-SVD: An Algorithm for Designing Overcomplete Dictionaries for Sparse Representation"
+    url: https://www.ccs.neu.edu/home/eelhami/courses/EE290A/K-SVD_Elad.pdf
+    year: 2006
+    tags: [wishlist, paper, ee592, k-svd, dictionary-learning, sparse-representation, overcomplete]
+
+  - date: 2026-03-30
+    category: [Signal Processing, Machine Learning]
+    author: Ivana Tosic, Pascal Frossard
+    title: Dictionary Learning
+    url: https://doi.org/10.1109/MSP.2010.939537
+    year: 2011
+    tags: [wishlist, paper, ee592, dictionary-learning, sparse-representation, survey]
+
+  - date: 2026-03-30
+    category: [Signal Processing, Machine Learning]
+    author: Saiprasad Ravishankar, Yoram Bresler
+    title: Learning Sparsifying Transforms
+    url: https://transformlearning.csl.illinois.edu/assets/Sai/JournalPapers/SaiTSP2013Square.pdf
+    year: 2013
+    tags: [wishlist, paper, ee592, transform-learning, sparse-representation, signal-processing, denoising]
+
+  - date: 2026-03-30
+    category: [Computer Vision, Signal Processing]
+    author: Marcelo Bertalmio, Guillermo Sapiro, Vicent Caselles, Coloma Ballester
+    title: Image Inpainting
+    url: https://dl.acm.org/doi/10.1145/344779.344972
+    year: 2000
+    tags: [wishlist, paper, ee592, inpainting, image-processing, pde, siggraph]
+
+  - date: 2026-03-30
+    category: [Signal Processing, Remote Sensing]
+    author: Nirmal Keshava, John F. Mustard
+    title: Spectral Unmixing
+    url: https://doi.org/10.1109/79.974727
+    year: 2002
+    tags: [wishlist, paper, ee592, spectral-unmixing, hyperspectral, remote-sensing]
+
+  - date: 2026-03-30
+    category: [Signal Processing]
+    author: Barry D. Van Veen, Kevin M. Buckley
+    title: "Beamforming: A Versatile Approach to Spatial Filtering"
+    url: https://users.umiacs.umd.edu/~ramanid/cmsc828d_audio/Beamforming.pdf
+    year: 1988
+    tags: [wishlist, paper, ee592, beamforming, spatial-filtering, array-processing, survey]
+
+  - date: 2026-03-30
+    category: [Statistics, Computer Vision]
+    author: Stuart Geman, Donald Geman
+    title: "Stochastic Relaxation, Gibbs Distributions, and the Bayesian Restoration of Images"
+    url: https://www.dam.brown.edu/people/geman/Homepage/Image%20processing,%20image%20analysis,%20Markov%20random%20fields,%20and%20MCMC/stochastic%20relaxation.pdf
+    year: 1984
+    tags: [wishlist, paper, ee592, gibbs-sampling, markov-random-fields, bayesian, image-restoration, simulated-annealing]
+
+  - date: 2026-03-30
+    category: [Computer Vision, Optimization]
+    author: Hiroshi Ishikawa
+    title: Exact Optimization for Markov Random Fields with Convex Priors
+    url: https://scispace.com/pdf/exact-optimization-for-markov-random-fields-with-convex-2plcb2f3u2.pdf
+    year: 2003
+    tags: [wishlist, paper, ee592, markov-random-fields, graph-cuts, optimization, convex]
+
+  - date: 2026-03-30
+    category: [Computer Vision, Optimization]
+    author: Vladimir Kolmogorov, Ramin Zabih
+    title: What Energy Functions Can Be Minimized via Graph Cuts?
+    url: https://www.cs.cornell.edu/~rdz/Papers/KZ-PAMI04.pdf
+    year: 2004
+    tags: [wishlist, paper, ee592, graph-cuts, energy-minimization, markov-random-fields, max-flow]
+
+  - date: 2026-03-30
+    category: [Mathematics, Signal Processing]
+    author: Mila Nikolova, Michael K. Ng
+    title: Analysis of Half-Quadratic Minimization Methods for Signal and Image Recovery
+    url: https://mnikolova.perso.math.cnrs.fr/hq.pdf
+    year: 2005
+    tags: [wishlist, paper, ee592, half-quadratic, regularization, inverse-problems, image-restoration, optimization]
+
+  - date: 2026-03-30
+    category: [Mathematics, Optimization]
+    author: Amir Beck, Marc Teboulle
+    title: A Fast Iterative Shrinkage-Thresholding Algorithm for Linear Inverse Problems
+    url: https://www.cs.cmu.edu/~airg/readings/2012_02_21_a_fast_iterative_shrinkage-thresholding.pdf
+    year: 2009
+    tags: [wishlist, paper, ee592, fista, proximal-methods, optimization, inverse-problems, sparse]
+
+  - date: 2026-03-29
+    category: [Mathematics, Optimization]
+    author: Yurii Nesterov
+    title: Smooth Minimization of Non-Smooth Functions
+    url: http://luthuli.cs.uiuc.edu/~daf/courses/Optimization/MRFpapers/nesterov05.pdf
+    year: 2005
+    tags: [wishlist, paper, ee592, convex-optimization, non-smooth-optimization, smoothing, first-order-methods]
+
+  - date: 2026-03-29
+    category: [Mathematics, Optimization]
+    author: Stephen Becker, Jerome Bobin, Emmanuel Candes
+    title: "NESTA: A Fast and Accurate First-order Method for Sparse Recovery"
+    url: https://arxiv.org/pdf/0904.3367
+    year: 2009
+    tags: [wishlist, paper, ee592, compressed-sensing, sparse-recovery, first-order-methods, nesterov-smoothing, l1-minimization]
+
+  - date: 2026-03-29
+    category: [Optimization, Computer Vision]
+    author: Manya V. Afonso, Jose M. Bioucas-Dias, Mario A. T. Figueiredo
+    title: Fast Image Recovery Using Variable Splitting and Constrained Optimization
+    url: https://arxiv.org/pdf/0910.4887
+    year: 2009
+    tags: [wishlist, paper, ee592, image-recovery, variable-splitting, constrained-optimization, inverse-problems, ADMM]
+
+  - date: 2026-03-29
+    category: [Mathematics, Optimization]
+    author: S. Boyd, N. Parikh, E. Chu, B. Peleato, J. Eckstein
+    title: Distributed Optimization and Statistical Learning via the Alternating Direction Method of Multipliers
+    url: https://web.stanford.edu/~boyd/papers/pdf/admm_distr_stats.pdf
+    year: 2011
+    tags: [wishlist, book, ee592, ADMM, distributed-optimization, convex-optimization, statistical-learning]
+
+  - date: 2026-03-29
+    category: [Signal Processing, Optimization]
+    author: Singanallur V. Venkatakrishnan, Charles A. Bouman, Brendt Wohlberg
+    title: Plug-and-Play Priors for Model Based Reconstruction
+    url: https://engineering.purdue.edu/~bouman/Plug-and-Play/webdocs/GlobalSIP2013a.pdf
+    year: 2013
+    tags: [wishlist, paper, ee592, plug-and-play, inverse-problems, image-reconstruction, ADMM, denoising]
+
+  - date: 2026-03-29
+    category: [Computer Vision, Optimization]
+    author: Yaniv Romano, Michael Elad, Peyman Milanfar
+    title: "The Little Engine that Could: Regularization by Denoising (RED)"
+    url: https://arxiv.org/pdf/1611.02862
+    year: 2016
+    tags: [wishlist, paper, ee592, regularization, denoising, inverse-problems, image-restoration]
+
+  - date: 2026-03-29
+    category: [Inverse Problems, Optimization]
+    author: Gregery T. Buzzard, Stanley H. Chan, Suhas Sreehari, Charles A. Bouman
+    title: "Plug-and-Play Unplugged: Optimization Free Reconstruction using Consensus Equilibrium"
+    url: https://arxiv.org/pdf/1705.08983
+    year: 2017
+    tags: [wishlist, paper, ee592, plug-and-play, consensus-equilibrium, image-reconstruction, inverse-problems]
+
+  - date: 2026-03-29
+    category: [Numerical Linear Algebra]
+    author: Richard Barrett, Michael Berry, Tony F. Chan, James Demmel, June Donato, Jack Dongarra, Victor Eijkhout, Roldan Pozo, Charles Romine, Henk van der Vorst
+    title: "Templates for the Solution of Linear Systems: Building Blocks for Iterative Methods"
+    url: https://www.netlib.org/templates/templates.pdf
+    year: 1994
+    tags: [wishlist, book, ee592, iterative-methods, linear-systems, Krylov-methods, preconditioners, sparse-systems]
+
+  - date: 2026-03-29
+    category: [Numerical Linear Algebra]
+    author: Tony F. Chan, W. L. Wan
+    title: Analysis of Projection Methods for Solving Linear Systems with Multiple Right-Hand Sides
+    url: https://cs.uwaterloo.ca/~jwlwan/papers/ChanWan97.pdf
+    year: 1997
+    tags: [wishlist, paper, ee592, projection-methods, Krylov-methods, conjugate-gradient, linear-systems]
+
+  - date: 2026-03-29
+    category: [Statistics, Mathematics]
+    author: Gene H. Golub, Michael Heath, Grace Wahba
+    title: Generalized Cross-Validation as a Method for Choosing a Good Ridge Parameter
+    url: https://pages.stat.wisc.edu/~wahba/ftp1/oldie/golub.heath.wahba.pdf
+    year: 1979
+    tags: [wishlist, paper, ee592, cross-validation, GCV, ridge-regression, regularization, parameter-selection]
+
+  - date: 2026-03-29
+    category: [Mathematics, Inverse Problems]
+    author: Justin P. Haldar
+    title: "On Ambiguity in Linear Inverse Problems: Entrywise Bounds on Nearly Data-Consistent Solutions and Entrywise Condition Numbers"
+    url: https://arxiv.org/pdf/2212.13614
+    year: 2022
+    tags: [wishlist, paper, ee592, inverse-problems, ambiguity, condition-numbers, linear-systems, error-bounds]
+
+  - date: 2026-03-29
+    category: [Signal Processing, Statistics]
+    author: P. Stoica, Y. Selen
+    title: Model-order selection
+    url: https://sci-hub.ru/10.1109/MSP.2004.1311138
+    year: 2004
+    tags: [wishlist, paper, ee592, model-selection, information-criteria, AIC, BIC, signal-processing]
