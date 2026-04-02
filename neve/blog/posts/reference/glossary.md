@@ -52,3 +52,19 @@ The problem of finding scalar $\lambda$ and vector $x$ satisfying $Ax = \lambda 
 ## Quadratic Eigenvalue Problem
 
 Finding $\lambda$ and $x$ satisfying $(\lambda^2 M + \lambda C + K)x = 0$ — a special case of the nonlinear eigenproblem where the matrix depends quadratically on $\lambda$. Arises in damped vibration systems where $M$, $C$, and $K$ are the mass, damping, and stiffness matrices respectively.
+
+## Natural Gradient
+
+A modification of gradient descent that respects the geometry of the parameter space. Standard gradient descent measures distances via the Euclidean metric $\|\delta\theta\|^2$, but when parameters define a probability distribution $p_\theta$, this is the wrong geometry — a small change in $\theta$ can cause a large or small change in the distribution depending on the parameterization. The natural gradient replaces the Euclidean metric with the Fisher information metric $F(\theta) = \mathbb{E}_{p_\theta}[\nabla \log p_\theta(x)\, \nabla \log p_\theta(x)^\top]$, which locally approximates KL divergence: $D_{\mathrm{KL}}(p_\theta \| p_{\theta+\delta\theta}) \approx \frac{1}{2}\,\delta\theta^\top F(\theta)\,\delta\theta$. The update $\theta \leftarrow \theta - \eta\, F(\theta)^{-1} \nabla L(\theta)$ is the steepest descent direction measured in KL divergence rather than Euclidean distance. It is reparameterization invariant (the trajectory through distribution space is unchanged under coordinate transforms $\theta \to \phi(\theta)$), and $F(\theta)$ is the Riemannian metric tensor on the statistical manifold, making this Riemannian gradient descent. Under regularity conditions (Bartlett identity), the Fisher equals the expected Hessian for maximum likelihood, so natural gradient can be viewed as an always-PSD approximation to Newton's method. Introduced by Amari (1998); since $F(\theta)^{-1}$ is intractable for large models, practical approximations include K-FAC (Kronecker-factored curvature), TRPO/PPO (KL-constrained policy updates in RL), and diagonal approximations loosely related to Adam.
+
+## Symmetric → Normal → Commuting Family
+
+## Preconditioning
+
+$$Ax = b \implies MAx = Mb, \quad M \approx A^{-1}$$
+
+$MA$ has a lower condition number than $A$, so iterative methods converge faster. But a better $M$ means more expensive to compute — at the limit $M = A^{-1}$ you've already solved the problem, so you're always paying part of the cost you were trying to avoid.
+
+## Symmetric → Normal → Commuting Family
+
+A chain of increasingly general diagonalizability results. **Symmetric:** $[A, A^T] = 0$ implies there exists an orthonormal basis of eigenvectors. **Normal:** $[A, A^*] = 0$ implies there exists a unitary matrix that diagonalizes $A$. **Commuting family:** $[A_i, A_j] = 0$ for all normal $A_i, A_j$ implies there exists a single unitary matrix that simultaneously diagonalizes all of them.
