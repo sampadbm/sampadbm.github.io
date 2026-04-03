@@ -63,7 +63,7 @@ A modification of gradient descent that respects the geometry of the parameter s
 
 $$Ax = b \implies MAx = Mb, \quad M \approx A^{-1}$$
 
-$MA$ has a lower condition number than $A$, so iterative methods converge faster. But a better $M$ means more expensive to compute — at the limit $M = A^{-1}$ you've already solved the problem, so you're always paying part of the cost you were trying to avoid.
+$MA$ has a lower condition number than $A$, so iterative methods converge faster. But a better $M$ means more expensive to compute — at the limit $M = A^{-1}$ you've already solved the problem, so you're always paying part of the cost you were trying to avoid. A common example is ILU (Incomplete LU factorization), which computes an approximate $LU$ decomposition of $A$ by dropping small fill-in entries to keep it sparse, then uses $M = (LU)^{-1}$ as the preconditioner.
 
 ## Symmetric → Normal → Commuting Family
 
