@@ -231,6 +231,13 @@ h1 {
     margin: 0;
 }
 
+.blog-post .post-author {
+    font-style: italic;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
 /* Toggle content button */
 .toggle-content-btn {
     display: flex;
@@ -281,6 +288,7 @@ h1 {
     font-weight: 400;
     letter-spacing: normal;
     font-style: normal;
+    text-decoration: underline double;
 }
 
 .post-content h2 {
@@ -291,6 +299,7 @@ h1 {
     font-weight: 400;
     letter-spacing: normal;
     font-style: normal;
+    text-decoration: underline double;
 }
 
 .post-content h3 {
@@ -299,6 +308,7 @@ h1 {
     margin-bottom: 0.5rem;
     color: var(--color-text-secondary);
     font-weight: 400;
+    text-decoration: underline;
 }
 
 .post-content p {
@@ -438,6 +448,22 @@ h1 {
     margin: 1rem 0;
     overflow-x: auto;
     overflow-y: hidden;
+    padding: 0 0.25rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+}
+
+.katex-display::-webkit-scrollbar {
+    height: 3px;
+}
+
+.katex-display::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.katex-display::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 3px;
 }
 
 /* Responsive design */
@@ -641,6 +667,14 @@ h1 {
     letter-spacing: 0.5px;
 }
 
+.post-header .post-author {
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
 .post-header .post-summary {
     font-size: 1.05rem;
     font-style: italic;
@@ -814,6 +848,10 @@ h1 {
     color: var(--color-text-secondary);
     margin-right: 0.4rem;
     font-size: 0.85em;
+}
+
+.heading-number {
+    color: var(--color-text-secondary);
 }
 
 .layout-sidebar-right .toc-list {

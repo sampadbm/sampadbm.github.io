@@ -66,6 +66,13 @@ function generateTOC() {
         const link = document.createElement('a');
         link.href = `#${heading.id}`;
         link.textContent = heading.textContent;
+
+        // Add number to the heading in the post content
+        const headingNumber = document.createElement('span');
+        headingNumber.className = 'heading-number';
+        headingNumber.textContent = numberStr + '. ';
+        heading.prepend(headingNumber);
+
         link.addEventListener('click', (e) => {
             e.preventDefault();
             heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -116,6 +123,54 @@ function parseFrontmatter(markdownText) {
 }
 
 /**
+ * Dynamically load a script from a URL, resolving when loaded
+ */
+function loadScript(src) {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.onload = resolve;
+        script.onerror = () => reject(new Error(`Failed to load ${src}`));
+        document.head.appendChild(script);
+    });
+}
+
+/**
+ * Load Vega-Lite stack and register the marked extension.
+ * Called only when the post contains ```vegalite blocks.
+ */
+async function enableVegalite() {
+    await loadScript('https://cdn.jsdelivr.net/npm/vega@5');
+    await loadScript('https://cdn.jsdelivr.net/npm/vega-lite@5');
+    await loadScript('https://cdn.jsdelivr.net/npm/vega-embed@6');
+
+    marked.use({
+        extensions: [{
+            name: 'vegalite',
+            level: 'block',
+            start(src) { return src.indexOf('```vegalite'); },
+            tokenizer(src) {
+                const match = src.match(/^```vegalite\n([\s\S]*?)```/);
+                if (!match) return;
+                return { type: 'vegalite', raw: match[0], text: match[1] };
+            },
+            renderer(token) {
+                const id = `vegalite-${Math.random().toString(36).slice(2)}`;
+                const observer = new MutationObserver(() => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        observer.disconnect();
+                        vegaEmbed(el, jsyaml.load(token.text));
+                    }
+                });
+                observer.observe(document.body, { childList: true, subtree: true });
+                return `<div id="${id}"></div>`;
+            }
+        }]
+    });
+}
+
+/**
  * Load and render the post
  */
 async function loadPost() {
@@ -148,6 +203,14 @@ async function loadPost() {
         // Update post title
         document.getElementById('post-title').textContent = meta.title || 'Untitled';
 
+        // Update author
+        const authorDiv = document.getElementById('post-author');
+        if (meta.author) {
+            authorDiv.textContent = meta.author;
+        } else {
+            authorDiv.style.display = 'none';
+        }
+
         // Update metadata (inline format: "March 7, 2026 | math, linear-algebra")
         const metadataDiv = document.getElementById('post-metadata');
         const parts = [];
@@ -165,6 +228,11 @@ async function loadPost() {
             renderMath(summaryDiv);
         } else {
             summaryDiv.style.display = 'none';
+        }
+
+        // Load Vega-Lite plugin on demand if the post uses it
+        if (content.includes('```vegalite')) {
+            await enableVegalite();
         }
 
         // Render markdown

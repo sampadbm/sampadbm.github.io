@@ -231,6 +231,7 @@ for filepath in files:
             'file': filepath,
             'date': date,
             'title': meta.get('title', date),
+            'author': meta.get('author', ''),
             'tags': meta.get('tags', []),
             'summary': meta.get('summary', ''),
             'preview': meta.get('_preview', ''),
@@ -261,6 +262,8 @@ for post in posts_with_meta:
     print(f'  - file: {post["file"]}')
     print(f'    date: {post["date"]}')
     print(f'    title: {format_yaml_value(post["title"])}')
+    if post['author']:
+        print(f'    author: {format_yaml_value(post["author"])}')
     if post['tags']:
         print(f'    tags: {format_yaml_value(post["tags"])}')
     if post['summary']:
