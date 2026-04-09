@@ -3,7 +3,7 @@ date: 2026-03-24
 title: Understanding Matrix Multiplications
 tags: [math, linear-algebra, tutorial]
 summary: Some views on matrix multiplications.
-author: sampad
+authors: [sampad]
 ---
 
 ### Notations

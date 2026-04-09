@@ -222,8 +222,8 @@ function displayPosts(posts) {
                 ${previewText ? `
                 <div class="post-preview"><p>${escapeHtml(previewText)}</p></div>
                 ` : ''}
-                ${post.author ? `
-                <div class="post-author">${escapeHtml(post.author)}</div>
+                ${post.authors ? `
+                <div class="post-author">${escapeHtml(Array.isArray(post.authors) ? post.authors.join(', ') : post.authors)}</div>
                 ` : ''}
             </div>
         </article>

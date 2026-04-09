@@ -5,5 +5,3 @@ databases:
   - db/thesis.yml
   - db/videos.yml
   - db/music.yml
-  - db/wishlist.yml
-  - db/ee592.yml

@@ -3,7 +3,7 @@ date: 2026-03-24
 title: Lagrange duality
 tags: [math, linear-algebra, tutorial]
 summary: Intuitive Lagrange duality
-author: sampad
+authors: [sampad]
 ---
 
 ### Motivation

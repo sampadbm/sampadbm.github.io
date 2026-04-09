@@ -3,7 +3,7 @@ date: 2026-04-04
 title: Understanding SVD filtering
 tags: [math, linear-algebra, tutorial, signal-processing, inverse-problems, EE592]
 summary: Some views on SVD filtering
-author: sampad
+authors: [sampad]
 ---
 ### Notations
 $$[N] = \{1,2,...,N\}$$
@@ -25,7 +25,7 @@ $$
 \end{equation}
 $$
 
-#### Minima of a two variable quadratic
+#### Minima of a two variable separated quadratic
 $$
 \begin{equation}
 \underset{z}{\text{argmin }} (\sigma_1z_1 - c_1)^2  + (\sigma_2z_2 - c_2)\rightarrow z_i^* = \frac{c_i}{\sigma_i}, i \in \{1,2\}
@@ -34,7 +34,7 @@ $$
 
 $$
 \begin{equation}
-\underset{z_1,z_2}{\text{argmin }} (sigma_1z_1 - c_1)^2 + \lambda_1 z_1^2 + (\sigma_2z_2 - c_2)^2 + \lambda_1 z_2^2 \rightarrow z_i^* = \frac{c_i}{\sigma_i + \lambda_i}, i \in \{1,2\}
+\underset{z_1,z_2}{\text{argmin }} (\sigma_1z_1 - c_1)^2 + \lambda_1 z_1^2 + (\sigma_2z_2 - c_2)^2 + \lambda_1 z_2^2 \rightarrow z_i^* = \frac{c_i}{\sigma_i + \lambda_i}, i \in \{1,2\}
 \end{equation}
 $$
 
@@ -106,7 +106,7 @@ $$
 _The same goes for unitary transforms._
 
 #### Rank-1 Resolution of the Identity Operator
-Let $U \in \mathbb{R}^{m \times m}$ be any orthonormal matrix. Then $U^TU = I_n = QQ^T$. 
+Let $U \in \mathbb{R}^{m \times m}$ be any orthonormal matrix. Then $U^TU = I_m = QQ^T$. 
 
 Also, if $u_i, \; i \in [m]$ are the $m$ columns of the matrix $U$, and we define $P_i := u_i u_i ^T$ ($P$ for projections)
 
@@ -132,11 +132,10 @@ Hence the resolvents are orthonormal w.r.t the Frobenius inner product.
 
 > Remark 2:
 $$
-P_i P_j = {\color{green}P_i^T} {\color{purple}P_j} = {\color{green}u_i} \underbrace{{\color{green}u_i^T} {\color{purple}u_j}}_{\delta_{ij}}{\color{purple}u_j^T} = \delta_{ij} {\color{green}u_i}{\color{purple}u_j^T}
+P_i P_j = {\color{green}P_i^T} {\color{purple}P_j} = {\color{green}u_i} \underbrace{{\color{green}u_i^T} {\color{purple}u_j}}_{\delta_{ij}}{\color{purple}u_j^T} = \delta_{ij} {\color{green}u_i}{\color{purple}u_j^T} = \begin{cases} P_i & i = j \\ \mathbf{0}_{m \times m} & \text{otherwise} \end{cases}
 $$ 
-If $i \neq j$, then we have $P_i P_j = 0 = P_i^T P_j = P_i P_j^T = P_i^TP_j^T$.
 
-> Resolution of the identity operator is not unique since all unique orthonormal matrices $V$ give a different resolution.
+> **Resolution of the identity operator is not various orthonormal matrices $V$ give various resolutions.**
 
 Just like a $n$ dimensional vector $x$ can be resolved into $n$ orthogonal components, the identity operator $I_n$ can be resolved into $n$ projections. 
 
@@ -151,7 +150,7 @@ x_i^T x_j = (P_i x)^T (P_j x)) = x^T P_i^T P_j x_j \\\;\\
 \end{aligned}$$
 If $i \neq j$, then $\delta_{ij} = 0$ and hence we have $x_i \perp x_j$ which means $x_i$ are in fact components obtained by orthogonal resolution of the vector $x$.
 
-We also point out that if $I,J \subset [n]$ such that $I \cup J = 0$ (disjoint), then $x_I := \sum_{i \in I}x_i$ and $x_J := \sum_{j \in J} x_J$ are orthogonal.
+We also point out that if index sets $I,J \subset [n]$ such that $I \cup J = 0$ (disjoint), then $x_I := \sum_{i \in I}x_i$ and $x_J := \sum_{j \in J} x_J$ are orthogonal.
 
 $$
 	x_I^T \; x_J = \sum_{i \in I}x_i^T \sum_{j \in J}x_j = \sum_{i \in I, j \in J} \underbrace{x_i^T x_j}_{0} = 0
@@ -223,22 +222,45 @@ Hence, $A_i$ and $A_j$ are orthonormal in the sense of Frobenius inner product.
 > Remark 2:
 $$
 \begin{aligned}
-	A_i^T A_j = \sigma_i v_i u_i^T \;\; \sigma_j u_j v_j^T = \sigma_i \sigma_j  v_i \; \underbrace{u_i u_j}_{\delta_{ij}} \; v_j^T = \delta_{ij} \; \sigma_i \sigma_j \; v_i v_j^T
+	A_i^T A_j = v_i u_i^T \;\;  u_j v_j^T =  v_i \; \underbrace{u_i u_j}_{\delta_{ij}} \; v_j^T = \delta_{ij} \;  v_i v_j^T = \begin{cases}  v_i v_i^T & i=j \\ \mathbf{0}_{n \times n} & i \neq j \end{cases} \\\;\\
+A_i A_j^T =  u_i v_i^T \;\;  v_j u_j^T =  u_i \underbrace{v_i^T v_j}_{\delta_{ij}} u_j^T = \delta_{ij} \; u_i u_j^T  = \begin{cases}   u_i u_i^T & i=j \\ \mathbf{0}_{m \times m} & i \neq j \end{cases}
+\end{aligned}$$
+Also,
+$$
+\begin{aligned}
+{\color{green}A_i^T A_i} {\color{crimson}A_j^T} = {\color{green} v_i} \;\; \underbrace{{\color{green}v_i^T} {\color{crimson} v_j}}_{\delta_{ij}} \;\; {\color{crimson}u_j^T} =  \delta_{ij} \;{\color{green} v_i} {\color{crimson}u_j^T} =  \begin{cases} {\color{crimson}A_j^T} & i = j \\ \mathbf{0}_{n \times m} & i \neq j \end{cases} \; \bigg\} = \delta_{ij} \; {\color{crimson}A_j^T} \\\;\\
+{\color{crimson}A_iA_i^T}{\color{green}A_j} = {\color{crimson}u_iu_i^T}\;{\color{green}u_jv_j^T} = \delta_{ij}\; {\color{crimson} u_i}{\color{green}v_j^T} = \begin{cases} {\color{green}A_j} & i = j \\ \mathbf{0}_{m \times n} & i \neq j \end{cases} \;  \bigg\} =  \delta_{ij} \; {\color{green}A_j}
 \end{aligned}
+$$
+And hence,
+$$
+	\forall i \in [k] \;,\; {\color{crimson}A_i A_i^T} A = {\color{crimson}A_i^T A_i} \sum_{t \in [k]} {\color{green}A_t} = 
+\sum_{t \in [k]} {\color{crimson}A_i^T A_i} {\color{green}A_t} = \sum_{t \in [k]} \delta_{it} {\color{green}A_t} = A_i
+$$
+$$
+	\forall i \in [k] \;,\; {\color{green}A_i^TA_i} A^T =  {\color{green}A_i^TA_i} \sum_{t \in [k]} {\color{crimson}A_t^T} = 
+\sum_{t \in [k]} {\color{green}A_i^TA_i} {\color{crimson}A_t^T} = \sum_{t \in [k]} \delta_{ij}{\color{crimson}A_t^T} = A_i^T
 $$
 
 > Remark 3:  
-Let $I,J \in [k]$ where $k$ is the rank of $A \in \mathbb{R}^{m \times n}$, and let us define $A_I := \sum_{i \in I} A_i$ and $A_J := \sum_{j \in J} A_j$. Also, let $P_i$ be the rank-1 resolvents of the identity $I_n$ via the orthonormal matrix $V$ from the SVD of $A$.
-
+Let $I,J \in [k]$ be index sets where $k$ is the rank of $A \in \mathbb{R}^{m \times n}$, and let us define $A_I := \sum_{i \in I} A_i$ and $A_J := \sum_{j \in J} A_j$. Also, let $Q_i$ be the rank-1 resolvents of the identity $I_n$ via the orthonormal matrix $V$ from the SVD of $A$ i.e $Q_i = v_i v_i^T$. Similarly, let $P_i = u_i u_i^T$ be rank-1 resolvents of $I_m$ via $U$ from SVD of $A$.
 $$
 \begin{aligned}
 	A_I^T A_J = \sum_{i \in I} A_i \sum_{j \in J} A_j \\
-= \sum_{i \in I \cup J} \underbrace{\delta_{ii}}_{1} \sigma_i^2 v_i v_i^T + \sum_{i \in I, j \in J \backslash I } \underbrace{\delta_{ij}}_{0} \sigma_i \sigma_j v_i v_j^T + \sum_{i \in I \backslash J, j \in J}  \underbrace{\delta_{ij}}_{0} \sigma_i \sigma_j v_i v_j^T \\
-= \sum_{i \in I \cap J} \sigma_i^2 v_iv_i^T = \sum_{i \in I \cup J} \sigma_i^2 P_i
+= \sum_{i \in I \cap J} \underbrace{\delta_{ii}}_{1} v_i v_i^T + \sum_{i \in I, j \in J \backslash I } \underbrace{\delta_{ij}}_{0} v_i v_j^T + \sum_{i \in I \backslash J, j \in J}  \underbrace{\delta_{ij}}_{0} v_i v_j^T \\
+= \sum_{i \in I \cap J} v_iv_i^T = \sum_{i \in I \cap J} P_i
 \end{aligned}
 $$ 
+Similarly, 
+$$
+A_I A_J^T = \sum_{i \in I \cap J} u_i u_i^T = \sum_{i \in I \cap J} Q_i
+$$ 
 
-Similarly, $A_I A_J^T = \sum_{i \in I \cap J} \sigma_i^2 u_i u_i^T = \sum_{i \in I \cup J} \sigma_i^2 Q_i$ where $Q_i$ are the rank-1 resolvents of $I_m$ via the orthonormal matrix $U$ from the SVD of $A$.
+>Remark 4:
+If $A$ has rank $k$, the projection operator onto the range/colspace of $A$ i.e $\mathcal{R}(A)$  given by $P_{\mathcal{R}}(A)$ is 
+$$
+	P_{\mathcal{R}(A)} = \sum_{i \in [k]} u_i u_i^T = \sum_{i \in [k]} A_i A_i^T
+$$
 
 #### Inverse and pseudoinverses
 If $A$ has the SVD $\sum_{i=1}^k \sigma_i u_i v_i^T$, the pseudoinverse of $A$ is given by : 
@@ -249,9 +271,9 @@ $$
 
 where $g(z) = \frac{1}{z}$.
 
-If we used the full SVD $\sum_{i=1}^{\min(m,n)} \sigma_i u_i v_i^T$, then $g(z) := \frac{1}{z} \mathbb{1}[z > 0] = (\frac{1}{z})_+$ where $(t)_+ := t \cdot \mathbb{1}[t > 0]$ which clips the output to $0$ if $t$ is non-positive.
+If we use the full SVD $\sum_{i=1}^{\min(m,n)} \sigma_i u_i v_i^T$, then $g(z) := \frac{1}{z} \mathbb{1}[z > 0] = (\frac{1}{z})_+$ where $(t)_+ := t \cdot \mathbb{1}[t > 0]$ which clips the output to $0$ if $t$ is non-positive.
 
-_Note: This is the standard pseudoinverse but there exist many general pseudoinverses of a rank deficient $A$. See [Moore-Penrose Pseudoinverse](https://en.wikipedia.org/wiki/Moore%E2%80%93Penrose_inverse)._
+_Note: This is the standard pseudoinverse but there exist many general pseudoinverses of a rank deficient matrix $A$. See [Moore-Penrose Pseudoinverse](https://en.wikipedia.org/wiki/Moore%E2%80%93Penrose_inverse)._
 
 #### Vector differentiation
 $$
@@ -269,7 +291,7 @@ Let $A \in \mathbb{R}^{m \times n}$ be of rank $k \leq \min(m,n)$, $b \in \mathb
 
 The minimum norm least squares solution to  $\underset{x}{\text{argmin }}{||Ax - b||^2_{l_2}}$ is given by 
 
-$$x^* = A^\dagger b = \sum_{i \in [k]} \bigg( \frac{u_i^Tb}{\sigma_i} \bigg) v_i = \frac{1}{\sigma_i} A_i^T b$$.
+$$\boxed{x^* = A^\dagger b = \sum_{i \in [k]} \bigg( \frac{u_i^Tb}{\sigma_i} \bigg) v_i = \frac{1}{\sigma_i} A_i^T b}$$.
 
 Proof:
 
@@ -289,8 +311,7 @@ $$\begin{aligned}
 ||Ax - b||_2^{l_2} = ||\Sigma z - c||^2_{l_2} \\\;\\
 = \Bigg| \Bigg| \underbrace{\begin{bmatrix} \sigma_1 & 0 & 0 & . & . & . \\ 0 & \sigma_2  & 0 & . & . & .\\0  & .  & . & . & . & . \\. & . & .& \sigma_k & 0 & .\\ . & . & .& . & . & . \\0 & 0 & 0 & 0 & 0 & 0 \\\end{bmatrix}}_{m \times n} 
 \begin{bmatrix} z_1 \\ z_2 \\ . \\ .\\. \\. \\. \\ z_n \end{bmatrix} - \begin{bmatrix} c_1 \\ c_2 \\ . \\. \\. \\ c_m \\\end{bmatrix} \Bigg| \Bigg|_{l_2}^2 \\\;\\
-
-= \sum_{i \in [k]} (\sigma_i z_i -c_i)^2
+= \sum_{i \in [k]} (\sigma_i z_i -c_i)^2 + \sum_{ k+1 \leq j \leq m} c_j^2
 \end{aligned}$$
 
 Hence the minima is 
@@ -324,42 +345,116 @@ $\mathbb{R}^m \ni c=U^Tb \in \mathbb{R}^m \implies c_i = u_i^T b$.
 Hence,
 
 $$
-	x^{*MNLS} = \sum_{i=[k]} \bigg(\frac{u_i^Tb}{\sigma_i} \bigg) v_i  = \sum_{i \in [k]} \frac{1}{\sigma_i} A_i^T b \qquad \blacksquare
+	x^{*MNLS} = \sum_{i=[k]} \bigg(\frac{u_i^Tb}{\sigma_i} \bigg) v_i  = = \sum_{i=[k]}  \frac{1}{\sigma_i} \big( v_iu_i^T \big) b  =  \sum_{i \in [k]} \frac{1}{\sigma_i} A_i^T b \qquad \blacksquare
 $$
 
-**Alternate proof:**
-
+>**Some Rantings**
+Denote $R := P_{\mathcal{R}(A)}$ and $Q := P_{\mathcal{R}(A)^{\perp}}$ as the projection matrices onto the range of the rank-$k$ matrix $A$ and the orthogonal complement of the range. Then $I_m$ is resolved as $I_m = P + Q$ where $P = \sum_{i \in [k]}u_iu_i^T =  \sum_{i \in [k]} A_iA_i^T$ and $Q = \sum_{k+1 \leq i \leq n}u_iu_i^T$. Denote $P_i := u_i u_i^T \; \forall \; i \in [k]$ and $Q_i := u_i u_i^T \;\forall\; k+1 \leq i \leq n$.
+Let's see how $A_j, j \in [k]$ and $P_i, i \in [k]$ interact when multiplied.
 $$
-\begin{aligned}
-	||Ax - b||_{l_2}^2 = ||Ax - I_m b||_{l_2}^2 = ||Ax - (P_R + P_N)b||_{l_2}^2 \\\;\\
-= || (Ax - P_Rb) + P_N b||_{l_2}^2 = ||(Ax-P_Rb)||_{l_2}^2 + ||P_N b||_{l_2}^2 
+	A^T_j P_i = A^T_j A_i A_i^T = \delta_{ij}A_j^T
+$$
+$$
+	P_i A_j = A_iA_i^T A_j = \delta_{ij} A_j 
+$$
+Let's see how $A_j, j \in [k]$ and $P$ interact when multiplied.
+$$
+	A_j^TP = A_j^T \; \sum_{i \in [k]} P_i = \sum_{i \in [k]}A_j^TP_i = \sum_{i \in [k]} \delta_{ij} A_j^T = A_j^T
+$$
+$$
+	PA_j = (P_1 + ... + P_k) A_j = (\delta_{1j} + ... + \delta_{kj})A_j = A_j
+$$
+How about $P_j, j \in [k]$ and $A$?
+$$
+	P_j A = P_j (\sigma_1 A_1 + ... + \sigma_k A_k) = \sigma_1 \delta_{j1}A_1 + ... + \sigma_k \delta_{jk}A_k = \sigma_j A_j
+$$
+$$
+	A^T P_j = \bigg( \sum_{i \in [k]} \sigma_i A^T_i \bigg) P_j  =  \sum_{i \in [k]} \sigma_i A_i^T P_j = \sum_{i \in [k]} \sigma_i \delta_{ji} A_i^T = \sigma_j A_j^T
+$$
+And now interaction for $A_j, j \in [k]$ and $Q_i, i \in [k+1,n]$ under multiplication
+$$ \begin{aligned}
+	A_j^T Q_i = v_j \; \underbrace{u_j^T u_i}_{\delta_{ij}} \; u_i^T = \mathbf{0}_{n \times m} \quad \forall i \in [k+1,n], j \in [k] \\\;\\
+\implies Q_i A_j = \mathbf{0}_{m \times n} \text{   ( transposing above and $Q_i^T = Q_i$ ) }
 \end{aligned}
 $$
-
-Equivalently, we want to minimize $||Ax - P_R b||_{l_2}^2$. The best we can hope is if the term is zero by being able to match $Ax$ to $P_R b$, i.e $Ax = P_R b$. Since $P_R b \in colspace(A)$, we can actually achieve this. 
-
+Now, the interaction between $A_j, j \in [k]$ and $Q$
 $$
 \begin{aligned}
-	Ax = P_R b = \sum_{i \in [k]} A_j A_j^T b \\
-\implies A_i^T A x = A_i \sum_{}
+	A_j^T Q = A_j^T \sum_{i\in [k+1,n]} Q_i = \sum_{i \in [k+1,n]} A_j^T Q_i = \mathbf{0}_{n \times m} \quad \because j \in [k] \\\;\\
+Q A_j = \mathbf{0}_{m \times n} \text{  (transposing above and $Q^T = Q$)}
 \end{aligned}
 $$
-
-
-
-
-
-
+Observe that  
+$$\forall x = I_m x = (P+Q)x = Px + Qx$$
+Since range of $P$ and $Q$ are orthogonal complements, we have
+$$
+	||x||_{l_2}^2 = ||Px + Qx||_{l_2}^2 = ||Px||_{l_2}^2 + ||Qx||_{l_2}^2
+$$
+Now, we use the above facts to get 
+$$
+\begin{aligned}
+	||Ax - b||_{l_2}^2 = ||Ax - I_m b||_{l_2}^2 = ||Ax - (P + Q)b||_{l_2}^2 \\\;\\
+= || \underbrace{Ax - Pb}_{\in \mathcal{R}(A)} + \underbrace{Q b}_{\in \mathcal{R}(A)^{\perp}}||_{l_2}^2 = ||(Ax-Pb)||_{l_2}^2 + ||Q b||_{l_2}^2 \\\;\\
+\end{aligned}
+$$
+Minimizing $||Ax - b||_{l_2}^2$ is now equivalent to minimizing $||Ax - P b||_{l_2}^2$. The best hope is this term vanishes by matching $Ax$ to $P b$, i.e $Ax = Pb$. Since $Pb \in colspace(A)$, this is achieved. 
+$$
+\begin{aligned}
+	Ax = P b 
+\implies A_j^T \big(A x =  P b \big) 
+\implies  A_j^T A x = A_j^T P b\\
+\implies \sigma_j A_j^TA_j x = A_j^T b \quad \because  A_j^T P = \sigma_j A_j^T \\
+\implies \underbrace{A_j^T A_j x}_{:= x_j} = \frac{1}{\sigma_j} A_j^T b
+\end{aligned}
+$$
+Now lets add all the $x_j = A_j^T A_j x = v_jv_j^T x$,
+$$
+\begin{aligned}
+	\sum_{j \in [k]} x_j = \sum_{j \in [k]} \frac{1}{\sigma_j} \; A^T_j b \\
+\sum_{j \in [k]} v_j v_j^T x = \sum_{j \in [k]} \frac{1}{\sigma_j} A_j^T b 
+\end{aligned}
+$$
 
 ### Regularized case
+
+#### Isotropic Regularization 
 Same setting as before with the extra regularization term $\lambda I_n ||x||_{l_2}^2$. 
 
 $$
 	x^* \gets \underset{x}{\text{ argmin }} ||Ax - b||_{l_2}^2 + \lambda ||x||_{l_2}^2
 $$
 
-Then, $x^* = $
+Then, $x^* = \sum_{i \in [k]} \frac{1}{\sigma_i + \lambda} A_i^Tb = \bigg( \frac{u_i^T b}{\sigma_i + \lambda} \bigg) v_i$
 
+Proof:
 
+$$
+\begin{aligned}
+	||Ax - b||_{l_2}^2 + \lambda ||x||_{l_2}^2 = ||U\Sigma V^T x - UU^T b ||_{l_2}^2 + \lambda ||V^Tx||_{l_2}^2 \\\;\\
+= ||\Sigma z - c||_{l_2}^2 + \lambda ||z||_{l_2}^2 \\\;\\
+ = \sum_{i \in [k]} (\sigma_i z_i - c_i)^2 + \lambda z_i^2 + \sum_{ k+1 \leq j \leq m} c_j^2 + \sum_{ k+1 \leq j \leq n}  \lambda z_j^2
+\end{aligned}
+$$
 
+The minima is achieved when 
+$$
+	z_i^* = \begin{cases} \frac{c_i}{\sigma_i + \lambda} & i \in [k] \\ \; 0 & k+1 \leq i \leq n\end{cases}
+$$
+
+Now, $z = V^Tx \implies x = Vz = \sum_{i \in [n]} z_i v_i$ . Hence
+
+$$\begin{aligned}
+x_i^* =Vz^* =  \sum_{i \in [n]} z_i^*v_i = \sum_{i \in [k]} \frac{c_i}{\sigma_i + \lambda}v_i + \sum_{ k+1 \leq i \leq n} 0 \; v_i 
+= \sum_{i \in [k]} \frac{c_i}{\sigma_i + \lambda}v_i \\\;\\
+\implies \boxed{x^* = \sum_{i \in [k]} \frac{u_i^Tb}{\sigma_i + \lambda}v_i =  \sum_{i \in [k]} \frac{1}{\sigma_i + \lambda} A_i^T v_i }
+\qquad \blacksquare
+\end{aligned}
+$$
+
+#### Anisotropic/Tikhonov Regularization
+Same setting as before but with extra term $||x||_W^2 = x^TWx$ (for some PSD matrix $W$)
+
+$$
+	x^* \gets \underset{x}{\text{ argmin }} ||Ax - b||_{l_2}^2 + \lambda ||x||_W^2
+$$
 

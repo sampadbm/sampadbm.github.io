@@ -1,4 +1,12 @@
 selected_research:
+- title: Structural Analysis of LLM Weights
+  year: 2025
+  description: >
+    Analyzing the internal weight structure of large language models using linear algebraic
+    decomposition methods, in collaboration with Amazon. Decomposing weight matrices across all
+    transformer layers — attention and MLP components — to characterize their low-rank and sparse
+    structure, and studying how these properties vary across layer depth and type to understand
+    safety localization. Experiments conducted on open-weight models from the Gemma family.
 - title: SATORIS-N
   year: 2026
   description: Subspace-informed recovery for spatiotemporal traffic data. Accepted at IEEE Intelligent Vehicles Symposium (IV) 2026.
