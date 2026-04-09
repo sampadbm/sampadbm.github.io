@@ -1,6 +1,6 @@
 selected_research:
 - title: Structural Analysis of LLM Weights
-  year: 2025
+  year: 2025-2026
   description: >
     Analyzing the internal weight structure of large language models using linear algebraic
     decomposition methods, in collaboration with Amazon. Decomposing weight matrices across all
