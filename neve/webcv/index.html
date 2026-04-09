@@ -562,6 +562,7 @@
                     </div>
 
             </div>
+            <div id="cv-footer" style="--ta: center; --mt: 2rem; --pt: 1rem; --bt: 1px solid #ccc; --c: gray; font-size: 0.9rem;"></div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js-yaml.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
@@ -804,6 +805,21 @@
                         });
 
                         teachingContainer.innerHTML = html;
+                    } catch (error) {
+                        // Keep empty if loading fails.
+                    }
+                }
+
+                const cvFooter = document.getElementById("cv-footer");
+                if (cvFooter) {
+                    try {
+                        const response = await fetch(new URL("data/profile.yml", baseUrl), { cache: "no-store" });
+                        const text = await response.text();
+                        const data = window.jsyaml.load(text) || {};
+                        const lastUpdated = (data.profile || {}).last_updated;
+                        if (lastUpdated) {
+                            cvFooter.textContent = `Last updated: ${formatDate(lastUpdated)}`;
+                        }
                     } catch (error) {
                         // Keep empty if loading fails.
                     }

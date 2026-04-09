@@ -4,3 +4,9 @@ bookmarks:
     category: Blog
     description: Personal journal on tech, open-source, hardware, travel, and digital minimalism.
     tags: [linux, open-source, hardware, privacy, digital-minimalism]
+
+  - title: Ethan Epperly — Trace Estimation
+    url: https://www.ethanepperly.com/index.php/category/trace-estimation/
+    category: Blog
+    description: Blog posts on stochastic trace estimation and numerical linear algebra.
+    tags: [numerical-linear-algebra, trace-estimation, randomized-algorithms, matrix-analysis]
