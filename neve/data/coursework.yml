@@ -1,4 +1,7 @@
 coursework:
+  - code: MATH647
+    title: Random Matrix Theory in Machine Learning
+    department: Mathematics
   - code: MATH547
     title: Mathematical Foundations of Statistical Learning Theory
     department: Mathematics
@@ -26,6 +29,9 @@ coursework:
   - code: MATH395
     title: Seminar in Problem Solving
     department: Mathematics
+  - code: EE592
+    title: Computational Methods for Inverse Problems
+    department: Electrical Engineering
   - code: EE588
     title: Optimization for Information and Data Science
     department: Electrical Engineering
