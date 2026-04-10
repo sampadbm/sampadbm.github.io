@@ -12,7 +12,8 @@ summary: A curated list of terminal-based tools I use or find interesting.
 
 ### Editing & Writing
 
-- *dawn* — a markdown editor
+- *dawn* — a terminal markdown editor with LaTeX rendering
+- *tangent / apostrophe* — markdown editor with LaTeX support and organizing thinking notes
 - *mcat* — cat on steroids, with support for all filetypes
 - *espanso* — a cross-platform text expander written in Rust
 
@@ -27,6 +28,9 @@ summary: A curated list of terminal-based tools I use or find interesting.
 ### Development
 
 - *crush* — terminal-based AI coding IDE by Charm (supports all models, like Cursor)
+- *Claude / antigravity / cursor* — AI coding agents
+- *codesnap* — take screenshots of code
+- *bin* — effortless binary install
 
 ### Productivity
 
@@ -35,9 +39,14 @@ summary: A curated list of terminal-based tools I use or find interesting.
 - *jotl* — battery monitor
 - *spotatui* — a Spotify player for the terminal
 
+### Browsing
+
+- *nyxt / qute* — keyboard-driven browsers
+
 ### System & Networking
 
 - *tuios* — terminal multiplexer OS
 - *ssm* — simple SSH manager
 - *wifitui* — WiFi manager
 - *mdns-scanner* — mDNS network scanner
+- *bottles* — run Windows software on Linux
