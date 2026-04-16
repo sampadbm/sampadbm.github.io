@@ -469,6 +469,67 @@ async function loadBookmarksView(container, source) {
 }
 
 /**
+ * Register the ```youtube extension for embedded YouTube players.
+ * Syntax:
+ *   ```youtube
+ *   id: B2PJh2K-jdU
+ *   title: Matrix trace isn't just summing the diagonal
+ *   author: Mathemaniac
+ *   start: 0
+ *   ```
+ * Only `id` is required. Emits a responsive 16:9 lazy-loaded
+ * youtube-nocookie.com iframe wrapped in a <figure>.
+ */
+function enableYoutube() {
+    marked.use({
+        extensions: [{
+            name: 'youtube',
+            level: 'block',
+            start(src) { return src.indexOf('```youtube'); },
+            tokenizer(src) {
+                const match = src.match(/^```youtube\n([\s\S]*?)```/);
+                if (!match) return;
+                return { type: 'youtube', raw: match[0], text: match[1] };
+            },
+            renderer(token) {
+                let config;
+                try {
+                    config = jsyaml.load(token.text) || {};
+                } catch (e) {
+                    return `<p style="color: #cc0000;">Invalid youtube block: ${escapeHtml(e.message)}</p>`;
+                }
+                const id = String(config.id || '').trim();
+                if (!/^[A-Za-z0-9_-]{6,20}$/.test(id)) {
+                    return `<p style="color: #cc0000;">Invalid or missing YouTube video id.</p>`;
+                }
+                const title = config.title ? String(config.title) : '';
+                const author = config.author ? String(config.author) : '';
+                const start = Number.isFinite(+config.start) && +config.start > 0 ? `&start=${+config.start}` : '';
+                const srcUrl = `https://www.youtube-nocookie.com/embed/${id}?rel=0${start}`;
+                const watchUrl = `https://youtu.be/${id}`;
+                const frameTitle = title || 'YouTube video';
+                let caption = '';
+                if (title || author) {
+                    const link = `<a href="${watchUrl}" target="_blank" rel="noopener noreferrer">${escapeHtml(title || watchUrl)}</a>`;
+                    caption = `<figcaption>${link}${author ? ' — ' + escapeHtml(author) : ''}</figcaption>`;
+                }
+                return (
+                    `<figure class="yt-embed">` +
+                      `<div class="yt-embed-frame">` +
+                        `<iframe src="${srcUrl}" title="${escapeHtml(frameTitle)}" ` +
+                          `loading="lazy" allowfullscreen ` +
+                          `allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ` +
+                          `referrerpolicy="strict-origin-when-cross-origin"></iframe>` +
+                      `</div>` +
+                      caption +
+                    `</figure>`
+                );
+            }
+        }]
+    });
+}
+
+/**
  * Load and render the post
  */
 async function loadPost() {
@@ -544,6 +605,11 @@ async function loadPost() {
         // Load bookmarks plugin on demand if the post uses it
         if (content.includes('```bookmarks')) {
             enableBookmarks();
+        }
+
+        // Load youtube embed plugin on demand if the post uses it
+        if (content.includes('```youtube')) {
+            enableYoutube();
         }
 
         // Render markdown

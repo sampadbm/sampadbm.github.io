@@ -15,6 +15,7 @@ tree:
   - name: reference
     posts:
       - posts/reference/reading-wishlist.md
+      - posts/reference/ideas.md
       - posts/reference/glossary.md
       - posts/reference/bookmarks.md
   - name: terminal
@@ -22,6 +23,11 @@ tree:
       - posts/terminal/favourite-tui-tools.md
 
 posts:
+  - file: posts/reference/ideas.md
+    date: 2026-04-12
+    title: Project & Paper Ideas
+    tags: [reference, research, ideas]
+    summary: A living list of personal project and paper ideas I would like to work on.
   - file: posts/reference/bookmarks.md
     date: 2026-04-08
     title: Bookmarks
@@ -40,7 +46,7 @@ posts:
     preview: Let $I$ be an index set. A partition on this index set $P = \{P_1,P_2,...,P_K\}$ is a set of disjoint subsets of $I$, i.e $I_k \in I \; \forall k \in [K]$ and $k \neq l \implies I_k \cap I_l =...
   - file: posts/math/linear-algebra/svd-filtering.md
     date: 2026-04-04
-    title: Understanding SVD filtering
+    title: MNLS, WMNLS, SVD Filtering as Shrinkage, and Weight decay in optimizers
     authors: [sampad]
     tags: [math, linear-algebra, tutorial, signal-processing, inverse-problems, EE592]
     summary: Some views on SVD filtering

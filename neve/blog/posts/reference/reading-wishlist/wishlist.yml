@@ -370,6 +370,14 @@ readings:
     year: 2026
     tags: [wishlist, paper, alignment, safety, evaluation, adversarial]
 
+  - date: 2026-04-12
+    category: [Mathematics, Philosophy of Science]
+    author: Eugene P. Wigner
+    title: "The Unreasonable Effectiveness of Mathematics in the Natural Sciences"
+    url: https://en.wikipedia.org/wiki/The_Unreasonable_Effectiveness_of_Mathematics_in_the_Natural_Sciences
+    year: 1960
+    tags: [wishlist, paper, philosophy-of-mathematics, physics, foundations, classic]
+
   # Articles
   - date: 2026-03-29
     category: [Computer Science]
@@ -423,6 +431,13 @@ readings:
     year: 2018
     tags: [wishlist, article, phd, education, critical-thinking, academia]
 
+  - date: 2026-04-13
+    category: [Philosophy]
+    author: Wikipedia contributors
+    title: Solipsism
+    url: https://en.wikipedia.org/wiki/Solipsism
+    tags: [wishlist, article, philosophy, epistemology, consciousness, metaphysics]
+
   # Books
   - date: 2026-03-30
     category: [Mathematics, Psychology]
@@ -443,6 +458,26 @@ readings:
     tags: [wishlist, book, scientific-method, philosophy-of-science, mathematics]
     notes: |
       Video: https://www.youtube.com/watch?v=KE2sybQCalA
+
+  - date: 2026-04-13
+    category: [Mathematics, Cognitive Science, Philosophy]
+    author: George Lakoff, Rafael E. Núñez
+    title: "Where Mathematics Comes From: How the Embodied Mind Brings Mathematics into Being"
+    url: https://en.wikipedia.org/wiki/Where_Mathematics_Comes_From
+    year: 2000
+    tags: [wishlist, book, philosophy-of-mathematics, cognitive-science, conceptual-metaphor, embodied-cognition, anti-platonism]
+    notes: |
+      Lakoff & Núñez argue mathematics is not a transcendent Platonic realm but a human cognitive artifact, built from a small number of **grounding metaphors** tied to embodied experience (object collection, object construction, measurement, motion along a path), extended by **conceptual blending** to produce the increasingly abstract structures of modern mathematics. Culminates in the **Basic Metaphor of Infinity (BMI)**, a single cognitive schema they argue underlies limits, transfinite sets, actual infinities, and projective points at infinity. Controversial among working mathematicians (often on the grounds that it conflates how we *come to understand* mathematics with what mathematics *is*), but a useful counterweight to the default Platonist stance — pairs naturally with Wigner's "Unreasonable Effectiveness" and the Wikipedia *Philosophy of Mathematics* overview already on the digest.
+
+  - date: 2026-04-13
+    category: [Philosophy]
+    author: John Locke
+    title: An Essay Concerning Human Understanding
+    url: https://en.wikipedia.org/wiki/An_Essay_Concerning_Human_Understanding
+    year: 1689
+    tags: [wishlist, book, philosophy, epistemology, empiricism, classic, primary-secondary-qualities]
+    notes: |
+      Locke's foundational empiricist treatise. Origin of the **primary / secondary quality distinction** (shape, extension, motion vs. color, taste, smell) referenced in the glossary's Philosophy of Color entry; introduces the **tabula rasa** picture of the mind at birth; critiques innate ideas; sets up the inverted-spectrum thought experiment that still organizes debates on qualia. Required reading for the philosophy-of-mind and philosophy-of-color clusters already on the digest.
 
   # Thesis
   - date: 2026-03-30

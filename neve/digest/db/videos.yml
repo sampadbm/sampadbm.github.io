@@ -1,4 +1,52 @@
 readings:
+  - date: 2026-04-15
+    category: [Mathematics, Linear Algebra, Lie Theory]
+    author: Mathemaniac
+    title: Matrix trace isn't just summing the diagonal
+    url: https://youtu.be/B2PJh2K-jdU
+    tags: [trace, divergence, vector-fields, lie-groups, lie-algebras, determinant, jacobi-formula, eigenvalues]
+    notes: |
+      Part 5 of Mathemaniac's Lie-groups series. Geometric reframing of the matrix trace: visualize a matrix $A$ as the linear vector field $x \mapsto Ax$, then **$\mathrm{tr}(A)$ is the divergence of that field** — the infinitesimal area-change-rate-per-area of any region carried by the flow $\dot x = Ax$. Two key observations make this usable:
+
+      1. For a linear field, the velocity *difference* between $x$ and $x+d$ is $Ad$, independent of $x$. So the divergence is globally constant — "divergence at a point" and "divergence, everywhere" coincide.
+      2. Any trace property therefore becomes a statement about how some convenient test region (unit square, eigenvector-aligned parallelogram, the image of $A(t)$ on the basis vectors) evolves under the flow.
+
+      From this one picture the video re-derives every standard property of the trace:
+      - **Trace = sum of diagonals.** Unit-square area evolution: only the horizontal component of the vector at $(1,0)$ and the vertical component at $(0,1)$ change area, and those are $a_{11}, a_{22}$.
+      - **Trace = sum of eigenvalues.** Eigenvector-aligned parallelogram: sides scale by $(1+\epsilon\lambda_i)$, so the area-rate-per-area is $\sum_i \lambda_i$.
+      - **$\det(e^A) = e^{\mathrm{tr}(A)}$.** The unit square's flowed area $S(t)$ satisfies $S'(t) = \mathrm{tr}(A)\,S(t)$, solved to $S(1) = e^{\mathrm{tr}(A)}$.
+      - **Similarity invariance $\mathrm{tr}(QAQ^{-1}) = \mathrm{tr}(A)$.** Applying $Q$ scales every area by the same $|\det Q|$, which cancels in the rate-per-area quotient.
+      - **$\mathrm{tr}(AB) = \mathrm{tr}(BA)$ (invertible case).** Write $AB = B(BA)B^{-1}$ and apply similarity invariance.
+      - **Jacobi's formula $\tfrac{d}{dt}\det A(t) = \det A(t)\cdot\mathrm{tr}(A^{-1}A')$.** Pull $A(t)$'s parallelogram back to the unit square by $A(t)^{-1}$; the velocity field there is $A^{-1}A'$, so the rate-per-area identity gives the formula.
+
+      The unifying claim is that trace, determinant, and matrix exponential are one story under the flow-of-a-linear-vector-field lens — the algebraic identities are shadows of volume evolution. This is also the right mental model for Lie algebras ($\mathfrak{sl}(n)$ = trace-zero = volume-preserving infinitesimal flows) and for continuous dynamical systems (Liouville's theorem).
+
+  - date: 2026-04-12
+    category: [Cognition, Tools & Interfaces]
+    author: Interface Studies
+    title: The Hidden Cost of Instant Answers
+    url: https://youtu.be/e3Pj7W0xl_c
+    tags: [attention, learning, tool-use, llms, metacognition, media-ecology]
+    notes: |
+      (Placeholder — to expand after a rewatch.) Argument from the Interface Studies channel about what is lost cognitively when friction is removed from information retrieval — the "instant answer" regime of search engines and LLM assistants trades depth of engagement, retention, and independent reasoning for speed and convenience. Themes to flesh out on rewatch: desirable difficulty, generation effect, how struggle consolidates memory, the distinction between *knowing* vs. *knowing-where-to-look*, and what interface designs could re-introduce productive friction without punishing the user.
+
+  - date: 2026-04-12
+    category: [Artificial Life, Evolutionary Computation]
+    author: David Randall Miller
+    title: I programmed some creatures. They Evolved.
+    url: https://www.youtube.com/watch?v=N3tRFayqVtk
+    tags: [genetic-algorithms, neural-networks, artificial-life, emergent-behavior, simulation, evolution]
+    notes: |
+      A walkthrough of a from-scratch artificial-life simulation in which small agents with randomly-initialized neural-network "brains" (a sparse graph of sensory inputs, hidden neurons, and action outputs encoded in their genome) are subjected to a selection pressure — only individuals inside a designated survival zone at the end of a generation reproduce, with mutation on the genome bits. Over hundreds of generations, coherent survival behaviors emerge: edge-seeking, obstacle avoidance, clustering, and directional migration — all without any hand-coded policy.
+
+      Key takeaways:
+      - **Genome = compressed wiring diagram.** Each gene encodes one connection (source neuron type + id, sink neuron type + id, weight). The phenotype is the resulting brain graph plus body. Small mutations to bits mostly yield small behavioral changes, which is what makes gradual selection work.
+      - **Minimal ingredients for emergence.** Local sensing (position, nearby density, last-move direction, etc.), a fixed action vocabulary, and a simple survival criterion are sufficient. No explicit fitness function beyond "be in the zone."
+      - **Population dynamics.** Early generations look random; after selection bottlenecks, the population converges on one or two strategies, but re-introducing noise (mutation rate, zone changes) reopens the search.
+      - **Clean demo of why evolution is not "random search."** Selection is the non-random part — mutations are random, but accumulation is biased by survival. The same reason gradient-free optimization with selection can scale to otherwise intractable problem spaces.
+
+      Accompanying code is open-source (C++) — a tight, readable reference implementation of neuroevolution without the framework overhead of NEAT/HyperNEAT.
+
   - date: 2026-03-21
     category: [Game Design, Storytelling]
     author: Jacob O'Neal

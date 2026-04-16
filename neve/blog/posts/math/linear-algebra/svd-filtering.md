@@ -1,6 +1,6 @@
 ---
 date: 2026-04-04
-title: Understanding SVD filtering
+title: MNLS, WMNLS, SVD Filtering as Shrinkage, and Weight decay in optimizers
 tags: [math, linear-algebra, tutorial, signal-processing, inverse-problems, EE592]
 summary: Some views on SVD filtering
 authors: [sampad]
@@ -63,14 +63,16 @@ $$
 
 
 #### Minimum Norm Solution 
-When we have non-unique solutions, we can ask for the one which has the smallest length (under some measure of length). If we measure length of the solution vector $z^*$ in the usual euclidean sense, then we must set the don't care terms to zero so that the minimum norm solution is 
+When we have non-unique solutions, we can ask for the solution that has the smallest length (under some measure of length). If we measure length of the solution vector $z^*$ in the usual euclidean sense $||z^*||_{l_2} = \sqrt{\sum_{i \in [n]}} (z_i^*)^2$, then setting the don't care terms to zero yields the minimum norm solution, i.e 
 
 $$
-	z_i^* = \begin{cases} \frac{c_i}{\sigma_i} & i \leq k \\ 0 & i >k \end{cases}
+	z_i^{MNLS} = \begin{cases} \frac{c_i}{\sigma_i} & i \leq k \\ 0 & i >k \end{cases}
 $$
+
 
 
 ### Preliminaries: Linear Algebra
+
 #### Some useful things
 Let $z \in \mathbb{R}^n$
 
@@ -97,11 +99,11 @@ $$
 If $Q \in \mathbb{R}^{m \times n}$ be an orthonormal matrix, i.e, its columns are all unit length and orthogonal (implies $m \geq n$), then $Q^TQ = I_{n}$. 
 
 An orthonormal transform is an isometry from $(\mathbb{R^n},l_2)$ to $(\mathbb{R}^n, l_2)$ where the $l_2(a,b) = ||a - b||_{l_2}$ is the euclidean distance. 
- 
+
 If $z \in \mathbb{R^n}$, then
 $$
-	||Qz||_{l_2}^2 = z^T Q^T Q z = z^T I_n z = z^T z = ||z||_{l_2}^2
-$$ 
+||Qz||_{l_2}^2 = z^T Q^T Q z = z^T I_n z = z^T z = ||z||_{l_2}^2
+$$
 
 _The same goes for unitary transforms._
 
@@ -133,7 +135,7 @@ Hence the resolvents are orthonormal w.r.t the Frobenius inner product.
 > Remark 2:
 $$
 P_i P_j = {\color{green}P_i^T} {\color{purple}P_j} = {\color{green}u_i} \underbrace{{\color{green}u_i^T} {\color{purple}u_j}}_{\delta_{ij}}{\color{purple}u_j^T} = \delta_{ij} {\color{green}u_i}{\color{purple}u_j^T} = \begin{cases} P_i & i = j \\ \mathbf{0}_{m \times m} & \text{otherwise} \end{cases}
-$$ 
+$$
 
 > **Resolution of the identity operator is not various orthonormal matrices $V$ give various resolutions.**
 
@@ -224,7 +226,8 @@ $$
 \begin{aligned}
 	A_i^T A_j = v_i u_i^T \;\;  u_j v_j^T =  v_i \; \underbrace{u_i u_j}_{\delta_{ij}} \; v_j^T = \delta_{ij} \;  v_i v_j^T = \begin{cases}  v_i v_i^T & i=j \\ \mathbf{0}_{n \times n} & i \neq j \end{cases} \\\;\\
 A_i A_j^T =  u_i v_i^T \;\;  v_j u_j^T =  u_i \underbrace{v_i^T v_j}_{\delta_{ij}} u_j^T = \delta_{ij} \; u_i u_j^T  = \begin{cases}   u_i u_i^T & i=j \\ \mathbf{0}_{m \times m} & i \neq j \end{cases}
-\end{aligned}$$
+\end{aligned}
+$$
 Also,
 $$
 \begin{aligned}
@@ -234,14 +237,14 @@ $$
 $$
 And hence,
 $$
-	\forall i \in [k] \;,\; {\color{crimson}A_i A_i^T} A = {\color{crimson}A_i^T A_i} \sum_{t \in [k]} {\color{green}A_t} = 
+\forall i \in [k] \;,\; {\color{crimson}A_i A_i^T} A = {\color{crimson}A_i^T A_i} \sum_{t \in [k]} {\color{green}A_t} = 
 \sum_{t \in [k]} {\color{crimson}A_i^T A_i} {\color{green}A_t} = \sum_{t \in [k]} \delta_{it} {\color{green}A_t} = A_i
 $$
+
 $$
 	\forall i \in [k] \;,\; {\color{green}A_i^TA_i} A^T =  {\color{green}A_i^TA_i} \sum_{t \in [k]} {\color{crimson}A_t^T} = 
 \sum_{t \in [k]} {\color{green}A_i^TA_i} {\color{crimson}A_t^T} = \sum_{t \in [k]} \delta_{ij}{\color{crimson}A_t^T} = A_i^T
 $$
-
 > Remark 3:  
 Let $I,J \in [k]$ be index sets where $k$ is the rank of $A \in \mathbb{R}^{m \times n}$, and let us define $A_I := \sum_{i \in I} A_i$ and $A_J := \sum_{j \in J} A_j$. Also, let $Q_i$ be the rank-1 resolvents of the identity $I_n$ via the orthonormal matrix $V$ from the SVD of $A$ i.e $Q_i = v_i v_i^T$. Similarly, let $P_i = u_i u_i^T$ be rank-1 resolvents of $I_m$ via $U$ from SVD of $A$.
 $$
@@ -250,25 +253,21 @@ $$
 = \sum_{i \in I \cap J} \underbrace{\delta_{ii}}_{1} v_i v_i^T + \sum_{i \in I, j \in J \backslash I } \underbrace{\delta_{ij}}_{0} v_i v_j^T + \sum_{i \in I \backslash J, j \in J}  \underbrace{\delta_{ij}}_{0} v_i v_j^T \\
 = \sum_{i \in I \cap J} v_iv_i^T = \sum_{i \in I \cap J} P_i
 \end{aligned}
-$$ 
+$$
 Similarly, 
 $$
 A_I A_J^T = \sum_{i \in I \cap J} u_i u_i^T = \sum_{i \in I \cap J} Q_i
-$$ 
-
+$$
 >Remark 4:
 If $A$ has rank $k$, the projection operator onto the range/colspace of $A$ i.e $\mathcal{R}(A)$  given by $P_{\mathcal{R}}(A)$ is 
 $$
 	P_{\mathcal{R}(A)} = \sum_{i \in [k]} u_i u_i^T = \sum_{i \in [k]} A_i A_i^T
 $$
-
 #### Inverse and pseudoinverses
 If $A$ has the SVD $\sum_{i=1}^k \sigma_i u_i v_i^T$, the pseudoinverse of $A$ is given by : 
-
 $$
 	A^\dagger = \sum_{i=1}^k g(\sigma_i) v_i u_i^T = \sum_{i=1}^k \frac{1}{\sigma_i}v_iu_i^T = \sum_{i \in[k]} \frac{1}{\sigma_i}A_i^T
 $$
-
 where $g(z) = \frac{1}{z}$.
 
 If we use the full SVD $\sum_{i=1}^{\min(m,n)} \sigma_i u_i v_i^T$, then $g(z) := \frac{1}{z} \mathbb{1}[z > 0] = (\frac{1}{z})_+$ where $(t)_+ := t \cdot \mathbb{1}[t > 0]$ which clips the output to $0$ if $t$ is non-positive.
@@ -282,7 +281,6 @@ $$
 \frac{\partial}{\partial x}(x^T A) = A^T
 \end{aligned}
 $$
-
 Special cases: When $A = a^T$, a row vector, $\frac{\partial}{\partial x}(a^Tx) = a^T$ and $\frac{\partial}{\partial x} (x^T a) = \frac{\partial}{\partial x}(a^Tx) = a^T$
 
 ### Minimum Norm Least Squares solutions
@@ -291,17 +289,17 @@ Let $A \in \mathbb{R}^{m \times n}$ be of rank $k \leq \min(m,n)$, $b \in \mathb
 
 The minimum norm least squares solution to  $\underset{x}{\text{argmin }}{||Ax - b||^2_{l_2}}$ is given by 
 
-$$\boxed{x^* = A^\dagger b = \sum_{i \in [k]} \bigg( \frac{u_i^Tb}{\sigma_i} \bigg) v_i = \frac{1}{\sigma_i} A_i^T b}$$.
+$$\boxed{x^{MNLS} = A^\dagger b = \sum_{i \in [k]} \bigg( \frac{u_i^Tb}{\sigma_i} \bigg) v_i = \sum_{i \in [k]} \frac{1}{\sigma_i} A_i^T b = V \Sigma^\dagger U^T b}$$.
 
-Proof:
+where $\Sigma^{\dagger}$ is a diagonal matrix with $\Sigma^\dagger_{ii} = \begin{cases} \frac{1}{\sigma_i} & \sigma_i > 0 \\\;\\ 0 & \sigma_i = 0\end{cases}$
 
+*Proof:*
 $$
 \begin{aligned}
 	||Ax - b||_{l_2}^2 = ||U\Sigma V^Tx - I_mb||^2_{l_2} = || U \Sigma V^T x - UU^Tb||_{l_2}^2 \\\;\\
 \underbrace{=}_{\text{isometry}} ||\Sigma V^Tx - U^Tb||_{l_2}^2 
 \end{aligned}
 $$
-
 Set $z:=V^Tx \in \mathbb{R}^n$
 
 Set $c:=U^Tb \in \mathbb{R}^m$
@@ -318,8 +316,7 @@ Hence the minima is
 $$
 	z_i^* =  \begin{cases} \frac{c_i}{\sigma_i} & i \leq k \\ \text{anything} & i>k \end{cases} \; \\
 $$
-
-For minimizing the norm of the solution $\big(i.e. \; ||z^*||_{l_2}^2\big)$, 
+For minimizing the norm of the solution $\big(i.e. \; ||z^{MNLS}||_{l_2}^2\big)$, 
 
 $$z_i^{*MNLS} = \begin{cases} \frac{c_i}{\sigma_i} & i \leq k \\ 0 & i >k \end{cases}$$
 
@@ -328,27 +325,26 @@ Recall:
 $\mathbb{R}^n \ni z=V^Tx \implies Vz = VV^Tx = I_n x = x \implies Vz = x \implies x = \sum_{i=1}^n z_i v_i$
 
 Hence, 
-
 $$
 \begin{aligned}
-x^{*MNLS} = Vz^{*MNLS} = \sum_{i=1}^n z_i^{*MNLS}\;v_i \\
-= \sum_{i \in [k]} z_i^{*MNLS}\;v_i + \sum_{i=k+1}^n \underbrace{z_i^{*MNLS}}_{0}\;v_i \\
-= \sum_{i \in [k]} z_i^{*MNLS}\; v_i 
+x^{MNLS} = Vz^{MNLS} = \sum_{i=1}^n z_i^{MNLS}\;v_i \\
+= \sum_{i \in [k]} z_i^{MNLS}\;v_i + \sum_{i=k+1}^n \underbrace{z_i^{MNLS}}_{0}\;v_i \\
+= \sum_{i \in [k]} z_i^{MNLS}\; v_i 
 = \sum_{i \in [k]}  \frac{c_i}{\sigma_i}v_i
 \end{aligned}
 $$
-
 Also recall:
 
 $\mathbb{R}^m \ni c=U^Tb \in \mathbb{R}^m \implies c_i = u_i^T b$.
 
 Hence,
-
 $$
-	x^{*MNLS} = \sum_{i=[k]} \bigg(\frac{u_i^Tb}{\sigma_i} \bigg) v_i  = = \sum_{i=[k]}  \frac{1}{\sigma_i} \big( v_iu_i^T \big) b  =  \sum_{i \in [k]} \frac{1}{\sigma_i} A_i^T b \qquad \blacksquare
+	x^{MNLS} = \sum_{i=[k]} \bigg(\frac{u_i^Tb}{\sigma_i} \bigg) v_i  = = \sum_{i=[k]}  \frac{1}{\sigma_i} \big( v_iu_i^T \big) b  =  \sum_{i \in [k]} \frac{1}{\sigma_i} A_i^T b = V \Sigma^{\dagger} U^T \qquad \blacksquare
 $$
 
->**Some Rantings**
+>**[Partitioning of the sum of squares](https://en.wikipedia.org/wiki/Explained_sum_of_squares#Partitioning_in_the_general_ordinary_least_squares_model)**  
+>**Total Sum of Squares ($\color{blue}TSS$) = Explained Sum of Squares ($\color{green}ESS$) + Residual Sum of Squares ($\color{crimson}RSS$) **  
+>**An alternate perspective of the proof {incomplete}):**   
 Denote $R := P_{\mathcal{R}(A)}$ and $Q := P_{\mathcal{R}(A)^{\perp}}$ as the projection matrices onto the range of the rank-$k$ matrix $A$ and the orthogonal complement of the range. Then $I_m$ is resolved as $I_m = P + Q$ where $P = \sum_{i \in [k]}u_iu_i^T =  \sum_{i \in [k]} A_iA_i^T$ and $Q = \sum_{k+1 \leq i \leq n}u_iu_i^T$. Denote $P_i := u_i u_i^T \; \forall \; i \in [k]$ and $Q_i := u_i u_i^T \;\forall\; k+1 \leq i \leq n$.
 Let's see how $A_j, j \in [k]$ and $P_i, i \in [k]$ interact when multiplied.
 $$
@@ -415,46 +411,102 @@ $$
 \end{aligned}
 $$
 
-### Regularized case
+### Minimum Norm Least Squares solutions: Isotropic Regularization 
 
-#### Isotropic Regularization 
 Same setting as before with the extra regularization term $\lambda I_n ||x||_{l_2}^2$. 
-
 $$
 	x^* \gets \underset{x}{\text{ argmin }} ||Ax - b||_{l_2}^2 + \lambda ||x||_{l_2}^2
 $$
-
-Then, $x^* = \sum_{i \in [k]} \frac{1}{\sigma_i + \lambda} A_i^Tb = \bigg( \frac{u_i^T b}{\sigma_i + \lambda} \bigg) v_i$
-
-Proof:
-
+Then, 
+$$
+\boxed {x^* = \sum_{i \in [k]} \bigg( \frac{u_i^T b}{\sigma_i + \lambda} \bigg) v_i = \sum_{i \in [k]} \frac{1}{\sigma_i + \lambda} A_i^Tb }
+$$
+*Proof:*
 $$
 \begin{aligned}
-	||Ax - b||_{l_2}^2 + \lambda ||x||_{l_2}^2 = ||U\Sigma V^T x - UU^T b ||_{l_2}^2 + \lambda ||V^Tx||_{l_2}^2 \\\;\\
-= ||\Sigma z - c||_{l_2}^2 + \lambda ||z||_{l_2}^2 \\\;\\
- = \sum_{i \in [k]} (\sigma_i z_i - c_i)^2 + \lambda z_i^2 + \sum_{ k+1 \leq j \leq m} c_j^2 + \sum_{ k+1 \leq j \leq n}  \lambda z_j^2
+	f(x) := ||Ax - b||_{l_2}^2 + \lambda ||x||_{l_2}^2 \\\;\\ 
+= ||U\Sigma V^T x - I_m b ||_{l_2}^2 + \lambda ||x||_{l_2}^2  \\\;\\ = ||U\Sigma {\color{crimson}V^Tx}  - U \underbrace{U^T b}_{c} ||_{l_2}^2 + \lambda \underbrace{||{\color{crimson}V^Tx}||_{l_2}^2}_{=||x||_{l_2}^2} \\\;\\
+= ||U\big(\Sigma {\color{crimson}z} - c\big)||_{l_2}^2 + \lambda ||{\color{crimson}z}||_{l_2}^2 \\\;\\
+= ||\Sigma {\color{crimson}z} - c||_{l_2}^2 + \lambda ||{\color{crimson}z}||_{l_2}^2 \\\;\\
+= \Bigg| \Bigg| \underbrace{\begin{bmatrix} \sigma_1 & 0 & 0 & . & . & . \\ 0 & \sigma_2  & 0 & . & . & .\\0  & .  & . & . & . & . \\. & . & .& \sigma_k & 0 & .\\ . & . & .& . & . & . \\0 & 0 & 0 & 0 & 0 & 0 \\\end{bmatrix}}_{m \times n} 
+\begin{bmatrix} z_1 \\ z_2 \\ . \\ .\\. \\. \\. \\ z_n \end{bmatrix} - \begin{bmatrix} c_1 \\ c_2 \\ . \\. \\. \\ c_m \\\end{bmatrix} \Bigg| \Bigg|_{l_2}^2  + \lambda ||z||_{l_2}^2\\\;\\
+ = \sum_{i \in [k]} (\sigma_i z_i - c_i)^2  + \sum_{ k+1 \leq j \leq m} c_j^2 + {\color{blue}\sum_{ 0 \leq i \leq n} \lambda z_i^2} \\\;\\
+ = \sum_{i \in [k]} (\sigma_i z_i - c_i)^2  + {\color{blue}\lambda_i z_i^2} + \sum_{ k+1 \leq j \leq m} c_j^2 + {\color{blue}\sum_{ k+1 \leq j \leq n} \lambda z_j^2} \\
 \end{aligned}
 $$
-
 The minima is achieved when 
 $$
-	z_i^* = \begin{cases} \frac{c_i}{\sigma_i + \lambda} & i \in [k] \\ \; 0 & k+1 \leq i \leq n\end{cases}
+\begin{aligned}
+ 0 = \frac{\partial f}{\partial z_i} = \begin{cases} \; 2(\sigma_iz_i - c_i) + 2 \lambda z_i & i \in [k] \\ \; 2 \lambda z_i \end{cases}\\\;\\
+	 \implies z_i^* = \begin{cases} \frac{c_i}{\sigma_i + \lambda} & i \in [k] \\ \; 0 & k+1 \leq i \leq n\end{cases}
+\end{aligned}
 $$
+Since this is the only solution, it is also the minimum-norm solution, i.e $z^{MNLS} = z^*$.
 
-Now, $z = V^Tx \implies x = Vz = \sum_{i \in [n]} z_i v_i$ . Hence
+Now, $z = V^Tx \implies  Vz = \underbrace{VV^T}_{I_n} x = x \implies x = Vz = \sum_{i \in [n]} z_i v_i$ .  
 
+Hence,
 $$\begin{aligned}
-x_i^* =Vz^* =  \sum_{i \in [n]} z_i^*v_i = \sum_{i \in [k]} \frac{c_i}{\sigma_i + \lambda}v_i + \sum_{ k+1 \leq i \leq n} 0 \; v_i 
+x_i^{\lambda MNLS} =Vz^{\lambda MNLS} =  \sum_{i \in [n]} z_i^{\lambda MNLS}v_i = \sum_{i \in [k]} \frac{c_i}{\sigma_i + \lambda}v_i + \sum_{ k+1 \leq i \leq n} 0 \; v_i 
 = \sum_{i \in [k]} \frac{c_i}{\sigma_i + \lambda}v_i \\\;\\
-\implies \boxed{x^* = \sum_{i \in [k]} \frac{u_i^Tb}{\sigma_i + \lambda}v_i =  \sum_{i \in [k]} \frac{1}{\sigma_i + \lambda} A_i^T v_i }
+\implies \boxed{x^{\lambda MNLS} = \sum_{i \in [k]} \frac{u_i^Tb}{\sigma_i + \lambda}v_i =  \sum_{i \in [k]} \frac{1}{\sigma_i + \lambda} A_i^T v_i }
 \qquad \blacksquare
 \end{aligned}
 $$
 
-#### Anisotropic/Tikhonov Regularization
-Same setting as before but with extra term $||x||_W^2 = x^TWx$ (for some PSD matrix $W$)
+### SVD Filtering
 
+If we compare the solutions with and without regularization for the vanilla MNLS solution to the regularized MNLS above, we observe that both solution can be unified under a finter function on the singular values of $A$. Let the filters $g, g_{\lambda} : \mathbb{R}^+ \to \mathbb{R}$ be defined as 
+
+$$\begin{aligned}
+	g(\sigma) = \begin{cases} \frac{1}{\sigma}  & \sigma > 0 \\
+0  & else \end{cases} \\\;\\
+g_{\lambda}(\sigma) = \frac{1}{\sigma + \lambda} 
+\end{aligned}
+$$
+
+
+$$
+\begin{aligned}
+	x^{MNLS} = \sum_{i \in [k]} g(\sigma_i) A_i^T b = g(\sigma_i) (u_i^Tb) v_i = VGU^Tb\\\;\\
+x^{\lambda MNLS} = \sum_{i \in [k]} g_{\lambda}(\sigma_i) A_i^T b = g(\sigma_i) (u_i^Tb) v_i = VG_{\lambda}U^Tb \\\;\\
+\end{aligned}
+$$
+where we define the induced diagonal matrices $G,G_{\lambda} \in \mathbb{R}^{n \times m}$ with $[G]_{ii} = g(\sigma_i)$ and $[G_{\lambda}]_{ii} = g_{\lambda}(\sigma_i)$
+
+
+> **A natural genralization: Connections to $\color{crimson}\text{shrinkage estimators}$**  $$\;$$
+0) For any given $g:\mathbb{R}^+ \to \mathbb{R}$, does there exist an objective involving $A \in \mathbb{R}^{m \times n}, b \in \mathbb{R}^m$ and some regularizer $h : \mathbb{R}^n \to \mathbb{R}$, the solution to the minimization is given by $x^{SVDF}=VGU^Tb$ ?  $$\;$$
+1) If not, for what kind/class of functions $g:\mathbb{R}^+ \to \mathbb{R}$ can someone always find an optimization problem involving $A \in \mathbb{R}^{m \times n}, b \in \mathbb{R}^m$ and some regularizer $h : \mathbb{R}^n \to \mathbb{R}$ ? $$\;$$
+2) These questions are intimately related to the concept of [shrinkage estimators](https://en.wikipedia.org/wiki/Shrinkage_(statistics)) in statistics  
+*Wikipedia*:  
+A shrinkage estimator is an estimator that, either explicitly or implicitly, incorporates the effects of shrinkage. In loose terms this means that a naive or raw estimate is improved by combining it with other information. The term relates to the notion that the improved estimate is made closer to the value supplied by the 'other information' than the raw estimate. In this sense, shrinkage is used to regularize ill-posed inference problems.
+
+
+### Minimum Norm Least Squares solutions: Anisotropic Regularization (Weighted MNLS or WMNLS)
+Same setting as before but with extra term $||x||_W^2 = x^TWx$ (for some PSD matrix $W \succ 0$)
 $$
 	x^* \gets \underset{x}{\text{ argmin }} ||Ax - b||_{l_2}^2 + \lambda ||x||_W^2
 $$
 
+### CLAIMS:
+a) $W \succ 0 \implies \text{unique WMNLS }$
+b) $W \succeq 0 , \mathcal{N}(W) \cap \mathcal{N}(A) = \{\vec 0 \} \implies \text{unique WMNLS}$
+c) $W \succeq 0, \mathcal{N}(W) \cap \mathcal{N}(A) \neq \{ \vec 0 \} \implies \text{many WMNLS}$
+
+*Proof of a and b :*  
+Realize that $a \implies W \succ 0 \implies \mathcal{N}(W) = \{\vec 0\} \implies b$. Hence proving $b$ is enough for parts $a \; \& \; b$.
+
+>> TODO
+
+*Proof of c:*
+
+>> TODO
+
+
+
+asdfhksadfl  
+asfdshfs  
+sahfkdshflksaf  
+hsadlfhdslkf  
+hsdfldsflk  

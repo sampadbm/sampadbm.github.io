@@ -1,4 +1,13 @@
 readings:
+  - date: 2026-04-13
+    category: [Mathematics, Philosophy]
+    author: Wikipedia contributors
+    title: Philosophy of Mathematics
+    url: https://en.wikipedia.org/wiki/Philosophy_of_mathematics
+    tags: [philosophy-of-mathematics, foundations, logicism, formalism, intuitionism, platonism, reference]
+    notes: |
+      (Placeholder — to expand after reading.) Survey-level reference entry covering the major schools of thought on the nature, scope, and epistemology of mathematics. Expected landmarks to unpack on a careful read: **Platonism / mathematical realism** (mathematical objects exist independently of human minds — Gödel, Frege), **logicism** (mathematics reduces to logic — Russell, Whitehead's *Principia*), **formalism** (math as manipulation of meaningless symbols within axiomatic systems — Hilbert's program, damaged but not destroyed by Gödel's incompleteness theorems), **intuitionism / constructivism** (Brouwer, Bishop — mathematical objects are mental constructions, rejecting the law of excluded middle for infinite domains), **structuralism** (math studies abstract structures, not specific objects — Benacerraf, Shapiro, Hellman), and **naturalism / quasi-empiricism** (Quine, Maddy, Lakatos — mathematics is continuous with natural science, defended by its indispensability to physics). Intersects productively with Wigner's "unreasonable effectiveness" essay (already on the wishlist) as empirical evidence the philosophy has to account for.
+
   - date: 2026-01-11
     category: [Education, Philosophy, Science]
     author: Abraham Flexner

@@ -10,3 +10,9 @@ bookmarks:
     category: Blog
     description: Blog posts on stochastic trace estimation and numerical linear algebra.
     tags: [numerical-linear-algebra, trace-estimation, randomized-algorithms, matrix-analysis]
+
+  - title: Patrick Kidger
+    url: https://kidger.site/
+    category: Blog
+    description: Personal site of Patrick Kidger (DPhil, Oxford) — neural differential equations, JAX ecosystem (Equinox, Diffrax, Optimistix), and scientific machine learning.
+    tags: [jax, neural-differential-equations, scientific-machine-learning, equinox, diffrax]

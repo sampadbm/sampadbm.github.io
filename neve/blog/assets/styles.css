@@ -1319,6 +1319,41 @@ body.theme-sepia .shortcuts-hint kbd {
 }
 
 /* =====================================================
+   YOUTUBE EMBED (```youtube extension)
+   ===================================================== */
+
+.yt-embed {
+    margin: 1.5rem 0;
+}
+
+.yt-embed-frame {
+    position: relative;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    background: #000;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.yt-embed-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.yt-embed figcaption {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+.yt-embed figcaption a {
+    color: inherit;
+}
+
+/* =====================================================
    BOOKMARKS (```bookmarks extension)
    ===================================================== */
 
