@@ -5,3 +5,4 @@ databases:
   - db/thesis.yml
   - db/videos.yml
   - db/music.yml
+  - db/films.yml

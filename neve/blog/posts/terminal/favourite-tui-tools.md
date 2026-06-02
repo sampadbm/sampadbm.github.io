@@ -45,8 +45,13 @@ summary: A curated list of terminal-based tools I use or find interesting.
 
 ### System & Networking
 
+- *monitui* — terminal system monitor
 - *tuios* — terminal multiplexer OS
 - *ssm* — simple SSH manager
 - *wifitui* — WiFi manager
 - *mdns-scanner* — mDNS network scanner
+- *mdns-browser* — terminal mDNS/Bonjour service browser with split-pane view and real-time discovery
+- *shair* — zero-config local network file transfer via mDNS discovery (like AirDrop for the terminal)
+- *caligula* — user-friendly TUI for imaging disks (modern dd alternative with validation)
 - *bottles* — run Windows software on Linux
+- *gendesk* — generate .desktop files for Linux apps

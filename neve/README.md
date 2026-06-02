@@ -6,19 +6,77 @@ No build step. All static files served directly. Data lives in YAML, content in 
 
 ## Structure
 
+The site is five independent sub-sites sharing a common stack and design language. Each has its own `index.html`, `assets/`, and data layer.
+
 ```
 neve/
-├── index.html     Homepage / profile (loads data from data/*.yml)
-├── blog/          Blog with markdown posts, LaTeX math, and inline charts
-├── webcv/         Online CV / resume
-├── digest/        Reading journal and media collection (papers, books, articles, music, videos)
-├── diary/         Personal diary / journal with photo entries
-├── data/          YAML data files (profile, publications, talks, teaching, research, etc.)
-├── assets/        Homepage assets (app.js, styles.css, print.css)
-├── siteutils/     Shared utilities across sections (modal filter)
-├── certificates/  Certificate files
-└── plans/         Implementation plans for upcoming features
+├── index.html              # Academic homepage — loads all content from data/*.yml
+├── data/                   # YAML data files (single source of truth for homepage)
+│   ├── profile.yml         # Name, title, links, education, experience
+│   ├── publications.yml
+│   ├── research.yml
+│   ├── talks.yml
+│   ├── teaching.yml
+│   ├── news.yml
+│   ├── services.yml
+│   └── coursework.yml
+├── assets/                 # Homepage assets (app.js, styles.css, print.css)
+│
+├── blog/                   # Technical blog (markdown posts, KaTeX math, Vega-Lite charts)
+│   ├── index.html
+│   ├── config.yml          # Auto-generated post index (run blog/scripts/generate-config.sh)
+│   ├── posts/              # Markdown files organized in topic subdirectories
+│   │   ├── math/linear-algebra/
+│   │   ├── math/optimization/
+│   │   ├── reference/      # Living documents: glossary, bookmarks, ideas, wishlist
+│   │   └── terminal/
+│   ├── assets/             # Blog-specific JS/CSS
+│   └── scripts/generate-config.sh
+│
+├── diary/                  # Personal journal with mood tracking and photo media
+│   ├── index.html
+│   ├── config.yml          # Auto-generated entry index (run diary/scripts/generate-config.sh)
+│   ├── entries/            # Markdown files named YYYY-MM-DD-slug.md
+│   ├── media/              # Images organized by year/event
+│   ├── assets/             # Diary-specific JS/CSS
+│   └── scripts/generate-config.sh
+│
+├── digest/                 # Reading journal (papers, books, articles, music, videos)
+│   ├── index.html
+│   ├── config.yml          # Lists which db/*.yml files to load by default
+│   ├── db/                 # YAML databases — add entries, refresh browser
+│   │   ├── articles.yml
+│   │   ├── papers.yml
+│   │   ├── books.yml
+│   │   ├── music.yml
+│   │   ├── videos.yml
+│   │   └── thesis.yml
+│   └── assets/             # Digest JS/CSS including modular filter.js
+│
+├── webcv/                  # Web CV
+│   ├── index.html
+│   └── Resume.pdf
+│
+├── siteutils/              # Shared utilities (used by blog and diary)
+│   ├── modal-filter.js     # Modal filter UI triggered by `f` key
+│   └── modal-filter.css
+│
+├── certificates/           # Certificate PDFs
+├── plans/                  # Implementation plans for upcoming features
+├── update-date.sh          # Updates last_updated in data/profile.yml
+└── claude.md               # Project documentation for AI assistants
 ```
+
+### Content workflow
+
+All three content sub-sites follow the same pattern:
+
+| Sub-site | Add content | Rebuild index | Refresh |
+|----------|-------------|---------------|---------|
+| Homepage | Edit `data/*.yml` | — | Done |
+| Blog | Add `blog/posts/**/*.md` | `./blog/scripts/generate-config.sh` | Done |
+| Diary | Add `diary/entries/YYYY-MM-DD-slug.md` | `./diary/scripts/generate-config.sh` | Done |
+| Digest | Edit `digest/db/*.yml` | — | Done |
 
 ## Blog
 

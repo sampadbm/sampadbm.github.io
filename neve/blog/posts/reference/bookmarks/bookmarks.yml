@@ -11,6 +11,18 @@ bookmarks:
     description: Blog posts on stochastic trace estimation and numerical linear algebra.
     tags: [numerical-linear-algebra, trace-estimation, randomized-algorithms, matrix-analysis]
 
+  - title: Elements of a Vector Space — Elon Litman
+    url: https://elonlit.com/about/
+    category: Blog
+    description: Stanford researcher's blog on deep learning theory, generalization, optimal transport, information theory, and random matrices.
+    tags: [deep-learning-theory, generalization, optimal-transport, information-theory, random-matrices]
+
+  - title: Laws of Software
+    url: https://www.laws-of-software.com/
+    category: Reference
+    description: Curated collection of named laws, principles, and observations in software engineering and systems design — Gall's Law, Conway's Law, Hyrum's Law, Goodhart's Law, and ~25 others.
+    tags: [software-engineering, systems-design, principles, reference]
+
   - title: Patrick Kidger
     url: https://kidger.site/
     category: Blog
