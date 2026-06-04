@@ -1,0 +1,254 @@
+---
+date: 2026-06-02
+title: Some Useful Inequalities and Equalities
+tags: [math, inequalities, convexity]
+summary: A short note on Jensen’s inequality and some consequences, including AM-GM, AM-QM, AM-HM, Markov and Chebyshev-type inequalities, variance decomposition, and Stein’s lemma.
+authors: [sampad]
+---
+
+## Jensen's Inequality
+
+Assume $f \in C^2$ is a smooth function. Then $\exists c \in [\min(x_0,x), \max(x_0,x)]$ such that
+$$
+	f(x) = f(x_0) + f'(x_0)(x-x_0) + \frac{1}{2} f''(c)(x-x_0)^2
+$$
+
+Let $X$ be a random variable with $\mathbb E[X] = \mu$. Now $Y = f(X)$ is a random variable.
+
+If $f$ is convex, then $f'' \geq 0$ and hence 
+$$
+\begin{aligned}
+	f(x) \geq f(\mu) + f'(\mu) (x - \mu) \\
+\implies \underset{x \sim X}{\mathbb E} \; f(x) \geq f(\mu) + f'(\mu) (\underset{x \sim X}{\mathbb E}\;x - \mu) = f(\mu) + f'(\mu)(\mu - \mu) = f(\mu)\\
+\implies \underset{x \sim X}{\mathbb E}[f(x)] \geq f(\mu) = f(\underset{x \sim X}{\mathbb E} x) \\
+\implies \boxed{\mathbb E f(X) \geq f(\mathbb E X)}
+\end{aligned}
+$$
+
+For $f \notin C^2$, but still nice (convex, continuos but not differentiable), we can approximate them using a sequence $(f_n) \in C^2$ such that the above inequality can be proved by passing limits via integration/expectations ($f$ may require regularities like Fubini, Dominated Convergence, etc. to hold)
+
+>Corollary: If $f$ is concave, $\mathbb E[f(X)] \leq f(\mathbb E[X])$ 
+
+### Some examples
+1) $f(x) = x^2$, then $\mathbb E [X^2] \geq [\mathbb E X ]^2$
+2) $f(x) = |x|$, then $\mathbb E [|X|] \geq |\mathbb E X |$
+3) $f(x) = \exp(\lambda x)$, $\lambda >0$,  then $\underbrace{\mathbb E [\exp(\lambda X)]}_{M.G.F \; of \; X} \geq \exp(\lambda \; \mathbb E X ) \implies M_X(\lambda) \geq \exp(\lambda \; \mathbb EX)$
+
+
+### AM-GM Inequality
+
+$$
+	AM = \frac{a_1 + ...+ a_n}{n} \geq (a_1 ... a_n)^{1/n} = GM
+$$
+
+Let $X$ be a random variable with support on the set $\{ a_1,..,a_n\}$ and with equal probabilities of $p_i = 1/n$. 
+
+Set $f = \log$ which is concave. 
+$$
+\begin{aligned}
+	\mathbb E f(X) \leq f(\mathbb E X) \\
+	\implies \frac{1}{n} \sum_i^n \log(a_i) \leq \log \frac{1}{n} \sum_i^n a_i \\
+\implies \sum_i^n \log a_i^{1/n} \leq\log AM \\
+\implies \log \prod_i^n a_i^{1/n} \leq \log AM \\
+\implies \log GM \leq \log AM \\
+\implies GM \leq AM \quad \blacksquare \\ \because \log \text{is monotone increasing}
+\end{aligned}
+$$
+
+In generality, $AM = \sum_i^n  p_i a_i \geq \prod_i^n a_i^{p_i} = GM$ and the proof is exaclty the same. 
+
+### AM-QM Inequality
+
+Quadratic mean (QM) is larger than the arithmetic mean (AM).
+
+$$
+	AM = \frac{a_1 + ...+a_n}{n} \leq \frac{a_1^2 + ... + a_n^2}{n} = QM
+$$
+
+Set $f(x) = x^2$ which is convex and hence $\mathbb E f(X) \geq f(\mathbb E X)$ which gives $\sum_i^n p_i a_i^2 \geq \sum_i p_i a_i$. Now set $p_i = 1/n$ to complete the proof.
+
+### AM-HM Inequality
+Let $a_i \geq 0$, then 
+
+$$
+AM = \frac{a_1 + ... + a_n}{n} \geq \frac{n}{\frac{1}{a_1}+...+\frac{1}{a_n}} = \frac{1}{HM}
+$$ 
+
+Set $f(x) = 1/x$ which is convex in $\mathbb R_+$. 
+
+$$
+\begin{aligned}
+	\mathbb E f(X) \geq f(\mathbb E X) \\
+	\sum_i^n \frac{p_i}{a_i} \geq \frac{1}{\sum_i^n p_i a_i} \\
+	\sum_i^n p_i a_i \geq \frac{1}{\sum_i^n \frac{p_i}{a_i}}
+\end{aligned}
+$$
+
+Setting $p_i = 1/n$, we recover the inequality.
+
+### Holder Inequality
+>TODO
+
+### Variance Decomposition
+$$
+\begin{aligned}
+0 \leq Var(X) = \mathbb E [(X - \mu)^2] = \underset{x \sim X}{\mathbb E}[(x - \mu)^2] \\
+= \underset{x \sim X}{\mathbb E} [x^2 - 2 \mu x + \mu^2] = \underset{x \sim X}{\mathbb E} x^2 - 2\mu \underset{x \sim X}{\mathbb E}x - \mu^2 \\
+= \underset{x \sim X}{\mathbb E}x^2 - 2\,u^2 + \mu^2 = \underset{x \sim X}{\mathbb E} x^2 - \mu^2 \\
+= \underset{x \sim X}{\mathbb E} x^2 -  [\underset{x \sim X}{\mathbb E} x]^2 = \mathbb E X^2 - [\mathbb E X]^2 \\
+\implies  [\mathbb E X]^2 \leq \mathbb E X^2  
+\end{aligned}
+$$
+
+The above is Jensen's inequality applied with the function $f(x) = x^2$ which is convex and hence $\mathbb E$
+## Chebyshev Type Inequalities
+
+>Fact: $$h(x) \geq g(x) \; \forall \; x \; \implies \int_a^b h(x) \geq \int_a^b g(x)$$  
+Since the pdf $f(x) \geq 0 \; \forall \; x$, we have  
+$$\begin{aligned} 
+h(x) \geq g(x) \; \forall \; x\\
+\implies h(x) f(x) \geq g(x) f(x) \; \forall \; x \\
+\implies \int_{-\infty}^{+\infty} h(x)f(x) dx \geq \int_{-\infty}^{+\infty} g(x)f(x) dx \\ 
+\implies \mathbb E h(X) \geq \mathbb E g(X) 
+\end{aligned}$$ 
+
+
+### Case I : Markov's Inequality
+Let $Z$ be a positive random variable, i.e $Z \geq 0$. Then for $a > 0$ we have
+$$
+	P(Z \geq a) \leq \frac{\mathbb E Z}{a}
+$$
+
+Proof:
+$$
+\begin{aligned}
+	g(z) := \mathbb 1 [Z \geq a] \leq  \frac{Z}{a} \mathbb 1[Z \geq a] \quad \quad \because \frac{Z}{a} \geq 1 \\
+=  \frac{Z}{a} \mathbb 1[Z \geq a] + 0 \cdot \mathbb 1[Z < a] \\ \leq \frac{Z}{a}\mathbb  1[Z \geq a] + \frac{Z}{a}\mathbb 1[Z \leq a]  \\
+= \frac{Z}{a} =: h(x) \\
+\implies \mathbb E g(z) \leq \mathbb E h(x) \\
+\implies \boxed{P(Z \geq a) \leq \frac{\mathbb E Z}{a}}
+\end{aligned}
+$$
+
+Alternatively: Let $f$ be the pdf of $Z$. 
+$$
+\begin{aligned}
+	a \cdot P(Z \geq a) = \int_{a}^{+ \infty} a f(z)dz \\
+\leq  \int_a^{+\infty} \overbrace{z}^{\geq a} \; f(z)dz \\
+\leq \int_a^{+ \infty} z f(z) dz  + \underbrace{\int_0^a z f(z)dz}_{\geq 0} \\
+= \int_0^{+\infty} zf(z)dz  = \mathbb E[Z] \\
+\implies \boxed{P(Z \geq a) \leq \frac{\mathbb E[Z]}{a}}
+\end{aligned}
+$$
+
+
+### Case - II : General form
+
+If $g : \mathbb R \rightarrow \mathbb R_+$ be a  increasing function (i.e.  $g \geq 0$ and $g' \geq 0$),  then 
+
+$$
+	P(Z \geq a ) \leq \frac{\mathbb E g(Z)}{g(a)}
+$$
+
+Proof:
+
+$$
+	P(Z \geq a) \underset{g' \geq 0}{=} P\big({\color{red}g(Z)} \geq {\color{green}g(a)} \big) = P({\color{red}Y} \geq {\color{green}b}) \leq \frac{\underset{Y}{\mathbb E} \;Y}{b} \underset{LOTUS}= \frac{\mathbb E \; g(Z)}{g(a)}
+$$
+
+Examples
+
+1)  If $\forall x, \; g>0$ and $a>0$ we have by Markov's inequality $$P(g(X) \geq a) \leq \frac{\mathbb E g(X)}{a}$$ 
+2) Setting $g(x) = \exp(\lambda x)$ where $\lambda > 0$ (since we need $g' >0$) for $a > 0$, we have $$ P(X \geq a) =  P(e^{\lambda X} \geq e^{\lambda a}) \leq \frac{\mathbb E e^{\lambda X}}{e^{\lambda a}} = e^{-\lambda a} \; M_X(t)$$
+3) Let $\mathbb E X = \mu$ and $Var(X) = \underset{X}{\mathbb E} |X - \mu|^2 = \sigma^2$.  
+Let $Y := |X - \mu|$, then setting $g(y)=y^2$ which is positive and increasing in $[0,+\infty)$, we get 
+$$\begin{align}
+P(Y \geq k \sigma) \leq \frac{\underset{Y}{\mathbb E}\; g(Y)}{g(k \sigma)} = \frac{\underset{Y}{\mathbb E} \; Y^2}{k^2 \sigma^2} \underset{LOTUS}= \frac{\underset{X}{\mathbb E} |X - \mu|^2}{k^2 \sigma^2 } =\frac{\sigma^2}{ \sigma^2 k^2} = \frac{1}{k^2} \\
+\implies \boxed{P(|X - \mu| \geq k \sigma) \leq  \frac{1}{k^2}}
+\end{align}$$
+
+**How tight are these bounds?**  
+For $X \sim \mathcal N(\mu,\sigma^2)$, we know that $P(|X - \mu| \geq 2 \sigma) \leq 5\%$. Using Chebyshev's inequality, we get $P(|X - \mu| \geq 2 \sigma) \leq \frac{1}{4} = 25\%$ which is not that tight. Using different $g$, we may obtain tighter bounds. 
+
+>**Example:**
+A fair coin is tossed 80 times. Show that the probability of getting larger than 50 heads is less than $\frac{1}{10}$.  
+**Solution:** Let us define the random variable $X$ which is a function from outcomes to the reals such that $X(H) = 1$ and $X(T)=0$. Then we have
+$$
+\begin{aligned}
+	\mathbb E X = 0 P(X=0) + 1 P(X=1) = \frac{1}{2} \\
+	Var(X) = \frac{1}{4} P(X=0) + \frac{1}{4} P(X=1) = \frac{1}{4}
+\end{aligned}
+$$ 
+
+Let $Z = \sum_{i=1}^80$ such that $\mathbb E Z = \sum_{i=1}^{80} \mathbb E X_i = 40$ and $\sigma^2 = Var(Z) = \sum_{i=1}^{80}Var(X_i) = 20$
+Using Markov's inequality, we get
+$$
+	P(Z \geq 50)  \leq \frac{\mathbb E Z}{50} = \frac{40}{50} = \frac{8}{10}
+$$
+
+which is much larger than the expected $\frac{1}{10}$.
+
+Let us use the Chebyshev bound now,
+
+$$
+	P(|Z - 40| \geq 50) = P(|Z-40| \geq 11.18 \times \sigma) \leq \frac{1}{11.18^2} \leq \frac{1}{100}
+$$
+
+## Some equalities
+
+### Stein's Lemma/method
+
+Let $X \sim \mathcal N(0,1)$, and $g$ be a differentiable, nice function (we ommit the technicalities for being a nice function), then Stein's lemma states that
+
+$$
+	\boxed{\mathbb E \big[ g'(X) \big] = \mathbb E \big[X g(X) \big]}
+$$\
+
+**Proof:**  
+
+Recall that if $f(x)$ is the pdf of $\mathcal N(0,1)$, then $f(x) = \frac{1}{\sqrt{2\pi}} \exp(-x^2/2)$ and $f'(x) = - \frac{1}{\sqrt{2\pi}} \; x \; \exp(-x^2/2) = - x f(x)$.
+
+Also one of he niceties on $g$ forces it to be finite at $\pm \infty$.
+
+$$
+\begin{aligned}
+	\mathbb E \big[ g'(X) \big] = \int_{-\infty}^{+\infty} g'(x)f(x) \\ = f(x) g(x) |_{-\infty}^{+\infty} - \int_{-\infty}^{+\infty} f'(x) g(x) dx \\
+= \underbrace{f(+\infty)}_{0} g(+\infty) - \underbrace{f(-\infty)}_{0}g(-\infty) + \int_{-\infty}^{+\infty} xg(x) f(x) dx \\
+= \int_{-\infty}^{+\infty} x g(x) f(x) dx = \mathbb E \big[ Xg(X) \big]
+\end{aligned}
+$$
+
+Further more, if $X \sim \mathcal N(\mu,\sigma^2)$, then 
+$$
+	 \boxed{\sigma^2 \mathbb E \big[ g'(X) \big] = \mathbb E \big[ (X- \mu) g(X) \big]}
+$$
+
+>*From Wiki: On use of Stein's lemma in Gradient Descent*  
+Stein's lemma can be used to stochastically estimate gradients.
+Define
+$$
+F(x) := \mathbb E_{\epsilon \sim \mathcal N(0,I)}
+\left[g(x+\Sigma^{1/2}\epsilon)\right].
+$$
+Then Stein's lemma gives
+$$
+\nabla_x F(x)
+=
+\Sigma^{-1/2}
+\mathbb E_{\epsilon \sim \mathcal N(0,I)}
+\left[g(x+\Sigma^{1/2}\epsilon)\epsilon\right].
+$$
+With IID samples
+$$
+\epsilon_1,\ldots,\epsilon_N \sim \mathcal N(0,I),
+$$
+we get the Monte Carlo estimate
+$$
+\nabla_x F(x)
+\approx
+\Sigma^{-1/2}
+\frac{1}{N}
+\sum_{i=1}^N
+g(x+\Sigma^{1/2}\epsilon_i)\epsilon_i.
+$$
+This form has applications in *Stein variational gradient descent* and *Stein variational policy gradient*.

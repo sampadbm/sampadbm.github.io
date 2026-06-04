@@ -1,0 +1,104 @@
+# Auto-generated blog configuration
+# Run scripts/generate-config.sh to regenerate
+
+tree:
+  - name: ai
+    posts:
+      - posts/ai/how-llms-work.md
+  - name: math
+    children:
+      - name: linear-algebra
+        posts:
+          - posts/math/linear-algebra/svd-filtering.md
+          - posts/math/linear-algebra/some-notes-on-tensors.md
+          - posts/math/linear-algebra/matrix-multiplications.md
+      - name: optimization
+        posts:
+          - posts/math/optimization/lagrangian-duality.md
+      - name: probability
+        posts:
+          - posts/math/probability/inequalities.md
+  - name: reference
+    posts:
+      - posts/reference/reading-wishlist.md
+      - posts/reference/phenomena.md
+      - posts/reference/metascience.md
+      - posts/reference/ideas.md
+      - posts/reference/glossary.md
+      - posts/reference/bookmarks.md
+  - name: terminal
+    posts:
+      - posts/terminal/favourite-tui-tools.md
+
+posts:
+  - file: posts/ai/how-llms-work.md
+    date: 2026-06-02
+    title: How LLMs Work
+    authors: [sampad]
+    tags: [ai, llm, deep-learning]
+    summary: A high-level walkthrough of how large language models are trained and how they generate text.
+  - file: posts/math/probability/inequalities.md
+    date: 2026-06-02
+    title: Some Useful Inequalities and Equalities
+    authors: [sampad]
+    tags: [math, inequalities, convexity]
+    summary: A short note on Jensen’s inequality and some consequences, including AM-GM, AM-QM, AM-HM, Markov and Chebyshev-type inequalities, variance decomposition, and Stein’s lemma.
+  - file: posts/reference/metascience.md
+    date: 2026-05-04
+    title: Metascience
+    tags: [reference, metascience, epistemology, philosophy-of-science, science-practice, cargo-cult]
+    summary: A living catalog of readings on metascience — epistemology, structure of science, problems in scientific practice, and cargo cultism.
+  - file: posts/reference/phenomena.md
+    date: 2026-04-17
+    title: Phenomena
+    tags: [reference, observations, phenomena]
+    summary: A living collection of observed patterns, emergent behaviors, and philosophical observations across math, philosophy, neuroscience, and computation.
+  - file: posts/reference/ideas.md
+    date: 2026-04-12
+    title: Project & Paper Ideas
+    tags: [reference, research, ideas]
+    summary: A living list of personal project and paper ideas I would like to work on.
+  - file: posts/reference/bookmarks.md
+    date: 2026-04-08
+    title: Bookmarks
+    tags: [reference, bookmarks, links]
+    summary: A curated collection of websites, tools, and resources.
+  - file: posts/reference/reading-wishlist.md
+    date: 2026-04-08
+    title: Reading Wishlist
+    tags: [reference, wishlist, papers, books]
+    summary: Papers, books, articles, and other resources I want to read.
+  - file: posts/math/linear-algebra/some-notes-on-tensors.md
+    date: 2026-04-06
+    title: Some notes on tensors
+    authors: Sampad
+    tags: [MATH647, linear-algebra, tensors]
+    preview: Let $I$ be an index set. A partition on this index set $P = \{P_1,P_2,...,P_K\}$ is a set of disjoint subsets of $I$, i.e $I_k \in I \; \forall k \in [K]$ and $k \neq l \implies I_k \cap I_l =...
+  - file: posts/math/linear-algebra/svd-filtering.md
+    date: 2026-04-04
+    title: MNLS, WMNLS, SVD Filtering as Shrinkage, and Weight decay in optimizers
+    authors: [sampad]
+    tags: [math, linear-algebra, tutorial, signal-processing, inverse-problems, EE592]
+    summary: Some views on SVD filtering
+  - file: posts/reference/glossary.md
+    date: 2026-03-29
+    title: Technical Terms & Phenomena
+    tags: [reference, glossary, definitions]
+    summary: A living collection of technical terms, concepts, and phenomena with short readable descriptions.
+  - file: posts/terminal/favourite-tui-tools.md
+    date: 2026-03-25
+    title: My Favourite TUI Tools
+    tags: [terminal, tools, tui]
+    summary: A curated list of terminal-based tools I use or find interesting.
+  - file: posts/math/linear-algebra/matrix-multiplications.md
+    date: 2026-03-24
+    title: Understanding Matrix Multiplications
+    authors: [sampad]
+    tags: [math, linear-algebra, tutorial]
+    summary: Some views on matrix multiplications.
+  - file: posts/math/optimization/lagrangian-duality.md
+    date: 2026-03-24
+    title: Lagrange duality
+    authors: [sampad]
+    tags: [math, linear-algebra, tutorial]
+    summary: Intuitive Lagrange duality
