@@ -33,6 +33,7 @@ For $f \notin C^2$, but still nice (convex, continuos but not differentiable), w
 1) $f(x) = x^2$, then $\mathbb E [X^2] \geq [\mathbb E X ]^2$
 2) $f(x) = |x|$, then $\mathbb E [|X|] \geq |\mathbb E X |$
 3) $f(x) = \exp(\lambda x)$, $\lambda >0$,  then $\underbrace{\mathbb E [\exp(\lambda X)]}_{M.G.F \; of \; X} \geq \exp(\lambda \; \mathbb E X ) \implies M_X(\lambda) \geq \exp(\lambda \; \mathbb EX)$
+4) $f(x) = |x|^p$, $p \geq 1$, then $\mathbb E [|X|^p] \geq |\mathbb E X |^p$
 
 
 ### AM-GM Inequality
@@ -141,6 +142,12 @@ $$
 \end{aligned}
 $$
 
+Oneliner:
+
+$$
+\mathbb E Z = \mathbb E \big[ \underbrace{Z \mathbb 1[X < a]}_{\geq 0} + Z \mathbb 1 [Z \geq a] \big] \geq \mathbb E \big [ Z \mathbb 1 [Z \geq a] \big] \geq \mathbb E \big[ a \mathbb 1 [Z \geq a] \big] = a P(Z \geq a)
+$$
+
 
 ### Case - II : General form
 
@@ -166,8 +173,16 @@ $$\begin{align}
 P(Y \geq k \sigma) \leq \frac{\underset{Y}{\mathbb E}\; g(Y)}{g(k \sigma)} = \frac{\underset{Y}{\mathbb E} \; Y^2}{k^2 \sigma^2} \underset{LOTUS}= \frac{\underset{X}{\mathbb E} |X - \mu|^2}{k^2 \sigma^2 } =\frac{\sigma^2}{ \sigma^2 k^2} = \frac{1}{k^2} \\
 \implies \boxed{P(|X - \mu| \geq k \sigma) \leq  \frac{1}{k^2}}
 \end{align}$$
+4) In general, we have the *"Standard Chebyshev's inequlity"*
+$$
+\begin{aligned}
+	P(|X - \mu| \geq t) \leq \frac{\mathbb E |X-\mu|^2}{t^2} = \frac{Var(X)}{t^2} \\
+\implies \boxed{P(|X - \mu| \geq t) \leq \frac{Var(X)}{t^2}} 
+\end{aligned}
+$$
 
-**How tight are these bounds?**  
+
+#### How tight are these bounds?
 For $X \sim \mathcal N(\mu,\sigma^2)$, we know that $P(|X - \mu| \geq 2 \sigma) \leq 5\%$. Using Chebyshev's inequality, we get $P(|X - \mu| \geq 2 \sigma) \leq \frac{1}{4} = 25\%$ which is not that tight. Using different $g$, we may obtain tighter bounds. 
 
 >**Example:**
@@ -193,6 +208,263 @@ Let us use the Chebyshev bound now,
 $$
 	P(|Z - 40| \geq 50) = P(|Z-40| \geq 11.18 \times \sigma) \leq \frac{1}{11.18^2} \leq \frac{1}{100}
 $$
+
+><p style='color:blue'>Both
+Markov’s and Chebyshev’s inequalities are sharp, meaning that they cannot be improved in
+general. This means that there exist distributions where Markov and Chebyshev inequalities are tight. However, as seen in the above examples, for certain distributions, they can be loose. [Ch. 2, HDS Book, Wainwright]</p>
+
+#### Concentration using Chebyshev's Inequality
+$$
+\begin{aligned}
+	P(|X - \mu| \leq t) = 1 - P(|X - \mu| > t) \underset{why?}{=} 1 - P(|X - \mu| \geq t) \geq 1 - \frac{Var(X)}{t^2} \\
+\implies \boxed{P(|X - \mu| \leq t) \geq 1 - \frac{Var(X)}{t^2}}
+\end{aligned}
+$$
+This last statement is a concentration inequality on the random variable $X$ with an upper bound on probability of $X$ concentrating within $t$ distance of the mean $\mu$.
+
+### Chernoff Bound
+
+Let $Z$ be a positive random variable. In the last example, we saw that the choice of $g$ affects how tight a bound we can obtain using the Chebyshev type inequalities.
+
+Now, if we picked a class of parametrized functions $g_{\lambda} \in G$ given as $g_{\lambda}: \mathbb R \to \mathbb R_+$ that are increasing for the parameters $\lambda \in \Lambda$,
+
+$$
+	P(Z \geq a) \leq \frac{\mathbb E g_{\lambda}(Z)}{g_{\lambda}(a)}
+$$
+
+Since we do not know which of the functions in the class $G$ give us the tighest bound, we take the infimum over the set $\Lambda$ (since we need $g_{\lambda}$ to be increasing)
+
+$$
+	P(Z \geq a) \leq  \underset{\lambda \in \Lambda}\inf \frac{\mathbb E \; g_{\lambda}(Z)}{g_{\lambda}(a)}
+$$
+
+Now, let us take $g_{\lambda}(x) = \exp(\lambda x)$ with positive range and increasing for $\lambda \in \Lambda = \mathbb R_+$, i.e $\lambda \geq 0$. 
+
+$$\boxed{
+	P(Z \geq a) \leq \underset{\lambda > 0}\inf \frac{\mathbb E \exp(\lambda Z)}{\exp(\lambda a)} =\underset{\lambda > 0}\inf e^{- \lambda a} \; \mathbb E \exp(\lambda Z)  =  \underset{\lambda > 0}\inf e^{- \lambda a}\; M_Z(\lambda) }
+$$
+
+Note that for $\lambda = 0$, the bound we get is trivial, i.e $P(Z \geq a) \leq 1$ and hence we take infimum over $\lambda > 0$. 
+
+><p style=color:blue>The above inequality is called the Chernoff bound or the Laplace transform.</p>
+
+If we take $0 \leq Z := |X - \mu|$ where $\mu := \mathbb E Z$, then we get
+
+$$
+	P(|X - \mu| \geq a ) \leq \underset{\lambda > 0}\inf e^{- \lambda a} \; \mathbb E \exp(\lambda |X - \mu|)
+$$
+
+However, it is hard to compute the expectation of the exponential of an absolute value function on $X - \mu$. We could use $Z = Z = \mu$ instead and if the distribution is symmetric, we can use that information of get good concentration bounds via the Bonferonni's Inequality <span style=color:blue>[Ch. 1, SI, Casella]</span> which states
+$$
+	P(A \cap B) \geq P(A) + P(B) - 1
+$$
+This is no different in information than the union bound given as $P(A \cup B) \leq P(A) + p(B)$.
+
+><p style=color:crimson>Exercise 1: Moment generating Function of Gaussian random variable. </p> 
+If $Z \sim \mathcal N(0,\sigma^2)$, then show that $\forall \lambda \in \mathbb R$, $M_Z(\lambda) = \mathbb E \exp(\lambda Z) = \exp(\lambda^2 \sigma^2 / 2)$
+
+>Solution:
+$$
+\begin{aligned}
+	M_Z(\lambda) = \mathbb E \exp(\lambda Z) = \frac{1}{\sqrt{2\pi \sigma^2}} \int_{-\infty}^{+\infty} \exp(\lambda z) \exp(-z^2/2\sigma^2) dz \\
+= \frac{1}{\sqrt{2\pi \sigma^2}} \int_{-\infty}^{+\infty} \exp( \lambda z - z^2/2\sigma^2) dz \\
+= \frac{1}{\sqrt{2\pi \sigma^2}} \int_{-\infty}^{+\infty} \exp \bigg[ \bigg(2\sigma^2\lambda z - z^2 - \sigma^4\lambda^2 + \sigma^4\lambda^2 \bigg)/2\sigma^2\bigg] dz \\
+= \frac{1}{\sqrt{2\pi \sigma^2}} \int_{-\infty}^{+\infty} \exp \bigg[\bigg(\sigma^4\lambda^2 - (z - \sigma^2 \lambda)^2 \bigg)/2\sigma^2 \bigg] dz \\
+= \frac{1}{\sqrt{2\pi \sigma^2}} \int_{-\infty}^{+\infty} \exp \big(\sigma^2\lambda^2/2 \big) \exp \big[ - (z - \sigma^2 \lambda)^2 /2\sigma^2) \big] dz \\
+=  \exp \big(\sigma^2\lambda^2/2 \big) \quad \frac{1}{\sqrt{2\pi \sigma^2}} \int_{-\infty}^{+\infty}\exp \big[ - (z - \sigma^2 \lambda)^2 /2\sigma^2) \big] dz \\
+=  \exp \big(\sigma^2\lambda^2/2 \big) \quad \underbrace{\int_{-\infty}^{+\infty} \mathcal N(\sigma^2 \lambda, \sigma^2) dz}_{1} \\ =  \exp \big(\sigma^2\lambda^2/2 \big) \quad \quad \blacksquare
+\end{aligned}
+$$
+
+><p style=color:crimson> Exercise 2:</p>If we have $Z \sim \mathcal N(\mu, \sigma^2)$, what do you think the value for $\mathbb E \exp \big(\lambda (Z - \mu) \big)$ is?
+
+>Solution: Answer is same as above. Proof uses shift invariance of indegral when both function and the density are shifted and the integral is on the whole real line since the area is not changed under the shift when integrating all over real line.
+
+><p style=color:crimson>Exercise 3: Tail Concentration of Gaussian Random variable </p>
+Find the Chernoff bound on a  gaussian random variable $Z \sim \mathcal N(0,\sigma^2)$.
+
+>Solution:
+Let $a \in \mathbb R$; then
+$$
+\begin{aligned}
+	P(Z \geq a) \leq \underset{\lambda > 0}{\inf} e^{- \lambda a}  M_Z (\lambda) = \underset{\lambda > 0}{\inf} e^{- \lambda a} \exp(\sigma^2 \lambda^2 / 2)  \\
+= \underset{\lambda > 0}{\inf} e^{- \lambda a} \exp(\sigma^2 \lambda^2 / 2)  = \underset{\lambda > 0}{\inf} \exp(\sigma^2 \lambda^2 / 2 - \lambda a)  \\ 
+= \exp \bigg( \underset{\lambda > 0}{\inf} \big[ \frac{\sigma^2 \lambda^2}{2} - \lambda a \big] \bigg) \quad \because \exp(.) \text{ strictly increasing}\\
+= \exp \bigg( \frac{1}{2} \underset{\lambda > 0}{\inf} \big[ \lambda (\sigma^2 \lambda - 2a)  \big] \bigg) \\
+\end{aligned}
+$$
+
+The roots are $\lambda = 0, 2a/\sigma^2$ and the midpoint of the roots is the minima, i.e $\lambda^* = a/\sigma^2$. Alternatively, set the derivative of the exponent/argument in the expression to zero. The minimum value of the exponent is $\frac{1}{2}\lambda^* (\sigma^2 \lambda^* - 2a) = \frac{1}{2} \frac{a}{\sigma^2} (a - 2a) = -a^2/2\sigma^2$.
+
+Hence the Chernoff bound for $Z \sim \mathcal N(0,\sigma^2)$ is given by $P(Z \geq a) \leq \exp(-a^2/2\sigma^2)$  
+
+>In the general Gaussian $Z \in \mathcal N(\mu,\sigma^2)$ which is just a shifted version of $\mathcal N(0,\sigma^2)$, we have the Chernoff bound given as 
+$$\begin{aligned}
+P(Z \geq \mu + a) \leq \exp(-a^2/2\sigma^2) \\ 
+\text{ or } 
+P(Z - \mu \geq a)  \leq \exp(-a^2 / 2 \sigma^2)
+\end{aligned}
+$$
+
+><p style=color:blue> <b>Takeaway</b>: Gaussian random variables have tail concentrations that decay fast with exponential of the quadratic of $a$ but scaled down by the variance $\sigma^2$. This also means that the random variable is concentrated pretty much close to the mean given the variance is small.</p>
+
+ Plot 1 — Chernoff bound
+  ```vegalite
+  {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "height": 240,
+    "title": "Chernoff Bound: P(Z ≥ a) ≤ exp(−a²/2σ²)",
+    "data": {"sequence": {"start": 0, "stop": 4.05, "step": 0.05, "as": "a"}},
+    "transform": [
+      {"calculate": "exp(-datum.a * datum.a / 1.0)", "as": "s05"},
+      {"calculate": "exp(-datum.a * datum.a / 2.0)", "as": "s1"},
+      {"calculate": "exp(-datum.a * datum.a / 4.0)", "as": "s2"},
+      {"fold": ["s05", "s1", "s2"], "as": ["key", "bound"]},
+      {"calculate": "datum.key === 's05' ? 'σ²=0.5' : datum.key === 's1' ? 'σ²=1' : 'σ²=2'", "as": "variance"}
+    ],
+    "mark": {"type": "line", "strokeWidth": 2},
+    "encoding": {
+      "x": {"field": "a", "type": "quantitative", "title": "Threshold a"},
+      "y": {"field": "bound", "type": "quantitative", "title": "Bound value", "scale": {"domain": [0, 1]}},
+      "color": {"field": "variance", "type": "nominal", "title": "σ²", "sort": ["σ²=0.5", "σ²=1", "σ²=2"]}
+    }
+  } 
+  ```
+
+  Plot 2 — PDF tails
+  ```vegalite
+  {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "height": 240,
+    "title": "Sub-Gaussian vs Gaussian vs Heavy-Tailed PDFs",
+    "data": {"sequence": {"start": -4.5, "stop": 4.55, "step": 0.05, "as": "x"}},
+    "transform": [
+      {"calculate": "exp(-datum.x * datum.x / 2) / 2.5066", "as": "gaussian"},
+      {"calculate": "exp(-datum.x * datum.x) / 1.7725", "as": "subgaussian"},
+      {"calculate": "0.5 * exp(-abs(datum.x))", "as": "laplace"},
+      {"fold": ["gaussian", "subgaussian", "laplace"], "as": ["key", "pdf"]},
+      {"calculate": "datum.key === 'gaussian' ? 'Gaussian N(0,1)' : datum.key === 'subgaussian' ? 'Sub-Gaussian N(0,0.5)' :
+  'Laplace (heavier tails)'", "as": "Distribution"}
+    ],
+    "mark": {"type": "line", "strokeWidth": 2},
+    "encoding": {
+      "x": {"field": "x", "type": "quantitative", "title": "x"},
+      "y": {"field": "pdf", "type": "quantitative", "title": "PDF f(x)"},
+      "color": {"field": "Distribution", "type": "nominal"}
+    } 
+  }
+  ```
+
+
+### Sub-Gaussian Random Variables
+
+A random variable is called Sub-Gaussian if its tail of its pdf falls off faster than that of a Gaussian. The moment generating function (M.G.F) captures hot fast the tail fo the pdf decays (think of the similarity to Laplace transforms in signals and systems). Intuitively, you can think that we want to compare the tail behaviour that is far away towards the plus infinity of the given/test pdf with the Gaussian pdf. Ideally, we could set a cutoff that is really realy far away and then measure the area under the two pdfs and the one that has higher total probability mass after the cutoff is heavy tailed (for Sub-Gaussian, we want the test pdf to be lighter tailed than the Gaussian pdf). However, setting a hard cutoff distance/farness is arbitrary and hence we can use a soft and weighted cutoff that is weighted by the function $\exp(\lambda z)$ where $\lambda$ controls the softness since the exponential function is low initially and grows fast as we move towards plus infinity.
+
+  ```vegalite
+  {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": "container",
+    "height": 280,
+    "title": "Hard vs Soft Tail Cutoffs",
+    "data": {"sequence": {"start": -3, "stop": 3.05, "step": 0.05, "as": "z"}},
+    "transform": [
+      {"calculate": "datum.z >= 1 ? 1 : 0", "as": "hard_a1"},
+      {"calculate": "datum.z >= 2 ? 1 : 0", "as": "hard_a2"},
+      {"calculate": "exp(0.5 * datum.z)", "as": "soft_l05"},
+      {"calculate": "exp(1.0 * datum.z)", "as": "soft_l1"},
+      {"fold": ["hard_a1", "hard_a2", "soft_l05", "soft_l1"], "as": ["key", "val"]},
+      {"calculate": "datum.key === 'hard_a1' ? 'hard a=1' : datum.key === 'hard_a2' ? 'hard a=2' : datum.key === 'soft_l05' ? 'soft
+  λ=0.5' : 'soft λ=1'", "as": "label"}
+    ],
+    "mark": {"type": "line", "strokeWidth": 2, "clip": true},
+    "encoding": {
+      "x": {"field": "z", "type": "quantitative", "title": "z"},
+      "y": {
+        "field": "val", "type": "quantitative", "title": "weight",
+        "scale": {"domain": [0, 5]}
+      },
+      "color": {
+        "field": "label", "type": "nominal",
+        "sort": ["hard a=1", "hard a=2", "soft λ=0.5", "soft λ=1"],
+        "scale": {
+          "domain": ["hard a=1", "hard a=2", "soft λ=0.5", "soft λ=1"],
+          "range": ["#9ecae1", "#3182bd", "#fdae6b", "#e6550d"]
+        }
+      },
+      "strokeDash": {
+        "field": "label", "type": "nominal",
+        "scale": {
+          "domain": ["hard a=1", "hard a=2", "soft λ=0.5", "soft λ=1"],
+          "range": [[4,3], [4,3], [1,0], [1,0]]
+        },
+        "legend": null
+      }
+    }
+  }
+  ```
+
+ 
+ ```vegalite
+  {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 520,
+    "height": 300,
+    "title": "MGF M(λ) = E[exp(λX)] — Laplace diverges at |λ|=1",
+    "data": {"sequence": {"start": -1.2, "stop": 1.22, "step": 0.005, "as": "l"}},
+    "transform": [
+      {"calculate": "exp(datum.l * datum.l / 2)", "as": "gaussian"},
+      {"calculate": "exp(datum.l * datum.l / 4)", "as": "subgaussian"},
+      {"calculate": "abs(datum.l) < 0.99 ? 1 / (1 - datum.l * datum.l) : null", "as": "laplace"},
+      {"fold": ["gaussian", "subgaussian", "laplace"], "as": ["key", "mgf"]},
+      {"calculate": "datum.key === 'gaussian' ? 'Gaussian N(0,1)' : datum.key === 'subgaussian' ? 'Sub-Gaussian N(0,0.5)' :
+  'Laplace'", "as": "Distribution"}
+    ],
+    "layer": [
+      {
+        "mark": {"type": "line", "strokeWidth": 2.5, "clip": true},
+        "encoding": {
+          "x": {"field": "l", "type": "quantitative", "title": "λ"},
+          "y": {"field": "mgf", "type": "quantitative", "title": "M(λ)", "scale": {"domain": [0, 12]}},
+          "color": {
+            "field": "Distribution", "type": "nominal", "legend": null,
+            "scale": {
+              "domain": ["Gaussian N(0,1)", "Sub-Gaussian N(0,0.5)", "Laplace"],
+              "range": ["#1f77b4", "#2ca02c", "#d62728"]
+            }
+          },
+          "strokeDash": {
+            "field": "Distribution", "type": "nominal", "legend": null,
+            "scale": {
+              "domain": ["Gaussian N(0,1)", "Sub-Gaussian N(0,0.5)", "Laplace"],
+              "range": [[1,0], [6,3], [2,3]]
+            }
+          }
+        }
+      },
+      {
+        "transform": [
+          {"filter": "(datum.Distribution === 'Gaussian N(0,1)' && abs(datum.l - 1.15) < 0.003) || (datum.Distribution ===
+  'Sub-Gaussian N(0,0.5)' && abs(datum.l - 1.15) < 0.003) || (datum.Distribution === 'Laplace' && abs(datum.l - 0.9) < 0.003)"}
+        ],  
+        "mark": {"type": "text", "align": "left", "dx": 5, "fontSize": 11, "clip": false},
+        "encoding": {
+          "x": {"field": "l", "type": "quantitative"},
+          "y": {"field": "mgf", "type": "quantitative"},
+          "text": {"field": "Distribution"},
+          "color": {  
+            "field": "Distribution", "type": "nominal", "legend": null,
+            "scale": {
+              "domain": ["Gaussian N(0,1)", "Sub-Gaussian N(0,0.5)", "Laplace"],
+              "range": ["#1f77b4", "#2ca02c", "#d62728"]
+            }
+          }
+        }
+      }
+    ]
+  }
+  ```
 
 ## Some equalities
 
