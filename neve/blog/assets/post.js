@@ -144,30 +144,37 @@ async function enableVegalite() {
     await loadScript('https://cdn.jsdelivr.net/npm/vega-lite@5');
     await loadScript('https://cdn.jsdelivr.net/npm/vega-embed@6');
 
+    const pending = [];
+
     marked.use({
         extensions: [{
             name: 'vegalite',
             level: 'block',
-            start(src) { return src.indexOf('```vegalite'); },
+            start(src) {
+                const idx = src.indexOf('```vegalite');
+                if (idx === -1) return undefined;
+                let lineStart = idx;
+                while (lineStart > 0 && src[lineStart - 1] !== '\n') lineStart--;
+                return lineStart;
+            },
             tokenizer(src) {
-                const match = src.match(/^```vegalite\n([\s\S]*?)```/);
+                const match = src.match(/^ {0,3}```vegalite[ \t]*\n([\s\S]*?)\n {0,3}```[ \t]*(?:\n|$)/);
                 if (!match) return;
                 return { type: 'vegalite', raw: match[0], text: match[1] };
             },
             renderer(token) {
                 const id = `vegalite-${Math.random().toString(36).slice(2)}`;
-                const observer = new MutationObserver(() => {
-                    const el = document.getElementById(id);
-                    if (el) {
-                        observer.disconnect();
-                        vegaEmbed(el, jsyaml.load(token.text));
-                    }
-                });
-                observer.observe(document.body, { childList: true, subtree: true });
-                return `<div id="${id}"></div>`;
+                try {
+                    pending.push({ id, spec: jsyaml.load(token.text) });
+                } catch (e) {
+                    return `<p style="color:red">vegalite parse error: ${escapeHtml(e.message)}</p>`;
+                }
+                return `<div id="${id}" class="vegalite-chart"></div>`;
             }
         }]
     });
+
+    return pending;
 }
 
 /**
@@ -593,8 +600,9 @@ async function loadPost() {
         }
 
         // Load Vega-Lite plugin on demand if the post uses it
+        let vegalitePending = null;
         if (content.includes('```vegalite')) {
-            await enableVegalite();
+            vegalitePending = await enableVegalite();
         }
 
         // Load readings plugin on demand if the post uses it
@@ -616,6 +624,17 @@ async function loadPost() {
         const { text: safeContent, mathBlocks } = protectMath(content);
         const html = restoreMath(processImages(marked.parse(safeContent)), mathBlocks);
         document.getElementById('post-content').innerHTML = html;
+
+        // Initialize vegalite charts now that their divs are in the DOM
+        if (vegalitePending) {
+            for (const { id, spec } of vegalitePending) {
+                const el = document.getElementById(id);
+                if (!el) continue;
+                vegaEmbed(el, spec, { actions: false }).catch(e => {
+                    el.innerHTML = `<p style="color:red">vegalite error: ${escapeHtml(e.message)}</p>`;
+                });
+            }
+        }
 
         // Generate TOC BEFORE KaTeX renders (to get clean text)
         generateTOC();

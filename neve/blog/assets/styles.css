@@ -427,6 +427,12 @@ h1 {
     border-radius: 3px;
 }
 
+/* Vega-Lite chart containers */
+.vegalite-chart {
+    width: 100%;
+    margin: 1.5rem 0;
+}
+
 /* Tags */
 .tags {
     display: inline;
