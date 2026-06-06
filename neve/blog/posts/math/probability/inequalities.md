@@ -25,7 +25,7 @@ $$
 \end{aligned}
 $$
 
-For $f \notin C^2$, but still nice (convex, continuos but not differentiable), we can approximate them using a sequence $(f_n) \in C^2$ such that the above inequality can be proved by passing limits via integration/expectations ($f$ may require regularities like Fubini, Dominated Convergence, etc. to hold)
+For $f \notin C^2$, but still nice (convex, continuous but not differentiable), we can approximate them using a sequence $(f_n) \in C^2$ such that the above inequality can be proved by passing limits via integration/expectations ($f$ may require regularities like Fubini, Dominated Convergence, etc. to hold)
 
 >Corollary: If $f$ is concave, $\mathbb E[f(X)] \leq f(\mathbb E[X])$ 
 
@@ -56,7 +56,7 @@ $$
 \end{aligned}
 $$
 
-In generality, $AM = \sum_i^n  p_i a_i \geq \prod_i^n a_i^{p_i} = GM$ and the proof is exaclty the same. 
+In general, $AM = \sum_i^n  p_i a_i \geq \prod_i^n a_i^{p_i} = GM$ and the proof is exaclty the same. 
 
 ### AM-QM Inequality
 
@@ -124,7 +124,7 @@ Proof:
 $$
 \begin{aligned}
 	g(z) := \mathbb 1 [Z \geq a] \leq  \frac{Z}{a} \mathbb 1[Z \geq a] \quad \quad \because \frac{Z}{a} \geq 1 \\
-=  \frac{Z}{a} \mathbb 1[Z \geq a] + 0 \cdot \mathbb 1[Z < a] \\ \leq \frac{Z}{a}\mathbb  1[Z \geq a] + \frac{Z}{a}\mathbb 1[Z \leq a]  \\
+=  \frac{Z}{a} \mathbb 1[Z \geq a] + 0 \cdot \mathbb 1[Z < a] \\ \leq \frac{Z}{a}\mathbb  1[Z \geq a] + \frac{Z}{a}\mathbb 1[Z < a]  \\
 = \frac{Z}{a} =: h(x) \\
 \implies \mathbb E g(z) \leq \mathbb E h(x) \\
 \implies \boxed{P(Z \geq a) \leq \frac{\mathbb E Z}{a}}
@@ -151,7 +151,7 @@ $$
 
 ### Case - II : General form
 
-If $g : \mathbb R \rightarrow \mathbb R_+$ be a  increasing function (i.e.  $g \geq 0$ and $g' \geq 0$),  then 
+If $g : \mathbb R \rightarrow \mathbb R_+$ be an increasing function (i.e.  $g \geq 0$ and $g' \geq 0$),  then 
 
 $$
 	P(Z \geq a ) \leq \frac{\mathbb E g(Z)}{g(a)}
