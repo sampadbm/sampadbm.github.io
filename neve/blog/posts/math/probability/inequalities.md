@@ -148,6 +148,17 @@ $$
 \mathbb E Z = \mathbb E \big[ \underbrace{Z \mathbb 1[X < a]}_{\geq 0} + Z \mathbb 1 [Z \geq a] \big] \geq \mathbb E \big [ Z \mathbb 1 [Z \geq a] \big] \geq \mathbb E \big[ a \mathbb 1 [Z \geq a] \big] = a P(Z \geq a)
 $$
 
+>**Inner product interpretation:**  
+Let us define the inner product between functions $f$ and $g$ as
+$$
+	\langle f , g \rangle := \int_{-\infty}^{+\infty} f(x) g(x) dx
+$$
+Then the above inequality is same as
+$$
+	\langle f, e \rangle \leq \langle  f, h\rangle
+$$
+where $e(x) = \mathbb 1[x \geq a]$ and $h(x) = x/a$. 
+
 
 ### Case - II : General form
 
@@ -162,6 +173,13 @@ Proof:
 $$
 	P(Z \geq a) \underset{g' \geq 0}{=} P\big({\color{red}g(Z)} \geq {\color{green}g(a)} \big) = P({\color{red}Y} \geq {\color{green}b}) \leq \frac{\underset{Y}{\mathbb E} \;Y}{b} \underset{LOTUS}= \frac{\mathbb E \; g(Z)}{g(a)}
 $$
+
+>**Inner product interpretation:**  
+Then the above inequality is same as
+$$
+	\langle f, e \rangle \leq \langle  f, h\rangle
+$$
+where $e(x) = \mathbb 1[x \geq a]$ and $h(x) = g(x)/g(a)$. 
 
 Examples
 
@@ -181,6 +199,7 @@ $$
 \end{aligned}
 $$
 
+>Note that this is not simply a consequence of applying the general Chebyshev inequlity using the function $g(x) = |x - \mu|^2$ since this function is not monotone. The first step is application of change of variable and then using the random variable $|X - \mu|$ which is positive, we apply the monotone function $g(x) = x^2, \; \forall x \geq 0$ which is increasing in the domain $x \geq 0$. 
 
 #### How tight are these bounds?
 For $X \sim \mathcal N(\mu,\sigma^2)$, we know that $P(|X - \mu| \geq 2 \sigma) \leq 5\%$. Using Chebyshev's inequality, we get $P(|X - \mu| \geq 2 \sigma) \leq \frac{1}{4} = 25\%$ which is not that tight. Using different $g$, we may obtain tighter bounds. 
