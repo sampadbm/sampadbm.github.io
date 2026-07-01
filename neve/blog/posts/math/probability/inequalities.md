@@ -297,7 +297,7 @@ $$
 
 ><p style=color:crimson> Exercise 2:</p>If we have $Z \sim \mathcal N(\mu, \sigma^2)$, what do you think the value for $\mathbb E \exp \big(\lambda (Z - \mu) \big)$ is?
 
->Solution: Answer is same as above. Proof uses shift invariance of indegral when both function and the density are shifted and the integral is on the whole real line since the area is not changed under the shift when integrating all over real line.
+>Solution: Answer is same as above. Proof uses shift invariance of integral when both function and the density are shifted and since the area is not changed under the shift when integrating all over real line. Or you can view it as the random variable $Z - \mu$ having the same distribution as $\mathcal N (0, \sigma^2)$.
 
 ><p style=color:crimson>Exercise 3: Tail Concentration of Gaussian Random variable </p>
 Find the Chernoff bound on a  gaussian random variable $Z \sim \mathcal N(0,\sigma^2)$.
