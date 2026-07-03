@@ -148,7 +148,7 @@ $$
 \mathbb E Z = \mathbb E \big[ \underbrace{Z \mathbb 1[X < a]}_{\geq 0} + Z \mathbb 1 [Z \geq a] \big] \geq \mathbb E \big [ Z \mathbb 1 [Z \geq a] \big] \geq \mathbb E \big[ a \mathbb 1 [Z \geq a] \big] = a P(Z \geq a)
 $$
 
->**Inner product interpretation:**  
+>**Inner product interpretation (when things are nice):**  
 Let us define the inner product between functions $f$ and $g$ as
 $$
 	\langle f , g \rangle := \int_{-\infty}^{+\infty} f(x) g(x) dx
@@ -174,7 +174,7 @@ $$
 	P(Z \geq a) \underset{g' \geq 0}{=} P\big({\color{red}g(Z)} \geq {\color{green}g(a)} \big) = P({\color{red}Y} \geq {\color{green}b}) \leq \frac{\underset{Y}{\mathbb E} \;Y}{b} \underset{LOTUS}= \frac{\mathbb E \; g(Z)}{g(a)}
 $$
 
->**Inner product interpretation:**  
+>**Inner product interpretation (when things are nice):**  
 Then the above inequality is same as
 $$
 	\langle f, e \rangle \leq \langle  f, h\rangle
@@ -199,7 +199,7 @@ $$
 \end{aligned}
 $$
 
->Note that this is not simply a consequence of applying the general Chebyshev inequlity using the function $g(x) = |x - \mu|^2$ since this function is not monotone. The first step is application of change of variable and then using the random variable $|X - \mu|$ which is positive, we apply the monotone function $g(x) = x^2, \; \forall x \geq 0$ which is increasing in the domain $x \geq 0$. 
+>Note that this is not simply a consequence of applying the general Chebyshev inequality using the function $g(x) = |x - \mu|^2$ since this function is not monotone. The first step is application of change of variable and then using the random variable $|X - \mu|$ which is positive, we apply the monotone function $g(x) = x^2, \; \forall x \geq 0$ which is increasing in the domain $x \geq 0$. 
 
 #### How tight are these bounds?
 For $X \sim \mathcal N(\mu,\sigma^2)$, we know that $P(|X - \mu| \geq 2 \sigma) \leq 5\%$. Using Chebyshev's inequality, we get $P(|X - \mu| \geq 2 \sigma) \leq \frac{1}{4} = 25\%$ which is not that tight. Using different $g$, we may obtain tighter bounds. 
@@ -209,25 +209,26 @@ A fair coin is tossed 80 times. Show that the probability of getting larger than
 **Solution:** Let us define the random variable $X$ which is a function from outcomes to the reals such that $X(H) = 1$ and $X(T)=0$. Then we have
 $$
 \begin{aligned}
-	\mathbb E X = 0 P(X=0) + 1 P(X=1) = \frac{1}{2} \\
-	Var(X) = \frac{1}{4} P(X=0) + \frac{1}{4} P(X=1) = \frac{1}{4}
+	\mathbb E X = 0 \cdot P(X=0) + 1 \cdot P(X=1) = \frac{1}{2} \\
+	Var(X) = \frac{1}{4} \cdot P(X=0) + \frac{1}{4} \cdot P(X=1) = \frac{1}{4}
 \end{aligned}
 $$ 
-
-Let $Z = \sum_{i=1}^80$ such that $\mathbb E Z = \sum_{i=1}^{80} \mathbb E X_i = 40$ and $\sigma^2 = Var(Z) = \sum_{i=1}^{80}Var(X_i) = 20$
+Let $Z = \sum_{i=1}^{80} X_i$ such that $\mathbb E Z = \sum_{i=1}^{80} \mathbb E X_i = 40$ and $\sigma^2 = Var(Z) = \sum_{i=1}^{80}Var(X_i) = 20$. Hence $\sigma = \sqrt 20$.
 Using Markov's inequality, we get
 $$
 	P(Z \geq 50)  \leq \frac{\mathbb E Z}{50} = \frac{40}{50} = \frac{8}{10}
 $$
-
-which is much larger than the expected $\frac{1}{10}$.
-
-Let us use the Chebyshev bound now,
-
+which is much larger than the expected $\frac{1}{10}$.  
+Let us use the Chebyshev bound now,  
 $$
-	P(|Z - 40| \geq 50) = P(|Z-40| \geq 11.18 \times \sigma) \leq \frac{1}{11.18^2} \leq \frac{1}{100}
+	P(|Z - 40| \geq 10) = P(|Z-40| \geq \sqrt{5} \times \sigma) \leq \frac{1}{\sqrt{5}^2} \leq \frac{1}{5}
 $$
-
+$$
+\begin{aligned}
+\frac{1}{5} \geq P(|Z - 40| \geq 10) = P(X \geq 50 | X \leq 30) \\ = \underbrace{P(X \geq 50)}_{K} + \underbrace{P(X \geq 30)}_{K} = 2K \qquad \because \text{symmetry}  \\
+\implies K = P(X \geq 50) \leq \frac{1}{10}
+\end{aligned}
+$$
 ><p style='color:blue'>Both
 Markov’s and Chebyshev’s inequalities are sharp, meaning that they cannot be improved in
 general. This means that there exist distributions where Markov and Chebyshev inequalities are tight. However, as seen in the above examples, for certain distributions, they can be loose. [Ch. 2, HDS Book, Wainwright]</p>
@@ -251,7 +252,7 @@ $$
 	P(Z \geq a) \leq \frac{\mathbb E g_{\lambda}(Z)}{g_{\lambda}(a)}
 $$
 
-Since we do not know which of the functions in the class $G$ give us the tighest bound, we take the infimum over the set $\Lambda$ (since we need $g_{\lambda}$ to be increasing)
+Since we do not know which of the functions in the class $G$ give us the tighest bound, we take the infimum over the set $\Lambda$ (we need $g_{\lambda}$ to be increasing)
 
 $$
 	P(Z \geq a) \leq  \underset{\lambda \in \Lambda}\inf \frac{\mathbb E \; g_{\lambda}(Z)}{g_{\lambda}(a)}
@@ -260,7 +261,7 @@ $$
 Now, let us take $g_{\lambda}(x) = \exp(\lambda x)$ with positive range and increasing for $\lambda \in \Lambda = \mathbb R_+$, i.e $\lambda \geq 0$. 
 
 $$\boxed{
-	P(Z \geq a) \leq \underset{\lambda > 0}\inf \frac{\mathbb E \exp(\lambda Z)}{\exp(\lambda a)} =\underset{\lambda > 0}\inf e^{- \lambda a} \; \mathbb E \exp(\lambda Z)  =  \underset{\lambda > 0}\inf e^{- \lambda a}\; M_Z(\lambda) }
+	P(Z \geq a) \leq \underset{\lambda > 0}\inf \; \frac{\mathbb E \exp(\lambda Z)}{\exp(\lambda a)} =\underset{\lambda > 0}\inf \; e^{- \lambda a} \; \mathbb E \exp(\lambda Z)  =  \underset{\lambda > 0}\inf \; e^{- \lambda a}\; M_Z(\lambda) }
 $$
 
 Note that for $\lambda = 0$, the bound we get is trivial, i.e $P(Z \geq a) \leq 1$ and hence we take infimum over $\lambda > 0$. 
@@ -270,17 +271,18 @@ Note that for $\lambda = 0$, the bound we get is trivial, i.e $P(Z \geq a) \leq 
 If we take $0 \leq Z := |X - \mu|$ where $\mu := \mathbb E Z$, then we get
 
 $$
-	P(|X - \mu| \geq a ) \leq \underset{\lambda > 0}\inf e^{- \lambda a} \; \mathbb E \exp(\lambda |X - \mu|)
+	P(|X - \mu| \geq a ) \leq \underset{\lambda > 0}\inf \; e^{- \lambda a} \; \mathbb E \exp(\lambda |X - \mu|)
 $$
 
-However, it is hard to compute the expectation of the exponential of an absolute value function on $X - \mu$. We could use $Z = Z = \mu$ instead and if the distribution is symmetric, we can use that information of get good concentration bounds via the Bonferonni's Inequality <span style=color:blue>[Ch. 1, SI, Casella]</span> which states
+However, it is hard to compute the expectation of the exponential of an absolute value function on $X - \mu$. if the distribution is symmetric, use $Z = X - \mu$ and bound the events $A := \{ Z \geq a\}$ and $B := \{ Z \leq -a \}$ separately to get good concentration bounds via the Bonferonni's Inequality <span style=color:blue>[Ch. 1, SI, Casella]</span> which states
 $$
 	P(A \cap B) \geq P(A) + P(B) - 1
 $$
-This is no different in information than the union bound given as $P(A \cup B) \leq P(A) + p(B)$.
+This is no different in information than the union bound given as $P(A \cup B) \leq P(A) + P(B)$.
 
 ><p style=color:crimson>Exercise 1: Moment generating Function of Gaussian random variable. </p> 
-If $Z \sim \mathcal N(0,\sigma^2)$, then show that $\forall \lambda \in \mathbb R$, $M_Z(\lambda) = \mathbb E \exp(\lambda Z) = \exp(\lambda^2 \sigma^2 / 2)$
+If $Z \sim \mathcal N(0,\sigma^2)$, then show that $\forall \lambda \in \mathbb R$, $M_Z(\lambda) = \mathbb E \exp(\lambda Z) = \exp(\lambda^2 \sigma^2 / 2)$.  
+Also find the MGF of $Y \sim \mathcal N (\mu, \sigma^2)$ using the properties of MGF for sum of independent random variables.
 
 >Solution:
 $$
@@ -292,6 +294,18 @@ $$
 = \frac{1}{\sqrt{2\pi \sigma^2}} \int_{-\infty}^{+\infty} \exp \big(\sigma^2\lambda^2/2 \big) \exp \big[ - (z - \sigma^2 \lambda)^2 /2\sigma^2) \big] dz \\
 =  \exp \big(\sigma^2\lambda^2/2 \big) \quad \frac{1}{\sqrt{2\pi \sigma^2}} \int_{-\infty}^{+\infty}\exp \big[ - (z - \sigma^2 \lambda)^2 /2\sigma^2) \big] dz \\
 =  \exp \big(\sigma^2\lambda^2/2 \big) \quad \underbrace{\int_{-\infty}^{+\infty} \mathcal N(\sigma^2 \lambda, \sigma^2) dz}_{1} \\ =  \exp \big(\sigma^2\lambda^2/2 \big) \quad \quad \blacksquare
+\end{aligned}
+$$   
+For $Y \sim \mathcal N (\mu, \sigma^2)$, we define a constant random variable $X = \mu$ which is independent of $Z \sim \mathcal N (0, \sigma^2)$ such that $Y = X + Z$. Let $T = \exp(\lambda Y)$.
+$$
+\begin{aligned}
+	M_Y(\lambda) = \underset{T}{\mathbb E} [T] \underbrace{=}_{\text{LOTUS}} \underset{Y}{\mathbb E} [\exp(\lambda Y)]\\
+ \underbrace{=}_{\text{multivariate LOTUS}} \underset{X,Z}{\mathbb E} [\exp(\lambda(X + Z))] \\
+= \underset{X,Z}{\mathbb E} [\exp(\lambda X) \exp(\lambda Z)] \\
+ \underbrace{=}_{\text{independence}} \underset{X}{\mathbb E} [\exp(\lambda X)]  \underset{Z}{\mathbb E} [\exp(\lambda Z)]\\
+= \underset{X}{\mathbb E} \exp(\lambda \mu) \; M_Z(\lambda) \\
+= \exp(\lambda \mu) \exp(\sigma^2 \lambda^2 / 2) \\
+= \exp(\lambda \mu + \frac{\sigma^2 \lambda^2}{2} )
 \end{aligned}
 $$
 
@@ -312,12 +326,9 @@ $$
 = \exp \bigg( \frac{1}{2} \underset{\lambda > 0}{\inf} \big[ \lambda (\sigma^2 \lambda - 2a)  \big] \bigg) \\
 \end{aligned}
 $$
-
-The roots are $\lambda = 0, 2a/\sigma^2$ and the midpoint of the roots is the minima, i.e $\lambda^* = a/\sigma^2$. Alternatively, set the derivative of the exponent/argument in the expression to zero. The minimum value of the exponent is $\frac{1}{2}\lambda^* (\sigma^2 \lambda^* - 2a) = \frac{1}{2} \frac{a}{\sigma^2} (a - 2a) = -a^2/2\sigma^2$.
-
-Hence the Chernoff bound for $Z \sim \mathcal N(0,\sigma^2)$ is given by $P(Z \geq a) \leq \exp(-a^2/2\sigma^2)$  
-
->In the general Gaussian $Z \in \mathcal N(\mu,\sigma^2)$ which is just a shifted version of $\mathcal N(0,\sigma^2)$, we have the Chernoff bound given as 
+The roots are $\lambda = 0, 2a/\sigma^2$ and the midpoint of the roots is the minima, i.e $\lambda^* = a/\sigma^2$. Alternatively, set the derivative of the exponent/argument in the expression to zero. The minimum value of the exponent is $\frac{1}{2}\lambda^* (\sigma^2 \lambda^* - 2a) = \frac{1}{2} \frac{a}{\sigma^2} (a - 2a) = -a^2/2\sigma^2$.  
+Hence the Chernoff bound for $Z \sim \mathcal N(0,\sigma^2)$ is given by $P(Z \geq a) \leq \exp(-a^2/2\sigma^2)$.   
+For the general Gaussian $Z \in \mathcal N(\mu,\sigma^2)$ which is just a shifted version of $\mathcal N(0,\sigma^2)$, we have the Chernoff bound given as 
 $$\begin{aligned}
 P(Z \geq \mu + a) \leq \exp(-a^2/2\sigma^2) \\ 
 \text{ or } 
@@ -351,6 +362,10 @@ $$
   } 
   ```
 
+
+
+### Sub-Gaussian Random Variables
+
   Plot 2 — PDF tails
   ```vegalite
   {
@@ -377,9 +392,20 @@ $$
   ```
 
 
-### Sub-Gaussian Random Variables
 
-A random variable is called Sub-Gaussian if its tail of its pdf falls off faster than that of a Gaussian. The moment generating function (M.G.F) captures hot fast the tail fo the pdf decays (think of the similarity to Laplace transforms in signals and systems). Intuitively, you can think that we want to compare the tail behaviour that is far away towards the plus infinity of the given/test pdf with the Gaussian pdf. Ideally, we could set a cutoff that is really realy far away and then measure the area under the two pdfs and the one that has higher total probability mass after the cutoff is heavy tailed (for Sub-Gaussian, we want the test pdf to be lighter tailed than the Gaussian pdf). However, setting a hard cutoff distance/farness is arbitrary and hence we can use a soft and weighted cutoff that is weighted by the function $\exp(\lambda z)$ where $\lambda$ controls the softness since the exponential function is low initially and grows fast as we move towards plus infinity.
+A random variable is called Sub-Gaussian if its tail of its pdf falls off faster than that of a Gaussian. The moment generating function (M.G.F) captures how fast the tail of the pdf decays (think of the similarity to Laplace transforms in signals and systems). Intuitively, you can think that we want to compare the tail behaviour that is far away towards the plus infinity of the given/test pdf with the Gaussian pdf. Ideally, we could set a cutoff that is really realy far away and then measure the area under the two pdfs and the one that has higher total probability mass after the cutoff is heavy tailed (for Sub-Gaussian, we want the test pdf to be lighter tailed than the Gaussian pdf). However, setting a hard cutoff distance/farness is arbitrary and hence we can use a soft and weighted cutoff that is weighted by the function $\exp(\lambda z)$ where $\lambda$ controls the softness/weight (the exponential function is low initially and grows fast as we move towards plus infinity).
+
+<p><b><u style="color:blue">Some more intuition:</u></b></p>
+Let us ponder on this a bit more. Let there be a distribution  (assume on x-axis with CDF given by $F(x)$, PDF $f(x)$) such that for thresholds $\lambda \geq 5$, the standard normal (CDF $N(x)$, PDF $n(x)$) has more mass than our distribution, i.e 
+$$ \int_{\lambda}^{\infty} f(x) dx = 1 - N(x) \geq 1 - F(x) = \int_{\lambda}^{\infty} n(x) dx, \; \forall x \geq \lambda$$.  
+Now, it is not true for $x <  \lambda$. So for example, $1 - N(4) \ngeq 1 - F(4)$. We can try to find a possibly non standard gaussian (CDF $G_{\sigma}(x)$) with variance $\sigma^2$ ($\sigma$ maynot be 1) such that no matter what threshold $\lambda$ is chosen, $1 - G_{\sigma}(x) \geq 1 - F(x)$, i.e it holds for all $x > 0$. We can associate/characterize the distribution $F(x)$ with the smallest $\sigma$ that makes the statement $\forall \; x > 0, 1 - G_{\sigma}(x) \geq 1 - F(x)$. We can call all these distributions $\color{green}\sigma\text{-pseudo-subgaussian}$. 
+
+Now imagine using a soft threshold/weighting instead of a hard threshold with the weight given by $\exp(\lambda)$. The smallest $\sigma$ such that 
+$$
+\int_{-\infty}^{+\infty} \exp(\lambda x)f(x) dx =  M_F(\lambda) \leq M_{G_{\sigma}}(\lambda) = \int_{-\infty}^{+\infty} \exp(\lambda x)g_{\sigma}(x) dx, \; \forall \; \lambda >0
+$$
+ is a characteristic of the distribution $F(x)$. All distributions that satisfy the above condition for a given $\sigma$ are called $\color{green}\text{$\sigma$-subgaussian}$ distributions (or random variables). 
+>Note: Since $\exp(\lambda x)$ decays fast on the negative $x$-axis, integrating over the whole real axis is fine (unline the pseudo-gaussian definition above which uses a threshold). 
 
   ```vegalite
   {
@@ -424,6 +450,11 @@ A random variable is called Sub-Gaussian if its tail of its pdf falls off faster
   }
   ```
 
+
+>$\color{green}\text{Definition:}$ A random variable is called $\sigma$-subgaussian if it has a finite expectation and satisfies 
+$$
+\forall \; \lambda \in \mathbb R, \; \mathbb E [\lambda (X - \mathbb E X)] \leq \exp\big(\frac{\lambda^2 \sigma^2}{2} \big) 
+$$
  
  ```vegalite
   {
@@ -484,6 +515,26 @@ A random variable is called Sub-Gaussian if its tail of its pdf falls off faster
     ]
   }
   ```
+
+
+### Hoeffding's Inequality
+
+The above inequalities show deviation/concentration bounds on a random variable. Hoeffding's inequality helps us get bounds on a sum of independent (not necessarily identically distributed) but bounded random variables. Let $S = X_1 + ... + X_n$ be the sum of $n$ independent random variables with each one bounded almost surely in $[a_i,b_i]$,  i.e. $P( a_i \leq X_i \leq b_i) = 1$, (there might be a nullset which is not within the bound but its measure/probability is zero).
+
+Recall that for any random variable $X$, by Chernoff's inequality, we have,
+$$
+P(X \geq t) \leq \underset{\lambda > 0}{\inf} \exp(-\lambda) M_{X}(\lambda)
+$$
+
+Hence, if we can bound $M_S(\lambda)$, we can bound $P(S)
+$$
+\begin{aligned}
+	M_S(\lambda) = \underset{S}{\mathbb E} \exp(\lambda S) = \prod_i^n \underset{X_i}{\mathbb E} \exp(\lambda X_i) = \prod_i^n M_{X_i}(\lambda)
+\end{aligned}
+$$
+
+It would be so great if we could bound the individual moment generating functions $M_{X_i}(\lambda)$.
+
 
 ## Some equalities
 
