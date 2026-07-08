@@ -1,0 +1,2 @@
+veggly = 3:20pm (init my side), tuesday July 7th, 2026
+hnge = 5:40 pm (init their side), tuesdat July 7th, 2026
