@@ -1,0 +1,12 @@
+/* neve/siteutils/shortcut-toggle.css */
+
+/* Active-state variant for .shortcut-hint (defined in modal-filter.css) */
+.shortcut-hint-active {
+    color: #2d4a3e;
+    opacity: 1;
+}
+
+.shortcut-hint-active kbd {
+    border-color: #2d4a3e;
+    color: #2d4a3e;
+}

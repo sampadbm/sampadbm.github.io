@@ -10,6 +10,7 @@
     <!-- KaTeX CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="../siteutils/modal-filter.css">
+    <link rel="stylesheet" href="../siteutils/shortcut-toggle.css">
     <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
@@ -45,6 +46,7 @@
             <div class="shortcut-hint" id="align-hint"><kbd>a</kbd> align</div>
             <div class="shortcut-hint" id="layout-hint"><kbd>l</kbd> layout</div>
             <div class="shortcut-hint" id="theme-hint"><kbd>t</kbd> theme</div>
+            <div class="shortcut-hint" id="live-hint"><kbd>r</kbd> live</div>
             <div class="shortcut-hint" onclick="window.location.href='index.html'"><kbd>b</kbd> back</div>
         </div>
     </footer>
@@ -58,6 +60,9 @@
     <!-- KaTeX auto-render for $...$ and $$...$$ delimiters -->
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
     <script src="assets/utils.js"></script>
+    <script src="../siteutils/scroll-anchor.js"></script>
+    <script src="../siteutils/poll-reload.js"></script>
+    <script src="../siteutils/shortcut-toggle.js"></script>
     <script src="assets/post.js"></script>
 </body>
 </html>

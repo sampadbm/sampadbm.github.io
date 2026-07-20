@@ -625,15 +625,17 @@ async function loadPost() {
         const html = restoreMath(processImages(marked.parse(safeContent)), mathBlocks);
         document.getElementById('post-content').innerHTML = html;
 
-        // Initialize vegalite charts now that their divs are in the DOM
+        // Initialize vegalite charts now that their divs are in the DOM.
+        // Awaited so callers can rely on loadPost() only resolving once
+        // charts have actually settled (see live-reload's scroll restore).
         if (vegalitePending) {
-            for (const { id, spec } of vegalitePending) {
+            await Promise.all(vegalitePending.map(({ id, spec }) => {
                 const el = document.getElementById(id);
-                if (!el) continue;
-                vegaEmbed(el, spec, { actions: false }).catch(e => {
+                if (!el) return null;
+                return vegaEmbed(el, spec, { actions: false }).catch(e => {
                     el.innerHTML = `<p style="color:red">vegalite error: ${escapeHtml(e.message)}</p>`;
                 });
-            }
+            }));
         }
 
         // Generate TOC BEFORE KaTeX renders (to get clean text)
@@ -641,6 +643,8 @@ async function loadPost() {
 
         // Render LaTeX
         renderMath(document.getElementById('post-content'));
+
+        return markdownText;
 
     } catch (error) {
         console.error('Error loading post:', error);
@@ -651,10 +655,49 @@ async function loadPost() {
     }
 }
 
+/**
+ * Live reload: while enabled, polls the current post's markdown file and
+ * re-renders on change, restoring scroll position via scroll-anchor.js.
+ * Toggled with the 'r' key (see shortcut-toggle.js).
+ *
+ * `initialText` is the markdown loadPost() just rendered — passing it lets
+ * the poller catch up immediately on enable if the file already changed
+ * since that render, instead of waiting for the next edit.
+ */
+function setupLiveReload(initialText) {
+    const file = getPostFile();
+    if (!file) return;
+
+    const HEADING_SELECTOR = '#post-content h1, #post-content h2, ' +
+        '#post-content h3, #post-content h4, #post-content h5, #post-content h6';
+
+    const poller = createPoller({
+        fetchText: async () => {
+            const res = await fetch(file, { cache: 'no-cache' });
+            return res.ok ? res.text() : null;
+        },
+        initialText,
+        onChange: async () => {
+            const anchor = captureScrollAnchor(HEADING_SELECTOR);
+            await loadPost();
+            const reapply = restoreScrollAnchor(anchor);
+            onContentSettle(document.getElementById('post-content'), reapply);
+        },
+    });
+
+    createShortcutToggle({
+        key: 'r',
+        hintElement: document.getElementById('live-hint'),
+        onEnable: () => poller.start(),
+        onDisable: () => poller.stop(),
+    });
+}
+
 // Initialize on page load
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     initStyleSwitcher(['align', 'layout', 'theme']);
-    loadPost();
+    const initialText = await loadPost();
+    setupLiveReload(initialText);
 
     // Update back link to preserve style params
     const backLink = document.querySelector('.back-link');
