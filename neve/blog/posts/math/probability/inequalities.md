@@ -191,7 +191,7 @@ $$\begin{align}
 P(Y \geq k \sigma) \leq \frac{\underset{Y}{\mathbb E}\; g(Y)}{g(k \sigma)} = \frac{\underset{Y}{\mathbb E} \; Y^2}{k^2 \sigma^2} \underset{LOTUS}= \frac{\underset{X}{\mathbb E} |X - \mu|^2}{k^2 \sigma^2 } =\frac{\sigma^2}{ \sigma^2 k^2} = \frac{1}{k^2} \\
 \implies \boxed{P(|X - \mu| \geq k \sigma) \leq  \frac{1}{k^2}}
 \end{align}$$
-4) In general, we have the *"Standard Chebyshev's inequlity"*
+4) In general, we have the *"Standard Chebyshev's inequality"*
 $$
 \begin{aligned}
 	P(|X - \mu| \geq t) \leq \frac{\mathbb E |X-\mu|^2}{t^2} = \frac{Var(X)}{t^2} \\
@@ -364,7 +364,7 @@ $$
 
 
 
-### Sub-Gaussian Random Variables
+## Sub-Gaussian Random Variables
 
   Plot 2 — PDF tails
   ```vegalite
@@ -393,19 +393,30 @@ $$
 
 
 
-A random variable is called Sub-Gaussian if its tail of its pdf falls off faster than that of a Gaussian. The moment generating function (M.G.F) captures how fast the tail of the pdf decays (think of the similarity to Laplace transforms in signals and systems). Intuitively, you can think that we want to compare the tail behaviour that is far away towards the plus infinity of the given/test pdf with the Gaussian pdf. Ideally, we could set a cutoff that is really realy far away and then measure the area under the two pdfs and the one that has higher total probability mass after the cutoff is heavy tailed (for Sub-Gaussian, we want the test pdf to be lighter tailed than the Gaussian pdf). However, setting a hard cutoff distance/farness is arbitrary and hence we can use a soft and weighted cutoff that is weighted by the function $\exp(\lambda z)$ where $\lambda$ controls the softness/weight (the exponential function is low initially and grows fast as we move towards plus infinity).
+A centered random variable is sub-Gaussian if its exponential moments are bounded by those of some centered Gaussian. This implies Gaussian-rate decay of its tail probabilities. The moment generating function (M.G.F) captures how fast the tail of the pdf decays (think of the similarity to Laplace transforms in signals and systems). Intuitively, you can think that we want to compare the tail behaviour that is far away towards the plus infinity of the given/test pdf with the Gaussian pdf. Intuitively, we could set a cutoff that is really far away and then measure the area under the two pdfs and the one that has higher total probability mass after the cutoff is heavy tailed. However, setting a hard cutoff distance/farness is arbitrary and hence we use a soft and weighted mass that is weighted by the function $\exp(\lambda z)$ where $\lambda$ controls the softness/weight (the exponential function is low initially and grows fast as we move towards plus infinity).
 
-<p><b><u style="color:blue">Some more intuition:</u></b></p>
-Let us ponder on this a bit more. Let there be a distribution  (assume on x-axis with CDF given by $F(x)$, PDF $f(x)$) such that for thresholds $\lambda \geq 5$, the standard normal (CDF $N(x)$, PDF $n(x)$) has more mass than our distribution, i.e 
-$$ \int_{\lambda}^{\infty} f(x) dx = 1 - N(x) \geq 1 - F(x) = \int_{\lambda}^{\infty} n(x) dx, \; \forall x \geq \lambda$$.  
-Now, it is not true for $x <  \lambda$. So for example, $1 - N(4) \ngeq 1 - F(4)$. We can try to find a possibly non standard gaussian (CDF $G_{\sigma}(x)$) with variance $\sigma^2$ ($\sigma$ maynot be 1) such that no matter what threshold $\lambda$ is chosen, $1 - G_{\sigma}(x) \geq 1 - F(x)$, i.e it holds for all $x > 0$. We can associate/characterize the distribution $F(x)$ with the smallest $\sigma$ that makes the statement $\forall \; x > 0, 1 - G_{\sigma}(x) \geq 1 - F(x)$. We can call all these distributions $\color{green}\sigma\text{-pseudo-subgaussian}$. 
+<p><b><u style="color:blue">Some more intuition (inaccurate but useful):</u></b></p>
+Let us ponder on this a bit more. Let there be a centered distribution  (assume on x-axis with CDF given by $F(x)$, PDF $f(x)$) such that for thresholds $\lambda \geq 5$, the standard normal (CDF $N(x)$, PDF $n(x)$) has more mass than our distribution, i.e 
+$$ \int_{\lambda}^{\infty} n(x) dx = 1 - N(\lambda) \geq 1 - F(\lambda) = \int_{\lambda}^{\infty} f(x) dx, \; \forall x \geq \lambda$$.  
+Now, it is not true for $x <  \lambda$. So for example, $1 - N(4) \ngeq 1 - F(4)$. We can try to find a possibly non standard gaussian (CDF $G_{\sigma}(x)$) with variance $\sigma^2$ ($\sigma$ maynot be 1) such that no matter what threshold $\lambda$ is chosen, $1 - G_{\sigma}(x) \geq 1 - F(x)$, i.e it holds for all $x > 0$. We can associate/characterize the distribution $F(x)$ with the smallest $\sigma$ that makes the statement $\forall \; x > 0, 1 - G_{\sigma}(x) \geq 1 - F(x)$. We can call all these distributions $\color{green}\sigma\text{-pseudo-subgaussian random variables}$. 
 
 Now imagine using a soft threshold/weighting instead of a hard threshold with the weight given by $\exp(\lambda)$. The smallest $\sigma$ such that 
 $$
 \int_{-\infty}^{+\infty} \exp(\lambda x)f(x) dx =  M_F(\lambda) \leq M_{G_{\sigma}}(\lambda) = \int_{-\infty}^{+\infty} \exp(\lambda x)g_{\sigma}(x) dx, \; \forall \; \lambda >0
 $$
  is a characteristic of the distribution $F(x)$. All distributions that satisfy the above condition for a given $\sigma$ are called $\color{green}\text{$\sigma$-subgaussian}$ distributions (or random variables). 
->Note: Since $\exp(\lambda x)$ decays fast on the negative $x$-axis, integrating over the whole real axis is fine (unline the pseudo-gaussian definition above which uses a threshold). 
+>Note: Since $\exp(\lambda x)$ decays fast on the negative $x$-axis, integrating over the whole real axis is fine. 
+
+
+$\color{green}\text{Definition:}$ A random variable is called $\sigma$-subgaussian if it has a finite expectation and satisfies 
+$$
+\boxed{
+\forall \; \lambda \in \mathbb R, \; M_{X - \mathbb E X}(\lambda) = \mathbb E \big[ \exp \big (\lambda (X - \mathbb E X) \big) \big] \leq \exp\big(\frac{\lambda^2 \sigma^2}{2} \big) 
+}$$
+
+>$\sigma$ is known as the variance-proxy of the subgaussian random variable. This is so because on many occasions $\sigma$ behaves exactly how it does for a normal $\mathcal{N}(\mu, \sigma)$. The minimal $\sigma$ for which the above is true is called the optimal variance proxy. 
+
+
 
   ```vegalite
   {
@@ -451,10 +462,7 @@ $$
   ```
 
 
->$\color{green}\text{Definition:}$ A random variable is called $\sigma$-subgaussian if it has a finite expectation and satisfies 
-$$
-\forall \; \lambda \in \mathbb R, \; \mathbb E [\lambda (X - \mathbb E X)] \leq \exp\big(\frac{\lambda^2 \sigma^2}{2} \big) 
-$$
+
  
  ```vegalite
   {
@@ -517,23 +525,143 @@ $$
   ```
 
 
-### Hoeffding's Inequality
+### Sum of Sub-Gaussian Random Variables
 
-The above inequalities show deviation/concentration bounds on a random variable. Hoeffding's inequality helps us get bounds on a sum of independent (not necessarily identically distributed) but bounded random variables. Let $S = X_1 + ... + X_n$ be the sum of $n$ independent random variables with each one bounded almost surely in $[a_i,b_i]$,  i.e. $P( a_i \leq X_i \leq b_i) = 1$, (there might be a nullset which is not within the bound but its measure/probability is zero).
+Let $S = \sum_i^n X_i$ be the sum of $n$ independent subgaussian random variables with $\sigma_i$-subgaussianes such that $\mathbb E \sum_i X_i = \sum_i \mathbb E X_i$.
 
-Recall that for any random variable $X$, by Chernoff's inequality, we have,
-$$
-P(X \geq t) \leq \underset{\lambda > 0}{\inf} \exp(-\lambda) M_{X}(\lambda)
-$$
-
-Hence, if we can bound $M_S(\lambda)$, we can bound $P(S)
 $$
 \begin{aligned}
-	M_S(\lambda) = \underset{S}{\mathbb E} \exp(\lambda S) = \prod_i^n \underset{X_i}{\mathbb E} \exp(\lambda X_i) = \prod_i^n M_{X_i}(\lambda)
+	M_{S - \mathbb E S} (\lambda) = \mathbb E \big[ \exp \big( \lambda \sum_i (X_i - \mathbb E X_i) \big)  \big] 
+	= \prod_i M_{X_i - \mathbb E X_i}(\lambda) \\
+	\leq \prod_i \exp(\frac{1}{2} \lambda^2 \sigma_i^2) = \exp(\frac{1}{2}\lambda^2 \;{\color{crimson}{\sum_i \sigma_i^2}}) = \exp(\frac{1}{2} \lambda^2 {\color{crimson}\sigma^2})
+	\end{aligned}
+$$
+
+Hence $S$ is $\sqrt{\color{crimson}{\sum_i \sigma_i^2}}$-subgausssian random variables add just like normal $\mathcal N (\mu_i, \sigma_i^2[)$ random variables.
+
+### Scalings of Sub-Gaussian Random Variables
+
+Let $X$ be $\sigma$-subgaussian and $Y := aX$ for some $a \in \mathbb R$. Then for $\forall \lambda \in \mathbb R$, we have
+
+$$
+\begin{aligned}
+	M_{Y - \mathbb EY (\lambda)} = \underset{Y}{\mathbb E} \;  [\exp \big( \lambda (Y - \mathbb E_Y Y) \big) ] \; \underbrace{=}_{LOTUS} \; \underset{X}{\mathbb E} \; [\exp( \lambda (Y - \mathbb E_Y Y))] \\
+	= \underset{X}{\mathbb E} \; [\exp \big(\lambda  (aX - a\mathbb E_X X) \big)] = \underset{X}{\mathbb E} [ \exp \big( {\color{green}\lambda a} \; (X - \mathbb E_X X) \big) ] \\
+	= M_{X - \mathbb E X}({\color{green}\lambda a}) \\
+	\underbrace{\leq}_{X \text{ is subgaussian}} \exp(\frac{1}{2} \lambda^2 {\color{crimson}a^2 \sigma^2}  )
 \end{aligned}
 $$
 
-It would be so great if we could bound the individual moment generating functions $M_{X_i}(\lambda)$.
+Hence $Y = a X$ has variance proxy $\color{crimson} a \sigma$ which is also how a normal random variable ${\color{crimson}a} \; \mathcal N(\mu, {\color{crimson}\sigma^2})$ behaves.
+
+
+### Shifting by constant.
+
+If $X$ is $\sigma$-subgaussian, so is $X + \mu$.
+
+### Linear combinations of Sub-Gaussian Random Variables
+
+Let $X_i$ be $\sigma_i$-subgaussian. Then $Y := \sum_i^n a_i X_i$ is $\sqrt{{\color{crimson}a_i^2 \sigma_i^2}}$-subgaussian.
+
+### Tail concentration of subgaussian random variables via Chernoff's inequality
+
+Let X be $\sigma$-subgaussian. Let $Y = X - \mu$  where $\mathbb E_X X = \mu$.
+
+By Markov's inequality,
+
+$$
+	P(Y \geq t) =  P(e^{\lambda Y} \geq e^{\lambda t}) \leq \frac{\mathbb E_Y e^{\lambda Y} }{e^{\lambda t}} \\
+	P(Y \geq t) \leq e^{-\lambda t} \mathbb E_Y e^{\lambda Y} \\
+$$
+
+By Chernoff's inequality (optimize over $\lambda$ to get the best bound)
+
+$$
+\begin{aligned}
+	P(Y \geq t) \leq \inf_\lambda \; e^{-\lambda t} \mathbb E_Y e^{\lambda Y} \underbrace{=}_{LOTUS} \inf_\lambda e^{-\lambda t} M_{X - \mathbb E X}(\lambda) \\
+	\leq \inf_\lambda e^{-\lambda t} e^{\frac{1}{2} \lambda^2 \sigma^2} \;\;\; \because \text{subgaussian}\\
+	\leq \inf_\lambda \exp\bigg( -\lambda t  + \frac{1}{2} \lambda^2 \sigma^2  \bigg) \\
+	\leq \exp \bigg( \inf_\lambda  \frac{1}{2} \lambda^2 \sigma^2 -\lambda t \bigg)  = \exp\bigg(  \inf_\lambda \frac{1}{2} \lambda (\lambda \sigma^2 - 2t)\bigg)
+\end{aligned}
+$$
+
+The roots of the quadratic are $\lambda = 0,\frac{2t}{\sigma^2}$ and the minima lies at the midpoint of the two roots which is $\lambda_* = \frac{0 + 2t/\sigma^2}{2} = t/\sigma^2$.
+
+Pluggin $\lambda_*$ into the quadratic, we get $\frac{1}{2} \frac{t}{\sigma^2}(\frac{t}{\sigma^2} \sigma^2 - 2t) = - \frac{t^2}{2 \sigma^2}$
+
+Hence we have by Chernoff's inequality
+
+$$
+	P(X - \mathbb E X  \geq t) \leq \exp \bigg( -\frac{t^2}{2 \sigma^2} \bigg) -- \color{fuchsia}(1)
+$$
+
+Similarly, for the random variable $Z=-X$ which is also $\sigma$-subgaussian, we have
+
+$$
+	P(Z - \mathbb E Z \geq t)  \leq \exp \bigg(-\frac{t^2}{2 \sigma^2} \bigg) \\
+	\implies P(-X + \mathbb EX \geq t)  \leq \exp \bigg(-\frac{t^2}{2 \sigma^2} \bigg) -- \color{fuchsia}(2) \\
+	
+$$
+
+
+From inequalities $\color{fuchsia}(1)$ and $\color{fuchsia}(2)$, for any $\sigma$-subgaussian random variable $X$, we have
+
+$$
+	\boxed{
+		P(|X - \mathbb EX| \geq t) \leq \exp \bigg( - \frac{t^2}{2 \sigma^2}\bigg)
+	}
+$$
+
+### Radamacher/Symmetric Bernoulli Random Variables
+
+$X$ is a Radamacher random variable if
+
+$$
+	P(X=-1) = P(X=1) = \frac{1}{2}
+$$ 
+
+Claim: $X$ is $\color{crimson}1$-subgaussian
+
+Proof:  
+ 
+$\forall \; \lambda \in \mathbb R$, we have
+ 
+$$
+\begin{aligned}
+	M_{X - \underbrace{\mathbb EX}_{0}}(\lambda) = M_X(\lambda) = \frac{1}{2} (e^\lambda + e^{-\lambda})  \\
+	= \frac{1}{2} \bigg( \sum_{k=0}^\infty \frac{\lambda^k}{k!} + \sum_{k=0}^\infty \frac{(-\lambda)^k}{k!} \bigg) 
+	= \frac{1}{2} \sum_{k=0}^\infty \frac{2 \lambda^{2k}}{(2k)!} \\ 
+	= \sum_{k=0}^\infty \frac{\lambda^{2k}}{1 \cdot 3 \cdot 5\cdot \cdot \cdot (2k-1)\;\;\cdot\;\; 2 \cdot 4 \cdot 6 \cdot \cdot \cdot 2k} \\
+	= \sum_{k=0}^{\infty} \frac{\lambda^{2k}}{1 \cdot 2 \cdot 3 \cdot \cdot \cdot (2k-1) \;\; \cdot \;\; 2^k\;\;\cdot 1 \cdot 2 \cdot 3 \;\; \cdot \cdot \cdot (2k)} \\
+	\leq \sum_{k=0}^\infty \frac{\lambda^{2k}}{2^k k!} = \sum_{k=0}^\infty \frac{(\lambda^2/2)^k}{k!} = \exp \bigg(\frac{\lambda^2}{2} \bigg) = \exp \bigg( \frac{\lambda^2}{2 \cdot {\color{crimson}1^2}} \bigg)
+\end{aligned}
+$$
+
+### Hoeffding's Lemma
+
+Any almost surely bounded random variable $X$ (there might be a nullset which is not within the bound but its measure/probability is zero), i.e. $P(a \leq X \leq b) = 1$ is $\color{crimson}\frac{b-a}{2}$ subgaussian.  
+See <a target="_blank" style="color:crimson" href=https://en.wikipedia.org/wiki/Hoeffding%27s_lemma>proof</a>.
+
+### Hoeffding's Inequality
+
+Hoeffding's inequality helps us get bounds on a sum of independent (**not necessarily identically distributed**) but bounded random variables.  
+Let $S = X_1 + ... + X_n$ be the sum of $n$ independent random variables with each one bounded almost surely in $[a_i,b_i]$,  i.e. $P( a_i \leq X_i \leq b_i) = 1$.  
+Let $S_n = \sum_i^n X_i$. Then
+
+$$\boxed{
+    P(|S_n - \mathbb E S_n| \geq t) \leq 2 \exp \bigg( - \frac{2 t^2}{\sum_{i=1}^n (b_i - a_i)^2} \bigg)}
+$$
+
+Proof:
+
+By Hoeffding's lemma, $X_i$ are $\sigma_i = \frac{b_i - a_i}{2}$ subgaussian. By the algebra of subgaussian random variables, we know that the sum $S_n$ of independent subgaussian random variables have the variance proxy $\sigma$ such that ${\color{crimson}\sigma^2} = \sum_{i=1}^n \sigma_i^2 =  \frac{\sum_{i=1}^n (b_i - a_i)^2}{4}$. By the tail concentration via Chernoff's inequality (see above)
+
+$$
+    P(|S_n - \mathbb S_n| \geq t) \leq 2 \exp \bigg( - \frac{t^2}{2 {\color{crimson}\sigma^2}} \bigg) \\\;\\
+    
+    \implies P(|S_n - \mathbb S_n| \geq t) \leq 2 \exp \bigg( - \frac{2 t^2}{\sum_{i=1}^n (b_i - a_i)^2}\bigg) \qquad {}_\blacksquare
+$$
+ 
 
 
 ## Some equalities
@@ -544,7 +672,7 @@ Let $X \sim \mathcal N(0,1)$, and $g$ be a differentiable, nice function (we omm
 
 $$
 	\boxed{\mathbb E \big[ g'(X) \big] = \mathbb E \big[X g(X) \big]}
-$$\
+$$
 
 **Proof:**  
 
