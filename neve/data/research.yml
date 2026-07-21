@@ -1,4 +1,10 @@
 selected_research:
+- title: On the Convergence of Adam, Revisited
+  year: 2026
+  description: Projected Adam for online optimization can incur nonzero average regret under arbitrary moment decay parameters, extending prior non-convergence results to multiple Adam variants. Joint work with Steven Heilman.
+  links:
+  - label: Paper
+    url: https://arxiv.org/abs/2607.03519
 - title: Structural Analysis of LLM Weights
   year: 2025-2026
   description: >

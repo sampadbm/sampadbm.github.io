@@ -1,4 +1,6 @@
 publications:
+  - text: 'S. Heilman and *S. Mohanty*, "On the Convergence of Adam, Revisited," arXiv preprint arXiv:2607.03519, 2026.'
+    link: "https://arxiv.org/abs/2607.03519"
   - text: "S. Mohanty*, S. Krajagi*, and B. Krishnamachari, \"LEAP – Live Experiments for Active Pedagogy,\" ACM SIGCSE TS 2026. *Equal contribution."
     link: "https://arxiv.org/abs/2601.22534"
   - text: '*S. Mohanty* and B. Krishnamachari, "SATORIS-N: Spectral Analysis based Traffic Observation Recovery via Informed Subspaces and Nuclear-norm minimization," IEEE Intelligent Vehicles Symposium (IV), 2026.'
