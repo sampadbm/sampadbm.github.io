@@ -1,0 +1,24 @@
+mentoring:
+  - role: USC Young Researchers Program (YRP) Mentor
+    institution: University of Southern California
+    dates: Summer 2026
+    responsibilities:
+      - Mentored two high school students on Augmented Random Search (ARS) and PI-ARS (Predictive Information ARS) for reinforcement learning on standard Gymnasium environments
+      - Guided students through a one-and-a-half-month research program culminating in a poster presentation at USC
+  - role: Technical Mentor and Judge | Engineering Design & Development Class Projects
+    institution: California Academy of Math & Science
+    dates: January 2025 - Present
+    responsibilities:
+      - Mentored high school engineering students on advanced robotics and aerospace design projects
+      - Evaluated student mission design presentations for complex autonomous systems
+      - One on One mentored two bright high school students from California Academy of Mathematics and Sciences leading to research poster/presentation
+  - role: USC Summer High School Intensive in Next Generation Engineering (SHINE) Mentor
+    institution: University of Southern California
+    dates: Summer 2022
+    responsibilities:
+      - Mentored two high school students in research on non-linear dimensionality reduction techniques like TSNE, UMAP, PACMAP, KPCA at USC leading to a poster presentation
+  - role: Viterbi Summer Institute Mentor
+    institution: University of Southern California
+    dates: Summer 2022
+    responsibilities:
+      - Mentored two freshmen undergraduate students at USC in evolutionary algorithms for solving RL problems in the Gymnasium environment.

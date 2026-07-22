@@ -385,68 +385,14 @@
                     <h5 style="--td: underline; --c: SteelBlue; --weight: bold">
                         MENTORING
                     </h5>
-                    <!-- YRP Mentor -->
-                        <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
-                            <h6 style="--weight: bold">
-                                USC Young Researchers Program (YRP) Mentor <br>
-                                University of Southern California &nbsp; | &nbsp; Summer 2026 <br>
-                            </h6>
-                            <p style="--m: 0">
-                                <ul>
-                                    <li>Mentored two high school students on Augmented Random Search (ARS) and PI-ARS (Predictive Information ARS) for reinforcement learning on standard Gymnasium environments</li>
-                                    <li>Guided students through a one-and-a-half-month research program culminating in a poster presentation at USC</li>
-                                </ul>
-                            </p>
-                        </div>
-
-                    <!-- CAMS Mentor -->
-                        <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
-                            <h6 style="--weight: bold">
-                                Technical Mentor and Judge &nbsp; | &nbsp; Engineering Design & Development Class Projects <br>
-                                California Academy of Math & Science &nbsp; | &nbsp; January 2025 - Present <br>
-                            </h6>
-                            <p style="--m: 0">
-                                <ul>
-                                    <li>Mentored high school engineering students on advanced robotics and aerospace design projects</li>
-                                    <li>Evaluated student mission design presentations for complex autonomous systems</li>
-                                    <li>One on One mentored two bright high school students from California Academy of Mathematics and Sciences leading to research poster/presentation</li>
-                                </ul>
-                            </p>
-                        </div>
-
-                        <!-- SHINE Mentor -->
-                        <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
-                            <h6 style="--weight: bold">
-                                USC Summer High School Intensive in Next Generation Engineering (SHINE) Mentor <br>
-                                University of Southern California &nbsp; | &nbsp; Summer 2022 <br>
-                            </h6>
-                            <p style="--m: 0">
-                                <ul>
-                                    <li>Mentored two high school students in research on non-linear dimensionality reduction techniques like TSNE, UMAP, PACMAP, KPCA at USC leading to a poster presentation</li>
-                                </ul>
-                            </p>
-                        </div>
-
-                        <!-- Viterbi Summer Institute Mentor -->
-                        <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
-                            <h6 style="--weight: bold">
-                                Viterbi Summer Institute Mentor <br>
-                                University of Southern California &nbsp; | &nbsp; Summer 2022 <br>
-                            </h6>
-                            <p style="--m: 0">
-                                <ul>
-                                    <li>Mentored two freshmen undergraduate students at USC in evolutionary algorithms for solving RL problems in the
-                                    Gymnasium environment.</li>
-                                </ul>
-                            </p>
-                        </div>
+                    <div id="mentoring-container"></div>
 
                 <!--PATENTS -->
                     <h5 style="--td: underline; --c: Indigo; --weight: bold">
                         PATENTS
                     </h5>
                         <div style="--pl: 1rem; border-top-left-radius: 0.05in; --mb:1rem; --weight: bold">
-                            Indian Patent Application Number: 202241033679 (pending)</b>
+                            Indian Patent Application Number: 202241033679 &nbsp; | &nbsp; granted as <a href="https://patents.google.com/patent/US12468292B2/en" target="_blank">US Patent 12,468,292</a>, Nov 2025</b>
                         </div>
 
                 <!--PUBLICATIONS -->
@@ -821,6 +767,44 @@
                         });
 
                         teachingContainer.innerHTML = html;
+                    } catch (error) {
+                        // Keep empty if loading fails.
+                    }
+                }
+
+                const mentoringContainer = document.getElementById("mentoring-container");
+                if (mentoringContainer) {
+                    try {
+                        const response = await fetch(new URL("data/mentoring.yml", baseUrl), { cache: "no-store" });
+                        const text = await response.text();
+                        const data = window.jsyaml.load(text) || {};
+                        const mentoring = data.mentoring || [];
+
+                        let html = '';
+                        mentoring.forEach(entry => {
+                            const role = entry.role || "";
+                            const institution = entry.institution || "";
+                            const dates = entry.dates || "";
+                            const responsibilities = entry.responsibilities || [];
+
+                            html += `<div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">`;
+                            html += `<h6 style="--weight: bold">`;
+                            html += `${role} <br>`;
+                            html += `${institution} &nbsp; | &nbsp; ${dates} <br>`;
+                            html += `</h6>`;
+                            html += `<p style="--m: 0">`;
+                            if (responsibilities.length > 0) {
+                                html += `<ul>`;
+                                responsibilities.forEach(resp => {
+                                    html += `<li>${resp}</li>`;
+                                });
+                                html += `</ul>`;
+                            }
+                            html += `</p>`;
+                            html += `</div>`;
+                        });
+
+                        mentoringContainer.innerHTML = html;
                     } catch (error) {
                         // Keep empty if loading fails.
                     }
