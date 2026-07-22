@@ -1,7 +1,7 @@
 selected_research:
 - title: On the Convergence of Adam, Revisited
   year: 2026
-  description: Projected Adam for online optimization can incur nonzero average regret under arbitrary moment decay parameters, extending prior non-convergence results to multiple Adam variants. Joint work with Steven Heilman.
+  description: Projected Adam for online optimization can incur nonzero average regret under arbitrary moment decay parameters, extending prior non-convergence results to multiple Adam variants. Joint work with Prof. Steven Heilman.
   links:
   - label: Paper
     url: https://arxiv.org/abs/2607.03519
@@ -18,7 +18,7 @@ selected_research:
   description: Subspace-informed recovery for spatiotemporal traffic data. Accepted at IEEE Intelligent Vehicles Symposium (IV) 2026.
   links:
   - label: Paper
-    url: https://example.com
+    url: https://arxiv.org/abs/2602.03138
   - label: Slides
     url: /blog/proposal
 - title: DISPATCH
