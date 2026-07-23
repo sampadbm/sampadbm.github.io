@@ -1,4 +1,13 @@
 readings:
+  - date: 2026-07-22
+    category: [Anthropology, Psychology]
+    author: Wikipedia contributors
+    title: Guilt–shame–fear spectrum of cultures
+    url: https://en.wikipedia.org/wiki/Guilt%E2%80%93shame%E2%80%93fear_spectrum_of_cultures
+    tags: [cultural-anthropology, cross-cultural-studies, social-control, honor-shame, comparative-culture, reference]
+    notes: |
+      (Placeholder — to expand after reading.) Reference entry on how different cultures rely on guilt, shame, or fear as the primary mechanism for social control and behavioral norms.
+
   - date: 2026-04-13
     category: [Mathematics, Philosophy]
     author: Wikipedia contributors
