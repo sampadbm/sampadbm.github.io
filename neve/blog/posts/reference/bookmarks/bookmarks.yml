@@ -1,4 +1,10 @@
 bookmarks:
+  - title: Jason Rennie — Writings
+    url: http://qwone.com/~jason/writing/
+    category: Blog
+    description: Collection of technical notes and derivations — matrix calculus, factor analysis, trace norm priors, exponential families, and related machine learning topics.
+    tags: [matrix-calculus, machine-learning, derivations, factor-analysis, trace-norm, notes]
+
   - title: "マリウス (Marius)"
     url: "https://マリウス.com/"
     category: Blog
