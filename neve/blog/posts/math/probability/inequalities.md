@@ -8,7 +8,7 @@ authors: [sampad]
 
 ## Jensen's Inequality
 
-Assume $f \in C^2$ is a smooth function. Then $\exists c \in [\min(x_0,x), \max(x_0,x)]$ such that
+Assume $f \in C^2$. Then $\exists c \in [\min(x_0,x), \max(x_0,x)]$ such that
 $$
 	f(x) = f(x_0) + f'(x_0)(x-x_0) + \frac{1}{2} f''(c)(x-x_0)^2
 $$
