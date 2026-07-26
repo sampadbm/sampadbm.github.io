@@ -1,4 +1,13 @@
 readings:
+  - date: 2026-07-26
+    category: [Sociology, History]
+    author: Wikipedia contributors
+    title: Asabiyyah
+    url: https://en.wikipedia.org/wiki/Asabiyyah
+    tags: [ibn-khaldun, social-solidarity, group-cohesion, dynastic-cycles, historical-sociology, reference]
+    notes: |
+      (Placeholder — to expand after reading.) Reference entry on Ibn Khaldun's concept of social solidarity/group cohesion as a cyclical force theorized to drive the rise and fall of dynasties and civilizations.
+
   - date: 2026-07-22
     category: [Anthropology, Psychology]
     author: Wikipedia contributors
