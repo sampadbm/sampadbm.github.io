@@ -5,14 +5,40 @@ selected_research:
   links:
   - label: Paper
     url: https://arxiv.org/abs/2607.03519
-- title: Structural Analysis of LLM Weights
+- title: Random Search, Evolution Strategies, and Gradient Descent for Neural Network Optimization
+  year: 2026
+  description: >
+    Interactive empirical comparison of gradient-based optimizers (SGD, Adam, AMSGrad) against
+    gradient-free optimizers (random search, evolution strategies) and four hybrid
+    random-search/gradient-descent schemes, training on MNIST/EMNIST. Studies the effect of
+    low-rank weight structure on each optimizer family — EGGROLL for random search/evolution
+    strategies, LoRA for gradient-based methods — as well as low-rank weight initialization.
+    Complements the theoretical convergence analysis in "On the Convergence of Adam, Revisited"
+    and the evolution-strategy family of methods (ARS, Natural Evolutionary Strategies) explored
+    in mentored student research. Directly inspired by
+    ["Evolution Strategies at the Hyperscale"](https://eshyperscale.github.io/) (Sarkar et al.),
+    which introduces the EGGROLL low-rank perturbation method for scaling evolution strategies,
+    and ["Neural Thickets: Diverse Task Experts Are Dense Around Pretrained
+    Weights"](https://arxiv.org/abs/2603.12228) (Gan and Isola), which shows that pretrained-weight
+    neighborhoods are dense with viable task-specific solutions reachable by simple random sampling.
+- title: Structural Analysis of LLM Weights and Activations
   year: 2025-2026
   description: >
-    Analyzing the internal weight structure of large language models using linear algebraic
-    decomposition methods, in collaboration with Amazon. Decomposing weight matrices across all
-    transformer layers — attention and MLP components — to characterize their low-rank and sparse
-    structure, and studying how these properties vary across layer depth and type to understand
-    safety localization. Experiments conducted on open-weight models from the Gemma family.
+    Investigating how safety-relevant behavior is structurally and representationally encoded in
+    large language models, in collaboration with Amazon, along three complementary directions.
+    Weight-space analysis: decomposing weight matrices across all transformer layers —
+    attention and MLP components — using linear algebraic methods to characterize their low-rank
+    and sparse structure, and studying how these properties vary across layer depth and type to
+    understand safety localization, on open-weight models from the Gemma family. Activation-space
+    analysis: comparing a base model (DeepSeek-R1-Distill-Qwen-7B) against its safety-aligned
+    counterpart (RealSafe-R1-7B) on paired benign/unsafe prompts, extracting layer-wise activations
+    and evaluating linear separability via probing and geometric analysis (PCA, UMAP, LDA, concept
+    activation vectors), including ongoing investigation of token-position effects on separability.
+    In-context and behavioral probing: on the SmolLM2/SmolLM3 model family, comparing zero-shot
+    versus few-shot (in-context) prompting effects on last-token safety-probe directions, and
+    using activation steering to test whether representation-level safety probes correspond to
+    actual refusal/compliance behavior, motivating an ongoing comparison of content-harmfulness
+    probes against behavior-labeled refusal probes.
 - title: SATORIS-N
   year: 2026
   description: Subspace-informed recovery for spatiotemporal traffic data. Accepted at IEEE Intelligent Vehicles Symposium (IV) 2026.

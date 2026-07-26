@@ -214,17 +214,53 @@
                         RESEARCH
                     </h5>
 
-                    <!-- Structural Analysis of LLM Weights -->
+                    <!-- Random Search, Evolution Strategies, and Gradient Descent for Neural Network Optimization -->
                     <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
                         <h6 style="--weight: bold">
-                            Structural Analysis of LLM Weights &nbsp; | &nbsp; In collaboration with Amazon &nbsp; | &nbsp; 2025 - 2026
+                            Random Search, Evolution Strategies, and Gradient Descent for Neural Network Optimization &nbsp; | &nbsp; 2026
                         </h6>
                         <p style="--m: 0">
-                            Analyzing the internal weight structure of large language models using linear algebraic
-                            decomposition methods. Decomposing weight matrices across all transformer layers — attention
-                            and MLP components — to characterize their low-rank and sparse structure, and studying how
-                            these properties vary across layer depth and type to understand safety localization.
-                            Experiments conducted on open-weight models from the Gemma family.
+                            Interactive empirical comparison of gradient-based optimizers (SGD, Adam, AMSGrad) against
+                            gradient-free optimizers (random search, evolution strategies) and four hybrid
+                            random-search/gradient-descent schemes, training on MNIST/EMNIST. Studies the effect of
+                            low-rank weight structure on each optimizer family — EGGROLL for random search/evolution
+                            strategies, LoRA for gradient-based methods — as well as low-rank weight initialization.
+                            Complements the theoretical convergence analysis in "On the Convergence of Adam, Revisited"
+                            and the evolution-strategy family of methods (ARS, Natural Evolutionary Strategies) explored
+                            in mentored student research. Directly inspired by
+                            <a href="https://eshyperscale.github.io/" target="_blank">"Evolution Strategies at the Hyperscale"</a>
+                            (Sarkar et al.), which introduces the EGGROLL low-rank perturbation method for scaling
+                            evolution strategies, and
+                            <a href="https://arxiv.org/abs/2603.12228" target="_blank">"Neural Thickets: Diverse Task
+                            Experts Are Dense Around Pretrained Weights"</a> (Gan and Isola), which shows that
+                            pretrained-weight neighborhoods are dense with viable task-specific solutions reachable by
+                            simple random sampling.
+                        </p>
+                    </div>
+
+                    <!-- Structural Analysis of LLM Weights and Activations -->
+                    <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
+                        <h6 style="--weight: bold">
+                            Structural Analysis of LLM Weights and Activations &nbsp; | &nbsp; In collaboration with Amazon &nbsp; | &nbsp; 2025 - 2026
+                        </h6>
+                        <p style="--m: 0">
+                            Investigating how safety-relevant behavior is structurally and representationally encoded in
+                            large language models, along three complementary directions.
+                            <b>Weight-space analysis</b>: decomposing weight matrices across
+                            all transformer layers — attention and MLP components — using linear algebraic methods to
+                            characterize their low-rank and sparse structure, and studying how these properties vary
+                            across layer depth and type to understand safety localization. Experiments conducted on
+                            open-weight models from the Gemma family.
+                            <b>Activation-space analysis</b>: comparing a base model (DeepSeek-R1-Distill-Qwen-7B) against
+                            its safety-aligned counterpart (RealSafe-R1-7B) on paired benign/unsafe prompts, extracting
+                            layer-wise activations and evaluating linear separability via probing and geometric analysis
+                            (PCA, UMAP, LDA, concept activation vectors) to characterize where and how safety-relevant
+                            signal is encoded, including ongoing investigation of token-position effects on separability.
+                            <b>In-context and behavioral probing</b>: on the SmolLM2/SmolLM3 model family, comparing
+                            zero-shot versus few-shot (in-context) prompting effects on last-token safety-probe
+                            directions, and using activation steering to test whether representation-level safety
+                            probes correspond to actual refusal/compliance behavior, motivating an ongoing comparison
+                            of content-harmfulness probes against behavior-labeled refusal probes.
                         </p>
                     </div>
 
@@ -251,7 +287,7 @@
                     <!-- Tensor Methods for Traffic Data Analysis and Imputation -->
                     <div style="--pl: 1rem; --bl: 0.01in dotted Indigo; border-top-left-radius: 0.05in; --mb:1rem">
                         <h6 style="--weight: bold">
-                            Tensor Methods for Traffic Data Analysis and Imputation &nbsp; | &nbsp;  2022 - Present
+                            Tensor Methods for Traffic Data Analysis and Imputation &nbsp; | &nbsp;  2022 - 2025
                         </h6>
                         <p style="--m: 0">
                             Developed novel low-rank tensor and matrix decomposition methods for spatio-temporal traffic data imputation addressing
