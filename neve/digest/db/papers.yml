@@ -1,4 +1,14 @@
 readings:
+  - date: 2026-07-25
+    category: [Machine Learning, Statistics, Reinforcement Learning]
+    author: Daniel Russo, Benjamin Van Roy, Abbas Kazerouni, Ian Osband, Zheng Wen
+    title: "A Tutorial on Thompson Sampling"
+    url: https://arxiv.org/pdf/1707.02038
+    year: 2017
+    tags: [thompson-sampling, bandits, exploration-exploitation, reinforcement-learning, bayesian, tutorial]
+    notes: |
+      (Placeholder — to expand after reading.) Tutorial covering Thompson sampling for online decision problems balancing exploration vs. exploitation, spanning bandit problems, reinforcement learning, and active learning.
+
   - date: 2026-03-29
     category: [Statistics, History, Mathematics]
     author: Simon Raper
