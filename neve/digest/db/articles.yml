@@ -1,5 +1,14 @@
 readings:
   - date: 2026-07-26
+    category: [Psychology, Communication]
+    author: Wikipedia contributors
+    title: Double bind
+    url: https://en.wikipedia.org/wiki/Double_bind
+    tags: [gregory-bateson, communication-theory, paradox, psychological-dilemma, learned-helplessness, reference]
+    notes: |
+      (Placeholder — to expand after reading.) Reference entry on Bateson's double-bind theory — conflicting injunctions that make any response a perceived failure — and its use in analyzing control dynamics in relationships and social contexts.
+
+  - date: 2026-07-26
     category: [Sociology, History]
     author: Wikipedia contributors
     title: Asabiyyah
