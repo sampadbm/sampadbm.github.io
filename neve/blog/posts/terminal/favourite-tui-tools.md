@@ -48,6 +48,7 @@ summary: A curated list of terminal-based tools I use or find interesting.
 - *monitui* — terminal system monitor
 - *tuios* — terminal multiplexer OS
 - *ssm* — simple SSH manager
+- *clipssh* — transfer clipboard screenshots to remote SSH servers, so you can paste images into AI coding tools over SSH
 - *wifitui* — WiFi manager
 - *mdns-scanner* — mDNS network scanner
 - *mdns-browser* — terminal mDNS/Bonjour service browser with split-pane view and real-time discovery
