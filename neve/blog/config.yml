@@ -15,6 +15,7 @@ tree:
       - name: optimization
         posts:
           - posts/math/optimization/lagrangian-duality.md
+          - posts/math/optimization/gradient-descent.md
       - name: probability
         posts:
           - posts/math/probability/inequalities.md
@@ -96,6 +97,12 @@ posts:
     authors: [sampad]
     tags: [math, linear-algebra, tutorial]
     summary: Some views on matrix multiplications.
+  - file: posts/math/optimization/gradient-descent.md
+    date: 2026-07-29
+    title: Gradient Descent
+    authors: [sampad]
+    tags: [math, linear-algebra, tutorial]
+    summary: Proof of convergence for quadratic objective
   - file: posts/math/optimization/lagrangian-duality.md
     date: 2026-03-24
     title: Lagrange duality
