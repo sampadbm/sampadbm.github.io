@@ -1,4 +1,14 @@
 readings:
+  - date: 2026-08-16
+    category: [Academia, Artificial Intelligence, Sociology of Science]
+    author: Thomas Manabu
+    title: "The Machine Consumes Itself: Artificial Intelligence and the End of Publish-or-Perish"
+    url: https://doi.org/10.1007/s42438-026-00666-0
+    year: 2026
+    tags: [publish-or-perish, academic-capitalism, llms, bourdieu, doxa, peer-review, postdigital, higher-education]
+    notes: |
+      Structural, critical-theoretical argument that GenAI/LLMs don't merely threaten publish-or-perish as an external disruption — they complete and thereby destroy it, by mechanizing the very output (countable, citable text) the regime was built to reward. Draws on Bourdieu to read academia as a field whose dominant *doxa* is metric productivism; on Slaughter and Leslie plus the Leiden Manifesto to trace how that doxa is the signature of market logics colonizing knowledge production; and on Lyotard and Lave & Wenger to argue that the postmodern reduction of legitimacy to performativity is now literally instantiated by machines playing academic publishing's language game, severing the apprenticeship pathway (peripheral participation) through which scholarly judgement used to form. Closes by sketching a postdigital scholarly commons grounded in contribution, dialogue, and situated practice — and the open question of what scholarship is for, after the machine.
+
   - date: 2026-07-25
     category: [Machine Learning, Statistics, Reinforcement Learning]
     author: Daniel Russo, Benjamin Van Roy, Abbas Kazerouni, Ian Osband, Zheng Wen
