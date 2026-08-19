@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Teaching Statement — Sampad Bhusan Mohanty</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=EB+Garamond:wght@400;500&display=swap"
+        rel="stylesheet"
+    />
+
+    <!-- zero-md: renders a linked/embedded markdown file into a shadow-DOM'd custom element -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/zero-md@3?register"></script>
+
+    <style>
+        :root {
+            --ink: #333;
+            --muted: #888;
+            --border: #ddd;
+            --bg: #fdfcfa;
+            --accent: Indigo;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'EB Garamond', Georgia, serif;
+        }
+
+        .page {
+            max-width: 42rem;
+            margin: 0 auto;
+            padding: 4vw 1.5rem 6vw;
+        }
+
+        zero-md {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <zero-md src="statement.md?v=32">
+            <template data-append>
+                <!-- zero-md's own default KaTeX stylesheet is pulled from an
+                     unpinned CDN tag and doesn't reliably load the KaTeX
+                     fonts/sizing; pin a known-good version explicitly -->
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+                <!-- All content styling (theme, timeline, print handling)
+                     lives in a <style> block inside statement.md itself,
+                     not here — raw HTML passes through marked unmodified,
+                     so it renders straight into .markdown-body and applies
+                     across this shadow root. Keeps content and its
+                     presentation in one file. -->
+            </template>
+        </zero-md>
+    </div>
+</body>
+</html>

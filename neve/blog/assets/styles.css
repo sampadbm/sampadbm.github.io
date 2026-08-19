@@ -32,7 +32,7 @@ body {
 header {
     margin-bottom: 2.5rem;
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid #e5e0d8;
+    border-bottom: 1px solid var(--color-border);
     text-align: center;
 }
 
@@ -274,6 +274,7 @@ h1 {
     line-height: 1.7;
     color: var(--color-text-primary);
     font-style: normal;
+    font-variant-numeric: oldstyle-nums;
 }
 
 .post-content.collapsed {
@@ -284,30 +285,34 @@ h1 {
     font-size: 1.8rem;
     margin-top: 2.5rem;
     margin-bottom: 1rem;
-    color: var(--color-text-secondary);
+    color: var(--color-text-primary);
     font-weight: 400;
     letter-spacing: normal;
     font-style: normal;
-    text-decoration: underline double;
 }
 
 .post-content h2 {
     font-size: 1.5rem;
     margin-top: 2rem;
     margin-bottom: 0.75rem;
-    color: var(--color-text-secondary);
+    color: var(--color-text-primary);
     font-weight: 400;
     letter-spacing: normal;
     font-style: normal;
-    text-decoration: underline double;
 }
 
 .post-content h3 {
     font-size: 1.25rem;
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
-    color: var(--color-text-secondary);
+    color: var(--color-text-primary);
     font-weight: 400;
+}
+
+/* Whichever tag is this post's top-level heading (h1/h2/h3... — see
+   generateTOC's minLevel logic in post.js) gets a single underline,
+   regardless of which tag it literally is. Sub-levels stay undecorated. */
+.post-content .post-heading-top {
     text-decoration: underline;
 }
 
@@ -370,8 +375,6 @@ h1 {
     margin: 1.5rem 0;
     color: var(--color-text-secondary);
     font-style: italic;
-    background: linear-gradient(to right, rgba(239, 233, 224, 0.4), transparent);
-    border-radius: 0 8px 8px 0;
 }
 
 .post-content blockquote .katex {
@@ -701,6 +704,7 @@ h1 {
     color: var(--color-text-secondary);
     font-size: 0.95rem;
     font-variant: small-caps;
+    font-variant-numeric: oldstyle-nums;
     letter-spacing: 0.5px;
     margin-bottom: 2rem;
 }
@@ -796,9 +800,11 @@ h1 {
     width: 220px;
     flex-shrink: 0;
     position: fixed;
-    top: 14rem;
+    top: var(--toc-top-offset, 14rem);
     left: 5vw;
     height: fit-content;
+    max-height: calc(100vh - var(--toc-top-offset, 14rem) - 2rem);
+    overflow-y: auto;
 }
 
 /* Layout: Sidebar Right */
@@ -807,9 +813,11 @@ h1 {
     width: 220px;
     flex-shrink: 0;
     position: fixed;
-    top: 14rem;
+    top: var(--toc-top-offset, 14rem);
     right: 5vw;
     height: fit-content;
+    max-height: calc(100vh - var(--toc-top-offset, 14rem) - 2rem);
+    overflow-y: auto;
 }
 
 /* Sidebar Styles */
@@ -861,7 +869,7 @@ h1 {
 }
 
 .heading-number {
-    color: var(--color-text-secondary);
+    color: var(--color-text-primary);
 }
 
 .layout-sidebar-right .toc-list {
@@ -904,6 +912,31 @@ h1 {
     color: var(--color-accent);
 }
 
+/* Expand/collapse toggle for TOC items with sub-headings.
+   Sub-levels are hidden by default (see post.js) to keep long TOCs short. */
+.toc-toggle {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-right: 0.35rem;
+    color: var(--color-text-secondary);
+    font-size: 0.7rem;
+    line-height: 1;
+    cursor: pointer;
+    width: 0.8em;
+    display: inline-block;
+    text-align: center;
+}
+
+.toc-toggle:hover {
+    color: var(--color-accent);
+}
+
+.layout-sidebar-right .toc-toggle {
+    margin-right: 0;
+    margin-left: 0.35rem;
+}
+
 /* Indentation and font size for deeper items */
 .toc-item[data-depth="0"] { margin-left: 0; }
 .toc-item[data-depth="1"] { margin-left: 1rem; font-size: 0.9rem; }
@@ -920,13 +953,15 @@ h1 {
 .layout-sidebar-right .toc-item[data-depth="4"] { margin-left: 0; margin-right: 4rem; }
 .layout-sidebar-right .toc-item[data-depth="5"] { margin-left: 0; margin-right: 5rem; }
 
-/* Responsive sidebar */
-@media (max-width: 900px) {
+/* Responsive sidebar. Keep this breakpoint in sync with
+   NARROW_LAYOUT_BREAKPOINT in utils.js (see comment there for why 1500). */
+@media (max-width: 1500px) {
     .layout-sidebar-left .post-sidebar,
     .layout-sidebar-right .post-sidebar {
         position: static;
         width: 100%;
-        margin-bottom: 2rem;
+        max-width: 55rem;
+        margin: 0 auto 2rem;
     }
 
     .toc-title,
@@ -997,7 +1032,6 @@ body.theme-dim .post-content pre {
 body.theme-dim .post-content blockquote {
     border-left-color: var(--color-border);
     color: var(--color-text-secondary);
-    background: linear-gradient(to right, rgba(56, 56, 56, 0.4), transparent);
 }
 
 body.theme-dim .post-meta-line {
@@ -1043,7 +1077,6 @@ body.theme-dark .post-content pre {
 body.theme-dark .post-content blockquote {
     border-left-color: var(--color-border);
     color: var(--color-text-secondary);
-    background: linear-gradient(to right, rgba(37, 37, 37, 0.4), transparent);
 }
 
 body.theme-dark .post-content img,

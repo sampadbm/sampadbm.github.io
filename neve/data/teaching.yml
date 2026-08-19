@@ -3,8 +3,8 @@ teaching:
     course_title: Machine Learning
     role: Teaching Assistant
     institution: University of Southern California
-    semesters: Fall 2022, Summer 2023, Spring 2024, Summer 2024, Summer 2025, Fall 2025
-    instructors: "Prof. Vatsal Sharan (Fall 2022, Spring 2024) | Prof. Victor Adamchik (Summer 2023, 2024, 2025, Fall 2025)"
+    semesters: Fall 2022, Summer 2023, Fall 2023, Spring 2024, Summer 2024, Summer 2025
+    instructors: "Prof. Vatsal Sharan (Fall 2022, Spring 2024) | Prof. Victor Adamchik (Summer 2023, 2024, 2025) | Prof. Dani Yogatama (Fall 2023)"
     responsibilities:
       - Designed homework assignments and practice exams covering supervised/unsupervised learning, neural networks, and optimization
       - Conducted weekly discussion sessions and office hours for 150+ students per semester

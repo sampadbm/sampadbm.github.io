@@ -1,17 +1,18 @@
 mentoring:
   - role: USC Young Researchers Program (YRP) Mentor
     institution: University of Southern California
-    dates: Summer 2026
+    dates: June 2026 - July 2026
     responsibilities:
       - Mentored two high school students on Augmented Random Search (ARS) and PI-ARS (Predictive Information ARS) for reinforcement learning on standard Gymnasium environments
       - Guided students through a one-and-a-half-month research program culminating in a poster presentation at USC
   - role: Technical Mentor and Judge | Engineering Design & Development Class Projects
     institution: California Academy of Math & Science
-    dates: January 2025 - Present
+    dates: January 2025 - June 2025
     responsibilities:
       - Mentored high school engineering students on advanced robotics and aerospace design projects
       - Evaluated student mission design presentations for complex autonomous systems
       - One on One mentored two bright high school students from California Academy of Mathematics and Sciences leading to research poster/presentation
+      - One of the two was admitted to Vanderbilt University for undergraduate study with full funding; the other added Applied Math as a second major (alongside CS) at MIT
   - role: USC Summer High School Intensive in Next Generation Engineering (SHINE) Mentor
     institution: University of Southern California
     dates: Summer 2022

@@ -484,7 +484,7 @@ A shrinkage estimator is an estimator that, either explicitly or implicitly, inc
 
 
 ### Minimum Norm Least Squares solutions: Anisotropic Regularization (Weighted MNLS or WMNLS)
-Same setting as before but with extra term $||x||_W^2 = x^TWx$ (for some PSD matrix $W \succ 0$)
+Same setting as before but with extra term $||x||_W^2 = x^TWx$ (for some PSD matrix $W \succ 0$). See [(Gundersen, 2022)](https://gregorygundersen.com/blog/2022/08/09/weighted-ols/) for a clean derivation of the weighted least squares estimator this generalizes.
 $$
 	x^* \gets \underset{x}{\text{ argmin }} ||Ax - b||_{l_2}^2 + \lambda ||x||_W^2
 $$

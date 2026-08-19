@@ -467,7 +467,7 @@ $$
  ```vegalite
   {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 520,
+    "width": "container",
     "height": 300,
     "title": "MGF M(λ) = E[exp(λX)] — Laplace diverges at |λ|=1",
     "data": {"sequence": {"start": -1.2, "stop": 1.22, "step": 0.005, "as": "l"}},

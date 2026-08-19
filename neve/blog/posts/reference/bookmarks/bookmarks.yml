@@ -23,6 +23,12 @@ bookmarks:
     description: Stanford researcher's blog on deep learning theory, generalization, optimal transport, information theory, and random matrices.
     tags: [deep-learning-theory, generalization, optimal-transport, information-theory, random-matrices]
 
+  - title: Gregory Gundersen — Blog
+    url: https://gregorygundersen.com/blog/
+    category: Blog
+    description: Technical blog on math, statistics, and machine learning with an emphasis on rigorous derivations and clear intuition — PCA, SVD, the Gauss–Markov theorem, Bayesian linear regression, and options pricing among the topics.
+    tags: [statistics, probability, machine-learning, linear-algebra, bayesian-inference, derivations]
+
   - title: Laws of Software
     url: https://www.laws-of-software.com/
     category: Reference

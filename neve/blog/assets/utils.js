@@ -144,19 +144,67 @@ function initStyleSwitcher(types) {
 }
 
 /**
+ * Below this width, default to no TOC sidebar. The fixed 220px sidebar
+ * (`left`/`right: 5vw`) only clears the centered 55rem post column once
+ * the viewport is roughly this wide — narrower than that and it visually
+ * crowds the text — so this isn't an arbitrary number, it's derived from
+ * the layout math in styles.css (body max-width: 90vw/padding: 2vw,
+ * post-body max-width: 55rem, sidebar width 220px + 5vw offset).
+ * Keep in sync with the matching @media breakpoint in styles.css.
+ */
+const NARROW_LAYOUT_BREAKPOINT = 1500;
+
+function isNarrowViewport() {
+    return window.matchMedia(`(max-width: ${NARROW_LAYOUT_BREAKPOINT}px)`).matches;
+}
+
+// True until the user (or a `?layout=` URL param) makes an explicit choice.
+// While true, the layout auto-tracks viewport width on resize.
+let layoutIsAutoDefault = true;
+
+/**
  * Load style preferences from URL parameters
  */
 function loadStylesFromURL() {
     const params = new URLSearchParams(window.location.search);
 
+    // On narrow screens, default to no sidebar/TOC unless the URL says otherwise.
+    if (enabledStyleTypes.includes('layout') && !params.has('layout') && isNarrowViewport()) {
+        currentStyles.layout = 'no-sidebar';
+    }
+
     enabledStyleTypes.forEach(type => {
         const value = params.get(type);
         if (value && STYLE_OPTIONS[type].includes(value)) {
             currentStyles[type] = value;
+            if (type === 'layout') layoutIsAutoDefault = false;
         }
     });
 
     applyStyles();
+
+    if (enabledStyleTypes.includes('layout')) {
+        setupAutoLayoutResize();
+    }
+}
+
+/**
+ * Re-evaluate the default layout on resize, as long as the user hasn't
+ * explicitly picked one (via URL param or the 'l' key) this session.
+ */
+function setupAutoLayoutResize() {
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+        if (!layoutIsAutoDefault) return;
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            const target = isNarrowViewport() ? 'no-sidebar' : STYLE_DEFAULTS.layout;
+            if (currentStyles.layout === target) return;
+            currentStyles.layout = target;
+            applyStyles();
+            onStyleChangeCallbacks.forEach(cb => cb());
+        }, 150);
+    });
 }
 
 /**
@@ -164,6 +212,7 @@ function loadStylesFromURL() {
  */
 function cycleStyle(type) {
     if (!enabledStyleTypes.includes(type)) return;
+    if (type === 'layout') layoutIsAutoDefault = false; // explicit choice wins over auto-resize
 
     const options = STYLE_OPTIONS[type];
     let current = options.indexOf(currentStyles[type]);

@@ -12,6 +12,37 @@ function getPostFile() {
 }
 
 /**
+ * Keep the fixed TOC sidebar pinned just below the post header's divider
+ * line, however tall the title/author/summary/tags happen to render (long
+ * titles that wrap, missing author, etc.) instead of a hardcoded guess.
+ */
+function updateTocOffset() {
+    const header = document.querySelector('.post-header');
+    if (!header) return;
+    const GAP_PX = 24; // breathing room below the header's border-bottom
+    const offsetPx = header.offsetTop + header.offsetHeight + GAP_PX;
+    document.documentElement.style.setProperty('--toc-top-offset', `${offsetPx}px`);
+}
+
+function setupTocOffsetTracking() {
+    updateTocOffset();
+
+    // Re-measure once web fonts swap in — Cormorant Garamond can reflow
+    // the title (and thus the header's height) after first paint.
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(updateTocOffset);
+    }
+
+    // Re-measure on resize — the title/summary can wrap differently at
+    // different widths, changing the header's height.
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(updateTocOffset, 150);
+    });
+}
+
+/**
  * Generate table of contents from headings
  */
 function generateTOC() {
@@ -35,6 +66,9 @@ function generateTOC() {
     const counters = [0, 0, 0, 0, 0, 0];
     tocList.innerHTML = '';
 
+    const nodes = [];  // flat list of {li, depth, parent, expanded, children}
+    const stack = [];  // ancestor stack, used to resolve each node's parent
+
     headings.forEach((heading, index) => {
         // Add ID to heading if it doesn't have one
         if (!heading.id) {
@@ -43,6 +77,13 @@ function generateTOC() {
 
         const level = parseInt(heading.tagName.charAt(1));
         const depth = level - minLevel;
+
+        // Mark whichever tag is this post's top-level heading (h1, h2, h3...
+        // whatever is shallowest in this particular post) so it can be
+        // styled distinctly regardless of which tag it literally is.
+        if (depth === 0) {
+            heading.classList.add('post-heading-top');
+        }
 
         // Update counters
         counters[depth]++;
@@ -82,10 +123,59 @@ function generateTOC() {
         li.appendChild(link);
         tocList.appendChild(li);
 
+        // Resolve nearest ancestor with a shallower depth
+        while (stack.length && stack[stack.length - 1].depth >= depth) {
+            stack.pop();
+        }
+        const parent = stack.length ? stack[stack.length - 1] : null;
+        const node = { li, depth, parent, expanded: false, children: [] };
+        if (parent) parent.children.push(node);
+        stack.push(node);
+        nodes.push(node);
     });
+
+    // Give nodes with sub-headings a toggle, and collapse those sub-levels
+    // by default — long TOCs (many h3+) start out short, showing just the
+    // top-level sections, so the sidebar doesn't overflow the viewport.
+    nodes.forEach(node => {
+        if (node.children.length === 0) return;
+
+        node.li.classList.add('has-children');
+        const toggle = document.createElement('button');
+        toggle.type = 'button';
+        toggle.className = 'toc-toggle';
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Toggle subsections');
+        toggle.textContent = '▸';
+        toggle.addEventListener('click', () => {
+            node.expanded = !node.expanded;
+            toggle.textContent = node.expanded ? '▾' : '▸';
+            toggle.setAttribute('aria-expanded', String(node.expanded));
+            updateTocVisibility(nodes);
+        });
+        node.li.insertBefore(toggle, node.li.firstChild);
+    });
+
+    updateTocVisibility(nodes);
 
     // Render LaTeX in TOC
     renderMath(tocList);
+}
+
+/**
+ * Show/hide TOC entries based on whether every ancestor above them
+ * is currently expanded.
+ */
+function updateTocVisibility(nodes) {
+    nodes.forEach(node => {
+        let visible = true;
+        let ancestor = node.parent;
+        while (ancestor) {
+            if (!ancestor.expanded) { visible = false; break; }
+            ancestor = ancestor.parent;
+        }
+        node.li.style.display = visible ? '' : 'none';
+    });
 }
 
 /**
@@ -599,6 +689,10 @@ async function loadPost() {
             summaryDiv.style.display = 'none';
         }
 
+        // Header content (title/author/summary/tags) is now final size —
+        // pin the TOC sidebar just below its divider line.
+        updateTocOffset();
+
         // Load Vega-Lite plugin on demand if the post uses it
         let vegalitePending = null;
         if (content.includes('```vegalite')) {
@@ -696,6 +790,7 @@ function setupLiveReload(initialText) {
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', async () => {
     initStyleSwitcher(['align', 'layout', 'theme']);
+    setupTocOffsetTracking();
     const initialText = await loadPost();
     setupLiveReload(initialText);
 
