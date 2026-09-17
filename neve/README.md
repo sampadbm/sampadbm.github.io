@@ -213,9 +213,9 @@ share a cell; identical short descriptions are printed once per course. Optional
 course's `short_description` provides its specific contributions. On mobile the
 table becomes a stacked list. Education and other resume sections use compact
 inline entries; the full CV keeps its expanded presentation.
-The full CV presents coursework in a two-column table with one row per department
+Both the full CV and resume present coursework in a two-column table with one row per department
 and semicolon-separated courses. It stacks by department on mobile and retains
-the table layout in print. The resume uses comma-separated lists by department.
+the table layout in print, with tighter row padding in the resume's PDF.
 Both layouts retain every course code and title from `data/coursework.yml`.
 Education, mentoring, patents, talks, service, awards, skill
 groups, and community entries are included in both views. The resume's page count

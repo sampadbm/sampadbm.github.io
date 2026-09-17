@@ -10,6 +10,7 @@ research:
 - id: adam-convergence
   title: On the Convergence of Adam, Revisited
   dates: '2026'
+  resume_group: University of Southern California
   subtitle: Joint work with Prof. Steven Heilman
   bullets:
   - Show that projected Adam for online optimization can have average regret bounded away from zero
@@ -23,6 +24,7 @@ research:
 - id: optimizer-comparison
   title: Random Search, Evolution Strategies, and Gradient Descent for Neural Network Optimization
   dates: '2026'
+  resume_group: University of Southern California
   bullets:
   - Compare SGD, Adam, and AMSGrad with random search, evolution strategies, and four hybrid optimization
     schemes on MNIST/EMNIST.
@@ -47,6 +49,7 @@ research:
 - id: llm-safety
   title: Structural Analysis of LLM Weights and Activations
   dates: 2025 - 2026
+  resume_group: University of Southern California
   subtitle: In collaboration with Amazon
   bullets:
   - Investigate how safety-relevant behavior is encoded in LLM weights and representations, in collaboration
@@ -76,6 +79,7 @@ research:
 - id: leap
   title: LEAP - Live Experiments for Active Pedagogy
   dates: 2025 - Present
+  resume_group: University of Southern California
   bullets:
   - Built an open-source platform for collaborative classroom experiments with remote function calls,
     participation analytics, and reusable labs in optimization, ML, and algorithms.
@@ -103,6 +107,7 @@ research:
 - id: tensor-imputation
   title: Tensor Methods for Traffic Data Analysis and Imputation
   dates: 2022 - 2025
+  resume_group: University of Southern California
   bullets:
   - Developed SATORIS, a low-rank matrix/tensor framework exploiting temporal invariance of factor subspaces
     for traffic-data imputation.
@@ -128,6 +133,7 @@ research:
 - id: task-allocation
   title: Heuristic Algorithms for Task Allocation
   dates: 2020 - 2021
+  resume_group: University of Southern California
   bullets:
   - Implemented multi-objective algorithms for scheduling DAG tasks on heterogeneous compute nodes, optimizing
     compute cost, network transfer cost, and makespan.

@@ -48,6 +48,11 @@ Project dates, individual responsibilities, advisors, and employment titles belo
 remain repository records unless a narrower verification is explicitly stated.
 Coauthorship does not establish sole responsibility for a system or experiment.
 
+Following the user's 2026-09-17 clarification, the first six research entries
+(`adam-convergence` through `task-allocation`) share the resume heading
+University of Southern California. This institution grouping is supplied through
+the existing YAML `resume_group` field; the IISc and NIT Rourkela groups follow it.
+
 | Entry (`data/cv.yml` ID) | Provenance and limits |
 |---|---|
 | `adam-convergence` | B:data/research.yml; [preprint](https://arxiv.org/abs/2607.03519). Title, author order, year, and counterexamples for projected Adam in online optimization are supported. Wording preserves **can**, the online setting, and moment parameters in [0,1). |

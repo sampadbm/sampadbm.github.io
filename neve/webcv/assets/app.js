@@ -204,9 +204,6 @@
             if (!groups.has(name)) groups.set(name, []);
             groups.get(name).push(course);
         });
-        if (isResume) {
-            return `<div class="coursework-compact">${[...groups].map(([name, items]) => `<div class="coursework-group"><h3>${escape(name)}</h3><ul class="inline-course-list" role="list">${items.map(course => `<li><strong>${escape(course.code)}</strong> ${escape(course.title)}</li>`).join('')}</ul></div>`).join('')}</div>`;
-        }
         return `<table class="coursework-table" aria-labelledby="coursework-heading">
             <colgroup><col class="department-column"><col></colgroup>
             <thead><tr><th scope="col">Department</th><th scope="col">Courses</th></tr></thead>
