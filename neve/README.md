@@ -53,9 +53,10 @@ neve/
 │   │   └── thesis.yml
 │   └── assets/             # Digest JS/CSS including modular filter.js
 │
-├── webcv/                  # Web CV
+├── webcv/                  # Full academic CV and concise research resume
 │   ├── index.html
-│   └── Resume.pdf
+│   ├── resume.html
+│   └── assets/             # Shared renderer and responsive/print styles
 │
 ├── siteutils/              # Shared utilities (used by blog and diary)
 │   ├── modal-filter.js     # Modal filter UI triggered by `f` key
@@ -149,7 +150,76 @@ Personal journal with markdown entries and photo media. Entries listed in `diary
 
 ## Web CV
 
-Online resume at `webcv/index.html` with a downloadable PDF (`webcv/Resume.pdf`).
+Full academic CV at `webcv/index.html` and a concise version at
+`webcv/resume.html`. Both display every entry from the same YAML files, in the same
+section order. The resume shortens descriptions, not the list of accomplishments.
+Use **Print / Save PDF**
+to export either view; print styles remove navigation and backgrounds, and include
+all teaching responsibilities in the full CV.
+
+- `data/profile.yml`: name, title, links, and education (including degree, dates, GPA, advisor, and lab).
+- `data/cv.yml`: contact details, research/industry contributions, patents, awards, skills, and community activities.
+- Existing `data/publications.yml`, `teaching.yml`, `mentoring.yml`, `talks.yml`,
+  `services.yml`, and `coursework.yml`: shared section entries.
+
+Research and industry entries in `cv.yml` have a stable `id`, `title`, `dates`,
+optional `subtitle`/`notes`/`links`, and Markdown `bullets`. Optional `context` and
+`additional_bullets` are expandable on screen and omitted from print. Teaching highlights are selected from
+the existing responsibilities; remaining duties stay available in an expandable list.
+
+Add an optional Markdown `short_description` to a research, industry, community,
+teaching, mentoring, or award entry to control its resume wording. Existing `bullets`,
+`responsibilities`, and `description` fields remain the detailed version for the CV;
+there is no need to maintain a second copy of titles, dates, roles, or links.
+
+```yaml
+- id: project-name
+  title: Project Name
+  dates: '2026'
+  short_description: A concise account of the work and its result.
+  bullets:
+    - Detailed contribution and supporting evidence.
+    - Another contribution, method, or result.
+```
+
+If `short_description` is missing or blank, the resume renders the detailed text
+as a paragraph. New entries appear in **both views automatically**; there are no
+selection lists or bullet limits. Short descriptions are authored text, so update
+them alongside the detailed wording when facts change.
+
+Titles, role/program names, and talk venues are taken verbatim from the same fields
+in both views. Do not replace formal titles with paraphrases. Optional
+`short_subtitle` and `short_notes` fields abbreviate descriptive metadata without
+changing its meaning; full wording remains in the CV. `short_notes: []`
+explicitly omits notes already covered by the description. Missing or
+blank short subtitles fall back to full values. Consecutive entries with the
+same optional `resume_group` share one institutional heading.
+
+See [the grounding audit](docs/cv-grounding-audit.md) for the source of each entry,
+verified corrections, and unresolved claims. Existing repository wording is a
+record of a claim, not independent confirmation. New summaries must preserve
+qualifiers and distinguish investigation, implementation, and demonstrated results.
+
+All publication citations retain their full authors and titles; paper titles link
+directly to the source. To avoid listing a patent twice in the resume, a patent's
+`publication_id` may reference the `id` of its citation in `publications.yml`.
+That complete citation then appears in the patent section, alongside the patent
+metadata. Unlinked publications and patents always render normally.
+
+Resume teaching appointments use a table grouped by institution and course, with
+each role, semester, instructor, and course link retained. Repeated course names
+share a cell; identical short descriptions are printed once per course. Optional
+`teaching_summary` in `teaching.yml` describes shared duties once, while each
+course's `short_description` provides its specific contributions. On mobile the
+table becomes a stacked list. Education and other resume sections use compact
+inline entries; the full CV keeps its expanded presentation.
+The full CV presents coursework in a two-column table with one row per department
+and semicolon-separated courses. It stacks by department on mobile and retains
+the table layout in print. The resume uses comma-separated lists by department.
+Both layouts retain every course code and title from `data/coursework.yml`.
+Education, mentoring, patents, talks, service, awards, skill
+groups, and community entries are included in both views. The resume's page count
+is determined by its content rather than a fixed two-page limit.
 
 ## Shared Utilities
 

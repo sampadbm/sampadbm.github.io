@@ -1,0 +1,208 @@
+:root {
+    color-scheme: light;
+    --ink: #262724;
+    --muted: #656860;
+    --accent: #304d43;
+    --rule: #d8ddd5;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.45;
+    color: var(--ink);
+    background: #f5f4ef;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: var(--accent); text-underline-offset: 0.17em; }
+a:hover { text-decoration-thickness: 2px; }
+button { font: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.skip-link { position: absolute; left: 1rem; top: -4rem; }
+.skip-link:focus { top: 0.5rem; z-index: 2; background: white; padding: 0.5rem; }
+.document-tools {
+    max-width: 960px;
+    margin: 1.5rem auto 1rem;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: system-ui, sans-serif;
+    font-size: 0.75rem;
+}
+.view-links { display: flex; gap: 0.3rem; }
+.view-links a { padding: 0.5rem 0.8rem; border-radius: 4px; text-decoration: none; }
+.view-links a[aria-current='page'] { background: var(--accent); color: white; }
+.print-button { border: 1px solid var(--rule); border-radius: 4px; padding: 0.45rem 0.8rem; background: white; color: var(--accent); cursor: pointer; }
+.print-button:disabled { opacity: 0.5; cursor: wait; }
+.document {
+    max-width: 960px;
+    margin: 0 auto 2rem;
+    padding: 2.5rem 3rem;
+    background: #fff;
+    border: 1px solid var(--rule);
+}
+.document-header { border-bottom: 2px solid var(--accent); padding-bottom: 1.25rem; }
+.document-kind { margin: 0 0 0.4rem; font: 0.65rem system-ui, sans-serif; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(2rem, 5vw, 2.65rem); font-weight: 600; line-height: 1.1; margin: 0; }
+.profile-role { margin: 0.45rem 0 0.65rem; font-size: 1.06rem; }
+.contact-list { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; list-style: none; margin: 0; padding: 0; font-size: 0.9rem; }
+.contact-list a { overflow-wrap: anywhere; }
+.section-nav { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; margin: 1rem 0 0; font: 0.7rem system-ui, sans-serif; }
+.section-nav a { text-decoration: none; }
+.cv-section { margin-top: 1.6rem; scroll-margin-top: 1rem; }
+h2 { color: var(--accent); font: 600 0.78rem system-ui, sans-serif; letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 1px solid var(--rule); padding-bottom: 0.4rem; margin: 0 0 0.9rem; }
+.entry { margin: 0 0 1rem; }
+.entry:last-child { margin-bottom: 0; }
+.entry-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem 1.2rem; }
+h3 { font-size: 1.03rem; line-height: 1.3; margin: 0; font-weight: 600; }
+.entry-date { flex-shrink: 0; color: var(--muted); font-size: 0.88rem; text-align: right; max-width: 40%; }
+.entry-subtitle, .entry-note { margin: 0.15rem 0 0; }
+.entry-subtitle { color: var(--muted); font-size: 0.94rem; }
+.entry-note { font-size: 0.9rem; }
+.entry-bullets { padding-left: 1.2rem; margin: 0.35rem 0 0; }
+.entry-bullets li { padding-left: 0.1rem; margin-top: 0.2rem; }
+.entry-links { display: flex; flex-wrap: wrap; gap: 0.75rem; font-size: 0.85rem; margin: 0.4rem 0 0; }
+details { font-size: 0.94rem; margin-top: 0.4rem; }
+summary { cursor: pointer; color: var(--accent); width: fit-content; }
+details > p { margin: 0.5rem 0 0; }
+.citation-list { padding-left: 1.25rem; margin: 0; }
+.citation-list li { padding-left: 0.15rem; margin-bottom: 0.65rem; }
+.publication-link { white-space: nowrap; font-size: 0.85rem; margin-left: 0.3rem; }
+.skill-list { margin: 0; }
+.skill-row { display: grid; grid-template-columns: 10rem 1fr; gap: 0.5rem; margin-top: 0.35rem; }
+.skill-row dt { font-weight: 600; }
+.skill-row dd { margin: 0; }
+.coursework-table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 0.9rem; }
+.coursework-table .department-column { width: 24%; }
+.coursework-table th, .coursework-table td { text-align: left; vertical-align: top; padding: 0.5rem 0.8rem 0.5rem 0; overflow-wrap: break-word; }
+.coursework-table th:last-child, .coursework-table td:last-child { padding-right: 0; }
+.coursework-table thead { border-bottom: 1px solid var(--rule); font-size: 0.85rem; color: var(--muted); }
+.coursework-table tbody tr:not(:last-child) { border-bottom: 1px solid var(--rule); }
+.coursework-table .inline-course-list { font-size: inherit; }
+.coursework-table .inline-course-list li:not(:last-child)::after { content: '; '; }
+.coursework-table strong { white-space: nowrap; }
+.document-footer { margin-top: 1.75rem; padding-top: 0.6rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.8rem; }
+.document-footer p { margin: 0; }
+.loading, .load-error { padding: 1rem 0; }
+.load-error { color: #8a3024; }
+.resume .cv-section { margin-top: 1rem; }
+.resume .entry { margin-bottom: 0.5rem; }
+.resume .entry-bullets { font-size: 0.95rem; }
+.entry-description { margin: 0.25rem 0 0; }
+.resume { line-height: 1.35; }
+.resume .document-kind { display: none; }
+.resume .document-header { padding-bottom: 0.8rem; }
+.resume .profile-role { margin: 0.25rem 0 0.35rem; }
+.resume .entry-line h3 { display: inline; font-size: 1em; line-height: inherit; }
+.resume .inline-meta { color: var(--muted); }
+.resume .inline-links { font-size: 0.9em; margin-left: 0.3em; }
+.resume .entry-line { margin: 0; }
+.resume .patent-entry p { margin: 0; }
+.resume .education-entry .entry-note { margin-top: 0; }
+.resume .dense-entry { font-size: 0.96rem; }
+.resume .entry-description { font-size: 0.94rem; }
+.resume .entry-links { margin-top: 0.2rem; }
+.resume .citation-list li { margin-bottom: 0.3rem; }
+.group-label { font-weight: 600; margin: 0 0 0.55rem; }
+.teaching-group + .teaching-group { margin-top: 0.8rem; }
+.teaching-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; line-height: 1.3; table-layout: fixed; }
+.teaching-table caption { text-align: left; font-weight: 600; margin-bottom: 0.25rem; }
+.course-column { width: 27%; }
+.appointment-column { width: 34%; }
+.instructor-column { width: 39%; }
+.teaching-table th, .teaching-table td { text-align: left; vertical-align: top; padding: 0.25rem 0.45rem 0.25rem 0; overflow-wrap: break-word; }
+.teaching-table thead { border-bottom: 1px solid var(--rule); }
+.teaching-table tbody { border-bottom: 1px solid var(--rule); }
+.teaching-summary, .teaching-highlights { font-size: 0.9rem; margin: 0.4rem 0; }
+.teaching-highlight + .teaching-highlight::before { content: ' • '; }
+.compact-list { padding-left: 1.1rem; margin: 0; }
+.compact-list li { margin-bottom: 0.2rem; }
+.coursework-compact .coursework-group { margin-bottom: 0.55rem; }
+.coursework-compact h3 { display: inline; font-size: 0.94rem; }
+.coursework-compact h3::after { content: ': '; }
+.inline-course-list { display: inline; margin: 0; padding: 0; list-style: none; font-size: 0.94rem; }
+.inline-course-list li { display: inline; }
+.inline-course-list li:not(:last-child)::after { content: ', '; }
+.research-focus { margin: 0.8rem 0 0; font-size: 0.93rem; }
+
+@media (max-width: 640px) {
+    :root { font-size: 17px; }
+    .document-tools { padding: 0 1rem; margin-top: 1rem; }
+    .document { padding: 1.5rem 1.1rem; margin: 0 0.5rem 1rem; }
+    .entry-heading { flex-direction: column; align-items: flex-start; gap: 0.15rem; }
+    .entry-date { max-width: none; text-align: left; }
+    .skill-row { grid-template-columns: 1fr; gap: 0; margin-top: 0.55rem; }
+    .coursework-table, .coursework-table tbody, .coursework-table tr, .coursework-table th, .coursework-table td { display: block; width: auto; }
+    .coursework-table colgroup, .coursework-table thead { display: none; }
+    .coursework-table th, .coursework-table td { padding: 0; }
+    .coursework-table tr { padding: 0.5rem 0; }
+    .coursework-table tbody th { margin-bottom: 0.2rem; }
+    .teaching-table, .teaching-table tbody, .teaching-table tr, .teaching-table th, .teaching-table td { display: block; width: auto; }
+    .teaching-table caption { display: block; }
+    .teaching-table colgroup, .teaching-table thead { display: none; }
+    .teaching-table th, .teaching-table td { padding: 0.1rem 0; }
+    .teaching-table tr { margin: 0.5rem 0; }
+    .teaching-table tr:not(:first-child)::before { content: attr(data-course-label); font-weight: 600; }
+    .teaching-highlight { display: block; margin-top: 0.25rem; }
+    .teaching-highlight + .teaching-highlight::before { content: ''; }
+}
+
+@page { size: letter; margin: 0.6in; }
+@media print {
+    :root { font-size: 10.5pt; line-height: 1.3; background: white; --ink: #111; --muted: #444; --accent: #111; --rule: #aaa; }
+    .document-tools, .section-nav, .skip-link, .project-context, .document-footer { display: none !important; }
+    .document { display: block; max-width: none; margin: 0; padding: 0; border: 0; }
+    .document-header { padding-bottom: 0.7rem; }
+    h1 { font-size: 25pt; }
+    h2 { font-size: 9pt; break-after: avoid; page-break-after: avoid; margin-bottom: 0.55rem; }
+    h3 { font-size: 11pt; }
+    .cv-section { margin-top: 1.1rem; }
+    .entry { margin-bottom: 0.7rem; break-inside: avoid; page-break-inside: avoid; }
+    .entry-heading { flex-direction: row; break-after: avoid; page-break-after: avoid; }
+    .entry-date { max-width: 40%; text-align: right; }
+    .entry-subtitle, .entry-note { break-after: avoid; page-break-after: avoid; }
+    .entry-subtitle:last-child, .entry-note:last-child { break-after: auto; page-break-after: auto; }
+    .entry-bullets li, .citation-list li, .compact-entry, .skill-row { break-inside: avoid; page-break-inside: avoid; }
+    .entry-bullets { orphans: 2; widows: 2; }
+    .coursework-table { display: table; break-inside: avoid; page-break-inside: avoid; }
+    .coursework-table colgroup { display: table-column-group; }
+    .coursework-table thead { display: table-header-group; }
+    .coursework-table tbody { display: table-row-group; }
+    .coursework-table tr { display: table-row; break-inside: avoid; page-break-inside: avoid; }
+    .coursework-table th, .coursework-table td { display: table-cell; padding: 0.3rem 0.7rem 0.3rem 0; }
+    .coursework-group { margin-bottom: 0.7rem; break-inside: avoid; page-break-inside: avoid; }
+    .coursework-group h3 { break-after: avoid; }
+    .skill-row { display: grid; grid-template-columns: 9rem 1fr; }
+    .all-responsibilities summary { display: none; }
+    a { color: inherit; text-decoration: none; }
+    .resume .entry { break-inside: avoid; page-break-inside: avoid; }
+    .resume { line-height: 1.2; }
+    .resume .document-header { padding-bottom: 0.4rem; }
+    .resume h1 { font-size: 22pt; }
+    .resume .profile-role { margin: 0.15rem 0; font-size: 1rem; }
+    .resume .cv-section { margin-top: 0.65rem; }
+    .resume .entry { margin-bottom: 0.3rem; }
+    .resume .dense-entry { font-size: 1rem; }
+    .resume h2 { margin-bottom: 0.3rem; padding-bottom: 0.2rem; }
+    .resume .entry-description { font-size: 1rem; }
+    .resume .group-label { break-after: avoid; margin: 0.3rem 0 0.15rem; }
+    .resume .citation-list li { margin-bottom: 0.2rem; }
+    .resume .skill-row { display: block; margin-top: 0.15rem; }
+    .resume #skills, .resume #community { break-inside: avoid; page-break-inside: avoid; }
+    .resume .skill-row dt, .resume .skill-row dd { display: inline; }
+    .resume .skill-row dt::after { content: ': '; }
+    .resume .coursework-compact .coursework-group { margin-bottom: 0.25rem; }
+    .teaching-table { display: table; font-size: 10pt; line-height: 1.15; }
+    .teaching-table caption { display: table-caption; break-after: avoid; }
+    .teaching-table colgroup { display: table-column-group; }
+    .teaching-table thead { display: table-header-group; }
+    .teaching-table tbody { display: table-row-group; break-inside: avoid; }
+    .teaching-table tr { display: table-row; }
+    .teaching-table th, .teaching-table td { display: table-cell; padding: 0.16rem 0.4rem 0.16rem 0; }
+    .teaching-table tr::before { display: none; }
+    .teaching-highlights, .teaching-summary { font-size: 10pt; margin: 0.25rem 0; }
+    .teaching-highlight { display: inline; }
+    .teaching-highlight + .teaching-highlight::before { content: ' • '; }
+    .compact-list li { break-inside: avoid; }
+}

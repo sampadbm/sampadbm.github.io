@@ -1,0 +1,357 @@
+# Shared entries for the full CV and compact resume; both display every entry.
+# short_description is optional; detailed bullets are the fallback.
+# Profile and education information come from profile.yml.
+# Claim-level provenance, corrections, and unresolved evidence: ../docs/cv-grounding-audit.md
+contact:
+  phone: +1-213-284-1347
+  location: Los Angeles, CA
+  website: https://sampadbm.github.io/neve
+research:
+- id: adam-convergence
+  title: On the Convergence of Adam, Revisited
+  dates: '2026'
+  subtitle: Joint work with Prof. Steven Heilman
+  bullets:
+  - Show that projected Adam for online optimization can have average regret bounded away from zero
+    for any moment decay parameters in [0,1), extending counterexamples to multiple Adam variants.
+  links:
+  - label: Preprint
+    url: https://arxiv.org/abs/2607.03519
+  short_description: Show projected Adam can have nonvanishing average regret in online optimization
+    for any moment decay parameters in [0,1); extend counterexamples to multiple variants.
+  short_subtitle: with Prof. Steven Heilman
+- id: optimizer-comparison
+  title: Random Search, Evolution Strategies, and Gradient Descent for Neural Network Optimization
+  dates: '2026'
+  bullets:
+  - Compare SGD, Adam, and AMSGrad with random search, evolution strategies, and four hybrid optimization
+    schemes on MNIST/EMNIST.
+  - Study low-rank perturbations (EGGROLL), gradient-based adaptations (LoRA), and low-rank initialization
+    across optimizer families.
+  - Connect empirical experiments with theoretical Adam convergence analysis and mentored research on
+    ARS and Natural Evolutionary Strategies.
+  context: 'Interactive empirical comparison of gradient-based optimizers (SGD, Adam, AMSGrad) against
+    gradient-free optimizers (random search, evolution strategies) and four hybrid random-search/gradient-descent
+    schemes, training on MNIST/EMNIST. Studies the effect of low-rank weight structure on each optimizer
+    family — EGGROLL for random search/evolution strategies, LoRA for gradient-based methods — as well
+    as low-rank weight initialization. Complements the theoretical convergence analysis in "On the Convergence
+    of Adam, Revisited" and the evolution-strategy family of methods (ARS, Natural Evolutionary Strategies)
+    explored in mentored student research. Directly inspired by ["Evolution Strategies at the Hyperscale"](https://eshyperscale.github.io/)
+    (Sarkar et al.), which introduces the EGGROLL low-rank perturbation method for scaling evolution strategies,
+    and ["Neural Thickets: Diverse Task Experts Are Dense Around Pretrained Weights"](https://arxiv.org/abs/2603.12228)
+    (Gan and Isola), which shows that pretrained-weight neighborhoods are dense with viable task-specific
+    solutions reachable by simple random sampling.'
+  short_description: Compare gradient-based, evolutionary, and hybrid optimizers on MNIST/EMNIST with
+    low-rank perturbations and initialization; inspired by [EGGROLL](https://eshyperscale.github.io/)
+    and [Neural Thickets](https://arxiv.org/abs/2603.12228).
+- id: llm-safety
+  title: Structural Analysis of LLM Weights and Activations
+  dates: 2025 - 2026
+  subtitle: In collaboration with Amazon
+  bullets:
+  - Investigate how safety-relevant behavior is encoded in LLM weights and representations, in collaboration
+    with Amazon.
+  - Characterize low-rank and sparse structure across Gemma attention and MLP layers to study safety localization.
+  - Compare base and safety-aligned models using layer-wise activations, linear probes, and geometric
+    analysis (PCA, UMAP, LDA, and concept activation vectors).
+  - Test zero-shot and few-shot safety probes and activation steering in SmolLM2/SmolLM3; examine token-position
+    effects and refusal/compliance behavior.
+  context: 'Investigating how safety-relevant behavior is structurally and representationally encoded
+    in large language models, along three complementary directions. **Weight-space analysis**: decomposing
+    weight matrices across all transformer layers — attention and MLP components — using linear algebraic
+    methods to characterize their low-rank and sparse structure, and studying how these properties vary
+    across layer depth and type to understand safety localization. Experiments conducted on open-weight
+    models from the Gemma family. **Activation-space analysis**: comparing a base model (DeepSeek-R1-Distill-Qwen-7B)
+    against its safety-aligned counterpart (RealSafe-R1-7B) on paired benign/unsafe prompts, extracting
+    layer-wise activations and evaluating linear separability via probing and geometric analysis (PCA,
+    UMAP, LDA, concept activation vectors) to characterize where and how safety-relevant signal is encoded,
+    including ongoing investigation of token-position effects on separability. **In-context and behavioral
+    probing**: on the SmolLM2/SmolLM3 model family, comparing zero-shot versus few-shot (in-context) prompting
+    effects on last-token safety-probe directions, and using activation steering to test whether representation-level
+    safety probes correspond to actual refusal/compliance behavior, motivating an ongoing comparison of
+    content-harmfulness probes against behavior-labeled refusal probes.'
+  short_description: Investigate safety behavior through low-rank/sparse weights, activations, and steering
+    across Gemma, DeepSeek/Qwen, RealSafe, and SmolLM models.
+  short_subtitle: with Amazon
+- id: leap
+  title: LEAP - Live Experiments for Active Pedagogy
+  dates: 2025 - Present
+  bullets:
+  - Built an open-source platform for collaborative classroom experiments with remote function calls,
+    participation analytics, and reusable labs in optimization, ML, and algorithms.
+  - Extended LEAP2 with Python, JavaScript, Julia, C, and C++ clients, a lab CLI, isolated DuckDB databases,
+    access controls, rate limiting, hot reload, and a git-based experiment registry.
+  - Poster published at ACM SIGCSE 2026.
+  context: 'Developed open-source framework enabling collaborative hands-on experimentation in live CS
+    classrooms, allowing students to discover and call instructor-defined functions remotely. System logs
+    all interactions with timestamps for real-time visualization of participation, solution strategies,
+    and common errors. Supports courses in numerical analysis, optimization, ML, and algorithms with example
+    labs including gradient descent visualization, Monte Carlo integration, genetic algorithms with leaderboards,
+    and graph traversal. Features security controls, analytics dashboards, and standardized lab format
+    for community sharing. LEAP2 extended the platform with multi-language client support (Python, JavaScript,
+    Julia, C, C++), a CLI for lab management and experiment scaffolding, per-experiment isolation with
+    DuckDB databases, a decorator system for access control and rate limiting, hot-reloadable functions,
+    and a git-based community registry for sharing and discovering experiments. Status: Poster published
+    at ACM SIGCSE 2026.'
+  links:
+  - label: Paper
+    url: https://doi.org/10.1145/3770761.3777313
+  - label: Code
+    url: https://github.com/neveisa/leap
+  short_description: Built collaborative experiments with analytics, multilingual clients, isolated databases,
+    access controls, and a shared registry; ACM SIGCSE 2026 poster.
+- id: tensor-imputation
+  title: Tensor Methods for Traffic Data Analysis and Imputation
+  dates: 2022 - 2025
+  bullets:
+  - Developed SATORIS, a low-rank matrix/tensor framework exploiting temporal invariance of factor subspaces
+    for traffic-data imputation.
+  - Designed KSV, KTF, USV, and UTF algorithms using modified alternating least squares; extended SATORIS-N
+    with subspace-informed nuclear-norm minimization.
+  - Evaluated Beijing and Shanghai taxi-GPS data against classical and learned baselines,
+    including settings with more than 70% missing data.
+  - SATORIS-N accepted at IEEE IV 2026; SATORIS submitted to IEEE Access (under review).
+  context: 'Developed low-rank tensor and matrix decomposition methods for spatio-temporal traffic
+    data imputation. Introduced SATORIS (Singular vAlue and TensOR weIght regresSion), a unified framework exploiting
+    temporal invariance of subspaces across proximate days. Developed four algorithms (KSV, KTF, USV, UTF) spanning known-factor and
+    unknown-factor regimes using modified Alternating Least Squares. Extended framework to SATORIS-N using
+    nuclear-norm minimization within SDP formulation with prior subspace injection. Evaluated
+    Beijing and Shanghai GPS datasets against
+    baselines including mean/median imputation, k-NN, SoftImpute, GAIN,
+    and Miracle, including high occlusion levels (>70% missing data). Status: SATORIS paper submitted
+    to IEEE Access (under review); SATORIS-N accepted at IEEE Intelligent Vehicles Symposium (IV), 2026.'
+  links:
+  - label: SATORIS-N paper
+    url: https://arxiv.org/abs/2602.03138
+  short_description: Developed low-rank and subspace-informed recovery on Beijing/Shanghai data with >70%
+    missing values; IEEE IV 2026 acceptance and IEEE Access submission (under review).
+- id: task-allocation
+  title: Heuristic Algorithms for Task Allocation
+  dates: 2020 - 2021
+  bullets:
+  - Implemented multi-objective algorithms for scheduling DAG tasks on heterogeneous compute nodes, optimizing
+    compute cost, network transfer cost, and makespan.
+  - Compared HEFT, MoHEFT, Binary Particle Swarm Optimization (BPSO), and genetic algorithms with tuned
+    hyperparameters across DAG sizes and node configurations.
+  short_description: Compared HEFT, MoHEFT, particle-swarm, and genetic algorithms for heterogeneous DAG
+    scheduling across compute/transfer costs and makespan.
+- id: bosch
+  title: Project Associate
+  dates: Oct 2017 - Jul 2019
+  subtitle: Robert Bosch Center for Cyber Physical Systems · Indian Institute of Science Bangalore, India
+  notes:
+  - 'Advisor: Dr. Rajesh Sundaresan'
+  - 'Project: Unintrusive Monitoring for Energy Optimization in SMT-PCB Assembly Line'
+  bullets:
+  - Developed IoT-driven Digital Twin system for energy optimization in an automated Surface Mount Technology
+    (SMT) Printed Circuit Board assembly line with legacy machines at Vinyas Innovative Technologies.
+  - Built complete software platform for data aggregation using open-source tools (Elasticsearch/Kibana,
+    InfluxDB/Grafana) with 3 months of continuous data collection.
+  - Published work at IEEE IOTAIS 2018 and COMSNETS 2020, demonstrating practical industrial applications
+    of IoT and digital twin technology.
+  additional_bullets:
+  - Instrumented production line with multiple sensors measuring machine-wise activity and energy consumption
+    across Line Loader, Screen Printer, Pick-and-Place machines, and Reflow Oven.
+  - Created discrete-event simulation digital twin for "what-if" analysis of process configurations and
+    throughput bottleneck identification.
+  - Proposed buffering-based solution to improve energy efficiency by reducing idle power consumption
+    in Reflow Oven (most energy-intensive component).
+  - Analyzed trade-offs between per-PCB energy consumption and system throughput using parametric simulation
+    studies.
+  - Conducted Industrial IoT tutorials at IISc Bengaluru (June 2019) and Professional Development Programme
+    at NIT Rourkela (June 2022).
+  short_description: Built sensor analytics and simulation from three months of factory data for energy
+    optimization; IEEE IOTAIS 2018 and COMSNETS 2020 publications and Industrial IoT tutorials.
+  resume_group: Indian Institute of Science Bangalore
+  short_subtitle: Robert Bosch Center for Cyber Physical Systems
+- id: intrusion-detection
+  title: Project Associate
+  dates: Aug 2016 - Sep 2017
+  subtitle: Codes & Signal Design Lab · Indian Institute of Science Bangalore, India
+  notes:
+  - 'Advisor: Dr. P. Vijay Kumar'
+  - 'Project: Low Power Intrusion Detection Platform for Outdoor Environment'
+  bullets:
+  - Designed and built reduced-complexity, reduced-power (<5W) intrusion detection and classification
+    system for outdoor forest monitoring using embedded computing (Raspberry Pi), PIR sensor arrays, and
+    low-power camera modules.
+  - Compared chirplet-based processing with alternate feature-extraction approaches for PIR-based
+    human vs. animal classification.
+  - Coauthored five papers and demo contributions at ICACCI 2017, IEEE LCN 2017 (including SenseApp),
+    and ICIIP 2017.
+  additional_bullets:
+  - Implemented CNN-based computer vision pipeline for direction and gender classification from side-view
+    images captured on monitored trails.
+  - Developed LITE, an optical-camera and single-board-computer intrusion detection system;
+    studied optical cameras as a complement to PIR sensor arrays.
+  - Won Best Paper Award at ICACCI 2017 (VisionNet) for reduced-power camera system work.
+  - Won Best Paper Award at ICIIP 2017 for CNN-based direction and gender classification.
+  - Presented demo at IEEE Conference of Local Computer Networks 2017.
+  - Work motivated by wildlife conservation and forest ranger safety applications in collaboration with
+    forest department
+  short_description: Built low-power camera/PIR systems; worked on chirplet-based PIR classification and CNN-based image classification; five papers/demo contributions,
+    an IEEE LCN demo, and two Best Paper Awards (2017).
+  resume_group: Indian Institute of Science Bangalore
+  short_subtitle: Codes & Signal Design Lab
+- id: mine-monitoring
+  title: Project Assistant
+  dates: Jun - Jul 2016
+  subtitle: Electronics and Communication Engineering · National Institute of Technology Rourkela, India
+  bullets:
+  - Developed embedded system for vehicle monitoring in open cast mines where GPS signal is available
+    but cellular network is unavailable/unreliable
+  - Implemented ZigBee wireless sensor network bridged to Single Board Computer (SBC) with internet connectivity,
+    enabling real-time vehicle tracking in network-constrained mining environments
+  - Earlier work on mine monitoring was published at ICMOCE 2015.
+  short_description: Built ZigBee-to-internet monitoring for network-constrained mines;
+    related earlier work published at ICMOCE 2015.
+  resume_group: National Institute of Technology Rourkela
+  short_subtitle: Electronics and Communication Engineering
+- id: balloon-satellite
+  title: Undergraduate Summer Research Project
+  dates: May 2014 - June 2015
+  subtitle: Satellite Lab · National Institute of Technology Rourkela, India
+  notes:
+  - 'Project: Balloon Satellite for Weather and Pollution Monitoring'
+  bullets:
+  - Designed and built a balloon platform for atmospheric data collection.
+  - Conducted test launches with payload recovery and collected atmospheric profile data up to 20 km.
+  - Presented technical findings at NIT Rourkela symposium, demonstrating low-cost alternative to conventional
+    atmospheric monitoring methods
+  additional_bullets:
+  - Integrated sensor suite including temperature, pressure, humidity, GPS positioning, and particulate
+    matter (PM2.5/PM10) sensors for comprehensive environmental profiling
+  - Developed telemetry system with wireless communication for real-time data transmission during flight
+    phases
+  - Implemented embedded software for sensor data acquisition, on-board storage, and transmission protocols
+  - Designed thermal protection and structural housing for extreme atmospheric conditions (temperature
+    range -60°C to +50°C, low-pressure environment)
+  - Contributed to environmental research by measuring pollution gradients across atmospheric layers over
+    industrial regions
+  short_description: Built atmospheric sensing, telemetry, and storage for a balloon platform; conducted
+    test flights to 20 km with payload recovery and presented at NIT Rourkela.
+  resume_group: National Institute of Technology Rourkela
+  short_subtitle: Satellite Lab
+industry:
+- id: gm
+  title: Machine Learning Research Intern
+  dates: June - August 2021
+  subtitle: General Motors
+  bullets:
+  - Developed CP and Tucker tensor models for urban traffic prediction.
+  - Used Uber Movement and Beijing Taxi datasets; applied topic modeling to discover functional city regions
+    and imputed sparse traffic data with approximately 50% or more missing values.
+  short_description: Developed CP/Tucker traffic models using Uber Movement and Beijing Taxi data;
+    topic modeling and sparse-data imputation.
+- id: startups
+  title: Founding Member and Lead Systems and Network Developer
+  dates: 2015-2016
+  subtitle: DATOMS and AURASSURE
+  bullets:
+  - Designed embedded systems architecture using ATMEL microcontrollers, developed firmware for sensor
+    nodes with low-power operation
+  - Built cloud infrastructure for data aggregation, real-time monitoring dashboards, and mobile application
+    backends
+  - Led technical team in agile development from prototype to production-ready systems
+  - Successfully deployed pilot systems with industrial clients, gaining entrepreneurial experience in
+    product development and customer requirements analysis
+  intro: Founding member of two technology startups focused on IoT solutions for industrial monitoring
+    and consumer applications.
+  links:
+  - label: DATOMS
+    url: https://datoms.io/
+  - label: AURASSURE
+    url: https://aurassure.com/
+  short_description: Designed embedded firmware and cloud infrastructure, led the technical team, and
+    deployed industrial IoT pilots.
+patents:
+- title: Method and system for synchronizing plurality of events in an assembly line
+  dates: Nov 2025
+  subtitle: US Patent 12,468,292 · Indian Patent Application 202241033679
+  url: https://patents.google.com/patent/US12468292B2/en
+  publication_id: us12468292
+awards:
+- title: Best Paper Award
+  venue: VisionNet – ICACCI Conference
+  dates: '2017'
+  description: Camera system for intrusion classification in outdoor settings
+- title: Best Paper Award
+  venue: IEEE International Conference on Image Information Processing
+  dates: '2017'
+  description: Direction and gender classification using convolutional neural networks
+- title: Qualified for Interview
+  venue: Tata Institute of Fundamental Research (TIFR)
+  dates: '2017'
+  description: Graduate Studies in Systems Sciences (48 candidates selected nationwide)
+- title: Top 10 Finalist
+  venue: Intel Innovate for Digital India Challenge
+  dates: '2015'
+  description: Smart city solutions product “Aurassure”
+- title: Certificate of Appreciation for Excellence in Undergraduate Research
+  venue: National Institute of Technology Rourkela
+  dates: '2015'
+  description: Awarded by Director, NIT Rourkela for Balloon Satellite project
+- title: Medhabruti Scholarship
+  venue: Department of Higher Education, Odisha
+  dates: 2012–2014
+  description: Merit-based scholarship for academically excellent students from economically disadvantaged
+    backgrounds
+- title: All India Rank 95
+  venue: National Entrance Screening Test
+  dates: '2011'
+  description: ''
+skills:
+- label: Programming
+  items:
+  - Julia
+  - Python
+  - C/C++
+  - JavaScript
+  - Ruby
+  - MATLAB
+  - SageMath
+- label: Data & ML
+  items:
+  - pandas
+  - scikit-learn
+  - SciPy
+  - PyTorch
+  - TensorFlow
+  - OpenCV
+  - TensorLy
+  - JAX
+- label: Web
+  items:
+  - Vue.js
+  - Flask
+  - web.py
+  - CherryPy
+  - Sinatra
+  - WebSockets
+- label: Databases & analytics
+  items:
+  - SQL
+  - Elasticsearch/Kibana
+  - InfluxDB/Grafana
+- label: Systems
+  items:
+  - Docker
+  - Kubernetes
+  - Vagrant
+  - ROS
+community:
+- title: USC Makers
+  subtitle: Mentor and Member · University of Southern California
+  dates: 2019–2022
+  bullets:
+  - Conducted signal processing tutorials for the maker community.
+  - Organized workshops on embedded systems and IoT.
+  short_description: Conducted signal-processing tutorials and organized embedded systems/IoT workshops.
+  short_subtitle: Mentor and Member · USC
+- title: ImprovSC
+  subtitle: Member · University of Southern California
+  dates: 2024–Present
+  bullets:
+  - Help coordinate weekly improv sessions.
+  short_description: Help coordinate weekly improv sessions.
+  short_subtitle: Member · USC

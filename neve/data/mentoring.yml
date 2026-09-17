@@ -2,12 +2,14 @@ mentoring:
   - role: USC Young Researchers Program (YRP) Mentor
     institution: University of Southern California
     dates: June 2026 - July 2026
+    short_description: Mentored two high school students on ARS/PI-ARS in Gymnasium, culminating in a poster presentation at USC.
     responsibilities:
       - Mentored two high school students on Augmented Random Search (ARS) and PI-ARS (Predictive Information ARS) for reinforcement learning on standard Gymnasium environments
       - Guided students through a one-and-a-half-month research program culminating in a poster presentation at USC
   - role: Technical Mentor and Judge | Engineering Design & Development Class Projects
     institution: California Academy of Math & Science
     dates: January 2025 - June 2025
+    short_description: Mentored robotics/aerospace projects and evaluated mission designs; guided two students to research presentations. One was admitted to Vanderbilt with full funding; the other added Applied Math as a second major alongside CS at MIT.
     responsibilities:
       - Mentored high school engineering students on advanced robotics and aerospace design projects
       - Evaluated student mission design presentations for complex autonomous systems
@@ -16,10 +18,12 @@ mentoring:
   - role: USC Summer High School Intensive in Next Generation Engineering (SHINE) Mentor
     institution: University of Southern California
     dates: Summer 2022
+    short_description: Mentored two high school students on t-SNE, UMAP, PaCMAP, and KPCA, culminating in a poster.
     responsibilities:
       - Mentored two high school students in research on non-linear dimensionality reduction techniques like TSNE, UMAP, PACMAP, KPCA at USC leading to a poster presentation
   - role: Viterbi Summer Institute Mentor
     institution: University of Southern California
     dates: Summer 2022
+    short_description: Mentored two first-year undergraduates on evolutionary algorithms for reinforcement learning in Gymnasium.
     responsibilities:
       - Mentored two freshmen undergraduate students at USC in evolutionary algorithms for solving RL problems in the Gymnasium environment.

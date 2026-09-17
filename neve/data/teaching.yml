@@ -1,10 +1,19 @@
 teaching:
+  - course_code: CSCI556
+    course_title: Introduction to Cryptography
+    course_url: https://viterbi-web.usc.edu/~shanghua/teaching/Fall2026-556/index.html
+    role: Teaching Assistant
+    institution: University of Southern California
+    semesters: Fall 2026
+    instructors: Prof. Shang-Hua Teng
+
   - course_code: CS567
     course_title: Machine Learning
     role: Teaching Assistant
     institution: University of Southern California
     semesters: Fall 2022, Summer 2023, Fall 2023, Spring 2024, Summer 2024, Summer 2025
     instructors: "Prof. Vatsal Sharan (Fall 2022, Spring 2024) | Prof. Victor Adamchik (Summer 2023, 2024, 2025) | Prof. Dani Yogatama (Fall 2023)"
+    short_description: ML assignments and practice exams, Python/PyTorch tutorials; discussions and office hours for 150+ students per semester.
     responsibilities:
       - Designed homework assignments and practice exams covering supervised/unsupervised learning, neural networks, and optimization
       - Conducted weekly discussion sessions and office hours for 150+ students per semester
@@ -17,6 +26,7 @@ teaching:
     institution: University of Southern California
     semesters: Fall 2025
     instructors: Prof. Victor Adamchik
+    short_description: Sole TA managing course operations and student support.
     responsibilities:
       - Sole TA responsible for all course operations and student support
       - Designed homework assignments and practice exams covering foundational ML concepts
@@ -29,6 +39,7 @@ teaching:
     institution: University of Southern California
     semesters: Fall 2024
     instructors: Prof. Victor Adamchik
+    short_description: Algorithm-design problem sets and practice exams; discussions on dynamic programming, graphs, NP-completeness.
     responsibilities:
       - Created problem sets on algorithm design, complexity analysis, and optimization techniques
       - Held discussion sessions covering dynamic programming, graph algorithms, and NP-completeness
@@ -40,6 +51,7 @@ teaching:
     institution: University of Southern California
     semesters: Summer 2022, Spring 2023
     instructors: "Prof. Shahriar Shamsian (Summer 2022) | Prof. Victor Adamchik (Spring 2023)"
+    short_description: Algorithm-design problem sets and practice exams; discussions on dynamic programming, graphs, NP-completeness.
     responsibilities:
       - Created problem sets on algorithm design, complexity analysis, and optimization techniques
       - Held discussion sessions covering dynamic programming, graph algorithms, and NP-completeness
@@ -51,6 +63,7 @@ teaching:
     institution: University of Southern California
     semesters: Spring 2025
     instructors: Prof. Ruishan Liu
+    short_description: Homework on search, constraints, logic, probabilistic reasoning, and ML.
     responsibilities:
       - Designed homework problems on search algorithms, constraint satisfaction, Logic-based AI systems, probabilistic reasoning and machine learning fundamentals
 
@@ -60,6 +73,7 @@ teaching:
     institution: University of Southern California
     semesters: Fall 2020, Spring 2021, Fall 2021, Spring 2022
     instructors: Prof. Bhaskar Krishnamachari, Prof. Mark Redekkop, Prof. Shahin Nazarian
+    short_description: New ML lab; embedded/IoT tutorials, MQTT, edge computing, and Raspberry Pi projects.
     responsibilities:
       - Designed and developed new machine learning lab module integrating ML concepts into IoT curriculum
       - Created hands-on lab tutorials on embedded systems, networking protocols, and distributed computing
@@ -72,8 +86,12 @@ teaching:
     institution: University of Southern California
     semesters: Fall 2020
     instructors: Prof. Neelesh Tiruviluamala
+    short_description: Python/data-science tutoring, Jupyter/HPC/PyTorch tutorials, linear algebra guest lectures, and project mentoring.
     responsibilities:
       - Provided tutoring support for inaugural undergraduate course in python (later MATH446 - Datascience with Python)
       - Conducted tutorials on Jupyter notebooks, HPC access, PyTorch
       - Delivered guest lectures on Linear Regression, Projections, and SVD
       - Mentored student projects and held office hours on demand
+
+# Shared responsibilities are printed once in the resume; course highlights stay with each entry.
+teaching_summary: Across these appointments, designed assignments and practice exams, led discussions and office hours, graded coursework, and supported student projects.

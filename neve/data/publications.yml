@@ -1,7 +1,7 @@
 publications:
   - text: 'S. Heilman and *S. Mohanty*, "On the Convergence of Adam, Revisited," arXiv preprint arXiv:2607.03519, 2026.'
     link: "https://arxiv.org/abs/2607.03519"
-  - text: "S. Mohanty*, S. Krajagi*, and B. Krishnamachari, \"LEAP – Live Experiments for Active Pedagogy,\" ACM SIGCSE TS 2026. *Equal contribution."
+  - text: "S. Karajagi*, S. Mohanty*, and B. Krishnamachari, \"LEAP – Live Experiments for Active Pedagogy,\" ACM SIGCSE TS 2026. *Equal contribution."
     link: "https://arxiv.org/abs/2601.22534"
   - text: '*S. Mohanty* and B. Krishnamachari, "SATORIS-N: Spectral Analysis based Traffic Observation Recovery via Informed Subspaces and Nuclear-norm minimization," IEEE Intelligent Vehicles Symposium (IV), 2026.'
     link: "https://arxiv.org/abs/2602.03138"
@@ -10,15 +10,16 @@ publications:
   - text: '*S. Mohanty*, M. Kiamari, F. Bai, and B. Krishnamachari, "SATORIS: A Unified Framework for Singular vAlue and TensOR weIght regresSion to Perform Imputation on Spatio-Temporal Traffic Data," submitted to IEEE Access, under review, 2025.'
   - text: 'G. Bhandari, D. Raghunath, P. M. Hiremath, A. V. Joglekar, D. M. Kulkarni, *S. Mohanty*, V. Prabhu, R. Shorey, R. Sundaresan, and J. D. Tew, "Method and system for synchronizing plurality of events in an assembly line," US Patent 12,468,292, Nov. 2025.'
     link: "https://patents.google.com/patent/US12468292B2"
-  - text: 'L. Clark, *S. Mohanty*, and B. Krishnamachari, "SMILE: Robust Network Localization via Sparse and Low-Rank Matrix Decomposition," ACM/IEEE International Conference on Information Processing in Sensor Networks (IPSN), 2023.'
+    id: us12468292
+  - text: 'L. Clark, *S. Mohanty*, and B. Krishnamachari, "Poster Abstract: SMILE: Robust Network Localization via Sparse and Low-Rank Matrix Decomposition," ACM/IEEE International Conference on Information Processing in Sensor Networks (IPSN), 2023.'
     link: "https://arxiv.org/pdf/2301.11450"
-  - text: 'G. Bhandari, A. Joglekar, A. Kulkarni, D. Kulkarni, C. Mahadeva, *S. Mohanty*, D. Raghunath, M. B. Raju, R. Shorey, and R. Sundaresan, "An Implementation of an Industrial Internet of Things on an SMT Assembly Line," COMSNETS, 2020.'
+  - text: 'G. Bhandari, P. M. Hiremath, A. Joglekar, A. Kulkarni, D. Kulkarni, C. Mahadeva, *S. Mohanty*, D. Raghunath, M. B. Raju, R. Shorey, and R. Sundaresan, "An Implementation of an Industrial Internet of Things on an SMT Assembly Line," COMSNETS, 2020.'
     link: "https://ieeexplore.ieee.org/document/9027475"
   - text: 'N. Karanjkar, A. Joglekar, *S. Mohanty*, V. Prabhu, D. Raghunath, and R. Sundaresan, "Digital Twin for Energy Optimization in an SMT-PCB Assembly Line," IEEE IOTAIS, 2018.'
     link: "https://ece.iisc.ac.in/~rajeshs/reprints/201811IOTAIS_KarEtAl.pdf"
-  - text: 'T. Choubisa, *S. Mohanty*, K. Chaitanya, M. Kashyap, Sridhar A, A. Singh, and P. Vijay Kumar, "A Reduced-Complexity, Reduced-Power Camera System for Intrusion Classification in an Outdoor Setting," VisionNet - ICACCI, 2017. [BEST PAPER]'
+  - text: 'T. Choubisa, *S. Mohanty*, K. K. Chaitanya, M. Kashyap, A. Sridhar, P. Akshay Singh, and P. Vijay Kumar, "A Reduced-Complexity, Reduced-Power Camera System for Intrusion Classification in an Outdoor Setting," VisionNet - ICACCI, 2017. [BEST PAPER]'
     link: "https://ieeexplore.ieee.org/document/8125998/"
-  - text: 'T. Choubisa, M. Kashyap, R. N. Rithesh, and *S. Mohanty*, "Direction and Gender Classification using Convolutional Neural Network for Side-View Images Captured from a Monitored Trail," IEEE ICIIP, 2017. [BEST PAPER]'
+  - text: 'T. Choubisa, M. Kashyap, Rithesh R. N., and *S. Mohanty*, "Direction and Gender Classification using Convolutional Neural Network for Side-View Images Captured from a Monitored Trail," IEEE ICIIP, 2017. [BEST PAPER]'
   - text: 'T. Choubisa, *S. Mohanty*, M. Kashyap, K. K. Chaitanya, Sridhar A, and P. Vijay Kumar, "LITE: Light-based Intrusion deTEction systEm Using an Optical-Camera and a Single Board Computer," IEEE LCN (Demos), 2017.'
     link: 'https://www.ieeelcn.org/prior/LCN42/lcn42demos/1570388841.pdf'
   - text: 'T. Choubisa, M. Kashyap, *S. Mohanty*, and P. Vijay Kumar, "Comparing Chirplet-based Classification with Alternate Feature-Extraction Approaches for Outdoor Intrusion Detection using a PIR Sensor Platform," ICACCI, 2017.'

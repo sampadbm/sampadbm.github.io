@@ -1,10 +1,16 @@
 services:
+  # Workshop identity/affiliation: official annual pages. Reviewer role: user confirmation.
+  - role: Reviewer
+    venue: Machine Learning and the Physical Sciences (ML4PS), independent workshop co-located with NeurIPS
+    year: 2026
+    url: https://ml4physicalsciences.github.io/2026/
   - role: Reviewer
     venue: IEEE Intelligent Vehicles Symposium (IV)
     year: 2026
   - role: Reviewer
-    venue: Machine Learning for Data Science (ML4DS) Workshop, NeurIPS
+    venue: Machine Learning and the Physical Sciences (ML4PS) Workshop, NeurIPS
     year: 2025
+    url: https://ml4physicalsciences.github.io/2025/
   - role: Reviewer
     venue: IEEE Transactions on Vehicular Technology
     year: 2022

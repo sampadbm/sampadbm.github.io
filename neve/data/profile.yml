@@ -30,8 +30,16 @@ profile:
   education:
     - label: University of Southern California
       detail: PhD Candidate, Computer Science, Aug 2019 - Dec 2026 (expected)
+      degree: PhD Candidate in Computer Science
+      dates: Aug 2019 – Dec 2026 (expected)
+      gpa: "3.59"
+      advisor: Bhaskar Krishnamachari
+      lab: Autonomous Networks Research Group
     - label: National Institute of Technology Rourkela
       detail: Bachelor and Master of Technology (Dual Degree) in Electrical Engineering, Aug 2011 - May 2016
+      degree: Bachelor and Master of Technology (Dual Degree), Electrical Engineering
+      dates: Aug 2011 – May 2016
+      gpa: 7.20/10 (B.Tech) · 8.42/10 (M.Tech)
   experience:
     - label: Robert Bosch Center for Cyber Physical Systems, Indian Institute of Science Bangalore
       detail: Project Associate, Oct 2017 - Jul 2019
