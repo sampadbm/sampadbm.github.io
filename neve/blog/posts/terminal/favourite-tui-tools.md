@@ -38,6 +38,8 @@ summary: A curated list of terminal-based tools I use or find interesting.
 - *podliner* — listen to podcasts in the terminal
 - *jotl* — battery monitor
 - *spotatui* — a Spotify player for the terminal
+- *cliamp* — a retro terminal music player inspired by Winamp, with local and streaming playback, playlists, a spectrum visualizer, and an equalizer
+- *soundcli* — download and organize music from YouTube, SoundCloud, and Spotify playlists for offline playback in a keyboard-driven terminal UI
 
 ### Browsing
 
