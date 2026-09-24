@@ -378,6 +378,16 @@ readings:
     year: 1960
     tags: [wishlist, paper, philosophy-of-mathematics, physics, foundations, classic]
 
+  - date: 2026-09-20
+    category: [Neuroscience, Interpretability, Philosophy of Science]
+    author: Eric Jonas, Konrad Paul Kording
+    title: "Could a Neuroscientist Understand a Microprocessor?"
+    url: https://doi.org/10.1371/journal.pcbi.1005268
+    year: 2017
+    tags: [wishlist, paper, in-progress, neuroscience, interpretability, scientific-method]
+    notes: |
+      Partially read; to finish.
+
   # Articles
   - date: 2026-03-29
     category: [Computer Science]
@@ -478,6 +488,36 @@ readings:
     tags: [wishlist, book, philosophy, epistemology, empiricism, classic, primary-secondary-qualities]
     notes: |
       Locke's foundational empiricist treatise. Origin of the **primary / secondary quality distinction** (shape, extension, motion vs. color, taste, smell) referenced in the glossary's Philosophy of Color entry; introduces the **tabula rasa** picture of the mind at birth; critiques innate ideas; sets up the inverted-spectrum thought experiment that still organizes debates on qualia. Required reading for the philosophy-of-mind and philosophy-of-color clusters already on the digest.
+
+  - date: 2026-09-20
+    category: [Philosophy]
+    author: James P. Carse
+    title: "Finite and Infinite Games: A Vision of Life as Play and Possibility"
+    url: https://www.simonandschuster.com/books/Finite-and-Infinite-Games/James-Carse/9781476731711
+    year: 1986
+    tags: [wishlist, book, philosophy, play, possibility, culture]
+    notes: |
+      A philosophical exploration of competition, freedom, and possibility through games played to win and games played to keep play going.
+
+  - date: 2026-09-20
+    category: [Art, Philosophy, Spirituality]
+    author: Wassily Kandinsky
+    title: Concerning the Spiritual in Art
+    url: https://www.gutenberg.org/ebooks/5321
+    year: 1911
+    tags: [wishlist, book, art, aesthetics, abstract-art, color-theory, spirituality]
+    notes: |
+      Kandinsky's reflections on the spiritual and emotional effects of color and form, and the case for abstraction in painting.
+
+  - date: 2026-09-21
+    category: [Fiction, Philosophy]
+    author: Iain M. Banks
+    title: The Player of Games
+    url: https://en.wikipedia.org/wiki/The_Player_of_Games
+    year: 1988
+    tags: [wishlist, book, fiction, science-fiction, culture-series, games, utopia]
+    notes: |
+      Second novel of the Culture series. Jernau Morat Gurgeh, a master board-game player in a post-scarcity utopia grown bored of winning, is manoeuvred by Special Circumstances into travelling to the Empire of Azad — a brutal civilisation whose entire political order, up to the succession itself, is decided by a single vastly complex game. Reads as an argument about whether a game can encode a society's values, and what it means to play one from outside its moral frame.
 
   # Thesis
   - date: 2026-03-30
