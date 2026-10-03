@@ -664,6 +664,21 @@ $$
  
 
 
+## Sub-Gaussian Random Vectors
+
+For a scalar random variable $Z$, define its **subgaussian norm** by
+$$
+\|Z\|_{\psi_2} := \inf\left\{t > 0 : \mathbb E \exp(Z^2/t^2) \leq 2\right\}.
+$$
+A random vector $X \in \mathbb R^d$ is **subgaussian** if
+$$
+\boxed{\|X\|_{\psi_2} := \sup_{\|u\|_2 = 1} \|\langle u, X\rangle\|_{\psi_2} < \infty.}
+$$
+
+Intuitively, every one-dimensional projection is subgaussian, and this norm measures the largest subgaussian norm over all unit directions. Independence of the coordinates is not required. To measure fluctuations around the mean, apply this definition to $X - \mathbb E X$, consistent with the earlier centered definition.
+
+Other equivalent characterizations use Gaussian tail bounds, moment growth, or—for centered vectors—MGF bounds, with parameters comparable up to universal constants.
+
 ## Some equalities
 
 ### Stein's Lemma/method
