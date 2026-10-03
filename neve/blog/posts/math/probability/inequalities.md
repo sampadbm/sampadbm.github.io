@@ -278,7 +278,7 @@ However, it is hard to compute the expectation of the exponential of an absolute
 $$
 	P(A \cap B) \geq P(A) + P(B) - 1
 $$
-This is no different in information than the union bound given as $P(A \cup B) \leq P(A) + P(B)$.
+This is no different in information than the union bound (or subadditivity of measure in maths) given as $P(A \cup B) \leq P(A) + P(B)$.
 
 ><p style=color:crimson>Exercise 1: Moment generating Function of Gaussian random variable. </p> 
 If $Z \sim \mathcal N(0,\sigma^2)$, then show that $\forall \lambda \in \mathbb R$, $M_Z(\lambda) = \mathbb E \exp(\lambda Z) = \exp(\lambda^2 \sigma^2 / 2)$.  
@@ -400,7 +400,7 @@ Let us ponder on this a bit more. Let there be a centered distribution  (assume 
 $$ \int_{\lambda}^{\infty} n(x) dx = 1 - N(\lambda) \geq 1 - F(\lambda) = \int_{\lambda}^{\infty} f(x) dx, \; \forall x \geq \lambda$$.  
 Now, it is not true for $x <  \lambda$. So for example, $1 - N(4) \ngeq 1 - F(4)$. We can try to find a possibly non standard gaussian (CDF $G_{\sigma}(x)$) with variance $\sigma^2$ ($\sigma$ maynot be 1) such that no matter what threshold $\lambda$ is chosen, $1 - G_{\sigma}(x) \geq 1 - F(x)$, i.e it holds for all $x > 0$. We can associate/characterize the distribution $F(x)$ with the smallest $\sigma$ that makes the statement $\forall \; x > 0, 1 - G_{\sigma}(x) \geq 1 - F(x)$. We can call all these distributions $\color{green}\sigma\text{-pseudo-subgaussian random variables}$. 
 
-Now imagine using a soft threshold/weighting instead of a hard threshold with the weight given by $\exp(\lambda)$. The smallest $\sigma$ such that 
+The hard cutoff at $\lambda$ corresponds to weighting by the indicator $\mathbf{1}\{x > \lambda\}$, which is $1$ for $x > \lambda$ and $0$ otherwise. Now imagine using a soft threshold/weighting instead of a hard threshold with the weight given by $\exp(\lambda x)$. The smallest $\sigma$ such that
 $$
 \int_{-\infty}^{+\infty} \exp(\lambda x)f(x) dx =  M_F(\lambda) \leq M_{G_{\sigma}}(\lambda) = \int_{-\infty}^{+\infty} \exp(\lambda x)g_{\sigma}(x) dx, \; \forall \; \lambda >0
 $$
