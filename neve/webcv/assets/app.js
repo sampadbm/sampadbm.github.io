@@ -120,7 +120,7 @@
             const instructors = String(course.instructors || '').replace(/\s*\|\s*/g, '; ');
             const multipleInstructors = /;|,\s*Prof\./.test(instructors);
             // Highlight contributions rather than repeating routine duties for every course.
-            const selected = duties.filter(item => /designed|created|developed|sole TA|guest lectures|led tutorials/i.test(item)).slice(0, 2);
+            const selected = duties.filter(item => /designed|created|developed|sole TA|guest lectures?|led tutorials/i.test(item)).slice(0, 2);
             const remaining = duties.filter(item => !selected.includes(item));
             return `<article class="entry compact-entry">
                 ${entryHeading(`${course.course_code}: ${course.course_title}`, course.semesters, `${course.role} · ${course.institution}`, course.course_url)}

@@ -6,6 +6,13 @@ teaching:
     institution: University of Southern California
     semesters: Fall 2026
     instructors: Prof. Shang-Hua Teng
+    short_description: Homework and quiz design, quiz grading, project guidance, weekly office hours, and a guest lecture.
+    responsibilities:
+      - Delivered a guest lecture giving a high-level view of connections between learning theory and cryptography, basics of homomorphic encryption, and LLM watermarking (Oct 7, 2026)
+      - Designed three homework assignments
+      - Created quiz questions and graded quizzes
+      - Guided student projects
+      - Held weekly office hours
 
   - course_code: CS567
     course_title: Machine Learning
