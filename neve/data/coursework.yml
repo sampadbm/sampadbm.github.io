@@ -1,4 +1,7 @@
 coursework:
+  - code: MATH525A
+    title: Real Analysis (Measure Theory)
+    department: Mathematics
   - code: MATH647
     title: Random Matrix Theory in Machine Learning
     department: Mathematics
