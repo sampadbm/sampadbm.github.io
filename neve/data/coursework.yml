@@ -48,7 +48,7 @@ coursework:
     title: Linear Algebra for Engineering
     department: Electrical Engineering
   - code: CSCI675
-    title: Convex Optimization
+    title: Convex and Combinatorial Optimization
     department: Computer Science
   - code: CSCI670
     title: Advanced Analysis of Algorithms
