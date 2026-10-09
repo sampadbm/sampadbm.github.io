@@ -7,6 +7,9 @@ tree:
       - posts/ai/how-llms-work.md
   - name: math
     children:
+      - name: insights
+        posts:
+          - posts/math/insights/linear-transformations-as-change-of-basis.md
       - name: linear-algebra
         posts:
           - posts/math/linear-algebra/svd-filtering.md
@@ -32,6 +35,18 @@ tree:
       - posts/terminal/favourite-tui-tools.md
 
 posts:
+  - file: posts/math/insights/linear-transformations-as-change-of-basis.md
+    date: 2026-10-08
+    title: "Modulo the Kernel: Every Linear Map is a Change of Basis"
+    authors: [sampad]
+    tags: [math, insight, linear-algebra, abstract-algebra, pedagogy]
+    summary: A look at how the First Isomorphism Theorem reframes our understanding of matrices.
+  - file: posts/math/optimization/gradient-descent.md
+    date: 2026-07-29
+    title: Gradient Descent
+    authors: [sampad]
+    tags: [math, linear-algebra, tutorial]
+    summary: Proof of convergence for quadratic objective
   - file: posts/ai/how-llms-work.md
     date: 2026-06-02
     title: How LLMs Work
@@ -97,12 +112,6 @@ posts:
     authors: [sampad]
     tags: [math, linear-algebra, tutorial]
     summary: Some views on matrix multiplications.
-  - file: posts/math/optimization/gradient-descent.md
-    date: 2026-07-29
-    title: Gradient Descent
-    authors: [sampad]
-    tags: [math, linear-algebra, tutorial]
-    summary: Proof of convergence for quadratic objective
   - file: posts/math/optimization/lagrangian-duality.md
     date: 2026-03-24
     title: Lagrange duality
