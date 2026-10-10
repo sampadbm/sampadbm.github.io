@@ -24,6 +24,6 @@ mentoring:
   - role: Viterbi Summer Institute Mentor
     institution: University of Southern California
     dates: Summer 2022
-    short_description: Mentored two first-year undergraduates on evolutionary algorithms for reinforcement learning in Gymnasium.
+    short_description: Mentored two first-year undergraduates on evolutionary algorithms for reinforcement learning in Gymnasium, culminating in a poster presentation at USC.
     responsibilities:
-      - Mentored two freshmen undergraduate students at USC in evolutionary algorithms for solving RL problems in the Gymnasium environment.
+      - Mentored two freshmen undergraduate students in evolutionary algorithms for solving RL problems in the Gymnasium environment, leading to a final poster presentation at USC.
