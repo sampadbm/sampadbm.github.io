@@ -42,11 +42,13 @@ button { font: inherit; }
     background: #fff;
     border: 1px solid var(--rule);
 }
-.document-header { border-bottom: 2px solid var(--accent); padding-bottom: 1.25rem; }
+.document-header { border-bottom: 2px solid var(--accent); padding-bottom: 1.25rem; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 1.5rem; }
 .document-kind { margin: 0 0 0.4rem; font: 0.65rem system-ui, sans-serif; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
 h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(2rem, 5vw, 2.65rem); font-weight: 600; line-height: 1.1; margin: 0; }
-.profile-role { margin: 0.45rem 0 0.65rem; font-size: 1.06rem; }
-.contact-list { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; list-style: none; margin: 0; padding: 0; font-size: 0.9rem; }
+.profile-role { margin: 0.45rem 0 0; font-size: 1.06rem; }
+.contact-list { display: flex; flex-direction: column; gap: 0.2rem; list-style: none; margin: 0; padding: 0.1rem 0 0.1rem 1.5rem; border-left: 1px solid var(--rule); font-size: 0.88rem; }
+.contact-list li { display: flex; align-items: center; gap: 0.5rem; }
+.contact-icon { width: 0.95em; height: 0.95em; flex-shrink: 0; color: var(--accent); }
 .contact-list a { overflow-wrap: anywhere; }
 .section-nav { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; margin: 1rem 0 0; font: 0.7rem system-ui, sans-serif; }
 .section-nav a { text-decoration: none; }
@@ -93,7 +95,7 @@ details > p { margin: 0.5rem 0 0; }
 .resume { line-height: 1.35; }
 .resume .document-kind { display: none; }
 .resume .document-header { padding-bottom: 0.8rem; }
-.resume .profile-role { margin: 0.25rem 0 0.35rem; }
+.resume .profile-role { margin: 0.25rem 0 0; }
 .resume .entry-line h3 { display: inline; font-size: 1em; line-height: inherit; }
 .resume .inline-meta { color: var(--muted); }
 .resume .inline-links { font-size: 0.9em; margin-left: 0.3em; }
@@ -128,6 +130,8 @@ details > p { margin: 0.5rem 0 0; }
     :root { font-size: 17px; }
     .document-tools { padding: 0 1rem; margin-top: 1rem; }
     .document { padding: 1.5rem 1.1rem; margin: 0 0.5rem 1rem; }
+    .document-header { grid-template-columns: 1fr; row-gap: 0.75rem; }
+    .contact-list { flex-direction: row; flex-wrap: wrap; gap: 0.25rem 1rem; padding: 0.6rem 0 0; border-left: 0; border-top: 1px solid var(--rule); }
     .entry-heading { flex-direction: column; align-items: flex-start; gap: 0.15rem; }
     .entry-date { max-width: none; text-align: left; }
     .skill-row { grid-template-columns: 1fr; gap: 0; margin-top: 0.55rem; }
@@ -176,7 +180,7 @@ details > p { margin: 0.5rem 0 0; }
     .resume { line-height: 1.2; }
     .resume .document-header { padding-bottom: 0.4rem; }
     .resume h1 { font-size: 22pt; }
-    .resume .profile-role { margin: 0.15rem 0; font-size: 1rem; }
+    .resume .profile-role { margin: 0.15rem 0 0; font-size: 1rem; }
     .resume .cv-section { margin-top: 0.65rem; }
     .resume .entry { margin-bottom: 0.3rem; }
     .resume .dense-entry { font-size: 1rem; }

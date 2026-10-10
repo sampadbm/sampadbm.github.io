@@ -245,10 +245,10 @@ industry:
   dates: June - August 2021
   subtitle: General Motors
   bullets:
-  - Developed CP and Tucker tensor models for urban traffic prediction.
+  - Developed subspace-informed CP and Tucker tensor models for urban traffic prediction.
   - Used Uber Movement and Beijing Taxi datasets; applied topic modeling to discover functional city regions
     and imputed sparse traffic data with approximately 50% or more missing values.
-  short_description: Developed CP/Tucker traffic models using Uber Movement and Beijing Taxi data;
+  short_description: Developed subspace-informed CP/Tucker traffic models using Uber Movement and Beijing Taxi data;
     topic modeling and sparse-data imputation.
 - id: startups
   title: Founding Member and Lead Systems and Network Developer

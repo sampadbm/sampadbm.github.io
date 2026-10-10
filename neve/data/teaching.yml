@@ -93,6 +93,7 @@ teaching:
     institution: University of Southern California
     semesters: Fall 2020
     instructors: Prof. Neelesh Tiruviluamala
+    expand_responsibilities: true
     short_description: Python/data-science tutoring, Jupyter/HPC/PyTorch tutorials, linear algebra guest lectures, and project mentoring.
     responsibilities:
       - Provided tutoring support for inaugural undergraduate course in python (later MATH446 - Datascience with Python)

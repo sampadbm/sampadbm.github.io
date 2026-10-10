@@ -120,7 +120,9 @@
             const instructors = String(course.instructors || '').replace(/\s*\|\s*/g, '; ');
             const multipleInstructors = /;|,\s*Prof\./.test(instructors);
             // Highlight contributions rather than repeating routine duties for every course.
-            const selected = duties.filter(item => /designed|created|developed|sole TA|guest lectures?|led tutorials/i.test(item)).slice(0, 2);
+            // expand_responsibilities: true lists every duty without the fold.
+            const selected = course.expand_responsibilities ? duties
+                : duties.filter(item => /designed|created|developed|sole TA|guest lectures?|led tutorials/i.test(item)).slice(0, 2);
             const remaining = duties.filter(item => !selected.includes(item));
             return `<article class="entry compact-entry">
                 ${entryHeading(`${course.course_code}: ${course.course_title}`, course.semesters, `${course.role} · ${course.institution}`, course.course_url)}
@@ -217,19 +219,31 @@
         const email = links.find(item => item.label === 'Email');
         const github = links.find(item => item.label === 'GitHub');
         const linkedin = links.find(item => item.label === 'LinkedIn');
+        // Simple line icons drawn in the link colour; hidden from screen readers.
+        const icon = (name) => `<svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">${{
+            email: '<rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5" fill="none" stroke="currentColor" stroke-width="1.8"/>',
+            phone: '<path d="M6.6 3.5h2.8l1.4 4.2-2 1.4a12 12 0 0 0 6.1 6.1l1.4-2 4.2 1.4v2.8a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>',
+            location: '<path d="M12 21s-6.5-6.2-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.8 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9.8" r="2.3" fill="none" stroke="currentColor" stroke-width="1.8"/>',
+            website: '<circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.5 2.7 3.6 5.6 3.6 9s-1.1 6.3-3.6 9c-2.5-2.7-3.6-5.6-3.6-9S9.5 5.7 12 3Z" fill="none" stroke="currentColor" stroke-width="1.8"/>',
+            github: '<path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/>',
+            linkedin: '<path fill="currentColor" d="M20.45 2H3.55A1.55 1.55 0 0 0 2 3.55v16.9C2 21.3 2.7 22 3.55 22h16.9c.85 0 1.55-.7 1.55-1.55V3.55C22 2.7 21.3 2 20.45 2ZM8.06 19.04H5.09V9.5h2.97v9.54ZM6.58 8.2a1.72 1.72 0 1 1 0-3.44 1.72 1.72 0 0 1 0 3.44Zm12.46 10.84h-2.96v-4.64c0-1.1-.02-2.53-1.54-2.53-1.55 0-1.78 1.2-1.78 2.45v4.72H9.8V9.5h2.84v1.3h.04c.4-.75 1.37-1.54 2.81-1.54 3 0 3.55 1.98 3.55 4.55v5.23Z"/>'
+        }[name]}</svg>`;
+        const item = (name, html) => `${icon(name)}<span>${html}</span>`;
         const contacts = [
-            email ? link(email.url, email.url.replace(/^mailto:/, '')) : '',
-            contact.phone ? link(`tel:${contact.phone}`, contact.phone) : '',
-            escape(contact.location || ''),
-            contact.website ? link(contact.website, contact.website.replace(/^https?:\/\//, '').replace(/\/$/, '')) : '',
-            github ? link(github.url, 'GitHub') : '',
-            linkedin ? link(linkedin.url, 'LinkedIn') : ''
+            email ? item('email', link(email.url, email.url.replace(/^mailto:/, ''))) : '',
+            contact.phone ? item('phone', link(`tel:${contact.phone}`, contact.phone)) : '',
+            contact.location ? item('location', escape(contact.location)) : '',
+            contact.website ? item('website', link(contact.website, contact.website.replace(/^https?:\/\//, '').replace(/\/$/, ''))) : '',
+            github ? item('github', link(github.url, 'GitHub')) : '',
+            linkedin ? item('linkedin', link(linkedin.url, 'LinkedIn')) : ''
         ].filter(Boolean);
         document.getElementById('document-header').innerHTML = `
-            <p class="document-kind">${isResume ? 'Resume · Concise curriculum vitae' : 'Curriculum vitae'}</p>
-            <h1>${escape(profile.name || 'Sampad Bhusan Mohanty')}</h1>
-            <p class="profile-role">${escape(profile.title)} · ${escape(profile.affiliation)}</p>
-            <ul class="contact-list" aria-label="Contact information">${contacts.map(item => `<li>${item}</li>`).join('')}</ul>`;
+            <div class="header-main">
+                <p class="document-kind">${isResume ? 'Resume · Concise curriculum vitae' : 'Curriculum vitae'}</p>
+                <h1>${escape(profile.name || 'Sampad Bhusan Mohanty')}</h1>
+                <p class="profile-role">${escape(profile.title)} · ${escape(profile.affiliation)}</p>
+            </div>
+            <ul class="contact-list" aria-label="Contact information">${contacts.map(entry => `<li>${entry}</li>`).join('')}</ul>`;
     }
 
     const openedForPrint = new Set();
