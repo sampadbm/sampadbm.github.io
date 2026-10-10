@@ -15,11 +15,12 @@ research:
   bullets:
   - Show that projected Adam for online optimization can have average regret bounded away from zero
     for any moment decay parameters in [0,1), extending counterexamples to multiple Adam variants.
+  - Submitted to ICLR 2027 (under review).
   links:
   - label: Preprint
     url: https://arxiv.org/abs/2607.03519
   short_description: Show projected Adam can have nonvanishing average regret in online optimization
-    for any moment decay parameters in [0,1); extend counterexamples to multiple variants.
+    for any moment decay parameters in [0,1); extend counterexamples to multiple variants. Under review at ICLR 2027.
   short_subtitle: with Prof. Steven Heilman
 - id: optimizer-comparison
   title: Random Search, Evolution Strategies, and Gradient Descent for Neural Network Optimization
