@@ -98,6 +98,8 @@ The inequality is forced by the existence of the **Bridge Element** $\color{purp
 
 3.  **The Conclusion:** By transitivity through the bridge element:
     $$\underbrace{\color{blue}{\sup_{\lambda} \inf_{x} g(x, \lambda)}}_{\color{blue}{g(a, b)}} \leq \color{purple}{g(A, b)} \leq \underbrace{\color{red}{\inf_{x} \sup_{\lambda} g(x, \lambda)}}_{\color{red}{g(A, B)}}$$
+
+_See [(Benedek)](https://nadavb.com/max_min_inequality_intuitive_explanation/) for the same row/column argument worked out on a concrete $3 \times 3$ table of numbers._
     
 
 ### Absorbing constraints into the objective

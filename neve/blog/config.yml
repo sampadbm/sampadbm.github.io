@@ -30,11 +30,17 @@ tree:
       - posts/reference/ideas.md
       - posts/reference/glossary.md
       - posts/reference/bookmarks.md
+      - posts/reference/expositions.md
   - name: terminal
     posts:
       - posts/terminal/favourite-tui-tools.md
 
 posts:
+  - file: posts/reference/expositions.md
+    date: 2026-10-13
+    title: Expositions
+    tags: [reference, expositions, explanations]
+    summary: Standalone explanations of single ideas that I found especially clear.
   - file: posts/math/insights/linear-transformations-as-change-of-basis.md
     date: 2026-10-08
     title: "Modulo the Kernel: Every Linear Map is a Change of Basis"

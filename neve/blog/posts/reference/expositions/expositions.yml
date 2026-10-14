@@ -1,0 +1,7 @@
+readings:
+  - date: 2026-10-13
+    category: [Mathematics, Optimization]
+    author: Nadav Benedek
+    title: "Max–Min Inequality: An Intuitive Explanation"
+    url: https://nadavb.com/max_min_inequality_intuitive_explanation/
+    tags: [article, max-min-inequality, minimax, weak-duality]
