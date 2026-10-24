@@ -5,3 +5,17 @@ readings:
     title: "Max–Min Inequality: An Intuitive Explanation"
     url: https://nadavb.com/max_min_inequality_intuitive_explanation/
     tags: [article, max-min-inequality, minimax, weak-duality]
+
+  - date: 2026-10-24
+    category: [Mathematics, Linear Algebra]
+    author: Lennard Bakker (BYU Math 346)
+    title: "12.7 Spectral Mapping Theorem (Lecture 37, annotated slides)"
+    url: http://uamte.math.byu.edu/~bakker/Math346/BeamerSlides/Lec37annotated.pdf
+    tags: [slides, spectral-mapping-theorem, spectral-decomposition, power-method]
+
+  - date: 2026-10-24
+    category: [Mathematics, Linear Algebra]
+    author: MSU Math 415
+    title: "Spectral Mapping"
+    url: https://users.math.msu.edu/users/maccluer/Class/415/SpectralMapping.pdf
+    tags: [notes, spectral-mapping-theorem]

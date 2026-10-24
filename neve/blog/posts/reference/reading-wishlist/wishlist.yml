@@ -388,6 +388,14 @@ readings:
     notes: |
       Partially read; to finish.
 
+  - date: 2026-10-24
+    category: [Mathematics]
+    author: Chi-Kwong Li, Roy Mathias
+    title: "Generalizations of Ky Fan's Dominance Theorem"
+    url: https://epubs.siam.org/doi/10.1137/S0895479896311232
+    year: 1998
+    tags: [wishlist, paper, linear-algebra, unitarily-invariant-norms, majorization, ky-fan]
+
   # Articles
   - date: 2026-03-29
     category: [Computer Science]

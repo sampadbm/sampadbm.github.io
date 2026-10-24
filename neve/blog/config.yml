@@ -13,6 +13,7 @@ tree:
       - name: linear-algebra
         posts:
           - posts/math/linear-algebra/svd-filtering.md
+          - posts/math/linear-algebra/spectral-mapping-theorem.md
           - posts/math/linear-algebra/some-notes-on-tensors.md
           - posts/math/linear-algebra/matrix-multiplications.md
       - name: optimization
@@ -29,13 +30,25 @@ tree:
       - posts/reference/metascience.md
       - posts/reference/ideas.md
       - posts/reference/glossary.md
-      - posts/reference/bookmarks.md
       - posts/reference/expositions.md
+      - posts/reference/courses.md
+      - posts/reference/bookmarks.md
   - name: terminal
     posts:
       - posts/terminal/favourite-tui-tools.md
 
 posts:
+  - file: posts/math/linear-algebra/spectral-mapping-theorem.md
+    date: 2026-10-24
+    title: The Spectral Mapping Theorem
+    authors: [sampad]
+    tags: [math, linear-algebra, spectral-theory, functional-calculus]
+    summary: Why the eigenvalues of f(A) are exactly f applied to the eigenvalues of A, and how the spectral decomposition of A tells you the eigenprojections and eigennilpotents of f(A).
+  - file: posts/reference/courses.md
+    date: 2026-10-24
+    title: Courses Worth Revisiting
+    tags: [reference, courses, lecture-notes]
+    summary: Outlines of courses from other universities whose public lecture notes and slides are worth coming back to.
   - file: posts/reference/expositions.md
     date: 2026-10-13
     title: Expositions

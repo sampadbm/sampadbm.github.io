@@ -81,3 +81,11 @@ id: B2PJh2K-jdU
 title: Matrix trace isn't just summing the diagonal
 author: Mathemaniac (Lie groups series #5)
 ```
+
+## Ky Fan Dominance Theorem
+
+Ky Fan's Dominance Theorem establishes that if a matrix is smaller than another across all Ky Fan k-norms, it remains smaller under every unitarily invariant norm. This principle generalizes the Davis-Kahan subspace perturbation theorem by extending bounds on individual principal angles to all unitarily invariant metrics, while functioning fundamentally as a matrix extension of vector majorization. Furthermore, by linking with the Courant-Fischer minimax characterization of singular values, it elevates the Eckart-Young-Mirsky theorem. Because the truncated Singular Value Decomposition minimizes error across all Ky Fan k-norms simultaneously, Ky Fan's Dominance Theorem proves that this low-rank approximation is universally optimal under any unitarily invariant norm.
+
+See also the **Ky Fan Dominance Theorem** entry in the glossary for the precise statement and the Eckart–Young–Mirsky derivation.
+
+*Source: C.-K. Li and R. Mathias, [Generalizations of Ky Fan's Dominance Theorem](https://epubs.siam.org/doi/10.1137/S0895479896311232), SIAM J. Matrix Anal. Appl. 19(1):99–106, 1998.*
