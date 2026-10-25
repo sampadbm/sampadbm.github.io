@@ -175,3 +175,25 @@ Solvability, conditioning and the spectrum then come from one matrix: its
 eigenvalues are the pairwise sums $\lambda_i(A) + \lambda_j(B)$, so the equation
 is uniquely solvable exactly when none of them vanish. The cost is size
 ($mn \times mn$), making this a lens for analysis, not a recipe for computation.
+
+
+
+#### Change of basis
+
+We know that for three matrices $A,B,$ and $C$, we have
+
+$$
+	[ABC]_{ij} = \langle B, a_i^T {c^j}^T \rangle_F  
+$$ 
+
+Let A and B be $n \times n$ non-singular matrices such that $B = PAQ^{-1}$ for some non-singular orthonormal matrices $P,Q$. Then $B = P A Q^{-1} = P A Q^T $ and
+
+$$
+B_{ij} = \langle B , \underbrace{{p_i}^T {q^j}^T}_{R_{ij}} \rangle_F
+$$
+
+Note that $R_{ij} = {p_i}^T {q^j}^T$ for an orthonormal basis for space of $n \times n$ matrices since
+
+$$
+	\langle R_{ij}, R_{kl} \rangle = \langle {p_i}^T {q^j}^T,  {p_k}^T {q^l}^T \rangle = p_k (p_i^T {q^j}^T) q^l = \underbrace{(p_k p_i^T)}_{\delta_{ki}} \; \underbrace{({q^j}^T q^l)}_{\delta_{jl}} = \delta_{ik} \delta_{jl} = \delta_{(ij)(kl)}
+$$
