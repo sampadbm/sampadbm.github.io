@@ -1,0 +1,8 @@
+Generated with the built-in imagegen tool.
+
+Use case: scientific-educational.
+Asset type: small illustration in the Picture column of a mathematics blog table.
+Primary request: Illustrate that a set S with the origin in its interior can be dilated to contain any given point x.
+Scene and composition: a clean flat two-dimensional mathematical diagram on a solid white background, landscape 3:2. Two concentric similar ellipses centered at the same black point labeled "0". The smaller ellipse is a filled pale teal region with a solid teal outline, labeled "S" in its upper-left interior. The larger ellipse is exactly a uniform dilation of the smaller ellipse about 0, about 2.3 times larger, with a dashed blue outline and no fill, labeled "tS" beside its upper-left edge. Place a dark point labeled "x" in the upper-right region strictly outside S and strictly inside tS; a thin dark arrow runs from 0 to x. The origin must be comfortably inside S. Thin light gray horizontal and vertical coordinate axes cross at 0 and extend just beyond the outer ellipse.
+Style: crisp textbook illustration, consistent line weights, generous margins, large readable italic serif mathematical labels.
+Text (verbatim): "0", "S", "tS", "x". No other text, ticks, grid, title, equations, gradients, shadows, textures, logos, or watermark. Keep labels clear of lines; legible at 260 pixels wide.

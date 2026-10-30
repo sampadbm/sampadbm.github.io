@@ -179,6 +179,24 @@ function updateTocVisibility(nodes) {
 }
 
 /**
+ * Keep wide prose tables scrollable without changing their table semantics.
+ * Readings tables have their own layout and controls.
+ */
+function wrapPostTables(container) {
+    container.querySelectorAll('table:not(.readings-table)').forEach(table => {
+        if (table.closest('.post-table-wrapper')) return;
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'post-table-wrapper';
+        wrapper.tabIndex = 0;
+        wrapper.setAttribute('role', 'region');
+        wrapper.setAttribute('aria-label', table.caption?.textContent.trim() || 'Table');
+        table.before(wrapper);
+        wrapper.appendChild(table);
+    });
+}
+
+/**
  * Protect math blocks from markdown parsing.
  * Replaces $$...$$ and $...$ with placeholders so marked.js
  * won't insert <p> tags inside multi-line math.
@@ -718,6 +736,7 @@ async function loadPost() {
         const { text: safeContent, mathBlocks } = protectMath(content);
         const html = restoreMath(processImages(marked.parse(safeContent)), mathBlocks);
         document.getElementById('post-content').innerHTML = html;
+        wrapPostTables(document.getElementById('post-content'));
 
         // Initialize vegalite charts now that their divs are in the DOM.
         // Awaited so callers can rely on loadPost() only resolving once

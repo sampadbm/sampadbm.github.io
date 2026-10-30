@@ -7,6 +7,10 @@ tree:
       - posts/ai/how-llms-work.md
   - name: math
     children:
+      - name: convex-analysis
+        posts:
+          - posts/math/convex-analysis/minkowski-functionals-polars-and-dual-norms.md
+          - posts/math/convex-analysis/dual-spaces-dual-norms-and-inner-products.md
       - name: insights
         posts:
           - posts/math/insights/linear-transformations-as-change-of-basis.md
@@ -38,6 +42,18 @@ tree:
       - posts/terminal/favourite-tui-tools.md
 
 posts:
+  - file: posts/math/convex-analysis/dual-spaces-dual-norms-and-inner-products.md
+    date: 2026-10-29
+    title: "Convex Geometry and Duality, Part 2: Dual Spaces, Dual Norms, and Inner Products"
+    authors: [sampad]
+    tags: [math, convex-analysis, linear-algebra, tutorial]
+    summary: Dual norms need no inner product; an inner product lets us represent linear functionals as vectors
+  - file: posts/math/convex-analysis/minkowski-functionals-polars-and-dual-norms.md
+    date: 2026-10-28
+    title: "Convex Geometry and Duality, Part 1: Gauges and Polars"
+    authors: [sampad]
+    tags: [math, convex-analysis, optimization, tutorial]
+    summary: The gauge of a convex body, its polar, and why the gauge of the polar is the dual norm
   - file: posts/math/linear-algebra/spectral-mapping-theorem.md
     date: 2026-10-24
     title: The Spectral Mapping Theorem
