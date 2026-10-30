@@ -40,6 +40,7 @@ summary: A curated list of terminal-based tools I use or find interesting.
 - *spotatui* — a Spotify player for the terminal
 - *cliamp* — a retro terminal music player inspired by Winamp, with local and streaming playback, playlists, a spectrum visualizer, and an equalizer
 - *soundcli* — download and organize music from YouTube, SoundCloud, and Spotify playlists for offline playback in a keyboard-driven terminal UI
+- *mdl* — interactive playlist and album downloader that pulls tracks from Spotify, Apple Music, Tidal, Deezer, SoundCloud, Bandcamp and more as YouTube audio, with parallel downloads and a choice of format and bitrate
 
 ### Browsing
 
