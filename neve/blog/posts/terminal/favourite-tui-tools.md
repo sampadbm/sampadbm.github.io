@@ -35,6 +35,7 @@ summary: A curated list of terminal-based tools I use or find interesting.
 ### Productivity
 
 - *octotype / smassh* — typing trainers on the terminal
+- *clavirio* — a terminal typing tutor with an on-screen keyboard, built-in lessons, and session logging
 - *podliner* — listen to podcasts in the terminal
 - *jotl* — battery monitor
 - *spotatui* — a Spotify player for the terminal
