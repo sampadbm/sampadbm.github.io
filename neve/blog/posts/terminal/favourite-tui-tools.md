@@ -16,6 +16,7 @@ summary: A curated list of terminal-based tools I use or find interesting.
 - *tangent / apostrophe* — markdown editor with LaTeX support and organizing thinking notes
 - *mcat* — cat on steroids, with support for all filetypes
 - *espanso* — a cross-platform text expander written in Rust
+- *edamame* — a terminal markdown editor that stays rendered while you edit, with inline images, Mermaid diagrams, LaTeX math, and cell-by-cell table editing
 
 ### Presentations
 
