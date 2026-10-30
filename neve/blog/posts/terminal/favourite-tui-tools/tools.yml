@@ -120,6 +120,11 @@ tools:
     category: System & Networking
     description: zero-config local network file transfer via mDNS discovery (like AirDrop for the terminal)
 
+  - title: lazyrsync
+    category: System & Networking
+    description: a terminal UI for rsync with reusable profiles, a structured diff preview before each transfer, and live progress with cancellation
+    url: https://github.com/westpoint-io/lazyrsync
+
   - title: caligula
     category: System & Networking
     description: user-friendly TUI for imaging disks (modern dd alternative with validation)
