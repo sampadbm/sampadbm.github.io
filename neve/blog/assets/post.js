@@ -462,6 +462,11 @@ async function loadReadingsTable(container, source) {
 /**
  * Register the ```bookmarks extension for dynamically loading YAML bookmark lists.
  * Renders bookmarks grouped by category with search filtering.
+ * Options:
+ *   source: path to the YAML file (required)
+ *   key:    top-level list key in the YAML (default: bookmarks)
+ *   noun:   label for the search box and count (default: key)
+ *   sort:   false keeps categories and entries in file order (default: true)
  */
 function enableBookmarks() {
     marked.use({
@@ -476,14 +481,13 @@ function enableBookmarks() {
             },
             renderer(token) {
                 const config = jsyaml.load(token.text);
-                const source = config.source;
                 const id = `bookmarks-${Math.random().toString(36).slice(2)}`;
 
                 const observer = new MutationObserver(() => {
                     const el = document.getElementById(id);
                     if (el) {
                         observer.disconnect();
-                        loadBookmarksView(el, source);
+                        loadBookmarksView(el, config);
                     }
                 });
                 observer.observe(document.body, { childList: true, subtree: true });
@@ -497,16 +501,18 @@ function enableBookmarks() {
 /**
  * Fetch a YAML bookmarks file and render grouped by category
  */
-async function loadBookmarksView(container, source) {
+async function loadBookmarksView(container, config) {
+    const { source, key = 'bookmarks', sort = true } = config;
+    const noun = config.noun || key;
     try {
         const response = await fetch(source, { cache: 'no-cache' });
         if (!response.ok) throw new Error(`Failed to load ${source}`);
         const yamlText = await response.text();
         const data = jsyaml.load(yamlText);
-        const bookmarks = data.bookmarks || [];
+        const bookmarks = data[key] || [];
 
         if (bookmarks.length === 0) {
-            container.innerHTML = '<p style="color: #888; font-style: italic;">No bookmarks yet.</p>';
+            container.innerHTML = `<p style="color: #888; font-style: italic;">No ${escapeHtml(noun)} yet.</p>`;
             return;
         }
 
@@ -518,15 +524,18 @@ async function loadBookmarksView(container, source) {
             groups[cat].push(b);
         });
 
-        // Sort categories alphabetically, each group by title
-        const sortedCats = Object.keys(groups).sort();
-        sortedCats.forEach(cat => groups[cat].sort((a, b) => (a.title || '').localeCompare(b.title || '')));
+        // Sort categories alphabetically, each group by title (unless sort: false)
+        const sortedCats = Object.keys(groups);
+        if (sort) {
+            sortedCats.sort();
+            sortedCats.forEach(cat => groups[cat].sort((a, b) => (a.title || '').localeCompare(b.title || '')));
+        }
 
         // Search bar
         const searchId = `search-${container.id}`;
         let html = `<div class="bookmarks-toolbar">`;
-        html += `<input type="text" id="${searchId}" class="readings-search" placeholder="Search bookmarks..." />`;
-        html += `<span class="readings-count"><span id="count-${container.id}">${bookmarks.length}</span> bookmarks</span>`;
+        html += `<input type="text" id="${searchId}" class="readings-search" placeholder="Search ${escapeHtml(noun)}..." />`;
+        html += `<span class="readings-count"><span id="count-${container.id}">${bookmarks.length}</span> ${escapeHtml(noun)}</span>`;
         html += `</div>`;
 
         // Render grouped list
@@ -538,7 +547,9 @@ async function loadBookmarksView(container, source) {
                 const tags = b.tags || [];
                 const searchData = [b.title, b.description, cat, ...tags].join(' ').toLowerCase();
                 html += `<li class="bookmark-item" data-search="${escapeHtml(searchData)}">`;
-                html += `<a href="${escapeHtml(b.url)}" target="_blank" rel="noopener noreferrer" class="bookmark-link">${escapeHtml(b.title)}</a>`;
+                html += b.url
+                    ? `<a href="${escapeHtml(b.url)}" target="_blank" rel="noopener noreferrer" class="bookmark-link">${escapeHtml(b.title)}</a>`
+                    : `<strong class="bookmark-link">${escapeHtml(b.title)}</strong>`;
                 if (b.description) {
                     html += ` <span class="bookmark-desc">— ${escapeHtml(b.description)}</span>`;
                 }
@@ -578,8 +589,8 @@ async function loadBookmarksView(container, source) {
         });
 
     } catch (error) {
-        console.error('Error loading bookmarks:', error);
-        container.innerHTML = `<p style="color: #cc0000;">Error loading bookmarks: ${escapeHtml(error.message)}</p>`;
+        console.error(`Error loading ${noun}:`, error);
+        container.innerHTML = `<p style="color: #cc0000;">Error loading ${escapeHtml(noun)}: ${escapeHtml(error.message)}</p>`;
     }
 }
 

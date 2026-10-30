@@ -1,0 +1,133 @@
+tools:
+  - title: rovr
+    category: File Management & Navigation
+    description: a terminal file manager
+
+  - title: clipse
+    category: File Management & Navigation
+    description: clipboard manager in the terminal
+
+  - title: dawn
+    category: Editing & Writing
+    description: a terminal markdown editor with LaTeX rendering
+
+  - title: tangent / apostrophe
+    category: Editing & Writing
+    description: markdown editor with LaTeX support and organizing thinking notes
+
+  - title: mcat
+    category: Editing & Writing
+    description: cat on steroids, with support for all filetypes
+
+  - title: espanso
+    category: Editing & Writing
+    description: a cross-platform text expander written in Rust
+
+  - title: edamame
+    category: Editing & Writing
+    description: a terminal markdown editor that stays rendered while you edit, with inline images, Mermaid diagrams, LaTeX math, and cell-by-cell table editing
+    url: "https://github.com/mijowi/edamame"
+
+  - title: presenterm / kyma
+    category: Presentations
+    description: markdown-based presentations with LaTeX/Typst support
+
+  - title: cobib / papis / bibiman / bibman
+    category: Bibliography
+    description: terminal bibliography managers (Python-based)
+
+  - title: crush
+    category: Development
+    description: terminal-based AI coding IDE by Charm (supports all models, like Cursor)
+
+  - title: Claude / antigravity / cursor
+    category: Development
+    description: AI coding agents
+
+  - title: codesnap
+    category: Development
+    description: take screenshots of code
+
+  - title: bin
+    category: Development
+    description: effortless binary install
+
+  - title: octotype / smassh
+    category: Productivity
+    description: typing trainers on the terminal
+
+  - title: clavirio
+    category: Productivity
+    description: a terminal typing tutor with an on-screen keyboard, built-in lessons, and session logging
+
+  - title: podliner
+    category: Productivity
+    description: listen to podcasts in the terminal
+
+  - title: jotl
+    category: Productivity
+    description: battery monitor
+
+  - title: spotatui
+    category: Productivity
+    description: a Spotify player for the terminal
+
+  - title: cliamp
+    category: Productivity
+    description: a retro terminal music player inspired by Winamp, with local and streaming playback, playlists, a spectrum visualizer, and an equalizer
+
+  - title: soundcli
+    category: Productivity
+    description: download and organize music from YouTube, SoundCloud, and Spotify playlists for offline playback in a keyboard-driven terminal UI
+
+  - title: mdl
+    category: Productivity
+    description: interactive playlist and album downloader that pulls tracks from Spotify, Apple Music, Tidal, Deezer, SoundCloud, Bandcamp and more as YouTube audio, with parallel downloads and a choice of format and bitrate
+
+  - title: nyxt / qute
+    category: Browsing
+    description: keyboard-driven browsers
+
+  - title: monitui
+    category: System & Networking
+    description: terminal system monitor
+
+  - title: tuios
+    category: System & Networking
+    description: terminal multiplexer OS
+
+  - title: ssm
+    category: System & Networking
+    description: simple SSH manager
+
+  - title: clipssh
+    category: System & Networking
+    description: transfer clipboard screenshots to remote SSH servers, so you can paste images into AI coding tools over SSH
+
+  - title: wifitui
+    category: System & Networking
+    description: WiFi manager
+
+  - title: mdns-scanner
+    category: System & Networking
+    description: mDNS network scanner
+
+  - title: mdns-browser
+    category: System & Networking
+    description: terminal mDNS/Bonjour service browser with split-pane view and real-time discovery
+
+  - title: shair
+    category: System & Networking
+    description: zero-config local network file transfer via mDNS discovery (like AirDrop for the terminal)
+
+  - title: caligula
+    category: System & Networking
+    description: user-friendly TUI for imaging disks (modern dd alternative with validation)
+
+  - title: bottles
+    category: System & Networking
+    description: run Windows software on Linux
+
+  - title: gendesk
+    category: System & Networking
+    description: generate .desktop files for Linux apps
