@@ -11,3 +11,8 @@ key: tools
 noun: tools
 sort: false
 ```
+
+### References
+
+- [Awesome TUI](https://awesometui.com) — a curated directory of terminal user interface apps
+- [Terminal Trove](https://terminaltrove.com) — a showcase of CLI and TUI tools for the terminal
