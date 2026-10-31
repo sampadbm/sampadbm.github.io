@@ -1,0 +1,95 @@
+# Each entry:
+#   title, url, category
+#   description: one-line summary (always visible)
+#   details:     optional longer description in markdown (collapsed under "more")
+#   tags
+# Title, both descriptions, category, and tags are all searchable.
+libraries:
+  - title: NumPy
+    url: https://numpy.org/
+    category: Numerical Computing
+    description: The foundational n-dimensional array library for Python.
+    details: |
+      Provides the `ndarray` with broadcasting and vectorized operations, plus linear
+      algebra, FFTs, and random number generation. Nearly every scientific Python
+      library builds on its array model.
+    tags: [python, arrays, linear-algebra]
+
+  - title: SciPy
+    url: https://scipy.org/
+    category: Numerical Computing
+    description: Core scientific algorithms for Python, built on NumPy.
+    details: |
+      Optimization, root finding, integration, interpolation, sparse matrices and
+      sparse solvers, signal processing, spatial data structures, and statistics.
+    tags: [python, optimization, sparse, statistics]
+
+  - title: Eigen
+    url: https://eigen.tuxfamily.org/
+    category: Numerical Computing
+    description: Header-only C++ template library for linear algebra.
+    details: |
+      Dense and sparse matrices, vectors, and the standard decompositions (LU, QR,
+      Cholesky, SVD, eigensolvers). Expression templates fuse operations at compile
+      time, so code runs fast without temporaries.
+    tags: [cpp, linear-algebra, header-only]
+
+  - title: JAX
+    url: https://github.com/jax-ml/jax
+    category: Machine Learning
+    description: Composable transformations of NumPy-style code — grad, jit, vmap.
+    details: |
+      Write NumPy-like functions and transform them: `grad` for automatic
+      differentiation, `jit` for XLA compilation, `vmap` for automatic vectorization,
+      and sharding for multi-device parallelism. Runs on CPU, GPU, and TPU.
+    tags: [python, autodiff, jit, gpu, tpu]
+
+  - title: Equinox
+    url: https://github.com/patrick-kidger/equinox
+    category: Machine Learning
+    description: Neural networks as PyTrees for JAX.
+    details: |
+      Models are plain callable PyTrees, so they work directly with `jax.jit`,
+      `jax.grad`, and the rest of JAX. Adds filtered transformations, neural network
+      layers, and utilities for model surgery. Part of an ecosystem that includes
+      Diffrax and Optimistix.
+    tags: [python, jax, neural-networks]
+
+  - title: PyTorch
+    url: https://pytorch.org/
+    category: Machine Learning
+    description: Tensor library with dynamic autograd for deep learning.
+    details: |
+      Eager execution with define-by-run autograd, GPU acceleration, and
+      `torch.compile` for graph capture. It has a large ecosystem for deep learning
+      research and production.
+    tags: [python, deep-learning, autodiff, gpu]
+
+  - title: Matplotlib
+    url: https://matplotlib.org/
+    category: Visualization
+    description: The standard Python plotting library.
+    details: |
+      Publication-quality static, animated, and interactive figures with
+      fine-grained control over every element. Supports LaTeX labels and many
+      output backends.
+    tags: [python, plotting]
+
+  - title: hIPPYlib
+    url: https://hippylib.github.io/
+    category: Scientific Computing
+    description: Scalable adjoint-based solvers for Bayesian PDE-constrained inverse problems.
+    details: |
+      Inverse Problem PYthon library for deterministic and Bayesian inverse problems.
+      It uses FEniCS to discretize the PDEs and PETSc for scalable linear algebra.
+
+      - Forward models and likelihoods written in compact FEniCS notation
+      - Globalized inexact Newton-CG optimization
+      - Randomized trace, eigenvalue, and SVD estimators
+      - Scalable sampling of Gaussian random fields
+      - Linearized Bayesian inversion with a low-rank posterior covariance
+      - Hessian-informed MCMC for exploring the posterior
+      - Forward UQ via Monte Carlo with Taylor-expansion control variates
+
+      Experimental dolfinx support is available through the separate hIPPYlibX project.
+    tags: [python, inverse-problems, bayesian-inference, pde-constrained-optimization, adjoints, fenics, petsc, mcmc, uncertainty-quantification, randomized-linear-algebra]

@@ -1543,6 +1543,32 @@ body.theme-sepia .shortcuts-hint kbd {
     margin-left: 0.25rem;
 }
 
+.bookmark-details {
+    margin-top: 0.15rem;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+.bookmark-details summary {
+    cursor: pointer;
+    color: var(--color-accent);
+    font-size: 0.82rem;
+    width: fit-content;
+    user-select: none;
+}
+
+.bookmark-details[open] summary {
+    margin-bottom: 0.3rem;
+}
+
+.bookmark-details-body {
+    padding-left: 0.9rem;
+    border-left: 2px solid var(--color-border);
+}
+
+.bookmark-details-body > :first-child { margin-top: 0; }
+.bookmark-details-body > :last-child { margin-bottom: 0; }
+
 /* =====================================================
    PRINT STYLES
    ===================================================== */

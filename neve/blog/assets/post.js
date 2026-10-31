@@ -467,6 +467,8 @@ async function loadReadingsTable(container, source) {
  *   key:    top-level list key in the YAML (default: bookmarks)
  *   noun:   label for the search box and count (default: key)
  *   sort:   false keeps categories and entries in file order (default: true)
+ * Entry fields: title, url, category, description (short), details (optional
+ * long description in markdown, shown collapsed), tags. All text is searchable.
  */
 function enableBookmarks() {
     marked.use({
@@ -545,7 +547,7 @@ async function loadBookmarksView(container, config) {
             html += `<ul class="bookmarks-list">`;
             groups[cat].forEach(b => {
                 const tags = b.tags || [];
-                const searchData = [b.title, b.description, cat, ...tags].join(' ').toLowerCase();
+                const searchData = [b.title, b.description, b.details, cat, ...tags].join(' ').toLowerCase();
                 html += `<li class="bookmark-item" data-search="${escapeHtml(searchData)}">`;
                 html += b.url
                     ? `<a href="${escapeHtml(b.url)}" target="_blank" rel="noopener noreferrer" class="bookmark-link">${escapeHtml(b.title)}</a>`
@@ -555,6 +557,11 @@ async function loadBookmarksView(container, config) {
                 }
                 if (tags.length) {
                     html += ` <span class="bookmark-tags">${tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('')}</span>`;
+                }
+                // Optional long description (markdown), collapsed by default
+                if (b.details) {
+                    html += `<details class="bookmark-details"><summary>more</summary>`;
+                    html += `<div class="bookmark-details-body">${marked.parse(String(b.details))}</div></details>`;
                 }
                 html += `</li>`;
             });

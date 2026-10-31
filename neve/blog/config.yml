@@ -35,13 +35,14 @@ tree:
           - posts/math/probability/inequalities.md
   - name: reference
     posts:
+      - posts/reference/theses.md
       - posts/reference/reading-wishlist.md
       - posts/reference/phenomena.md
       - posts/reference/metascience.md
+      - posts/reference/libraries.md
       - posts/reference/ideas.md
       - posts/reference/glossary.md
       - posts/reference/expositions.md
-      - posts/reference/theses.md
       - posts/reference/courses.md
       - posts/reference/bookmarks.md
   - name: terminal
@@ -49,6 +50,11 @@ tree:
       - posts/terminal/favourite-tui-tools.md
 
 posts:
+  - file: posts/reference/libraries.md
+    date: 2026-10-31
+    title: Libraries
+    tags: [reference, software, libraries]
+    summary: A curated collection of the best software libraries I use or admire.
   - file: posts/reference/theses.md
     date: 2026-10-30
     title: Theses

@@ -70,3 +70,20 @@ bookmarks:
     category: Tools
     description: Free, open-source flashcard app that schedules reviews with spaced repetition (SM-2 or the newer FSRS scheduler). Desktop app with AnkiWeb sync; add-ons like AnkiConnect expose a local API for scripting.
     tags: [spaced-repetition, flashcards, learning, memory, open-source]
+
+  - title: Cornell Virtual Workshop — Inverse Problems with PINNs
+    url: https://cvw.cac.cornell.edu/SciML/pinns/inverse-problems-with-pinns
+    category: Tutorial
+    description: Introductory lesson on using physics-informed neural networks to infer unknown physical parameters from measurements.
+    details: |
+      Contrasts forward problems (known physics and parameters, solve for the state)
+      with inverse problems (observed state, infer the parameters). Explains why the
+      classical guess–simulate–compare loop is costly and sensitive to noise, and how a
+      PINN fits the data and the PDE residual at the same time. The running example
+      estimates thermal diffusivity in the heat equation from sparse, noisy temperature
+      measurements, with a Jupyter lab.
+
+      Part of Cornell CAC's Scientific Machine Learning workshop, which also covers MLPs,
+      PINNs (damped oscillator, soft vs. hard constraints), DeepONet, differentiable
+      simulation, and graph neural networks.
+    tags: [pinns, inverse-problems, scientific-machine-learning, pde, parameter-estimation, tutorial]
