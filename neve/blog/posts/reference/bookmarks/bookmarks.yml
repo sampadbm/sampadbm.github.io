@@ -35,6 +35,12 @@ bookmarks:
     description: Curated collection of named laws, principles, and observations in software engineering and systems design — Gall's Law, Conway's Law, Hyrum's Law, Goodhart's Law, and ~25 others.
     tags: [software-engineering, systems-design, principles, reference]
 
+  - title: Mathematical Quotations Server
+    url: https://www.maths.tcd.ie/~zaitsev/quotes-data.html
+    category: Reference
+    description: Mark R. Woodard's (Furman University) collection of 400+ quotations on mathematics — its beauty, utility, philosophy, and humour — from the ancient Greeks through Euler, Gauss, Hilbert, Hardy, Einstein, and Feynman. Copy hosted on a Trinity College Dublin maths staff page.
+    tags: [mathematics, quotations, philosophy-of-mathematics, history-of-mathematics, reference]
+
   - title: Patrick Kidger
     url: https://kidger.site/
     category: Blog

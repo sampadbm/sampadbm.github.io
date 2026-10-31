@@ -82,7 +82,9 @@ B & \dots & g(a, B) & \dots & \mathbf{\color{red}{g(A, B)}} & \dots & \dots \\
 \end{array}
 $$
 
-
+**Reading the margins.** Pick *any* row $\lambda$ and *any* column $x$: they cross at the single entry $g(x, \lambda)$. The row infimum is less than or equal to this entry, and the column supremum is greater than or equal to it:
+$$\inf_{x'} g(x', \lambda) \;\leq\; g(x, \lambda) \;\leq\; \sup_{\lambda'} g(x, \lambda')$$
+So **every entry in the right-hand "Row Inf" column sits below every entry in the bottom "Col Sup" row**, whichever pair we choose. In particular the largest row infimum is at most the smallest column supremum, which is the max–min inequality. The chain proof below makes this concrete for the optimal row $b$ and column $A$.
 
 ---
 
@@ -99,7 +101,7 @@ The inequality is forced by the existence of the **Bridge Element** $\color{purp
 3.  **The Conclusion:** By transitivity through the bridge element:
     $$\underbrace{\color{blue}{\sup_{\lambda} \inf_{x} g(x, \lambda)}}_{\color{blue}{g(a, b)}} \leq \color{purple}{g(A, b)} \leq \underbrace{\color{red}{\inf_{x} \sup_{\lambda} g(x, \lambda)}}_{\color{red}{g(A, B)}}$$
 
-_See [(Benedek)](https://nadavb.com/max_min_inequality_intuitive_explanation/) for the same row/column argument worked out on a concrete $3 \times 3$ table of numbers._
+_See [(Benedek)](https://nadavb.com/max_min_inequality_intuitive_explanation/) for this row/column argument worked out on a concrete $3 \times 3$ table of numbers._
     
 
 ### Absorbing constraints into the objective

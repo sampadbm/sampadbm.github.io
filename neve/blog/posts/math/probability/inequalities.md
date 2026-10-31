@@ -56,23 +56,23 @@ $$
 \end{aligned}
 $$
 
-In general, $AM = \sum_i^n  p_i a_i \geq \prod_i^n a_i^{p_i} = GM$ and the proof is exaclty the same. 
+In general, $AM = \sum_i^n  p_i a_i \geq \prod_i^n a_i^{p_i} = GM$ and the proof is exactly the same. 
 
 ### AM-QM Inequality
 
 Quadratic mean (QM) is larger than the arithmetic mean (AM).
 
 $$
-	AM = \frac{a_1 + ...+a_n}{n} \leq \frac{a_1^2 + ... + a_n^2}{n} = QM
+	AM = \frac{a_1 + ...+a_n}{n} \leq \sqrt{\frac{a_1^2 + ... + a_n^2}{n}} = QM
 $$
 
-Set $f(x) = x^2$ which is convex and hence $\mathbb E f(X) \geq f(\mathbb E X)$ which gives $\sum_i^n p_i a_i^2 \geq \sum_i p_i a_i$. Now set $p_i = 1/n$ to complete the proof.
+Set $f(x) = x^2$ which is convex and hence $\mathbb E f(X) \geq f(\mathbb E X)$ which gives $\sum_i^n p_i a_i^2 \geq \big(\sum_i^n p_i a_i\big)^2$. Taking square roots, $\sqrt{\sum_i^n p_i a_i^2} \geq \big|\sum_i^n p_i a_i\big| \geq \sum_i^n p_i a_i$. Now set $p_i = 1/n$ to complete the proof.
 
 ### AM-HM Inequality
-Let $a_i \geq 0$, then 
+Let $a_i > 0$, then 
 
 $$
-AM = \frac{a_1 + ... + a_n}{n} \geq \frac{n}{\frac{1}{a_1}+...+\frac{1}{a_n}} = \frac{1}{HM}
+AM = \frac{a_1 + ... + a_n}{n} \geq \frac{n}{\frac{1}{a_1}+...+\frac{1}{a_n}} = HM
 $$ 
 
 Set $f(x) = 1/x$ which is convex in $\mathbb R_+$. 
@@ -94,14 +94,15 @@ Setting $p_i = 1/n$, we recover the inequality.
 $$
 \begin{aligned}
 0 \leq Var(X) = \mathbb E [(X - \mu)^2] = \underset{x \sim X}{\mathbb E}[(x - \mu)^2] \\
-= \underset{x \sim X}{\mathbb E} [x^2 - 2 \mu x + \mu^2] = \underset{x \sim X}{\mathbb E} x^2 - 2\mu \underset{x \sim X}{\mathbb E}x - \mu^2 \\
-= \underset{x \sim X}{\mathbb E}x^2 - 2\,u^2 + \mu^2 = \underset{x \sim X}{\mathbb E} x^2 - \mu^2 \\
+= \underset{x \sim X}{\mathbb E} [x^2 - 2 \mu x + \mu^2] = \underset{x \sim X}{\mathbb E} x^2 - 2\mu \underset{x \sim X}{\mathbb E}x + \mu^2 \\
+= \underset{x \sim X}{\mathbb E}x^2 - 2\mu^2 + \mu^2 = \underset{x \sim X}{\mathbb E} x^2 - \mu^2 \\
 = \underset{x \sim X}{\mathbb E} x^2 -  [\underset{x \sim X}{\mathbb E} x]^2 = \mathbb E X^2 - [\mathbb E X]^2 \\
 \implies  [\mathbb E X]^2 \leq \mathbb E X^2  
 \end{aligned}
 $$
 
-The above is Jensen's inequality applied with the function $f(x) = x^2$ which is convex and hence $\mathbb E$
+The above is Jensen's inequality applied with the function $f(x) = x^2$ which is convex and hence $\mathbb E X^2 \geq [\mathbb E X]^2$.
+
 ## Chebyshev Type Inequalities
 
 >Fact: $$h(x) \geq g(x) \; \forall \; x \; \implies \int_a^b h(x) \geq \int_a^b g(x)$$  
@@ -125,8 +126,8 @@ $$
 \begin{aligned}
 	g(z) := \mathbb 1 [Z \geq a] \leq  \frac{Z}{a} \mathbb 1[Z \geq a] \quad \quad \because \frac{Z}{a} \geq 1 \\
 =  \frac{Z}{a} \mathbb 1[Z \geq a] + 0 \cdot \mathbb 1[Z < a] \\ \leq \frac{Z}{a}\mathbb  1[Z \geq a] + \frac{Z}{a}\mathbb 1[Z < a]  \\
-= \frac{Z}{a} =: h(x) \\
-\implies \mathbb E g(z) \leq \mathbb E h(x) \\
+= \frac{Z}{a} =: h(Z) \\
+\implies \mathbb E g(Z) \leq \mathbb E h(Z) \\
 \implies \boxed{P(Z \geq a) \leq \frac{\mathbb E Z}{a}}
 \end{aligned}
 $$
@@ -145,7 +146,7 @@ $$
 Oneliner:
 
 $$
-\mathbb E Z = \mathbb E \big[ \underbrace{Z \mathbb 1[X < a]}_{\geq 0} + Z \mathbb 1 [Z \geq a] \big] \geq \mathbb E \big [ Z \mathbb 1 [Z \geq a] \big] \geq \mathbb E \big[ a \mathbb 1 [Z \geq a] \big] = a P(Z \geq a)
+\mathbb E Z = \mathbb E \big[ \underbrace{Z \mathbb 1[Z < a]}_{\geq 0} + Z \mathbb 1 [Z \geq a] \big] \geq \mathbb E \big [ Z \mathbb 1 [Z \geq a] \big] \geq \mathbb E \big[ a \mathbb 1 [Z \geq a] \big] = a P(Z \geq a)
 $$
 
 >**Inner product interpretation (when things are nice):**  
@@ -162,7 +163,7 @@ where $e(x) = \mathbb 1[x \geq a]$ and $h(x) = x/a$.
 
 ### Case - II : General form
 
-If $g : \mathbb R \rightarrow \mathbb R_+$ be an increasing function (i.e.  $g \geq 0$ and $g' \geq 0$),  then 
+If $g : \mathbb R \rightarrow \mathbb R_+$ be an increasing function (i.e.  $g \geq 0$ and $g' \geq 0$) with $g(a) > 0$,  then 
 
 $$
 	P(Z \geq a ) \leq \frac{\mathbb E g(Z)}{g(a)}
@@ -171,7 +172,7 @@ $$
 Proof:
 
 $$
-	P(Z \geq a) \underset{g' \geq 0}{=} P\big({\color{red}g(Z)} \geq {\color{green}g(a)} \big) = P({\color{red}Y} \geq {\color{green}b}) \leq \frac{\underset{Y}{\mathbb E} \;Y}{b} \underset{LOTUS}= \frac{\mathbb E \; g(Z)}{g(a)}
+	P(Z \geq a) \underset{g' \geq 0}{\leq} P\big({\color{red}g(Z)} \geq {\color{green}g(a)} \big) = P({\color{red}Y} \geq {\color{green}b}) \leq \frac{\underset{Y}{\mathbb E} \;Y}{b} \underset{LOTUS}= \frac{\mathbb E \; g(Z)}{g(a)}
 $$
 
 >**Inner product interpretation (when things are nice):**  
@@ -184,7 +185,7 @@ where $e(x) = \mathbb 1[x \geq a]$ and $h(x) = g(x)/g(a)$.
 Examples
 
 1)  If $\forall x, \; g>0$ and $a>0$ we have by Markov's inequality $$P(g(X) \geq a) \leq \frac{\mathbb E g(X)}{a}$$ 
-2) Setting $g(x) = \exp(\lambda x)$ where $\lambda > 0$ (since we need $g' >0$) for $a > 0$, we have $$ P(X \geq a) =  P(e^{\lambda X} \geq e^{\lambda a}) \leq \frac{\mathbb E e^{\lambda X}}{e^{\lambda a}} = e^{-\lambda a} \; M_X(t)$$
+2) Setting $g(x) = \exp(\lambda x)$ where $\lambda > 0$ (since we need $g' >0$) for $a > 0$, we have $$ P(X \geq a) =  P(e^{\lambda X} \geq e^{\lambda a}) \leq \frac{\mathbb E e^{\lambda X}}{e^{\lambda a}} = e^{-\lambda a} \; M_X(\lambda)$$
 3) Let $\mathbb E X = \mu$ and $Var(X) = \underset{X}{\mathbb E} |X - \mu|^2 = \sigma^2$.  
 Let $Y := |X - \mu|$, then setting $g(y)=y^2$ which is positive and increasing in $[0,+\infty)$, we get 
 $$\begin{align}
@@ -225,8 +226,8 @@ $$
 $$
 $$
 \begin{aligned}
-\frac{1}{5} \geq P(|Z - 40| \geq 10) = P(X \geq 50 | X \leq 30) \\ = \underbrace{P(X \geq 50)}_{K} + \underbrace{P(X \geq 30)}_{K} = 2K \qquad \because \text{symmetry}  \\
-\implies K = P(X \geq 50) \leq \frac{1}{10}
+\frac{1}{5} \geq P(|Z - 40| \geq 10) = P(Z \geq 50 \text{ or } Z \leq 30) \\ = \underbrace{P(Z \geq 50)}_{K} + \underbrace{P(Z \leq 30)}_{K} = 2K \qquad \because \text{symmetry}  \\
+\implies K = P(Z \geq 50) \leq \frac{1}{10}
 \end{aligned}
 $$
 ><p style='color:blue'>Both
@@ -236,11 +237,11 @@ general. This means that there exist distributions where Markov and Chebyshev in
 #### Concentration using Chebyshev's Inequality
 $$
 \begin{aligned}
-	P(|X - \mu| \leq t) = 1 - P(|X - \mu| > t) \underset{why?}{=} 1 - P(|X - \mu| \geq t) \geq 1 - \frac{Var(X)}{t^2} \\
+	P(|X - \mu| \leq t) = 1 - P(|X - \mu| > t) \underset{\{> t\} \subseteq \{\geq t\}}{\geq} 1 - P(|X - \mu| \geq t) \geq 1 - \frac{Var(X)}{t^2} \\
 \implies \boxed{P(|X - \mu| \leq t) \geq 1 - \frac{Var(X)}{t^2}}
 \end{aligned}
 $$
-This last statement is a concentration inequality on the random variable $X$ with an upper bound on probability of $X$ concentrating within $t$ distance of the mean $\mu$.
+This last statement is a concentration inequality on the random variable $X$ with a lower bound on the probability of $X$ concentrating within $t$ distance of the mean $\mu$.
 
 ### Chernoff Bound
 
@@ -252,7 +253,7 @@ $$
 	P(Z \geq a) \leq \frac{\mathbb E g_{\lambda}(Z)}{g_{\lambda}(a)}
 $$
 
-Since we do not know which of the functions in the class $G$ give us the tighest bound, we take the infimum over the set $\Lambda$ (we need $g_{\lambda}$ to be increasing)
+Since we do not know which of the functions in the class $G$ give us the tightest bound, we take the infimum over the set $\Lambda$ (we need $g_{\lambda}$ to be increasing)
 
 $$
 	P(Z \geq a) \leq  \underset{\lambda \in \Lambda}\inf \frac{\mathbb E \; g_{\lambda}(Z)}{g_{\lambda}(a)}
@@ -266,15 +267,15 @@ $$
 
 Note that for $\lambda = 0$, the bound we get is trivial, i.e $P(Z \geq a) \leq 1$ and hence we take infimum over $\lambda > 0$. 
 
-><p style=color:blue>The above inequality is called the Chernoff bound or the Laplace transform.</p>
+><p style=color:blue>The above inequality is called the Chernoff bound (also known as the Laplace transform method).</p>
 
-If we take $0 \leq Z := |X - \mu|$ where $\mu := \mathbb E Z$, then we get
+If we take $0 \leq Z := |X - \mu|$ where $\mu := \mathbb E X$, then we get
 
 $$
 	P(|X - \mu| \geq a ) \leq \underset{\lambda > 0}\inf \; e^{- \lambda a} \; \mathbb E \exp(\lambda |X - \mu|)
 $$
 
-However, it is hard to compute the expectation of the exponential of an absolute value function on $X - \mu$. if the distribution is symmetric, use $Z = X - \mu$ and bound the events $A := \{ Z \geq a\}$ and $B := \{ Z \leq -a \}$ separately to get good concentration bounds via the Bonferonni's Inequality <span style=color:blue>[Ch. 1, SI, Casella]</span> which states
+However, it is hard to compute the expectation of the exponential of an absolute value function on $X - \mu$. if the distribution is symmetric, use $Z = X - \mu$ and bound the events $A := \{ Z \geq a\}$ and $B := \{ Z \leq -a \}$ separately to get good concentration bounds via the Bonferroni's Inequality <span style=color:blue>[Ch. 1, SI, Casella]</span> which states
 $$
 	P(A \cap B) \geq P(A) + P(B) - 1
 $$
@@ -317,7 +318,7 @@ $$
 Find the Chernoff bound on a  gaussian random variable $Z \sim \mathcal N(0,\sigma^2)$.
 
 >Solution:
-Let $a \in \mathbb R$; then
+Let $a > 0$; then
 $$
 \begin{aligned}
 	P(Z \geq a) \leq \underset{\lambda > 0}{\inf} e^{- \lambda a}  M_Z (\lambda) = \underset{\lambda > 0}{\inf} e^{- \lambda a} \exp(\sigma^2 \lambda^2 / 2)  \\
@@ -328,7 +329,7 @@ $$
 $$
 The roots are $\lambda = 0, 2a/\sigma^2$ and the midpoint of the roots is the minima, i.e $\lambda^* = a/\sigma^2$. Alternatively, set the derivative of the exponent/argument in the expression to zero. The minimum value of the exponent is $\frac{1}{2}\lambda^* (\sigma^2 \lambda^* - 2a) = \frac{1}{2} \frac{a}{\sigma^2} (a - 2a) = -a^2/2\sigma^2$.  
 Hence the Chernoff bound for $Z \sim \mathcal N(0,\sigma^2)$ is given by $P(Z \geq a) \leq \exp(-a^2/2\sigma^2)$.   
-For the general Gaussian $Z \in \mathcal N(\mu,\sigma^2)$ which is just a shifted version of $\mathcal N(0,\sigma^2)$, we have the Chernoff bound given as 
+For the general Gaussian $Z \sim \mathcal N(\mu,\sigma^2)$ which is just a shifted version of $\mathcal N(0,\sigma^2)$, we have the Chernoff bound given as 
 $$\begin{aligned}
 P(Z \geq \mu + a) \leq \exp(-a^2/2\sigma^2) \\ 
 \text{ or } 
@@ -397,7 +398,7 @@ A centered random variable is sub-Gaussian if its exponential moments are bounde
 
 <p><b><u style="color:blue">Some more intuition (inaccurate but useful):</u></b></p>
 Let us ponder on this a bit more. Let there be a centered distribution  (assume on x-axis with CDF given by $F(x)$, PDF $f(x)$) such that for thresholds $\lambda \geq 5$, the standard normal (CDF $N(x)$, PDF $n(x)$) has more mass than our distribution, i.e 
-$$ \int_{\lambda}^{\infty} n(x) dx = 1 - N(\lambda) \geq 1 - F(\lambda) = \int_{\lambda}^{\infty} f(x) dx, \; \forall x \geq \lambda$$.  
+$$ \int_{\lambda}^{\infty} n(x) dx = 1 - N(\lambda) \geq 1 - F(\lambda) = \int_{\lambda}^{\infty} f(x) dx, \; \forall \lambda \geq 5$$.  
 Now, it is not true for $x <  \lambda$. So for example, $1 - N(4) \ngeq 1 - F(4)$. We can try to find a possibly non standard gaussian (CDF $G_{\sigma}(x)$) with variance $\sigma^2$ ($\sigma$ maynot be 1) such that no matter what threshold $\lambda$ is chosen, $1 - G_{\sigma}(x) \geq 1 - F(x)$, i.e it holds for all $x > 0$. We can associate/characterize the distribution $F(x)$ with the smallest $\sigma$ that makes the statement $\forall \; x > 0, 1 - G_{\sigma}(x) \geq 1 - F(x)$. We can call all these distributions $\color{green}\sigma\text{-pseudo-subgaussian random variables}$. 
 
 The hard cutoff at $\lambda$ corresponds to weighting by the indicator $\mathbf{1}\{x > \lambda\}$, which is $1$ for $x > \lambda$ and $0$ otherwise. Now imagine using a soft threshold/weighting instead of a hard threshold with the weight given by $\exp(\lambda x)$. The smallest $\sigma$ such that
@@ -414,7 +415,7 @@ $$
 \forall \; \lambda \in \mathbb R, \; M_{X - \mathbb E X}(\lambda) = \mathbb E \big[ \exp \big (\lambda (X - \mathbb E X) \big) \big] \leq \exp\big(\frac{\lambda^2 \sigma^2}{2} \big) 
 }$$
 
->$\sigma$ is known as the variance-proxy of the subgaussian random variable. This is so because on many occasions $\sigma$ behaves exactly how it does for a normal $\mathcal{N}(\mu, \sigma)$. The minimal $\sigma$ for which the above is true is called the optimal variance proxy. 
+>$\sigma$ is known as the variance-proxy of the subgaussian random variable. This is so because on many occasions $\sigma$ behaves exactly how it does for a normal $\mathcal{N}(\mu, \sigma^2)$. The minimal $\sigma$ for which the above is true is called the optimal variance proxy. 
 
 
 
@@ -537,7 +538,7 @@ $$
 	\end{aligned}
 $$
 
-Hence $S$ is $\sqrt{\color{crimson}{\sum_i \sigma_i^2}}$-subgausssian random variables add just like normal $\mathcal N (\mu_i, \sigma_i^2[)$ random variables.
+Hence $S$ is $\sqrt{\color{crimson}{\sum_i \sigma_i^2}} = {\color{crimson}\|\boldsymbol\sigma\|_2}$-subgaussian, where $\boldsymbol\sigma := (\sigma_1, \dots, \sigma_n)$ is the vector of the individual variance proxies: independent subgaussian random variables add just like independent normal $\mathcal N (\mu_i, \sigma_i^2)$ random variables.
 
 ### Scalings of Sub-Gaussian Random Variables
 
@@ -545,14 +546,14 @@ Let $X$ be $\sigma$-subgaussian and $Y := aX$ for some $a \in \mathbb R$. Then f
 
 $$
 \begin{aligned}
-	M_{Y - \mathbb EY (\lambda)} = \underset{Y}{\mathbb E} \;  [\exp \big( \lambda (Y - \mathbb E_Y Y) \big) ] \; \underbrace{=}_{LOTUS} \; \underset{X}{\mathbb E} \; [\exp( \lambda (Y - \mathbb E_Y Y))] \\
+	M_{Y - \mathbb EY} (\lambda) = \underset{Y}{\mathbb E} \;  [\exp \big( \lambda (Y - \mathbb E_Y Y) \big) ] \; \underbrace{=}_{LOTUS} \; \underset{X}{\mathbb E} \; [\exp( \lambda (Y - \mathbb E_Y Y))] \\
 	= \underset{X}{\mathbb E} \; [\exp \big(\lambda  (aX - a\mathbb E_X X) \big)] = \underset{X}{\mathbb E} [ \exp \big( {\color{green}\lambda a} \; (X - \mathbb E_X X) \big) ] \\
 	= M_{X - \mathbb E X}({\color{green}\lambda a}) \\
 	\underbrace{\leq}_{X \text{ is subgaussian}} \exp(\frac{1}{2} \lambda^2 {\color{crimson}a^2 \sigma^2}  )
 \end{aligned}
 $$
 
-Hence $Y = a X$ has variance proxy $\color{crimson} a \sigma$ which is also how a normal random variable ${\color{crimson}a} \; \mathcal N(\mu, {\color{crimson}\sigma^2})$ behaves.
+Hence $Y = a X$ has variance proxy $\color{crimson} |a| \sigma$ which is also how a normal random variable ${\color{crimson}a} \; \mathcal N(\mu, {\color{crimson}\sigma^2})$ behaves.
 
 
 ### Shifting by constant.
@@ -561,33 +562,33 @@ If $X$ is $\sigma$-subgaussian, so is $X + \mu$.
 
 ### Linear combinations of Sub-Gaussian Random Variables
 
-Let $X_i$ be $\sigma_i$-subgaussian. Then $Y := \sum_i^n a_i X_i$ is $\sqrt{{\color{crimson}a_i^2 \sigma_i^2}}$-subgaussian.
+Let $X_i$ be independent and $\sigma_i$-subgaussian. Then $Y := \sum_i^n a_i X_i$ is $\sqrt{{\color{crimson}\sum_i^n a_i^2 \sigma_i^2}}$-subgaussian.
 
 ### Tail concentration of subgaussian random variables via Chernoff's inequality
 
 Let X be $\sigma$-subgaussian. Let $Y = X - \mu$  where $\mathbb E_X X = \mu$.
 
-By Markov's inequality,
+By Markov's inequality, for any $\lambda > 0$ and $t > 0$,
 
 $$
 	P(Y \geq t) =  P(e^{\lambda Y} \geq e^{\lambda t}) \leq \frac{\mathbb E_Y e^{\lambda Y} }{e^{\lambda t}} \\
 	P(Y \geq t) \leq e^{-\lambda t} \mathbb E_Y e^{\lambda Y} \\
 $$
 
-By Chernoff's inequality (optimize over $\lambda$ to get the best bound)
+By Chernoff's inequality (optimize over $\lambda > 0$ to get the best bound)
 
 $$
 \begin{aligned}
-	P(Y \geq t) \leq \inf_\lambda \; e^{-\lambda t} \mathbb E_Y e^{\lambda Y} \underbrace{=}_{LOTUS} \inf_\lambda e^{-\lambda t} M_{X - \mathbb E X}(\lambda) \\
-	\leq \inf_\lambda e^{-\lambda t} e^{\frac{1}{2} \lambda^2 \sigma^2} \;\;\; \because \text{subgaussian}\\
-	\leq \inf_\lambda \exp\bigg( -\lambda t  + \frac{1}{2} \lambda^2 \sigma^2  \bigg) \\
-	\leq \exp \bigg( \inf_\lambda  \frac{1}{2} \lambda^2 \sigma^2 -\lambda t \bigg)  = \exp\bigg(  \inf_\lambda \frac{1}{2} \lambda (\lambda \sigma^2 - 2t)\bigg)
+	P(Y \geq t) \leq \inf_{\lambda > 0} \; e^{-\lambda t} \mathbb E_Y e^{\lambda Y} \underbrace{=}_{LOTUS} \inf_{\lambda > 0} e^{-\lambda t} M_{X - \mathbb E X}(\lambda) \\
+	\leq \inf_{\lambda > 0} e^{-\lambda t} e^{\frac{1}{2} \lambda^2 \sigma^2} \;\;\; \because \text{subgaussian}\\
+	\leq \inf_{\lambda > 0} \exp\bigg( -\lambda t  + \frac{1}{2} \lambda^2 \sigma^2  \bigg) \\
+	\leq \exp \bigg( \inf_{\lambda > 0}  \frac{1}{2} \lambda^2 \sigma^2 -\lambda t \bigg)  = \exp\bigg(  \inf_{\lambda > 0} \frac{1}{2} \lambda (\lambda \sigma^2 - 2t)\bigg)
 \end{aligned}
 $$
 
 The roots of the quadratic are $\lambda = 0,\frac{2t}{\sigma^2}$ and the minima lies at the midpoint of the two roots which is $\lambda_* = \frac{0 + 2t/\sigma^2}{2} = t/\sigma^2$.
 
-Pluggin $\lambda_*$ into the quadratic, we get $\frac{1}{2} \frac{t}{\sigma^2}(\frac{t}{\sigma^2} \sigma^2 - 2t) = - \frac{t^2}{2 \sigma^2}$
+Plugging $\lambda_*$ into the quadratic, we get $\frac{1}{2} \frac{t}{\sigma^2}(\frac{t}{\sigma^2} \sigma^2 - 2t) = - \frac{t^2}{2 \sigma^2}$
 
 Hence we have by Chernoff's inequality
 
@@ -608,13 +609,13 @@ From inequalities $\color{fuchsia}(1)$ and $\color{fuchsia}(2)$, for any $\sigma
 
 $$
 	\boxed{
-		P(|X - \mathbb EX| \geq t) \leq \exp \bigg( - \frac{t^2}{2 \sigma^2}\bigg)
+		P(|X - \mathbb EX| \geq t) \leq 2\exp \bigg( - \frac{t^2}{2 \sigma^2}\bigg)
 	}
 $$
 
-### Radamacher/Symmetric Bernoulli Random Variables
+### Rademacher/Symmetric Bernoulli Random Variables
 
-$X$ is a Radamacher random variable if
+$X$ is a Rademacher random variable if
 
 $$
 	P(X=-1) = P(X=1) = \frac{1}{2}
@@ -632,9 +633,26 @@ $$
 	= \frac{1}{2} \bigg( \sum_{k=0}^\infty \frac{\lambda^k}{k!} + \sum_{k=0}^\infty \frac{(-\lambda)^k}{k!} \bigg) 
 	= \frac{1}{2} \sum_{k=0}^\infty \frac{2 \lambda^{2k}}{(2k)!} \\ 
 	= \sum_{k=0}^\infty \frac{\lambda^{2k}}{1 \cdot 3 \cdot 5\cdot \cdot \cdot (2k-1)\;\;\cdot\;\; 2 \cdot 4 \cdot 6 \cdot \cdot \cdot 2k} \\
-	= \sum_{k=0}^{\infty} \frac{\lambda^{2k}}{1 \cdot 2 \cdot 3 \cdot \cdot \cdot (2k-1) \;\; \cdot \;\; 2^k\;\;\cdot 1 \cdot 2 \cdot 3 \;\; \cdot \cdot \cdot (2k)} \\
+	= \sum_{k=0}^{\infty} \frac{\lambda^{2k}}{1 \cdot 3 \cdot 5 \cdot \cdot \cdot (2k-1) \;\; \cdot \;\; 2^k\;\;\cdot 1 \cdot 2 \cdot 3 \;\; \cdot \cdot \cdot k} \\
 	\leq \sum_{k=0}^\infty \frac{\lambda^{2k}}{2^k k!} = \sum_{k=0}^\infty \frac{(\lambda^2/2)^k}{k!} = \exp \bigg(\frac{\lambda^2}{2} \bigg) = \exp \bigg( \frac{\lambda^2}{2 \cdot {\color{crimson}1^2}} \bigg)
 \end{aligned}
+$$
+
+### Shifted Bernoulli/Rademacher
+
+Let $Y$ be a random variable supported on the points $a,b \in \mathbb R$ where $a < b$ and $P(Y=a) = P(Y=b) = 1/2$.
+
+Then $Y = \underbrace{\frac{b-a}{2}}_{s}X + \underbrace{\frac{a+b}{2}}_{\mu}$ where $X$ is a Rademacher random variable. 
+
+$X$ is **1-SG**, $sX$ is $s$-SG and so is $sX + \mu$. 
+Hence $Y$ is $\color{crimson}\frac{b-a}{2}$-SG.
+
+A more direct proof:
+
+$$
+	\mathbb{E}_Y[\exp \big(\lambda ({\color{crimson}Y} - {\color{darkgreen}\mathbb{E}_YY}) \big)]	= \mathbb{E}_X[\exp \big( \lambda ({\color{crimson}sX + \mu} - {\color{darkgreen} \mu)} \big)]  \\\;\\ = \mathbb{E}_X [\exp(\lambda s X)]
+	\underbrace{\leq}_{\because X \text{ is 1-SG}} \exp \big(\frac{\lambda^2 s^2}{2}\big) = \exp{\big(\frac{\lambda^2 (b - a)^2}{8}\big)}
+
 $$
 
 ### Hoeffding's Lemma
@@ -657,9 +675,9 @@ Proof:
 By Hoeffding's lemma, $X_i$ are $\sigma_i = \frac{b_i - a_i}{2}$ subgaussian. By the algebra of subgaussian random variables, we know that the sum $S_n$ of independent subgaussian random variables have the variance proxy $\sigma$ such that ${\color{crimson}\sigma^2} = \sum_{i=1}^n \sigma_i^2 =  \frac{\sum_{i=1}^n (b_i - a_i)^2}{4}$. By the tail concentration via Chernoff's inequality (see above)
 
 $$
-    P(|S_n - \mathbb S_n| \geq t) \leq 2 \exp \bigg( - \frac{t^2}{2 {\color{crimson}\sigma^2}} \bigg) \\\;\\
+    P(|S_n - \mathbb E S_n| \geq t) \leq 2 \exp \bigg( - \frac{t^2}{2 {\color{crimson}\sigma^2}} \bigg) \\\;\\
     
-    \implies P(|S_n - \mathbb S_n| \geq t) \leq 2 \exp \bigg( - \frac{2 t^2}{\sum_{i=1}^n (b_i - a_i)^2}\bigg) \qquad {}_\blacksquare
+    \implies P(|S_n - \mathbb E S_n| \geq t) \leq 2 \exp \bigg( - \frac{2 t^2}{\sum_{i=1}^n (b_i - a_i)^2}\bigg) \qquad {}_\blacksquare
 $$
  
 
@@ -683,7 +701,7 @@ Other equivalent characterizations use Gaussian tail bounds, moment growth, orâ€
 
 ### Stein's Lemma/method
 
-Let $X \sim \mathcal N(0,1)$, and $g$ be a differentiable, nice function (we ommit the technicalities for being a nice function), then Stein's lemma states that
+Let $X \sim \mathcal N(0,1)$, and $g$ be a differentiable, nice function (we omit the technicalities for being a nice function), then Stein's lemma states that
 
 $$
 	\boxed{\mathbb E \big[ g'(X) \big] = \mathbb E \big[X g(X) \big]}
@@ -697,7 +715,7 @@ Also one of he niceties on $g$ forces it to be finite at $\pm \infty$.
 
 $$
 \begin{aligned}
-	\mathbb E \big[ g'(X) \big] = \int_{-\infty}^{+\infty} g'(x)f(x) \\ = f(x) g(x) |_{-\infty}^{+\infty} - \int_{-\infty}^{+\infty} f'(x) g(x) dx \\
+	\mathbb E \big[ g'(X) \big] = \int_{-\infty}^{+\infty} g'(x)f(x) dx \\ = f(x) g(x) |_{-\infty}^{+\infty} - \int_{-\infty}^{+\infty} f'(x) g(x) dx \\
 = \underbrace{f(+\infty)}_{0} g(+\infty) - \underbrace{f(-\infty)}_{0}g(-\infty) + \int_{-\infty}^{+\infty} xg(x) f(x) dx \\
 = \int_{-\infty}^{+\infty} x g(x) f(x) dx = \mathbb E \big[ Xg(X) \big]
 \end{aligned}
