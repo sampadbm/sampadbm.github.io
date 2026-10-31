@@ -14,12 +14,18 @@ tree:
       - name: insights
         posts:
           - posts/math/insights/linear-transformations-as-change-of-basis.md
+          - posts/math/insights/complex-analysis-via-stokes.md
+          - posts/math/insights/basel-problem-via-parseval.md
       - name: linear-algebra
         posts:
           - posts/math/linear-algebra/svd-filtering.md
           - posts/math/linear-algebra/spectral-mapping-theorem.md
           - posts/math/linear-algebra/some-notes-on-tensors.md
           - posts/math/linear-algebra/matrix-multiplications.md
+          - posts/math/linear-algebra/functions-of-matrices.md
+      - name: measures
+        posts:
+          - posts/math/measures/outer_measures.md
       - name: optimization
         posts:
           - posts/math/optimization/lagrangian-duality.md
@@ -60,6 +66,24 @@ posts:
     authors: [sampad]
     tags: [math, convex-analysis, optimization, tutorial]
     summary: The gauge of a convex body, its polar, and why the gauge of the polar is the dual norm
+  - file: posts/math/insights/basel-problem-via-parseval.md
+    date: 2026-10-28
+    title: The Basel Problem via Parseval's Identity
+    authors: [sampad]
+    tags: [math, insight, fourier-analysis, hilbert-spaces, series]
+    summary: Summing 1/n² by applying the Pythagorean theorem in infinite dimensions to f(x) = x.
+  - file: posts/math/insights/complex-analysis-via-stokes.md
+    date: 2026-10-28
+    title: Complex Analysis via Multivariate Calculus
+    authors: [sampad]
+    tags: [math, insight, complex-analysis, differential-forms, topology]
+    summary: Cauchy's theorem and the residue theorem as Stokes' theorem, with singularities detected by closed but non-exact forms.
+  - file: posts/math/linear-algebra/functions-of-matrices.md
+    date: 2026-10-26
+    title: Functions of Matrices
+    authors: [sampad]
+    tags: [math, linear-algebra, functional-calculus]
+    summary: How to make sense of f(A) for a square matrix A.
   - file: posts/math/linear-algebra/spectral-mapping-theorem.md
     date: 2026-10-24
     title: The Spectral Mapping Theorem
@@ -82,6 +106,12 @@ posts:
     authors: [sampad]
     tags: [math, insight, linear-algebra, abstract-algebra, pedagogy]
     summary: A look at how the First Isomorphism Theorem reframes our understanding of matrices.
+  - file: posts/math/measures/outer_measures.md
+    date: 2026-10-05
+    title: Outer Measures
+    authors: [sampad]
+    tags: [math, realanalysis]
+    summary: Notes from 525A/Follands
   - file: posts/math/optimization/gradient-descent.md
     date: 2026-07-29
     title: Gradient Descent
