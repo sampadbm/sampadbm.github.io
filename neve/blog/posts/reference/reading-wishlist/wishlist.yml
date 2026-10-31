@@ -396,6 +396,22 @@ readings:
     year: 1998
     tags: [wishlist, paper, linear-algebra, unitarily-invariant-norms, majorization, ky-fan]
 
+  - date: 2026-10-30
+    category: [Physics, Quantum Information]
+    author: Arthur J. Parzygnat, Tadashi Takayanagi, Yusuke Taki, Zixia Wei
+    title: "SVD Entanglement Entropy"
+    url: https://arxiv.org/abs/2307.06531
+    year: 2023
+    tags: [wishlist, paper, entanglement-entropy, svd, post-selection, transition-matrix, holography]
+
+  - date: 2026-10-30
+    category: [Physics, Quantum Information]
+    author: Pawel Caputa, Souradeep Purkayastha, Abhigyan Saha, Piotr Sułkowski
+    title: "Musings on SVD and Pseudo Entanglement Entropies"
+    url: https://arxiv.org/pdf/2408.06791v1
+    year: 2024
+    tags: [wishlist, paper, entanglement-entropy, svd, pseudo-entropy, chern-simons, knots]
+
   # Articles
   - date: 2026-03-29
     category: [Computer Science]
@@ -528,6 +544,14 @@ readings:
       Second novel of the Culture series. Jernau Morat Gurgeh, a master board-game player in a post-scarcity utopia grown bored of winning, is manoeuvred by Special Circumstances into travelling to the Empire of Azad — a brutal civilisation whose entire political order, up to the succession itself, is decided by a single vastly complex game. Reads as an argument about whether a game can encode a society's values, and what it means to play one from outside its moral frame.
 
   # Thesis
+  - date: 2026-10-30
+    category: [Mathematics, Quantum Information]
+    author: Tai-Danae Bradley
+    title: "At the Interface of Algebra and Statistics"
+    url: https://arxiv.org/pdf/2004.05631
+    year: 2020
+    tags: [wishlist, thesis, quantum-probability, density-operators, partial-trace, category-theory, formal-concept-analysis, natural-language]
+
   - date: 2026-03-30
     category: [Mathematics]
     author: Alan Edelman

@@ -35,6 +35,7 @@ tree:
       - posts/reference/ideas.md
       - posts/reference/glossary.md
       - posts/reference/expositions.md
+      - posts/reference/theses.md
       - posts/reference/courses.md
       - posts/reference/bookmarks.md
   - name: terminal
@@ -42,6 +43,11 @@ tree:
       - posts/terminal/favourite-tui-tools.md
 
 posts:
+  - file: posts/reference/theses.md
+    date: 2026-10-30
+    title: Theses
+    tags: [reference, theses, dissertations]
+    summary: PhD theses I found especially beautiful, for their ideas, their writing, or both.
   - file: posts/math/convex-analysis/dual-spaces-dual-norms-and-inner-products.md
     date: 2026-10-29
     title: "Convex Geometry and Duality, Part 2: Dual Spaces, Dual Norms, and Inner Products"

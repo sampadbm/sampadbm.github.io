@@ -84,6 +84,11 @@ tools:
     category: Productivity
     description: interactive playlist and album downloader that pulls tracks from Spotify, Apple Music, Tidal, Deezer, SoundCloud, Bandcamp and more as YouTube audio, with parallel downloads and a choice of format and bitrate
 
+  - title: oxycards
+    category: Productivity
+    description: terminal quiz cards written in markdown, with flashcard, multiple-choice, multiple-answer, fill-in-the-blank, and ordering card types
+    url: "https://github.com/BrookJeynes/oxycards"
+
   - title: nyxt / qute
     category: Browsing
     description: keyboard-driven browsers

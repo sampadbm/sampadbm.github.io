@@ -1,0 +1,10 @@
+readings:
+  - date: 2026-10-30
+    category: [Mathematics, Quantum Information, Category Theory]
+    author: Tai-Danae Bradley
+    title: "At the Interface of Algebra and Statistics"
+    url: https://arxiv.org/pdf/2004.05631
+    year: 2020
+    tags: [thesis, quantum-probability, density-operators, partial-trace, category-theory, formal-concept-analysis, natural-language]
+    notes: |
+      PhD thesis (CUNY Graduate Center, 2020). Treats a joint probability distribution as a rank-one density operator. Partial traces then give reduced densities whose diagonals are the classical marginals, while their off-diagonal entries and eigenvectors keep information about how the subsystems interact, which marginals throw away. Connects this to conditional probability, tests whether the eigenvectors recover underlying "concepts", models entailment in natural language with densities, and closes by linking the picture to formal concept analysis and to free completions and adjunctions in category theory.

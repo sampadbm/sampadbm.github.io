@@ -40,3 +40,15 @@ bookmarks:
     category: Blog
     description: Personal site of Patrick Kidger (DPhil, Oxford) — neural differential equations, JAX ecosystem (Equinox, Diffrax, Optimistix), and scientific machine learning.
     tags: [jax, neural-differential-equations, scientific-machine-learning, equinox, diffrax]
+
+  - title: William G. Faris — Books Online
+    url: https://archive.math.arizona.edu/faris/books.html
+    category: Reference
+    description: Free PDF drafts of six books by William G. Faris (University of Arizona) — Quantum Dynamics (first chapters), Martingale Ideas in Elementary Probability, Vector Fields and Differential Forms, Real Analysis Structures, The Science of Proof (mathematical reasoning and its limitations), and Shanghai Lectures on Multivariable Analysis.
+    tags: [mathematics, books, real-analysis, differential-forms, probability, martingales, quantum-mechanics, logic, reference]
+
+  - title: William G. Faris — Lecture Notes
+    url: https://archive.math.arizona.edu/faris/lecturenotes.html
+    category: Reference
+    description: Free PDF lecture notes by William G. Faris (University of Arizona) on numerical analysis, ODEs, elementary and advanced PDEs, integration, stochastic processes, elementary probability, methods of applied mathematics, linear algebra, theory of statistics, and an introduction to quantum theory.
+    tags: [mathematics, lecture-notes, applied-mathematics, pde, ode, probability, stochastic-processes, statistics, numerical-analysis, reference]
