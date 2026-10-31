@@ -1,4 +1,24 @@
 readings:
+  - date: 2026-09-25
+    category: [Psychology, Motivation]
+    author: Richard M. Ryan, Edward L. Deci
+    title: "Self-Determination Theory and the Facilitation of Intrinsic Motivation, Social Development, and Well-Being"
+    url: https://selfdeterminationtheory.org/SDT/documents/2000_RyanDeci_SDT.pdf
+    year: 2000
+    tags: [self-determination-theory, intrinsic-motivation, autonomy, competence, relatedness, well-being]
+    notes: |
+      Foundational statement of Self-Determination Theory. Argues humans have three innate psychological needs — competence, autonomy, and relatedness — whose satisfaction fosters intrinsic motivation, the internalization of extrinsic motivation, and well-being, while social contexts that thwart them (controlling rewards, pressure, deadlines) undermine motivation and wellness.
+
+  - date: 2026-09-25
+    category: [Academia, Learning, Science]
+    author: Thomas C. Erren, Tracy E. Slanger, J. Valérie Groß, Philip E. Bourne, Paul Cullen
+    title: "Ten Simple Rules for Lifelong Learning, According to Hamming"
+    url: https://doi.org/10.1371/journal.pcbi.1004020
+    year: 2015
+    tags: [lifelong-learning, hamming, ten-simple-rules, fundamentals, career]
+    notes: |
+      Distills Richard Hamming's views on learning into ten rules for scientists facing exponentially growing knowledge: learn fundamentals rather than facts, structure learning to cope with information overload, keep a vision to steer your development, study how others succeeded, find a learning style that suits you, and commit sustained effort toward excellence.
+
   - date: 2026-08-16
     category: [Academia, Artificial Intelligence, Sociology of Science]
     author: Thomas Manabu
