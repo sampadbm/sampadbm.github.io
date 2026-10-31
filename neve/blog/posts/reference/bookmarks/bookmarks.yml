@@ -52,3 +52,15 @@ bookmarks:
     category: Reference
     description: Free PDF lecture notes by William G. Faris (University of Arizona) on numerical analysis, ODEs, elementary and advanced PDEs, integration, stochastic processes, elementary probability, methods of applied mathematics, linear algebra, theory of statistics, and an introduction to quantum theory.
     tags: [mathematics, lecture-notes, applied-mathematics, pde, ode, probability, stochastic-processes, statistics, numerical-analysis, reference]
+
+  - title: Mapademic
+    url: https://mapademic.app
+    category: Tools
+    description: Free, browser-based interactive map of ~8.4 million researchers built from OpenAlex — authors are placed near their frequent coauthors and colored by research community, with search, top-coauthor links, and shortest coauthor paths between any two researchers (showing the paper behind each link). Made by Eric Gao (UC San Diego).
+    tags: [research, coauthorship, scientometrics, openalex, visualization, academic-networks]
+
+  - title: Anki
+    url: https://apps.ankiweb.net/
+    category: Tools
+    description: Free, open-source flashcard app that schedules reviews with spaced repetition (SM-2 or the newer FSRS scheduler). Desktop app with AnkiWeb sync; add-ons like AnkiConnect expose a local API for scripting.
+    tags: [spaced-repetition, flashcards, learning, memory, open-source]
