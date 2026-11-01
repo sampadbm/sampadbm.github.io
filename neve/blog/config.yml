@@ -30,6 +30,9 @@ tree:
         posts:
           - posts/math/optimization/lagrangian-duality.md
           - posts/math/optimization/gradient-descent.md
+      - name: philosophy
+        posts:
+          - posts/math/philosophy/mathematics-and-distinguishability.md
       - name: probability
         posts:
           - posts/math/probability/inequalities.md
@@ -50,6 +53,12 @@ tree:
       - posts/terminal/favourite-tui-tools.md
 
 posts:
+  - file: posts/math/philosophy/mathematics-and-distinguishability.md
+    date: 2026-11-01
+    title: Mathematics and the Problem of Distinguishability
+    authors: [sampad]
+    tags: [math, philosophy-of-math, structuralism, identity-of-indiscernibles, model-theory, category-theory, foundations]
+    summary: When does agreement on a family of properties imply identity? Separation, classification, reconstruction, and definability, from Leibniz's identity of indiscernibles to Yoneda and univalence.
   - file: posts/reference/libraries.md
     date: 2026-10-31
     title: Libraries
