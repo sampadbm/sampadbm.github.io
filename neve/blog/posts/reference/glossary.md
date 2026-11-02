@@ -510,3 +510,29 @@ For inverse problems this is the non-uniqueness story told in systems language: 
 ## Grötschel–Lovász–Schrijver Theorem (Equivalence of Separation and Optimization)
 
 For a convex set $K \subseteq \mathbb{R}^n$ you can be given access in two ways. An **optimization oracle** takes $c \in \mathbb{Q}^n$ and returns a point of $K$ maximizing $c^\top x$. A **separation oracle** takes $y \in \mathbb{Q}^n$ and either says $y \in K$ or returns a hyperplane $a^\top x \leq b$ that holds on $K$ but fails at $y$. **Theorem (Grötschel, Lovász, Schrijver, 1981):** for a well-described polyhedron (one whose facets have encoding length at most $\varphi$), optimizing over $P$ is solvable in polynomial time if and only if separating from $P$ is. More precisely, each problem reduces to the other in oracle-polynomial time, polynomial in $n$, $\varphi$ and the input size. A version for general convex bodies uses the *weak* (approximate, $\varepsilon$-tolerant) problems and needs bounds $0 < r \leq R$ with $B(a_0, r) \subseteq K \subseteq B(0, R)$. **Why it holds.** *Separation $\Rightarrow$ optimization* goes through the **ellipsoid method** (Shor, Yudin–Nemirovski, Khachiyan 1979). Bisect on the objective value. For each guess $t$, decide whether $P \cap \{c^\top x \geq t\}$ is empty: keep an ellipsoid containing that set, query the oracle at its center, and replace it with the smallest ellipsoid containing the half returned by the cut. Each step shrinks the volume by a factor $e^{-1/(2(n+1))}$, so after polynomially many steps the set is found nonempty or certified empty. Facet complexity bounds how small a nonempty polytope's volume can be and lets you round to an exact vertex. The method never sees the constraint list, only the cuts. *Optimization $\Rightarrow$ separation* uses **polarity**: with $0$ in the interior, $y \notin P$ exactly when some $c \in P^\circ$ has $c^\top y > 1$. Separating from $P$ is then optimizing over the polar $P^\circ$, and an optimization oracle for $P$ is a separation oracle for $P^\circ$. Running the first direction on $P^\circ$ closes the loop. **Why it matters.** The number of constraints stops mattering. Only the complexity of finding a violated one counts. Some results that follow: polynomial-time algorithms over the **perfect matching polytope** (exponentially many odd-set constraints, separated by Padberg–Rao minimum odd cuts), maximum-weight stable sets and colorings in **perfect graphs** (via the Lovász theta function, an SDP), the first polynomial-time **submodular function minimization**, and the converse direction, an NP-hardness transfer: if optimizing over a polytope is NP-hard, so is separating from it. The theorem is about complexity classification, not practice. The ellipsoid method is too slow to use, and combinatorial algorithms were later found for most of these problems. **Further reading:** M. Grötschel, L. Lovász, A. Schrijver, "The ellipsoid method and its consequences in combinatorial optimization," *Combinatorica* 1(2):169–197, 1981; and the book *Geometric Algorithms and Combinatorial Optimization* (Springer, 1988).
+
+## Price Elasticity of Demand
+
+The percentage change in quantity demanded per percentage change in price:
+
+$$
+\varepsilon = \frac{\partial Q}{\partial P}\cdot\frac{P}{Q} = \frac{d\ln Q}{d\ln P}.
+$$
+
+It is unit-free, so it compares across goods and currencies. For ordinary goods $\varepsilon < 0$ (higher price, lower demand), and it is often quoted as the magnitude $|\varepsilon|$. Demand is **elastic** if $|\varepsilon| > 1$, **inelastic** if $|\varepsilon| < 1$, **unit elastic** if $|\varepsilon| = 1$, and in the limits **perfectly inelastic** ($\varepsilon = 0$) or **perfectly elastic** ($|\varepsilon| \to \infty$). Exceptions with $\varepsilon > 0$ are Giffen goods (an inferior staple whose price rise makes consumers too poor to afford substitutes) and Veblen goods (luxuries valued because they are expensive).
+
+**Revenue.** With revenue $R = PQ$,
+
+$$
+\frac{dR}{dP} = Q + P\frac{dQ}{dP} = Q\,(1 + \varepsilon).
+$$
+
+So raising the price raises revenue when demand is inelastic ($-1 < \varepsilon < 0$), lowers it when demand is elastic ($\varepsilon < -1$), and leaves it unchanged at unit elasticity. A revenue-maximizing seller with no costs prices where $\varepsilon = -1$, and a monopolist always operates on the elastic part of the demand curve (Lerner index $(P - MC)/P = 1/|\varepsilon|$).
+
+**Measurement.** The **constant-elasticity** demand curve $Q = A P^{\varepsilon}$ is a straight line in log-log coordinates, $\ln Q = \ln A + \varepsilon \ln P$, so $\varepsilon$ is the slope of a log-log regression. Between two observed points, the **arc (midpoint) elasticity** $\dfrac{\Delta Q/\bar Q}{\Delta P/\bar P}$ (with $\bar Q, \bar P$ the averages) gives the same answer whichever direction the price moves. On a linear demand curve, elasticity varies along the curve.
+
+**What makes demand elastic.** Close substitutes, the good being a luxury rather than a necessity, a large share of the budget, a narrowly defined market (one brand vs. all food), and a longer time horizon (people adjust habits and equipment over time, so long-run elasticity usually exceeds short-run). Gasoline, for example, is quite inelastic in the short run but noticeably more elastic over years.
+
+**Related.** *Income elasticity* ($d\ln Q/d\ln I$) separates normal from inferior goods, and *cross-price elasticity* ($d\ln Q_i/d\ln P_j$) separates substitutes (positive) from complements (negative). Elasticity of demand for an energy service is what decides whether efficiency gains backfire; see the **Jevons Paradox** entry in Phenomena.
+
+*Source: [Wikipedia: Price elasticity of demand](https://en.wikipedia.org/wiki/Price_elasticity_of_demand)*

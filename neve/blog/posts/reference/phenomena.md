@@ -89,3 +89,25 @@ Ky Fan's Dominance Theorem establishes that if a matrix is smaller than another 
 See also the **Ky Fan Dominance Theorem** entry in the glossary for the precise statement and the Eckart–Young–Mirsky derivation.
 
 *Source: C.-K. Li and R. Mathias, [Generalizations of Ky Fan's Dominance Theorem](https://epubs.siam.org/doi/10.1137/S0895479896311232), SIAM J. Matrix Anal. Appl. 19(1):99–106, 1998.*
+
+## Jevons Paradox
+
+Making a resource more efficient to use can **increase** total consumption of that resource instead of reducing it. William Stanley Jevons observed in *The Coal Question* (1865) that James Watt's far more fuel-efficient steam engine did not reduce Britain's coal use. By making coal-powered work cheaper, it made steam power economical in many more industries, and total coal consumption rose. In his words: *"It is wholly a confusion of ideas to suppose that the economical use of fuel is equivalent to a diminished consumption. The very contrary is the truth."*
+
+**Mechanism.** Efficiency gains lower the effective price of the *service* the resource provides (work, light, heat, computation). Cheaper services get used more. Whether total resource use rises or falls depends on how strongly demand responds to that price drop, i.e. on the **price elasticity of demand** for the service (see the glossary entry). A minimal model: let $\eta$ be efficiency (service per unit of resource), $P_E$ the resource price, so the service costs $P_S = P_E/\eta$. With constant-elasticity demand $S = A\,P_S^{\varepsilon}$ ($\varepsilon < 0$), resource use is
+
+$$
+E = \frac{S}{\eta} = A\,P_E^{\varepsilon}\,\eta^{-\varepsilon-1},
+\qquad
+\frac{d\ln E}{d\ln \eta} = |\varepsilon| - 1.
+$$
+
+So efficiency gains **reduce** resource use when demand for the service is inelastic ($|\varepsilon| < 1$) and **increase** it when demand is elastic ($|\varepsilon| > 1$).
+
+**Rebound effect.** The modern framing measures the fraction of expected savings lost to increased use. A rebound of $0\%$ means savings are exactly as engineering estimates predict; between $0\%$ and $100\%$ means partial savings; above $100\%$ (**backfire**) is the Jevons paradox proper. Economists distinguish *direct* rebound (driving more in a fuel-efficient car), *indirect* rebound (spending the money saved on other energy-using goods), and *economy-wide* rebound (cheaper energy raises productivity and growth). The **Khazzoom–Brookes postulate** (1980s) is the claim that, at the economy-wide level, energy-efficiency improvements tend to increase total energy use. Empirical studies usually find partial rebound for household energy services; whether backfire occurs at the macro level is still debated.
+
+**Examples.** Artificial lighting: the cost of a lumen-hour fell by orders of magnitude from candles to gas to electric light to LEDs, and total light consumption grew by even more. Computing: each fall in the cost of a computation has been followed by vastly more total computation. AI inference: when cheaper, more efficient models appeared in early 2025, Microsoft CEO Satya Nadella argued that the Jevons paradox would make total demand for AI compute grow rather than shrink.
+
+**Implication.** Efficiency alone is not a reliable way to reduce total resource use. If the goal is lower consumption, efficiency improvements generally need to be paired with measures that keep the effective price from falling (taxes, caps, or quotas).
+
+*Source: [Wikipedia: Jevons paradox](https://en.wikipedia.org/wiki/Jevons_paradox)*
