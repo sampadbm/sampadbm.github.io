@@ -29,6 +29,37 @@ If no positive scaling of $S$ contains $x$, then $p_S(x)=+\infty$, using $\inf\e
 | $0 \in \operatorname{int}(S)$ | $p_S(x) < \infty$ for all $x$ | <img src="/neve/blog/posts/math/convex-analysis/images/gauge-finite.png" width="260" alt="Every direction is absorbed"> |
 | $0 \in \operatorname{int}(S)$ and $S$ is unbounded | Still $p_S(x) < \infty$ for all $x$, but $p_S(x)$ may be $0$ for $x \ne 0$.<br>Example: $S = \mathbb{R} \times [-1,1]$ gives $p_S(a,b) = \lvert b \rvert$. | <img src="/neve/blog/posts/math/convex-analysis/images/gauge-unbounded-strip.png" width="260" alt="An unbounded strip has zero gauge along its axis"> |
 
+### Gauges reverse inclusion
+
+A smaller set has a larger gauge:
+
+$$
+\boxed{A \subseteq B \implies p_B(x) \le p_A(x) \quad \text{for every } x.}
+$$
+
+**Proof.** If $x \in tA$ for some $t>0$, then $x \in tB$ because $tA \subseteq tB$.
+So every scale factor admissible for $A$ is also admissible for $B$:
+
+$$
+\{t>0 : x \in tA\} \subseteq \{t>0 : x \in tB\}.
+$$
+
+An infimum over a larger set can only be smaller, so $p_B(x) \le p_A(x)$. $\square$
+
+No convexity, symmetry, or boundedness is needed, and the inequality holds with the convention $\inf\emptyset=+\infty$:
+if $p_B(x)=+\infty$, then no scaling of $B$ contains $x$, so none of $A$ does either, and $p_A(x)=+\infty$.
+A smaller set has to be scaled up more to reach a given point.
+
+For example, the unit balls $B_1 \subseteq B_2 \subseteq B_\infty$ in $\mathbb{R}^n$ give
+
+$$
+\|x\|_\infty \le \|x\|_2 \le \|x\|_1.
+$$
+
+The bounds in the norm proof below are another instance: $rB_2 \subseteq K \subseteq RB_2$ gives
+$p_{RB_2} \le p_K \le p_{rB_2}$, and $p_{cB_2}(x) = \|x\|_2/c$ for $c>0$.
+Polarity also reverses inclusion (see below), so a smaller set has a larger gauge and a larger polar,
+consistent with the gauge of the polar being the dual norm.
 
 ### When the gauge is a norm
 
