@@ -87,3 +87,19 @@ bookmarks:
       PINNs (damped oscillator, soft vs. hard constraints), DeepONet, differentiable
       simulation, and graph neural networks.
     tags: [pinns, inverse-problems, scientific-machine-learning, pde, parameter-estimation, tutorial]
+
+  - title: Nicholas J. Higham — Functions of Matrices
+    url: https://doi.org/10.1137/1.9780898717778
+    category: Book
+    description: "Higham's monograph Functions of Matrices: Theory and Computation (SIAM, 2008), the standard reference on defining, analyzing, and computing f(A) — exponential, logarithm, square root, sign, and more."
+    details: |
+      Covers the equivalent definitions of a matrix function (Jordan canonical form,
+      polynomial interpolation, Cauchy integral), Fréchet derivatives and condition
+      numbers, and the Schur–Parlett method. Has chapters on specific functions: matrix
+      square root and pth roots, polar decomposition, matrix sign function, exponential
+      (scaling and squaring), logarithm, cosine and sine. Also treats f(A)b for large
+      sparse A, and includes MATLAB codes and extensive problem sets.
+
+      Companion: Higham & Hopkins, A Catalogue of Software for Matrix Functions
+      (MIMS preprint, 2020), https://eprints.maths.manchester.ac.uk/2754/
+    tags: [matrix-functions, numerical-linear-algebra, matrix-exponential, matrix-logarithm, books, siam]
