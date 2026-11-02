@@ -1,0 +1,26 @@
+# Each entry:
+#   title:       the word or phrase
+#   url:         optional reference link (dictionary, Wikipedia, etc.)
+#   category:    broad domain the word comes from or is used in
+#   description: one-line meaning (always visible)
+#   details:     optional longer note in markdown: etymology, usage, examples (collapsed under "more")
+#   tags
+# Title, both descriptions, category, and tags are all searchable.
+words:
+  - title: Liminal space
+    url: https://en.wikipedia.org/wiki/Liminality
+    category: Anthropology & Aesthetics
+    description: (n.) A threshold place or period between one state and the next, where the old has ended and the new has not yet begun.
+    details: |
+      **Etymology.** From Latin *limen*, "threshold." *Liminality* was introduced by the
+      ethnographer Arnold van Gennep in *Les rites de passage* (1909) for the middle phase of a
+      rite of passage (separation → **liminal** → incorporation), and developed by Victor Turner,
+      who described people in that phase as "betwixt and between."
+
+      **Usage.** Used literally for transitional physical spaces (hallways, stairwells, airports,
+      waiting rooms, empty parking lots at night) and figuratively for transitional periods in life
+      (between jobs, after graduation, during a move). Online it also names an aesthetic of eerie,
+      empty, familiar-yet-wrong places.
+
+      *Example:* "The months between defending and starting the new job felt like a liminal space."
+    tags: [noun, latin, threshold, transition, anthropology]
