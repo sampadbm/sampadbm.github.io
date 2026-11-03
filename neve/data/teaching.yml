@@ -33,8 +33,9 @@ teaching:
     institution: University of Southern California
     semesters: Fall 2025
     instructors: Prof. Victor Adamchik
-    short_description: Sole TA managing course operations and student support.
+    short_description: Sole TA managing course operations and student support, and a guest lecture.
     responsibilities:
+      - Delivered a guest lecture on modern advances in machine learning and research ideas (Fall 2025)
       - Sole TA responsible for all course operations and student support
       - Designed homework assignments and practice exams covering foundational ML concepts
       - Led weekly discussion sessions and held office hours
