@@ -2,6 +2,9 @@
 # Run scripts/generate-config.sh to regenerate
 
 entries:
+  - entries/2026-11-02-shared-curiosity.md
+  - entries/2026-11-01-propinquity-effect.md
+  - entries/2026-11-01-intrinsic-and-extrinsic-motivation.md
   - entries/2026-03-20-hangout-with-angel.md
   - entries/2026-03-19-timeleft-dinner.md
   - entries/2026-03-18-timeleft-dinner.md
