@@ -1,4 +1,8 @@
 publications:
+  - text: 'F. Dehghan Tarzjani, M. Wijewardena, A. Romanus, and *S. Mohanty*, "From Local Evidence to Safety Verdicts: Causal Tracing in Vision-Language Models," arXiv preprint arXiv:2610.07514, 2026.'
+    link: "https://arxiv.org/abs/2610.07514"
+  - text: 'M. Zong, *S. Mohanty*, and B. Krishnamachari, "Localizing Safety Alignment: MLP Layers and Mid-Network Blocks Encode Refusal Behavior in Large Language Models," arXiv preprint arXiv:2608.11583, 2026.'
+    link: "https://arxiv.org/abs/2608.11583"
   - text: 'S. Heilman and *S. Mohanty*, "On the Convergence of Adam, Revisited," arXiv preprint arXiv:2607.03519, 2026; under review at ICLR 2027.'
     link: "https://arxiv.org/abs/2607.03519"
   - text: "S. Karajagi*, S. Mohanty*, and B. Krishnamachari, \"LEAP – Live Experiments for Active Pedagogy,\" ACM SIGCSE TS 2026. *Equal contribution."
