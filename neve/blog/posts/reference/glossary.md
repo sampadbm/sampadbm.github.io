@@ -331,7 +331,41 @@ This is the continuous Eckart–Young theorem. Erhard Schmidt proved it in 1907 
 - *Symmetric positive kernels:* if $X = Y$ and $f(x,y) = f(y,x)$ is positive semi-definite, then $u_k = v_k$ and the expansion is an eigen-expansion. Mercer's theorem adds absolute and uniform convergence when $f$ is continuous on a compact space. This underlies kernel methods.
 - *Stochastic processes:* the Karhunen–Loève expansion of a process $X(t, \omega)$ is its Schmidt decomposition in $L^2(T \times \Omega)$, splitting it into deterministic modes $u_k(t)$ and uncorrelated random coefficients. Its discrete version is PCA, also called proper orthogonal decomposition.
 
-**Uses.** Low-rank approximation of kernels and Green's functions (hierarchical matrices, fast multipole-type compression), separation of variables in high-dimensional PDE solvers, and tensor networks. Repeated Schmidt decompositions along a chain build a matrix product state.
+**Uses.** Low-rank approximation of kernels and Green's functions (hierarchical matrices, fast multipole-type compression), separation of variables in high-dimensional PDE solvers, and tensor networks. Repeated Schmidt decompositions along a chain build a matrix product state (see **Matrix Product State (MPS)**).
+
+## Matrix Product State (MPS)
+
+A way to write a state of $N$ sites, each with $d$ levels, as a product of matrices. Instead of storing all $d^N$ amplitudes, you store one matrix for each site and each local value:
+
+$$|\psi\rangle = \sum_{s_1,\dots,s_N} A^{[1]}_{s_1} A^{[2]}_{s_2} \cdots A^{[N]}_{s_N}\, |s_1 s_2 \cdots s_N\rangle,$$
+
+where $A^{[i]}_{s_i}$ is a $D_{i-1} \times D_i$ matrix with $D_0 = D_N = 1$, so the product is a scalar. For periodic boundary conditions, use $\mathrm{Tr}\big(A^{[1]}_{s_1} \cdots A^{[N]}_{s_N}\big)$ instead. The inner dimensions $D_i$ are the **bond dimensions**. With $D = \max_i D_i$, the cost is $O(N d D^2)$ parameters instead of $d^N$.
+
+**Every state has one.** Apply SVDs one site at a time, each a **Schmidt decomposition** across the cut between sites $i$ and $i+1$. This gives an exact MPS with $D_i$ equal to the Schmidt rank of that cut, which is at most $d^{\min(i,\,N-i)}$. Truncating each cut to its largest singular values gives the best approximation at a given bond dimension, cut by cut.
+
+**Entanglement bounds.** The entanglement entropy across any cut is at most $\log D$. So an MPS with small $D$ can only describe weakly entangled states. Ground states of gapped one-dimensional Hamiltonians obey an *area law* (Hastings, 2007): their entanglement across a cut stays bounded as $N$ grows. That is why such states have accurate MPS approximations, and why the **density matrix renormalization group** (DMRG, White 1992), which optimizes over MPS, works so well in 1D.
+
+**Examples.** GHZ, W, and the AKLT ground state all have $D = 2$.
+
+**Same object, other names.** In numerical linear algebra, the same format applied to a general $d_1 \times \cdots \times d_N$ tensor is the **tensor train** decomposition (Oseledets, 2011), with "TT-ranks" in place of bond dimensions. MPS is the simplest *tensor network* (see **Tensor Networks**). Its 2D generalization is PEPS (projected entangled pair states).
+
+*Source: [Wikipedia: Matrix product state](https://en.wikipedia.org/wiki/Matrix_product_state)*
+
+## Tensor Networks
+
+A way to write a large tensor, such as the $d^N$ amplitudes of an $N$-site quantum state, as many small tensors joined by summed-over (contracted) indices. In the diagram notation, each tensor is a node and each index is a leg. A leg shared by two nodes is contracted, and the open legs are the indices of the full tensor. The dimension of an internal leg is its **bond dimension**. It limits how much correlation or entanglement can pass through that link: across any cut, the entanglement is at most the sum of $\log D$ over the bonds the cut severs.
+
+**Main families.**
+
+- *MPS / tensor train:* a 1D chain, the simplest case (see **Matrix Product State (MPS)**). Its operator version is the **matrix product operator** (MPO), used for Hamiltonians, density matrices, and quantum channels.
+- *PEPS (projected entangled pair states):* a 2D lattice of tensors, one per site, suited to area-law states in two dimensions. Contracting a PEPS exactly is #P-hard in general, so in practice it is done approximately, for example by boundary-MPS methods.
+- *Tree tensor networks and MERA:* a hierarchical or multiscale layout. MERA (the multiscale entanglement renormalization ansatz) can represent the logarithmic entanglement of critical 1D systems.
+
+**Key ideas.** *Gauge freedom:* inserting $XX^{-1}$ on any bond leaves the network unchanged. Fixing that freedom gives *canonical forms*, which make local optimization and truncation numerically stable. The cost of a contraction depends heavily on the order in which the legs are contracted, and finding the best order is NP-hard in general.
+
+**Uses.** Ground states (DMRG), time evolution (TEBD, TDVP), thermal and open-system states (MPOs for mixed states and Lindblad dynamics), and classical simulation of quantum circuits. Outside physics, the same formats (tensor train, Tucker, hierarchical Tucker) are used to compress high-dimensional functions and neural-network weights.
+
+**Reading.** Grégoire Misguich (2026), [Introduction to matrix-product states and tensor networks](https://arxiv.org/abs/2606.24803), lecture notes from the 9th Les Houches Summer School on Computational Physics (64 pp.). Covers MPS notation, bond dimension, gauge and canonical forms, entanglement limits, MPOs, DMRG, time evolution, a short introduction to PEPS, and mixed states, quantum channels, and Lindblad dynamics, with Julia examples in ITensor.
 
 ## Spectral Mapping Theorem
 
