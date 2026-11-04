@@ -103,3 +103,16 @@ bookmarks:
       Companion: Higham & Hopkins, A Catalogue of Software for Matrix Functions
       (MIMS preprint, 2020), https://eprints.maths.manchester.ac.uk/2754/
     tags: [matrix-functions, numerical-linear-algebra, matrix-exponential, matrix-logarithm, books, siam]
+
+  - title: The Tensor Network
+    url: https://tensornetwork.org/
+    category: Reference
+    description: Community-edited reference site on tensor network theory, algorithms, and software, maintained on GitHub with contributions via pull requests.
+    details: |
+      Covers diagram notation and symmetries; MPS / tensor train, MPO, and PEPS, with
+      tree tensor networks and MERA marked as coming soon; algorithms such as DMRG-style MPS
+      and MPO methods, time evolution, tensor cross interpolation, and the tensor
+      renormalization group; and tensor software with benchmarks. Also has application
+      pages on machine learning, probability and statistics, continuous functions, quantum
+      physics, and chemical kinetics, plus a list of review articles.
+    tags: [tensor-networks, matrix-product-states, tensor-train, quantum-many-body, numerical-linear-algebra, reference]

@@ -367,6 +367,8 @@ A way to write a large tensor, such as the $d^N$ amplitudes of an $N$-site quant
 
 **Reading.** Grégoire Misguich (2026), [Introduction to matrix-product states and tensor networks](https://arxiv.org/abs/2606.24803), lecture notes from the 9th Les Houches Summer School on Computational Physics (64 pp.). Covers MPS notation, bond dimension, gauge and canonical forms, entanglement limits, MPOs, DMRG, time evolution, a short introduction to PEPS, and mixed states, quantum channels, and Lindblad dynamics, with Julia examples in ITensor.
 
+For a broader reference, see [tensornetwork.org](https://tensornetwork.org/), a community-edited site covering notation, network types, algorithms, software, and applications.
+
 ## Spectral Mapping Theorem
 
 For $A \in M_n(\mathbb{C})$ and $f$ holomorphic on an open set containing the spectrum $\sigma(A)$,
