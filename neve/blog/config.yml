@@ -18,6 +18,7 @@ tree:
           - posts/math/insights/basel-problem-via-parseval.md
       - name: linear-algebra
         posts:
+          - posts/math/linear-algebra/tensor-multiplications.md
           - posts/math/linear-algebra/svd-filtering.md
           - posts/math/linear-algebra/spectral-mapping-theorem.md
           - posts/math/linear-algebra/some-notes-on-tensors.md
@@ -54,6 +55,12 @@ tree:
       - posts/terminal/favourite-tui-tools.md
 
 posts:
+  - file: posts/math/linear-algebra/tensor-multiplications.md
+    date: 2026-11-03
+    title: Understanding Tensor Multiplications
+    authors: [sampad]
+    tags: [math, linear-algebra, tensors, tutorial]
+    summary: Some views on tensor multiplications, as a sequel to the matrix multiplication post.
   - file: posts/reference/lexicon.md
     date: 2026-11-02
     title: Lexicon
