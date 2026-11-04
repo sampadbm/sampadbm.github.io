@@ -93,3 +93,13 @@ libraries:
 
       Experimental dolfinx support is available through the separate hIPPYlibX project.
     tags: [python, inverse-problems, bayesian-inference, pde-constrained-optimization, adjoints, fenics, petsc, mcmc, uncertainty-quantification, randomized-linear-algebra]
+
+  - title: Tensor Network Software (tensornetwork.org)
+    url: https://tensornetwork.org/software/
+    category: Scientific Computing
+    description: tensornetwork.org's community-maintained index of tensor network libraries.
+    details: |
+      Lists software for building and contracting tensor networks (MPS / tensor train, MPO,
+      PEPS, and others) and running algorithms such as DMRG and time evolution. Libraries
+      span several languages, and the site also has software benchmarks.
+    tags: [tensor-networks, matrix-product-states, tensor-train, quantum-many-body, software-index]
