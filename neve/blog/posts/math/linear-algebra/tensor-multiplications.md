@@ -196,8 +196,53 @@ $$
 
 For $K = 2$ these are $\mathrm{vec}(uv^T) = v \otimes u$ and $\mathrm{vec}(XAY) = (Y^T \otimes X)\,\mathrm{vec}(A)$.
 
+### Kronecker vectors
+
+A Kronecker vector is a Kronecker product of vectors. By the vectorization identity,
+
+$$
+    u_K \otimes \cdots \otimes u_1 = \mathrm{vec}(u_1 \circ \cdots \circ u_K)
+$$
+
+so reshaping a Kronecker vector gives a rank-one tensor. It has $N_1 \cdots N_K$ entries but is fixed by $N_1 + \cdots + N_K$ numbers.
+
+#### Operations factor by mode
+
+$$
+    \langle u_1 \circ \cdots \circ u_K ,\, v_1 \circ \cdots \circ v_K \rangle_F = \prod_{k=1}^{K} \langle u_k , v_k \rangle
+$$
+
+This is the contraction result with $T = v_1 \circ \cdots \circ v_K$.
+
+$$
+    (u_1 \circ \cdots \circ u_K) \times_1 U_1 \cdots \times_K U_K = (U_1 u_1) \circ \cdots \circ (U_K u_K)
+$$
+
+This is the Tucker form with a $1 \times \cdots \times 1$ core. Vectorized,
+
+$$
+    (U_K \otimes \cdots \otimes U_1)(u_K \otimes \cdots \otimes u_1) = U_K u_K \otimes \cdots \otimes U_1 u_1
+$$
+
+which costs $K$ small matrix-vector products instead of one large one.
+
+In the order-4 PSD test, $x \otimes x = \mathrm{vec}(x \circ x)$ is a Kronecker vector. That is why it covers only a small part of $\mathbb{R}^{N^2}$.
+
+#### Sums
+
+A sum of Kronecker vectors is a vectorized CP decomposition:
+
+$$
+    z = \sum_{r=1}^{R} \lambda_r\, u_K^r \otimes \cdots \otimes u_1^r
+    \quad \Longleftrightarrow \quad
+    \mathrm{vec}^{-1}(z) = \sum_{r=1}^{R} \lambda_r\, u_1^r \circ \cdots \circ u_K^r
+$$
+
+The fewest terms is the CP rank. For $K = 2$ the SVD finds it, and truncating is optimal (Eckart–Young). For $K \geq 3$ the CP rank is NP-hard to compute (Hillar and Lim, 2013), and a best rank-$R$ approximation need not exist (de Silva and Lim, 2008).
+
 ### References
 
 - Tamara G. Kolda and Brett W. Bader (2009), [Tensor Decompositions and Applications](https://doi.org/10.1137/07070111X), *SIAM Review* **51**(3), 455–500.
 - Liqun Qi (2005), [Eigenvalues of a Real Supersymmetric Tensor](https://doi.org/10.1016/j.jsc.2005.05.007), *Journal of Symbolic Computation* **40**(6), 1302–1324.
 - Christopher J. Hillar and Lek-Heng Lim (2013), [Most Tensor Problems Are NP-Hard](https://doi.org/10.1145/2512329), *Journal of the ACM* **60**(6), 45.
+- Vin de Silva and Lek-Heng Lim (2008), [Tensor Rank and the Ill-Posedness of the Best Low-Rank Approximation Problem](https://doi.org/10.1137/06066518X), *SIAM Journal on Matrix Analysis and Applications* **30**(3), 1084–1127.

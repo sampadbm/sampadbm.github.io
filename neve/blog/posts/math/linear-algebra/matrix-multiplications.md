@@ -258,3 +258,52 @@ $$
 These $n$ rank-one matrices $R_{ii}=u^i(v^i)^T$ are orthonormal in the Frobenius inner product and
 depend on the chosen singular vectors. Exactly $\operatorname{rank}(A)$ coefficients
 are nonzero. Over $\mathbb{C}$, use $V^*$ and $u^i(v^i)^*$ instead.
+
+### Kronecker vectors
+
+For $x \in \mathbb{R}^{m}$ and $y \in \mathbb{R}^{n}$,
+
+$$
+    x \otimes y = \begin{bmatrix} x_1 y \\ x_2 y \\ \vdots \\ x_m y \end{bmatrix},
+    \qquad [x \otimes y]_{(i-1)n + j} = x_i \, y_j
+$$
+
+A Kronecker vector is $x = x^{[1]} \otimes \cdots \otimes x^{[d]}$ with $x^{[k]} \in \mathbb{R}^{n_k}$. It has $n_1 \cdots n_d$ entries but is fixed by $n_1 + \cdots + n_d$ numbers.
+
+#### As a rank-one matrix
+
+From $\mathrm{vec}(u v^T) = v \otimes u$,
+
+$$
+    x \otimes y = \mathrm{vec}(y x^T)
+$$
+
+Reshaping row by row instead gives $x y^T$.
+
+#### Operations factor
+
+$$
+    \langle x \otimes y , u \otimes v \rangle = \langle x , u \rangle \langle y , v \rangle
+$$
+
+This is $\langle y x^T, v u^T \rangle_F$.
+
+$$
+    (P \otimes Q)(x \otimes y) = P x \otimes Q y
+$$
+
+So $A \mapsto XAY$ keeps rank-one matrices rank one, at the cost of $Px$ and $Qy$.
+
+$$
+    (x \otimes y) \odot (u \otimes v) = (x \odot u) \otimes (y \odot v)
+$$
+
+#### Sums
+
+Kronecker vectors are not a subspace. For $z \in \mathbb{R}^{mn}$, take $Z$ with $\mathrm{vec}(Z) = z$ and SVD $Z = \sum_i \sigma_i u^i (v^i)^T$. Then
+
+$$
+    z = \sum_{i=1}^{\operatorname{rank}(Z)} \sigma_i \, v^i \otimes u^i
+$$
+
+The fewest terms is $\operatorname{rank}(Z)$, and truncating gives the best approximation by $k$ Kronecker vectors (Eckart–Young).

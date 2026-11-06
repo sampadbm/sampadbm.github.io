@@ -369,6 +369,56 @@ A way to write a large tensor, such as the $d^N$ amplitudes of an $N$-site quant
 
 For a broader reference, see [tensornetwork.org](https://tensornetwork.org/), a community-edited site covering notation, network types, algorithms, software, and applications.
 
+## Kronecker Vector
+
+A vector that is a Kronecker product of factors, $x = x^{[1]} \otimes \cdots \otimes x^{[d]}$ with $x^{[k]} \in \mathbb{R}^{n_k}$. Each entry is a product of one entry from each factor, $x_{i_1 \cdots i_d} = x^{[1]}_{i_1} \cdots x^{[d]}_{i_d}$. So the vector has $n_1 \cdots n_d$ entries but is fixed by only $n_1 + \cdots + n_d$ numbers. Reshaped, it is a rank-one matrix ($x \otimes y = \mathrm{vec}(yx^T)$) or a rank-one tensor.
+
+Algebra splits into one operation per factor:
+
+- $\langle x \otimes y, u \otimes v \rangle = \langle x, u \rangle \langle y, v \rangle$
+- $(P \otimes Q)(x \otimes y) = Px \otimes Qy$
+- $(x \otimes y) \odot (u \otimes v) = (x \odot u) \otimes (y \odot v)$
+
+Kronecker vectors do not form a subspace. Every vector is a sum of them, and the SVD of the reshaped matrix gives the fewest terms. See [Understanding Matrix Multiplications](post.html?file=posts/math/linear-algebra/matrix-multiplications.md), section "Kronecker vectors".
+
+**Independence is Kronecker structure.** Let $X$ and $Y$ be discrete with $m$ and $n$ values, and let $p_{XY}$ be their joint pmf stacked as a vector (with $Y$'s index running fastest). Then $X$ and $Y$ are independent if and only if
+
+$$
+	p_{XY} = p_X \otimes p_Y
+$$
+
+that is, the joint probability table $p_X p_Y^T$ has rank one. For $d$ independent variables, the joint pmf is the Kronecker vector of the $d$ marginals. The continuous version is $f_{X,Y}(x, y) = f_X(x) f_Y(y)$. A mixture of $R$ independent models (latent class models, naive Bayes) is a sum of $R$ Kronecker vectors with nonnegative weights, which is a nonnegative CP decomposition of the joint table.
+
+The inner product rule is then the statement that expectations factorize. For functions $g$ and $h$, write $g(x) \otimes h(y)$ for the vector with entries $g(x_i) h(y_j)$. Then
+
+$$
+	\mathbb{E}[g(X)\, h(Y)] = \langle p_X \otimes p_Y,\; g(x) \otimes h(y) \rangle = \langle p_X, g(x) \rangle\, \langle p_Y, h(y) \rangle = \mathbb{E}[g(X)]\, \mathbb{E}[h(Y)]
+$$
+
+**Distribution of a product.** For independent $X, Y$ and $Z = XY$, collect the joint probability over the level sets $xy = z$. In the discrete case, $\mathbb{P}(Z = z) = \sum_{(i, j) \,:\, x_i y_j = z} [p_X]_i\, [p_Y]_j$, a sum of entries of the Kronecker vector along a "hyperbola". In the continuous case,
+
+$$
+	f_Z(z) = \int_{-\infty}^{\infty} f_X(x)\, f_Y\!\left(\frac{z}{x}\right) \frac{dx}{|x|}
+$$
+
+This is a **multiplicative (Mellin) convolution**, $f_Z = f_X \star f_Y$. Compare a sum $X + Y$: there the joint mass is summed along the lines $x + y = s$, giving the ordinary convolution $f_X * f_Y$.
+
+**Mellin transform.** For a density on $(0, \infty)$,
+
+$$
+	\mathcal{M}[f](s) = \int_0^\infty x^{s-1} f(x)\, dx = \mathbb{E}\big[X^{s-1}\big]
+$$
+
+The Mellin transform turns multiplicative convolution into multiplication, just as the Fourier transform does for ordinary convolution. For positive independent $X$ and $Y$,
+
+$$
+	\mathcal{M}[f_{XY}](s) = \mathcal{M}[f_X](s)\, \mathcal{M}[f_Y](s)
+$$
+
+This follows from the factorized expectation with $g(x) = x^{s-1}$ and $h(y) = y^{s-1}$. The test function $(xy)^{s-1} = x^{s-1}\, y^{s-1}$ is itself a Kronecker product, and it depends on $(x, y)$ only through $xy$. Power functions are the characters of the multiplicative group, in the same way that $e^{i\omega x}$ are the characters of the additive group. Substituting $x = e^t$ makes this exact: $\mathcal{M}[f_X](s) = \mathbb{E}\big[e^{(s-1)\log X}\big]$ is the moment generating function of $\log X$, and $\log Z = \log X + \log Y$ turns the product into a sum. For variables taking both signs, split them into sign and magnitude and apply the transform to $|X|$ and $|Y|$.
+
+*Example.* For $X, Y \sim \mathrm{Uniform}(0, 1)$ independent, $\mathcal{M}[f_X](s) = 1/s$. So $\mathcal{M}[f_{XY}](s) = 1/s^2$, the Mellin transform of $f_{XY}(z) = -\ln z$ on $(0, 1)$. This matches the direct integral $\int_z^1 dx/x = -\ln z$.
+
 ## Spectral Mapping Theorem
 
 For $A \in M_n(\mathbb{C})$ and $f$ holomorphic on an open set containing the spectrum $\sigma(A)$,
